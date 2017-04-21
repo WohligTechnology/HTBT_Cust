@@ -59,9 +59,6 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
     }, {
       title: 'Rap',
       id: 5
-    }, {
-      title: 'Cowbell',
-      id: 6
     }];
   })
 
