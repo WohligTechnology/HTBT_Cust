@@ -56,9 +56,6 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
     }, {
       title: 'Indie',
       id: 4
-    }, {
-      title: 'Rap',
-      id: 5
     }];
   })
 
