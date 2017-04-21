@@ -10421,13 +10421,3 @@ a.button {
   padding: 8px; }
   .bmore .item {
     font-weight: 600; }
-
-.schedule-bar {
-  box-shadow: 0px 3px 5px;
-  color: #d1d3d4 !important; }
-
-.schedule-delivered {
-  text-align: center;
-  padding: 13px 15px 0 15px; }
-  .schedule-delivered label {
-    font-size: 16px; }
