@@ -36,14 +36,14 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
 
   .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
+      url: '/search',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/search.html'
+        }
       }
-    }
-  })
-  .state('app.help', {
+    })
+    .state('app.help', {
       url: '/help',
       views: {
         'menuContent': {
@@ -52,7 +52,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
-  .state('app.browse', {
+    .state('app.browse', {
       url: '/browse',
       views: {
         'menuContent': {
@@ -93,6 +93,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       'menuContent': {
         templateUrl: 'templates/dashboard.html',
         controller: 'DashboardCtrl'
+      }
+    }
+  })
+
+  .state('app.calendar', {
+    url: '/calendar',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/calendar.html',
+        controller: 'CalendarCtrl'
       }
     }
   })
