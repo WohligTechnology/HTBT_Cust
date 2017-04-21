@@ -10329,10 +10329,12 @@ a.button {
 
 .card-height {
   height: auto; }
+  .card-height row {
+    padding: 10px; }
 
 .card-label {
   font-size: 16px;
-  margin-top: 25px;
+  margin-top: 15px;
   display: block;
   font-weight: 400; }
 
@@ -10346,16 +10348,27 @@ a.button {
   font-weight: 500; }
 
 .card-imgDiv {
-  width: 100%; }
-
-.card-img {
   width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-clip: padding-box;
-  margin-left: 5px;
-  padding: 10px;
-  display: block; }
+  padding: 10px; }
+  .card-imgDiv img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-clip: padding-box;
+    display: block; }
+
+.card-schedule {
+  min-height: 30px;
+  line-height: 20px;
+  margin: 15px 0 20px 10px;
+  border-radius: 50px;
+  background: #223c48;
+  font-weight: 600;
+  color: white;
+  font-size: 14px; }
+
+.card-labelspan {
+  margin-left: 10px; }
 
 .help-bk {
   background: url("../img/red.jpg");
@@ -10400,3 +10413,11 @@ a.button {
   .helpcard label {
     text-align: center;
     display: block; }
+
+.bmore {
+  display: block;
+  margin: 10% 15%;
+  text-align: center;
+  padding: 8px; }
+  .bmore .item {
+    font-weight: 600; }
