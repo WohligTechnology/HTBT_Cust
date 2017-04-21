@@ -40,7 +40,9 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
     }, 1000);
   };
 })
+.controller('HelpCtrl', function ($scope, $stateParams) {
 
+})
 .controller('PlaylistsCtrl', function ($scope) {
   $scope.playlists = [{
     title: 'Reggae',

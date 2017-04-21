@@ -10356,3 +10356,47 @@ a.button {
   margin-left: 5px;
   padding: 10px;
   display: block; }
+
+.help-bk {
+  background: url("../img/red.jpg");
+  height: 170px;
+  background-size: cover;
+  padding: 15%; }
+  .help-bk .hlp-txt {
+    color: white;
+    font-size: 16px;
+    display: block;
+    text-align: center; }
+  .help-bk .search-div {
+    margin: 10px;
+    border-radius: 28px;
+    padding: 0 19px; }
+    .help-bk .search-div i {
+      color: black; }
+
+.hlpbk {
+  background: #f2f4f5; }
+
+.help-grid {
+  padding: 10px; }
+
+.brs-txt {
+  color: #ff414d;
+  margin: 0px 15px;
+  display: block;
+  font-size: 16px; }
+
+.helpcard {
+  background: white;
+  padding: 5px;
+  margin: 5px; }
+  .helpcard .icondiv {
+    height: 110px;
+    width: 100%;
+    padding: 10px 30px; }
+    .helpcard .icondiv img {
+      height: 100%;
+      width: 100%; }
+  .helpcard label {
+    text-align: center;
+    display: block; }
