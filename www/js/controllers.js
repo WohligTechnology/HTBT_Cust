@@ -42,6 +42,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
 })
 .controller('HelpCtrl', function ($scope, $stateParams) {
 
+<<<<<<< HEAD
 })
 .controller('PlaylistsCtrl', function ($scope) {
   $scope.playlists = [{
@@ -64,6 +65,47 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
     id: 6
   }];
 })
+=======
+    // Triggered in the login modal to close it
+    $scope.closeLogin = function () {
+      $scope.modal.hide();
+    };
+
+    // Open the login modal
+    $scope.login = function () {
+      $scope.modal.show();
+    };
+
+    // Perform the login action when the user submits the login form
+    $scope.doLogin = function () {
+      console.log('Doing login', $scope.loginData);
+
+      // Simulate a login delay. Remove this and replace with your login
+      // code if using a login system
+      $timeout(function () {
+        $scope.closeLogin();
+      }, 1000);
+    };
+  })
+  .controller('HelpCtrl', function ($scope, $stateParams) {
+
+  })
+  .controller('PlaylistsCtrl', function ($scope) {
+    $scope.playlists = [{
+      title: 'Reggae',
+      id: 1
+    }, {
+      title: 'Chill',
+      id: 2
+    }, {
+      title: 'Dubstep',
+      id: 3
+    }, {
+      title: 'Indie',
+      id: 4
+    }];
+  })
+>>>>>>> origin/master
 
 .controller('PlaylistCtrl', function ($scope, $stateParams) {})
 
