@@ -1,0 +1,37 @@
+<div class="priceDiv">
+  <div class="medal">
+    <img class="img-responsive" src="img/medal.png" alt="">
+  </div>
+  <div>
+
+<a class="button button-icon icon ion-ios-close-outline slide-close" ng-click="closePopup();"></a>
+  <button class="button button-icon icon ion-chevron-left arrowbtn" ng-click="slidePrevious()"></button>
+  <button class="button button-icon icon ion-chevron-right rightarr" ng-click="slideNext()"></button>
+
+  <ion-slide-box on-slide-changed="slideHasChanged($index)" class="pageslider hidepager" ng-init="lockSlide()" active-slide="myActiveSlide" does-continue="true">
+  <ion-slide>
+  <div class="slide-div">
+    <h3 class="text-center">20,000/-</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt, orci in interdum tempus, mauris ligula molestie libero, ac commodo lacus est nec mi. </p>
+  </div>
+
+  </ion-slide>
+  <ion-slide>
+  <div class="slide-div">
+    <h3 class="text-center">20,000/-</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt, orci in interdum tempus, mauris ligula molestie libero, ac commodo lacus est nec mi. </p>
+  </div>
+
+  </ion-slide>
+  <ion-slide>
+  <div class="slide-div">
+    <h3 class="text-center">20,000/-</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt, orci in interdum tempus, mauris ligula molestie libero, ac commodo lacus est nec mi. </p>
+  </div>
+
+  </ion-slide>
+
+
+</ion-slide-box>
+</div>
+</div>
