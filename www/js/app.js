@@ -73,6 +73,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker'])
     })
     .state('app.calendar', {
       url: '/calendar',
+
       views: {
         'menuContent': {
           templateUrl: 'templates/calendar.html',
