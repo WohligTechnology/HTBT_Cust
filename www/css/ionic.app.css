@@ -9815,37 +9815,6 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
-.jars-card {
-  text-align: center;
-  box-shadow: none;
-  padding: 0px !important; }
-  .jars-card .card .item:last-child,
-  .jars-card .list-inset .item:last-child {
-    padding: 10px !important; }
-
-.jar-label {
-  font-size: 18px;
-  font-weight: 500; }
-
-.jarcount {
-  font-size: 28px;
-  vertical-align: middle; }
-
-.jars-button {
-  display: inline-block;
-  font-size: 38px;
-  color: #ff414d;
-  vertical-align: middle; }
-
-.jarsch-button {
-  display: block;
-  text-align: center;
-  margin: 10px auto 50px;
-  line-height: 20px;
-  min-height: 40px;
-  min-width: 115px;
-  border-radius: 0px; }
-
 .partDiv {
   display: block;
   float: right;
@@ -9968,7 +9937,7 @@ a.button {
   .signUpForm label {
     border: none;
     border-bottom: 1px solid lightgrey;
-    padding: 0;
+    padding: 6px;
     margin: 0 5px; }
   .signUpForm input {
     background: transparent; }
@@ -10353,7 +10322,8 @@ a.button {
   display: block;
   text-align: center;
   margin: 5px auto;
-  width: 130px; }
+  width: 130px;
+  color: #ff414d !important; }
 
 .ion-contentcolor {
   background: #f2f4f5; }
@@ -10437,10 +10407,12 @@ a.button {
   .helpcard .icondiv {
     height: 110px;
     width: 100%;
-    padding: 10px 30px; }
+    padding: 15px 0;
+    display: block;
+    text-align: center; }
     .helpcard .icondiv img {
       height: 100%;
-      width: 100%; }
+      width: auto; }
   .helpcard label {
     text-align: center;
     display: block; }
@@ -10486,3 +10458,36 @@ a.button {
   display: block;
   margin: 15px;
   color: #213133; }
+
+.jars-card {
+  text-align: center;
+  box-shadow: none;
+  padding: 0 !important; }
+  .jars-card .card .item:last-child,
+  .jars-card .list-inset .item:last-child {
+    padding: 10px !important; }
+
+.jar-label {
+  font-size: 18px;
+  font-weight: 500; }
+
+.jarcount {
+  font-size: 28px;
+  vertical-align: middle; }
+
+.jars-button {
+  display: inline-block;
+  font-size: 38px;
+  color: #ff414d;
+  vertical-align: middle;
+  background: transparent;
+  border: none; }
+
+.jarsch-button {
+  display: block;
+  text-align: center;
+  margin: 10px auto 50px;
+  line-height: 20px;
+  min-height: 40px;
+  min-width: 115px;
+  border-radius: 0; }

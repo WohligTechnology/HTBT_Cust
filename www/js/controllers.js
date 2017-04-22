@@ -242,7 +242,9 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
       closeOnSelect: false, //Optional
       templateType: 'popup' //Optional
     };
-
+    $scope.goBackHandler = function () {
+      window.history.back(); //This works
+    }
 
     $scope.openDatePicker = function () {
       ionicDatePicker.openDatePicker(ipObj1);
