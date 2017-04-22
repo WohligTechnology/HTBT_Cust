@@ -9895,7 +9895,7 @@ a.button {
   width: 50%;
   font-size: 11px;
   font-weight: 600;
-  border-radius: 0px;
+  border-radius: 0;
   line-height: 22px;
   min-height: 38px; }
 
@@ -9947,7 +9947,7 @@ a.button {
 
 .signUpCard {
   height: 100px;
-  margin: 0px !important;
+  margin: 0 !important;
   position: relative;
   background: #f2f4f5; }
   .signUpCard .camcon {
@@ -10006,7 +10006,7 @@ a.button {
 .roundePrgBar {
   width: auto;
   position: relative;
-  padding-bottom: 0px;
+  padding-bottom: 0;
   position: relative;
   text-align: center;
   margin: 20px auto; }
@@ -10170,7 +10170,7 @@ a.button {
     padding: 5px 15px;
     font-size: 24px; }
   .notify-header .bar.bar-stable h1 {
-    margin-left: 0px; }
+    margin-left: 0; }
 
 .rel {
   position: relative; }
@@ -10395,7 +10395,7 @@ a.button {
 
 .brs-txt {
   color: #ff414d;
-  margin: 0px 15px;
+  margin: 0 15px;
   display: block;
   font-size: 16px; }
 
@@ -10421,3 +10421,37 @@ a.button {
   padding: 8px; }
   .bmore .item {
     font-weight: 600; }
+
+.cal-div {
+  padding: 15px; }
+  .cal-div h2 {
+    font-size: 32px;
+    font-weight: 500;
+    text-align: center;
+    display: block;
+    color: #ff414d; }
+
+.sun {
+  color: #ff414d; }
+
+.selected {
+  background: #ff414d;
+  border: none;
+  color: white; }
+
+.dates {
+  text-align: center;
+  display: block;
+  font-size: 16px; }
+
+.date-under {
+  border-bottom: 1px solid #ff414d; }
+
+.datenote {
+  font-size: 11px !important; }
+
+.schedule-head {
+  text-align: center;
+  display: block;
+  margin: 15px;
+  color: #213133; }
