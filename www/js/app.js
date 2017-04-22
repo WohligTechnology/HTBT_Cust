@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker'])
 
 .run(function ($ionicPlatform) {
   $ionicPlatform.ready(function () {
@@ -24,7 +24,25 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
 
 
-.config(function ($stateProvider, $urlRouterProvider) {
+.config(function ($stateProvider, $urlRouterProvider, ionicDatePickerProvider) {
+  var datePickerObj = {
+    inputDate: new Date(),
+    titleLabel: 'Select a Date',
+    setLabel: 'Set',
+    todayLabel: 'Today',
+    closeLabel: 'Close',
+    mondayFirst: false,
+    weeksList: ["S", "M", "T", "W", "T", "F", "S"],
+    monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+    templateType: 'popup',
+    from: new Date(2012, 8, 1),
+    to: new Date(2018, 8, 1),
+    showTodayButton: true,
+    dateFormat: 'dd MMMM yyyy',
+    closeOnSelect: false,
+    disableWeekdays: []
+  };
+  ionicDatePickerProvider.configDatePicker(datePickerObj);
   $stateProvider
 
     .state('app', {
@@ -36,19 +54,29 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
 
   .state('app.search', {
-      url: '/search',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/search.html'
-        }
+    url: '/search',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/search.html'
       }
-    })
-    .state('app.help', {
+    }
+  })
+
+  .state('app.help', {
       url: '/help',
       views: {
         'menuContent': {
           templateUrl: 'templates/help.html',
           controller: 'HelpCtrl'
+        }
+      }
+    })
+    .state('app.calendar', {
+      url: '/calendar',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/calendar.html',
+          controller: 'CalendarCtrl'
         }
       }
     })
@@ -93,16 +121,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       'menuContent': {
         templateUrl: 'templates/dashboard.html',
         controller: 'DashboardCtrl'
-      }
-    }
-  })
-
-  .state('app.calendar', {
-    url: '/calendar',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/calendar.html',
-        controller: 'CalendarCtrl'
       }
     }
   })
