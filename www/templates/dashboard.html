@@ -92,3 +92,26 @@
             </div>
         </div>
     </ion-content>
+      </div>
+    </div>
+    <div class="card bmore">
+      <div class="item item-text-wrap">
+        Browse More Products
+      </div>
+    </div>
+    <div class="card jars-card">
+      <div class="item ">
+        <div>
+          <label class="jar-label" for="">How many jars do you need?</label>
+        </div>
+        <div ng-init="count=0">
+          <button class="ion ion-minus-circled jars-button" ng-click="count=count-1"></button>
+          <span class="jarcount">{{count}}</span>
+          <button class="ion  ion-plus-circled jars-button" ng-click="count=count+1"></button>
+        </div>
+      </div>
+    </div>
+    <button class="button button-positive jarsch-button">
+  Schedule
+</button>
+  </ion-content>

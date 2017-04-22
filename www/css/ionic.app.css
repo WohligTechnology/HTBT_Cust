@@ -9815,6 +9815,37 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+.jars-card {
+  text-align: center;
+  box-shadow: none;
+  padding: 0px !important; }
+  .jars-card .card .item:last-child,
+  .jars-card .list-inset .item:last-child {
+    padding: 10px !important; }
+
+.jar-label {
+  font-size: 18px;
+  font-weight: 500; }
+
+.jarcount {
+  font-size: 28px;
+  vertical-align: middle; }
+
+.jars-button {
+  display: inline-block;
+  font-size: 38px;
+  color: #ff414d;
+  vertical-align: middle; }
+
+.jarsch-button {
+  display: block;
+  text-align: center;
+  margin: 10px auto 50px;
+  line-height: 20px;
+  min-height: 40px;
+  min-width: 115px;
+  border-radius: 0px; }
+
 .partDiv {
   display: block;
   float: right;
