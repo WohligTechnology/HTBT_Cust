@@ -94,6 +94,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
       templateType: 'popup' //Optional
     };
 
+
     $scope.openDatePicker = function () {
       ionicDatePicker.openDatePicker(ipObj1);
     };
