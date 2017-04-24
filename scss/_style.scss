@@ -6,3 +6,37 @@
     padding: 30px;
     color: #6d797e;
 }
+
+.confirm-checkmark {
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+    img {
+        width: 80%;
+    }
+}
+
+.conirfm-orderDiv {
+    text-align: center;
+    padding: 10px;
+}
+
+.conirfm-orderlbl {
+    font-size: 22px;
+    font-weight: 600;
+    color: #6d797e;
+}
+
+.confirm-successlbl {
+    font-size: 38px;
+    color: #0dbabe;
+    font-weight: 600;
+    line-height: 35px;
+}
+
+.confirm-refillphn {
+    display: block;
+    font-size: 14px;
+    color: #6d797e;
+    margin-top: 10px;
+}
