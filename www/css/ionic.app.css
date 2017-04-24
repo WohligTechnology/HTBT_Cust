@@ -9815,101 +9815,6 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
-.confirm-thankyou {
-  display: block;
-  text-align: center;
-  font-size: 30px;
-  font-weight: 600;
-  padding: 30px;
-  color: #6d797e; }
-
-.confirm-checkmark {
-  width: 80%;
-  text-align: center;
-  margin: 0 auto; }
-  .confirm-checkmark img {
-    width: 80%; }
-
-.conirfm-orderDiv {
-  text-align: center;
-  padding: 10px;
-  margin-top: 10px; }
-
-.conirfm-orderlbl {
-  font-size: 22px;
-  font-weight: 600;
-  color: #6d797e; }
-
-.confirm-successlbl {
-  font-size: 38px;
-  color: #0dbabe;
-  font-weight: 600;
-  line-height: 35px; }
-
-.confirm-refillphn {
-  display: block;
-  font-size: 14px;
-  color: #6d797e;
-  margin-top: 10px; }
-
-.header-color {
-  background: white; }
-
-.order-refillDiv {
-  background: #ff414d;
-  height: 200px;
-  text-align: center;
-  padding: 40px; }
-
-.order-refilllbl {
-  color: white;
-  font-size: 20px;
-  font-weight: 500; }
-
-.order-refillcount {
-  display: block;
-  font-size: 100px;
-  font-weight: 500;
-  color: white;
-  padding: 0;
-  margin: 0;
-  line-height: 85px; }
-
-.order-thismonth {
-  background: white;
-  text-align: center;
-  padding: 15px 5px;
-  width: auto;
-  margin-right: 1px;
-  font-size: 16px; }
-
-.order-row {
-  margin: 5px;
-  padding: 5px;
-  width: auto !important; }
-
-.order-div {
-  height: 45px;
-  width: 1px;
-  display: inline-block;
-  vertical-align: middle; }
-
-.highlight {
-  background: #ff414d;
-  color: white; }
-
-.order-monthsDiv {
-  background: white;
-  padding: 22px;
-  margin: 5px 0; }
-
-.order-jarslbl {
-  font-size: 21px; }
-
-.order-date {
-  padding: 26px 0 21px 20px;
-  font-size: 16px; }
-
 .partDiv {
   display: block;
   float: right;
@@ -10600,3 +10505,121 @@ a.button {
 .footer-font {
   font-size: 15px !important;
   font-weight: 500px !important; }
+
+.confirm-thankyou {
+  display: block;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  padding: 30px;
+  color: #6d797e; }
+
+.confirm-checkmark {
+  width: 80%;
+  text-align: center;
+  margin: 0 auto; }
+  .confirm-checkmark img {
+    width: 80%; }
+
+.conirfm-orderDiv {
+  text-align: center;
+  padding: 10px;
+  margin-top: 10px; }
+
+.conirfm-orderlbl {
+  font-size: 22px;
+  font-weight: 600;
+  color: #6d797e; }
+
+.confirm-successlbl {
+  font-size: 38px;
+  color: #0dbabe;
+  font-weight: 600;
+  line-height: 35px; }
+
+.confirm-refillphn {
+  display: block;
+  font-size: 14px;
+  color: #6d797e;
+  margin-top: 10px; }
+
+.header-color {
+  background: white; }
+
+.order-refillDiv {
+  background: #ff414d;
+  height: 200px;
+  text-align: center;
+  padding: 40px; }
+
+.order-refilllbl {
+  color: white;
+  font-size: 20px;
+  font-weight: 500; }
+
+.order-refillcount {
+  display: block;
+  font-size: 100px;
+  font-weight: 500;
+  color: white;
+  padding: 0;
+  margin: 0;
+  line-height: 85px; }
+
+.order-thismonth {
+  background: white;
+  text-align: center;
+  padding: 15px 5px;
+  width: auto;
+  margin-right: 1px;
+  font-size: 14px; }
+
+.order-row {
+  margin: 5px !important;
+  width: auto !important; }
+
+.order-div {
+  height: 45px;
+  width: 1px;
+  display: inline-block;
+  vertical-align: middle; }
+
+.highlight {
+  background: #ff414d;
+  color: white; }
+
+.order-monthsDiv {
+  background: white;
+  padding: 22px;
+  margin: 5px 0; }
+
+.order-jarslbl {
+  font-size: 21px; }
+
+.order-date {
+  font-size: 16px;
+  display: block;
+  padding: 5px 15px; }
+
+.order-jarImg {
+  height: 100%;
+  width: 100%; }
+
+.order-jarRow {
+  background: white;
+  padding: 20px; }
+
+.order-tickDiv {
+  width: 30px;
+  height: 30px;
+  margin: 0 7px 0 auto; }
+
+.order-dateProgress {
+  margin-top: 5px;
+  font-size: 16px;
+  display: block;
+  padding: 5px 15px; }
+
+.order-prgress {
+  width: 30px !important;
+  height: 30px !important; }
