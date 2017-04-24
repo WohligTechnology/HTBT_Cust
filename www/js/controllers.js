@@ -71,7 +71,13 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
 
 .controller('LoginCtrl', function ($scope, $stateParams) {})
 
-.controller('ConfirmationCtrl', function ($scope, $stateParams) {})
+.controller('OrderhistoryCtrl', function ($scope, $stateParams) {})
+
+.controller('ConfirmationCtrl', function ($scope, $stateParams) {
+  $scope.goBackHandler = function () {
+    window.history.back(); //This works
+  }
+})
 
 .controller('CalendarCtrl', function ($scope, $stateParams, ionicDatePicker) {
 

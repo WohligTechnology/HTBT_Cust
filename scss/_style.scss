@@ -19,6 +19,7 @@
 .conirfm-orderDiv {
     text-align: center;
     padding: 10px;
+    margin-top: 10px;
 }
 
 .conirfm-orderlbl {
@@ -39,4 +40,73 @@
     font-size: 14px;
     color: #6d797e;
     margin-top: 10px;
+}
+
+.header-color {
+    background: white;
+}
+
+.order-refillDiv {
+    background: #ff414d;
+    height: 200px;
+    text-align: center;
+    padding: 40px;
+}
+
+.order-refilllbl {
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.order-refillcount {
+    display: block;
+    font-size: 100px;
+    font-weight: 500;
+    color: white;
+    padding: 0;
+    margin: 0;
+    line-height: 85px;
+}
+
+.order-thismonth {
+    background: white;
+    text-align: center;
+    padding: 15px 5px;
+    width: auto;
+    margin-right: 1px;
+    font-size: 16px;
+}
+
+.order-row {
+    margin: 5px;
+    padding: 5px;
+    width: auto!important;
+}
+
+.order-div {
+    height: 45px;
+    width: 1px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.highlight {
+    background: #ff414d;
+    color: white;
+}
+
+.order-monthsDiv {
+    background: white;
+    padding: 22px;
+    margin: 10px 0;
+}
+
+.order-jarslbl {
+    font-size: 21px;
+}
+
+.order-date {
+    padding: 26px 0 21px 20px;
+    font-size: 16px;
 }

@@ -91,6 +91,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker'])
     }
   })
 
+  .state('app.orderhistory', {
+    url: '/orderhistory',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/orderhistory.html',
+        controller: 'OrderhistoryCtrl'
+      }
+    }
+  })
+
   .state('app.browse', {
       url: '/browse',
       views: {
