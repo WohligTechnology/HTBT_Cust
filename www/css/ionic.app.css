@@ -9815,6 +9815,14 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+.confirm-thankyou {
+  display: block;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  padding: 30px;
+  color: #6d797e; }
+
 .partDiv {
   display: block;
   float: right;
@@ -10491,3 +10499,16 @@ a.button {
   min-height: 40px;
   min-width: 115px;
   border-radius: 0; }
+
+.nav-height {
+  height: 52px; }
+
+.footer-height {
+  height: 46px; }
+
+.bar.bar-stable .title {
+  font-size: 20px; }
+
+.footer-font {
+  font-size: 15px !important;
+  font-weight: 500px !important; }

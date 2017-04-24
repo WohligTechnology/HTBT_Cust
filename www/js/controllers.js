@@ -70,186 +70,153 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
 .controller('VerifyCtrl', function ($scope, $stateParams) {})
 
 .controller('LoginCtrl', function ($scope, $stateParams) {})
-  .controller('CalendarCtrl', function ($scope, $stateParams, ionicDatePicker) {
 
-    $scope.days=["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+.controller('ConfirmationCtrl', function ($scope, $stateParams) {})
 
-    $scope.date=[
-      {
-        d:'',
-        isAvl:false
-      },
-      {
-        d:'',
-        isAvl:false
-      },
-      {
-        d:'',
-        isAvl:false
-      },
-      {
-        d:'1',
-        isAvl:false
-      },
-      {
-        d:'2',
-        isAvl:false
-      },
-      {
-        d:'3',
-        isAvl:false
-      },
-      {
-        d:'4',
-        isAvl:false
-      },
-      {
-        d:'5',
-        isAvl:false
-      },
-      {
-        d:'6',
-        isAvl:false
-      },
-      {
-        d:'7',
-        isAvl:false
-      },
-      {
-        d:'8',
-        isAvl:true
-      },
-      {
-        d:'9',
-        isAvl:false
-      },
-      {
-        d:'10',
-        isAvl:true
-      },
-      {
-        d:'11',
-        isAvl:false
-      },
-      {
-        d:'12',
-        isAvl:false
-      },
-      {
-        d:'13',
-        isAvl:false
-      },
-      {
-        d:'14',
-        isAvl:false
-      },
-      {
-        d:'15',
-        isAvl:true
-      },
-      {
-        d:'16',
-        isAvl:false
-      },
-      {
-        d:'17',
-        isAvl:true
-      },
-      {
-        d:'18',
-        isAvl:false
-      },
-      {
-        d:'19',
-        isAvl:false
-      },
-      {
-        d:'20',
-        isAvl:false
-      },
-      {
-        d:'21',
-        isAvl:false
-      },
-      {
-        d:'22',
-        isAvl:true
-      },
-      {
-        d:'23',
-        isAvl:false
-      },
-      {
-        d:'24',
-        isAvl:true
-      },
-      {
-        d:'25',
-        isAvl:false
-      },
-      {
-        d:'26',
-        isAvl:false
-      },
-      {
-        d:'27',
-        isAvl:false
-      },
-      {
-        d:'28',
-        isAvl:false
-      },
-      {
-        d:'29',
-        isAvl:true
-      },
-      {
-        d:'30',
-        isAvl:false
-      },
-      {
-        d:'31',
-        isAvl:true
+.controller('CalendarCtrl', function ($scope, $stateParams, ionicDatePicker) {
 
-      },
-      {
-        d:'',
-        isAvl:false
-      }
-    ];
-    $scope.date1 = _.chunk($scope.date, 7);
-    console.log($scope.date1);
+  $scope.days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-    var ipObj1 = {
+  $scope.date = [{
+    d: '',
+    isAvl: false
+  }, {
+    d: '',
+    isAvl: false
+  }, {
+    d: '',
+    isAvl: false
+  }, {
+    d: '1',
+    isAvl: false
+  }, {
+    d: '2',
+    isAvl: false
+  }, {
+    d: '3',
+    isAvl: false
+  }, {
+    d: '4',
+    isAvl: false
+  }, {
+    d: '5',
+    isAvl: false
+  }, {
+    d: '6',
+    isAvl: false
+  }, {
+    d: '7',
+    isAvl: false
+  }, {
+    d: '8',
+    isAvl: true
+  }, {
+    d: '9',
+    isAvl: false
+  }, {
+    d: '10',
+    isAvl: true
+  }, {
+    d: '11',
+    isAvl: false
+  }, {
+    d: '12',
+    isAvl: false
+  }, {
+    d: '13',
+    isAvl: false
+  }, {
+    d: '14',
+    isAvl: false
+  }, {
+    d: '15',
+    isAvl: true
+  }, {
+    d: '16',
+    isAvl: false
+  }, {
+    d: '17',
+    isAvl: true
+  }, {
+    d: '18',
+    isAvl: false
+  }, {
+    d: '19',
+    isAvl: false
+  }, {
+    d: '20',
+    isAvl: false
+  }, {
+    d: '21',
+    isAvl: false
+  }, {
+    d: '22',
+    isAvl: true
+  }, {
+    d: '23',
+    isAvl: false
+  }, {
+    d: '24',
+    isAvl: true
+  }, {
+    d: '25',
+    isAvl: false
+  }, {
+    d: '26',
+    isAvl: false
+  }, {
+    d: '27',
+    isAvl: false
+  }, {
+    d: '28',
+    isAvl: false
+  }, {
+    d: '29',
+    isAvl: true
+  }, {
+    d: '30',
+    isAvl: false
+  }, {
+    d: '31',
+    isAvl: true
 
-      callback: function (val) { //Mandatory
-        console.log('Return value from the datepicker popup is : ' + val, new Date(val));
-      },
-      disabledDates: [ //Optional
-        new Date(2016, 2, 16),
-        new Date(2015, 3, 16),
-        new Date(2015, 4, 16),
-        new Date(2015, 5, 16),
-        new Date('Wednesday, August 12, 2015'),
-        new Date("08-16-2016"),
-        new Date(1439676000000)
-      ],
-      from: new Date(2012, 1, 1), //Optional
-      to: new Date(2016, 10, 30), //Optional
-      inputDate: new Date(), //Optional
-      mondayFirst: true, //Optional
-      disableWeekdays: [0], //Optional
-      closeOnSelect: false, //Optional
-      templateType: 'popup' //Optional
-    };
-    $scope.goBackHandler = function () {
-      window.history.back(); //This works
-    }
+  }, {
+    d: '',
+    isAvl: false
+  }];
+  $scope.date1 = _.chunk($scope.date, 7);
+  console.log($scope.date1);
 
-    $scope.openDatePicker = function () {
-      ionicDatePicker.openDatePicker(ipObj1);
-    };
-  })
+  var ipObj1 = {
+
+    callback: function (val) { //Mandatory
+      console.log('Return value from the datepicker popup is : ' + val, new Date(val));
+    },
+    disabledDates: [ //Optional
+      new Date(2016, 2, 16),
+      new Date(2015, 3, 16),
+      new Date(2015, 4, 16),
+      new Date(2015, 5, 16),
+      new Date('Wednesday, August 12, 2015'),
+      new Date("08-16-2016"),
+      new Date(1439676000000)
+    ],
+    from: new Date(2012, 1, 1), //Optional
+    to: new Date(2016, 10, 30), //Optional
+    inputDate: new Date(), //Optional
+    mondayFirst: true, //Optional
+    disableWeekdays: [0], //Optional
+    closeOnSelect: false, //Optional
+    templateType: 'popup' //Optional
+  };
+  $scope.goBackHandler = function () {
+    window.history.back(); //This works
+  }
+
+  $scope.openDatePicker = function () {
+    ionicDatePicker.openDatePicker(ipObj1);
+  };
+})
 
 .controller('DashboardCtrl', function ($scope, $stateParams, $ionicPopup, $ionicSlideBoxDelegate) {
   $scope.showPopup = function () {

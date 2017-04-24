@@ -73,7 +73,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker'])
     })
     .state('app.calendar', {
       url: '/calendar',
-
       views: {
         'menuContent': {
           templateUrl: 'templates/calendar.html',
@@ -81,7 +80,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker'])
         }
       }
     })
-    .state('app.browse', {
+
+  .state('app.confirmation', {
+    url: '/confirmation',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/confirmation.html',
+        controller: 'ConfirmationCtrl'
+      }
+    }
+  })
+
+  .state('app.browse', {
       url: '/browse',
       views: {
         'menuContent': {
