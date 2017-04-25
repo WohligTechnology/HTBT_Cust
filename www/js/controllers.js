@@ -71,6 +71,8 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
 
 .controller('LoginCtrl', function ($scope, $stateParams) {})
 
+.controller('BrowseCtrl', function ($scope, $stateParams) {})
+
 .controller('OrderhistoryCtrl', function ($scope, $stateParams) {
   $scope.goBackHandler = function () {
     window.history.back(); //This works
@@ -83,7 +85,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
   }
 })
 
-.controller('CalendarCtrl', function ($scope, $stateParams, ionicDatePicker) {
+.controller('CalendarCtrl', function ($scope, $stateParams, ionicDatePicker, $ionicSlideBoxDelegate) {
 
   $scope.days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -196,7 +198,145 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
   }];
   $scope.date1 = _.chunk($scope.date, 7);
   console.log($scope.date1);
+  $scope.dateA = [{
+    d: '',
+    isAvl: false
+  }, {
+    d: '',
+    isAvl: false
+  }, {
+    d: '',
+    isAvl: false
+  }, {
+    d: '',
+    isAvl: false
+  }, {
+    d: '',
+    isAvl: false
+  }, {
+    d: '',
+    isAvl: false
+  }, {
+    d: '1',
+    isAvl: false
+  }, {
+    d: '2',
+    isAvl: false
+  }, {
+    d: '3',
+    isAvl: false
+  }, {
+    d: '4',
+    isAvl: false
+  }, {
+    d: '5',
+    isAvl: false
+  }, {
+    d: '6',
+    isAvl: false
+  }, {
+    d: '7',
+    isAvl: false
+  }, {
+    d: '8',
+    isAvl: true
+  }, {
+    d: '9',
+    isAvl: false
+  }, {
+    d: '10',
+    isAvl: true
+  }, {
+    d: '11',
+    isAvl: false
+  }, {
+    d: '12',
+    isAvl: false
+  }, {
+    d: '13',
+    isAvl: false
+  }, {
+    d: '14',
+    isAvl: false
+  }, {
+    d: '15',
+    isAvl: true
+  }, {
+    d: '16',
+    isAvl: false
+  }, {
+    d: '17',
+    isAvl: true
+  }, {
+    d: '18',
+    isAvl: false
+  }, {
+    d: '19',
+    isAvl: false
+  }, {
+    d: '20',
+    isAvl: false
+  }, {
+    d: '21',
+    isAvl: false
+  }, {
+    d: '22',
+    isAvl: true
+  }, {
+    d: '23',
+    isAvl: false
+  }, {
+    d: '24',
+    isAvl: true
+  }, {
+    d: '25',
+    isAvl: false
+  }, {
+    d: '26',
+    isAvl: false
+  }, {
+    d: '27',
+    isAvl: false
+  }, {
+    d: '28',
+    isAvl: false
+  }, {
+    d: '29',
+    isAvl: true
+  }, {
+    d: '30',
+    isAvl: false
+  }, {
+    d: '31',
+    isAvl: true
 
+  }, {
+    d: '',
+    isAvl: false
+  }, {
+    d: '',
+    isAvl: false
+  }, {
+    d: '',
+    isAvl: false
+  }, {
+    d: '',
+    isAvl: false
+  }, {
+    d: '',
+    isAvl: false
+  }];
+  $scope.dateA1 = _.chunk($scope.dateA, 7);
+  console.log($scope.date1);
+  $scope.slidePrevious = function () {
+
+    $ionicSlideBoxDelegate.previous();
+  }
+
+  $scope.slideNext = function () {
+
+    $ionicSlideBoxDelegate.next();
+  }
   var ipObj1 = {
 
     callback: function (val) { //Mandatory

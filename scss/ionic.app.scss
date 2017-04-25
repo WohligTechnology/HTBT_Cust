@@ -1020,3 +1020,19 @@ $dark:                            #444 !default;
         width: 30px!important;
         height: 30px!important;
     }
+    
+    .mnpre {
+        color: #ff414d;
+        position: absolute;
+        top: 13%;
+        left: 10%;
+        z-index: 999;
+    }
+    
+    .mnxt {
+        color: #ff414d;
+        position: absolute;
+        top: 13%;
+        right: 10%;
+        z-index: 999;
+    }

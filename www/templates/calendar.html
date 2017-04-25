@@ -11,27 +11,59 @@
     </ion-nav-bar>
     <ion-content class="has-header ion-contentcolor">
         <label for="" class="schedule-head">When do you want the jars to be delivered?</label>
-        <div class="card">
-            <div class="item item-text-wrap">
-                <div class="cal-div">
-                    <h2>March</h2>
-                    <div class="row">
-                        <div class="col" ng-repeat="d1 in days track by $index">
-                            <div class="">
-                                <label for="" ng-class="{'sun' : $index == 0}" class="dates">{{d1}}</label>
+        <div class="rel">
+            <button class="button button-icon icon ion-chevron-left mnpre" ng-click="slidePrevious()"></button>
+            <button class="button button-icon icon ion-chevron-right mnxt" ng-click="slideNext()"></button>
+            <ion-slide-box on-slide-changed="slideHasChanged($index)" class="pageslider hidepager" ng-init="lockSlide()" active-slide="myActiveSlide">
+                <ion-slide>
+                    <div class="card">
+                        <div class="item item-text-wrap">
+                            <div class="cal-div">
+                                <h2>March</h2>
+                                <div class="row">
+                                    <div class="col" ng-repeat="d1 in days track by $index">
+                                        <div class="">
+                                            <label for="" ng-class="{'sun' : $index == 0}" class="dates">{{d1}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" ng-repeat="d1 in date1">
+                                    <div class="col" ng-repeat="data in d1 track by $index">
+                                        <div class="" ng-class="{'selected' : seleted == true && data.isAvl == true  }" ng-click="seleted=!seleted">
+                                            <label for="" ng-class="{'date-under' : data.isAvl == true }" class="dates"><span ng-class="{'sun' : $index == 0 }">{{data.d}}</span></label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            <p class="item-note datenote">*we're available on highlighted days only</p>
                         </div>
                     </div>
-                    <div class="row" ng-repeat="d1 in date1">
-                        <div class="col" ng-repeat="data in d1 track by $index">
-                            <div class="" ng-class="{'selected' : seleted == true && data.isAvl == true  }" ng-click="seleted=!seleted">
-                                <label for="" ng-class="{'date-under' : data.isAvl == true }" class="dates"><span ng-class="{'sun' : $index == 0 }">{{data.d}}</span></label>
+                </ion-slide>
+                <ion-slide>
+                    <div class="card">
+                        <div class="item item-text-wrap">
+                            <div class="cal-div">
+                                <h2>April</h2>
+                                <div class="row">
+                                    <div class="col" ng-repeat="d1 in days track by $index">
+                                        <div class="">
+                                            <label for="" ng-class="{'sun' : $index == 0}" class="dates">{{d1}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" ng-repeat="d1 in dateA1">
+                                    <div class="col" ng-repeat="data in d1 track by $index">
+                                        <div class="" ng-class="{'selected' : seleted == true && data.isAvl == true  }" ng-click="seleted=!seleted">
+                                            <label for="" ng-class="{'date-under' : data.isAvl == true }" class="dates"><span ng-class="{'sun' : $index == 0 }">{{data.d}}</span></label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            <p class="item-note datenote">*we're available on highlighted days only</p>
                         </div>
                     </div>
-                </div>
-                <p class="item-note datenote">*we're available on highlighted days only</p>
-            </div>
+                </ion-slide>
+            </ion-slide-box>
         </div>
         <div class="card jars-card">
             <div class="item ">

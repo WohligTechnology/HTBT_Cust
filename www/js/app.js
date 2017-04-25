@@ -102,14 +102,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker'])
   })
 
   .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
+    url: '/browse',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/browse.html',
+        controller: 'BrowseCtrl'
       }
-    })
-    .state('app.playlists', {
+    }
+  })
+
+
+  .state('app.playlists', {
       url: '/playlists',
       views: {
         'menuContent': {
