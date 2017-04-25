@@ -71,7 +71,11 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
 
 .controller('LoginCtrl', function ($scope, $stateParams) {})
 
-.controller('BrowseCtrl', function ($scope, $stateParams) {})
+.controller('BrowseCtrl', function ($scope, $ionicSlideBoxDelegate) {
+  $scope.nextSlide = function () {
+    $ionicSlideBoxDelegate.next();
+  }
+})
 
 .controller('OrderhistoryCtrl', function ($scope, $stateParams) {
   $scope.goBackHandler = function () {

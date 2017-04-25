@@ -151,9 +151,17 @@ $dark:                            #444 !default;
         color: black!important;
     }
     
-    .sigupIcon {
+    .sigupIconLeft {
         color: #091b27!important;
         font-size: 24px!important;
+        padding: 0 0 0 12px!important;
+    }
+    
+    .sigupRight {
+        color: #091b27!important;
+        font-size: 24px!important;
+        padding: 2px 12px 0 0!important;
+        display: block;
     }
     
     .nameSignup {
@@ -236,10 +244,10 @@ $dark:                            #444 !default;
     .mt-10 {
         margin-top: 10px !important;
     }
-    
-    .bar.bar-stable .title {
+    /*.bar.bar-stable .title {
         text-align: left!important;
-    }
+        padding-top: 1px!important;
+    }*/
     
     .dashboardLabel {
         text-align: center;
@@ -267,6 +275,13 @@ $dark:                            #444 !default;
         left: 48%;
         z-index: 3;
         background: #0dbabe;
+    }
+    
+    .header-bellFont {
+        color: #091b27 !important;
+        font-size: 32px !important;
+        padding: 0 12px 0 0 !important;
+        display: block;
     }
     
     .info {
@@ -817,7 +832,7 @@ $dark:                            #444 !default;
     .schedule-head {
         text-align: center;
         display: block;
-        margin: 15px;
+        margin-top: 20px;
         color: #213133;
     }
     
@@ -863,15 +878,16 @@ $dark:                            #444 !default;
     
     .nav-height {
         height: 52px;
+        .bar.bar-stable .title {
+            font-size: 20px;
+            line-height: 48px;
+            text-align: left!important;
+            padding-top: 1px!important;
+        }
     }
     
     .footer-height {
         height: 46px;
-    }
-    
-    .bar.bar-stable .title {
-        font-size: 20px;
-        line-height: 48px;
     }
     
     .footer-font {
@@ -1035,4 +1051,26 @@ $dark:                            #444 !default;
         top: 13%;
         right: 10%;
         z-index: 999;
+    }
+    
+    .box1,
+    .box2,
+    .box3 {
+        height: 200px;
+        background: #f2f4f5;
+    }
+    
+    .browse-sliderRow {
+        height: 100%;
+        background: #f2f4f5;
+    }
+    
+    .browse-slideImgDiv {
+        height: 100%;
+        text-align: center;
+    }
+    
+    .browse-sliderImg {
+        height: 100%;
+        padding: 15px;
     }
