@@ -1133,7 +1133,7 @@ $dark:                            #444 !default;
             padding: 15px 0;
             display: block;
             text-align: center;
-            background: #edeff0;
+            background: #e7e9ea;
             img {
                 height: 100%;
                 width: auto;
@@ -1190,4 +1190,44 @@ $dark:                            #444 !default;
             background: #edeff0;
             line-height: 35px;
         }
+    }
+    
+    .browse-backgrndcolor {
+        background: lightgray
+    }
+    
+    .browse-hdrBckgrnd {
+        .bar.bar-stable {
+            background: white;
+        }
+    }
+    
+    .browse-moreImgDiv {
+        height: 170px;
+        text-align: center;
+        width: auto;
+    }
+    
+    .browse-moreDiv {
+        border-bottom: 1px solid lightgray;
+        margin: 0 50px 0 50px;
+    }
+    
+    .browse-moreImg {
+        height: 100%;
+        width: 100;
+        padding: 10px;
+    }
+    
+    .browse-moredivalign {
+        text-align: center;
+    }
+    
+    .browse-aqualbl {
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .browse-morerupee {
+        color: #a2a9ad
     }

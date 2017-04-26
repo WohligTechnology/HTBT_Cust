@@ -101,6 +101,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker'])
     }
   })
 
+  .state('app.browse-more', {
+    url: '/browse-more',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/browse-more.html',
+        controller: 'BrowseMoreCtrl'
+      }
+    }
+  })
+
   .state('app.browse', {
     url: '/browse',
     views: {
@@ -126,6 +136,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker'])
       templateUrl: 'templates/login.html',
       controller: 'LoginCtrl'
     })
+
 
   .state('verify', {
     url: '/verify',
