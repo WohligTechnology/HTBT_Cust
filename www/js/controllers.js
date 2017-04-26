@@ -75,6 +75,9 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
   $scope.nextSlide = function () {
     $ionicSlideBoxDelegate.next();
   }
+  $scope.goBackHandler = function () {
+    window.history.back(); //This works
+  }
 })
 
 .controller('OrderhistoryCtrl', function ($scope, $stateParams) {

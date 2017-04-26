@@ -1074,3 +1074,120 @@ $dark:                            #444 !default;
         height: 100%;
         padding: 15px;
     }
+    
+    .browse-col502 {
+        display: block;
+        padding: 50px 0 0 0;
+        height: 100%;
+    }
+    
+    .browse-col502lbl {
+        font-size: 30px;
+        color: #63d0d2;
+    }
+    
+    .browse-col502aqua {
+        display: block;
+        font-size: 18px;
+        color: #3d619b;
+        font-weight: 500;
+    }
+    
+    .browse-col502ltrcolor {
+        color: #979798;
+        font-size: 11px;
+    }
+    
+    .browse-col502slash {
+        font-size: 10px;
+        vertical-align: top;
+        color: #979798;
+    }
+    
+    .browse-col502rupeesymb {
+        font-size: 10px;
+        color: #979798;
+    }
+    
+    .browse-col502rupees {
+        font-size: 19px
+    }
+    
+    .browse-grid {
+        padding: 10px;
+        text-align: center
+    }
+    
+    .browse-text {
+        margin: 0 15px;
+        display: block;
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .browse-card1 {
+        padding: 1.5px;
+        margin: 1.5px;
+        .icondiv {
+            height: 150px;
+            padding: 15px 0;
+            display: block;
+            text-align: center;
+            background: #edeff0;
+            img {
+                height: 100%;
+                width: auto;
+            }
+        }
+        label {
+            text-align: center;
+            display: block;
+            background: #ffffff;
+            line-height: 35px;
+        }
+    }
+    
+    .browse-card2 {
+        padding: 1.5px;
+        margin: 1.5px;
+        .icondiv {
+            height: 150px;
+            padding: 15px 0;
+            display: block;
+            text-align: center;
+            background: #fafafa;
+            img {
+                height: 100%;
+                width: auto;
+            }
+        }
+        label {
+            text-align: center;
+            display: block;
+            background: #edeff0;
+            line-height: 35px;
+        }
+    }
+    
+    .oneliter-pack {
+        padding: 1.5px;
+        margin: 1.5px;
+        .icondiv {
+            height: 150px;
+            padding: 15px 0;
+            display: block;
+            text-align: center;
+            background: #fafafa;
+            img {
+                height: 100%;
+                width: auto;
+                padding: 20px
+            }
+        }
+        label {
+            text-align: center;
+            display: block;
+            background: #edeff0;
+            line-height: 35px;
+        }
+    }
