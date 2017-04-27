@@ -82,6 +82,12 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
   }
 })
 
+.controller('AuthPaymentCtrl', function ($scope, $stateParams) {
+  $scope.goBackHandler = function () {
+    window.history.back(); //This works
+  }
+})
+
 
 .controller('BrowseCtrl', function ($scope, $ionicSlideBoxDelegate) {
   $scope.nextSlide = function () {

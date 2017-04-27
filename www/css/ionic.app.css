@@ -10872,3 +10872,71 @@ a.button {
     margin-top: 15px; }
     .bg-prdct .prod-det .card {
       margin: 10px !important; }
+
+.browse-morerupee {
+  color: #a2a9ad; }
+
+.auth-payment {
+  background: #f2f4f5; }
+
+.auth-custinfo {
+  padding: 35px 0 0 20px !important;
+  font-size: 18px;
+  font-weight: 500;
+  font-size: 16px; }
+
+.auth-custip {
+  background: transparent;
+  border: transparent;
+  padding: 10px 0 0 35px;
+  font-size: 16px; }
+
+.auth-custipPlc {
+  font-size: 16px !important;
+  font-weight: 500;
+  font-size: 16px; }
+
+.auth-updbtn {
+  background: #f2f4f5;
+  margin: 25px;
+  line-height: 40px;
+  min-height: 40px;
+  width: 32%;
+  font-size: 16px; }
+
+.auth-paybtn {
+  background: #ff414d;
+  margin: 25px;
+  line-height: 40px;
+  min-height: 40px;
+  width: 32%;
+  font-size: 16px; }
+
+.auth-btnalign {
+  text-align: center; }
+
+.auth-otprow {
+  background: #f2f4f5;
+  margin: 0 15px 0 15px;
+  width: auto; }
+
+.auth-otpcol1Lbl {
+  border: none;
+  padding: 5px;
+  background: #f2f4f5;
+  width: 100%; }
+  .auth-otpcol1Lbl input {
+    padding-right: 0; }
+
+.auth-col2 {
+  text-align: right; }
+
+.auth-col2btn {
+  font-size: 14px; }
+
+.auth-sharebtn {
+  width: 90% !important;
+  margin: 20px auto !important;
+  background: #0dbabe !important;
+  font-size: 16px !important;
+  font-weight: 500; }

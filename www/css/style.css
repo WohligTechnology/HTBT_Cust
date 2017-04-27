@@ -1,1 +1,11 @@
 /* Empty. Add your own CSS if you like */
+
+.auth-payment {
+    background: #f2f4f5
+}
+
+.auth-custinfo {
+    padding: 35px 0 0 20px!important;
+    font-size: 18px;
+    font-weight: 500;
+}
