@@ -111,6 +111,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker'])
     }
   })
 
+  .state('app.auth-payment', {
+    url: '/auth-payment',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/auth-payment.html',
+        controller: 'AuthPaymentCtrl'
+      }
+    }
+  })
+
   .state('app.browse', {
     url: '/browse',
     views: {
