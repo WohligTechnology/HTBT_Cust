@@ -10500,7 +10500,7 @@ a.button {
 .jarsch-button {
   display: block;
   text-align: center;
-  margin: 10px auto 50px;
+  margin: 20px auto 50px;
   line-height: 20px;
   min-height: 40px;
   min-width: 115px;
@@ -10673,7 +10673,7 @@ a.button {
 
 .browse-col502 {
   display: block;
-  padding: 50px 0 0 0;
+  padding: 50px 0 0;
   height: 100%; }
 
 .browse-col502lbl {
@@ -10767,8 +10767,11 @@ a.button {
     background: #edeff0;
     line-height: 35px; }
 
+.m10 {
+  margin: 10px !important; }
+
 .browse-backgrndcolor {
-  background: lightgray; }
+  background: #f7f6f6; }
 
 .browse-hdrBckgrnd .bar.bar-stable {
   background: white; }
@@ -10780,7 +10783,7 @@ a.button {
 
 .browse-moreDiv {
   border-bottom: 1px solid lightgray;
-  margin: 0 50px 0 50px; }
+  margin: 0 50px; }
 
 .browse-moreImg {
   height: 100%;
@@ -10788,11 +10791,84 @@ a.button {
   padding: 10px; }
 
 .browse-moredivalign {
-  text-align: center; }
+  text-align: center;
+  border-bottom: 1px solid #b8d9ef;
+  padding: 10px;
+  margin: 5px 50px; }
 
 .browse-aqualbl {
   font-size: 16px;
   font-weight: 500; }
 
+.mbt {
+  margin-bottom: 30px; }
+
 .browse-morerupee {
   color: #a2a9ad; }
+
+.search-fix {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  height: 50px;
+  width: 50px;
+  background: #ff414d;
+  border-radius: 50%;
+  padding: 13px; }
+  .search-fix i {
+    font-size: 26px;
+    color: white; }
+
+.prdcticon {
+  height: 120px;
+  width: 100%;
+  text-align: center;
+  margin: 15px 10px; }
+  .prdcticon img {
+    height: 100%; }
+  .prdcticon .line {
+    height: 90%;
+    display: inline-block;
+    padding: 10px;
+    margin: 8px 0 8px 5%;
+    border-right: 1px solid #1a85cb; }
+
+.details-div {
+  margin-top: 30px;
+  margin-left: 15px; }
+  .details-div h2 {
+    color: #002d40; }
+  .details-div .name {
+    color: #3d619b; }
+  .details-div .desc {
+    color: #091b27; }
+
+.pad0 {
+  padding: 0; }
+
+.addrm {
+  text-align: right; }
+  .addrm i {
+    margin: 5px;
+    font-size: 14px;
+    background: #ff414d;
+    padding: 4px;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    vertical-align: middle; }
+    .addrm i:before {
+      color: white; }
+  .addrm span {
+    font-size: 28px;
+    font-weight: 500;
+    vertical-align: middle;
+    margin: 5px; }
+
+.bg-prdct {
+  background: #f2f4f5; }
+  .bg-prdct .prod-det {
+    margin-top: 15px; }
+    .bg-prdct .prod-det .card {
+      margin: 10px !important; }

@@ -43,6 +43,11 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
   .controller('HelpCtrl', function ($scope, $stateParams) {
 
   })
+  .controller('ProductSpecsCtrl', function ($scope, $stateParams) {
+    $scope.goBackHandler = function () {
+      window.history.back(); //This works
+    }
+  })
   .controller('PlaylistsCtrl', function ($scope) {
     $scope.playlists = [{
       title: 'Reggae',
@@ -213,10 +218,10 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
   $scope.date1 = _.chunk($scope.date, 7);
   console.log($scope.date1);
   $scope.dateA = [{
-    d: '',
+    d: '30',
     isAvl: false
   }, {
-    d: '',
+    d: '31',
     isAvl: false
   }, {
     d: '',
@@ -317,28 +322,6 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
   }, {
     d: '29',
     isAvl: true
-  }, {
-    d: '30',
-    isAvl: false
-  }, {
-    d: '31',
-    isAvl: true
-
-  }, {
-    d: '',
-    isAvl: false
-  }, {
-    d: '',
-    isAvl: false
-  }, {
-    d: '',
-    isAvl: false
-  }, {
-    d: '',
-    isAvl: false
-  }, {
-    d: '',
-    isAvl: false
   }];
   $scope.dateA1 = _.chunk($scope.dateA, 7);
   console.log($scope.date1);

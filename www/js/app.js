@@ -110,6 +110,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker'])
       }
     }
   })
+  .state('app.productSpecs', {
+    url: '/productSpecs',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/productSpecs.html',
+        controller: 'ProductSpecsCtrl'
+      }
+    }
+  })
 
   .state('app.browse', {
     url: '/browse',
