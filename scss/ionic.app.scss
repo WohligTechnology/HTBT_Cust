@@ -1249,9 +1249,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
         line-height: 35px;
     }
 }
-.m10{
-  margin: 10px!important;
+
+.m10 {
+    margin: 10px !important;
 }
+
 .browse-backgrndcolor {
     background: #f7f6f6;
 }
@@ -1335,8 +1337,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
 }
 
 .details-div {
-  margin-top: 30px;
-margin-left: 15px;
+    margin-top: 30px;
+    margin-left: 15px;
+
     h2 {
         color: #002d40;
     }
@@ -1380,97 +1383,128 @@ margin-left: 15px;
         margin: 5px;
     }
 }
-.bg-prdct{
-  background: #f2f4f5;
-  .prod-det{
-    margin-top: 15px;
 
-    .card{
-      margin: 10px!important;
-    }
-  }
+.bg-prdct {
+    background: #f2f4f5;
 
-}
+    .prod-det {
+        margin-top: 15px;
 
-    .browse-morerupee {
-        color: #a2a9ad
-    }
-
-    //auth-payment
-    .auth-payment {
-        background: #f2f4f5
-    }
-
-    .auth-custinfo {
-        padding: 35px 0 0 20px!important;
-        font-size: 18px;
-        font-weight: 500;
-        font-size: 16px;
-    }
-
-    .auth-custip {
-        background: transparent;
-        border: transparent;
-        padding: 10px 0 0 35px;
-        font-size: 16px;
-    }
-
-    .auth-custipPlc {
-        font-size: 16px!important;
-        font-weight: 500;
-        font-size: 16px;
-    }
-
-    .auth-updbtn {
-        background: #f2f4f5;
-        margin: 25px;
-        line-height: 40px;
-        min-height: 40px;
-        width: 32%;
-        font-size: 16px;
-    }
-
-    .auth-paybtn {
-        background: #ff414d;
-        margin: 25px;
-        line-height: 40px;
-        min-height: 40px;
-        width: 32%;
-        font-size: 16px;
-    }
-
-    .auth-btnalign {
-        text-align: center;
-    }
-
-    .auth-otprow {
-        background: #f2f4f5;
-        margin: 0 15px 0 15px;
-        width: auto;
-    }
-
-    .auth-otpcol1Lbl {
-        border: none;
-        padding: 5px;
-        background: #f2f4f5;
-        width: 100%;
-        input {
-            padding-right: 0;
+        .card {
+            margin: 10px !important;
         }
     }
+}
 
-    .auth-col2 {
-        text-align: right;
-    }
+.browse-morerupee {
+    color: #a2a9ad;
+}
+//auth-payment
 
-    .auth-col2btn {
-        font-size: 14px;
-    }
+.auth-payment {
+    background: #f2f4f5;
+}
 
-    .auth-sharebtn {
-        width: 90%!important;
-        margin: 20px auto!important;
-        background: #0dbabe!important;
-        font-size: 16px!important;
-        font-weight: 500;
+.auth-custinfo {
+    padding: 35px 0 0 20px !important;
+    font-size: 18px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.auth-custip {
+    background: transparent;
+    border: transparent;
+    padding: 0;
+    font-size: 16px;
+    margin: 20px 0;
+}
+
+.auth-custipPlc {
+    font-size: 16px!important;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.auth-updbtn {
+    background: #f2f4f5;
+    line-height: 40px;
+    min-height: 40px;
+    width: 40%;
+    font-size: 16px;
+}
+
+.auth-paybtn {
+    background: #ff414d;
+    line-height: 40px;
+    min-height: 40px;
+    float: right;
+    width: 40%;
+    font-size: 16px;
+}
+
+.auth-btnalign {
+    margin: 10px 0;
+}
+
+.m35 {
+    margin: 5px 35px;
+}
+
+.auth-otprow {
+    background: #f2f4f5;
+    width: 100%;
+    padding: 0 10px;
+    margin: 20px 0;
+}
+
+.auth-otpcol1Lbl {
+    border: none;
+    padding: 5px;
+    background: #f2f4f5;
+    width: 100%;
+
+    input {
+        padding-right: 0;
     }
+}
+.cartbtn{
+  height: 35px;
+    width: 35px;
+    padding: 5px;
+    margin: 5px;
+    position: relative;
+    img{
+      height: 100%;
+    }
+}
+.cartbadge{
+  margin: 5px;
+  font-size: 14px;
+  background: #ff414d;
+  padding: 0 5px;
+  border-radius: 50%;
+  height: 20px;
+  color: white;
+  width: 20px;
+  text-align: center;
+  vertical-align: middle;
+  position: absolute;
+right: -5px;
+top: -5px;
+}
+.auth-col2 {
+    text-align: right;
+}
+
+.auth-col2btn {
+    font-size: 14px;
+}
+
+.auth-sharebtn {
+    width: 100%!important;
+    margin: 20px auto !important;
+    background: #0dbabe!important;
+    font-size: 16px!important;
+    font-weight: 500;
+}

@@ -10888,8 +10888,9 @@ a.button {
 .auth-custip {
   background: transparent;
   border: transparent;
-  padding: 10px 0 0 35px;
-  font-size: 16px; }
+  padding: 0;
+  font-size: 16px;
+  margin: 20px 0; }
 
 .auth-custipPlc {
   font-size: 16px !important;
@@ -10898,27 +10899,30 @@ a.button {
 
 .auth-updbtn {
   background: #f2f4f5;
-  margin: 25px;
   line-height: 40px;
   min-height: 40px;
-  width: 32%;
+  width: 40%;
   font-size: 16px; }
 
 .auth-paybtn {
   background: #ff414d;
-  margin: 25px;
   line-height: 40px;
   min-height: 40px;
-  width: 32%;
+  float: right;
+  width: 40%;
   font-size: 16px; }
 
 .auth-btnalign {
-  text-align: center; }
+  margin: 10px 0; }
+
+.m35 {
+  margin: 5px 35px; }
 
 .auth-otprow {
   background: #f2f4f5;
-  margin: 0 15px 0 15px;
-  width: auto; }
+  width: 100%;
+  padding: 0 10px;
+  margin: 20px 0; }
 
 .auth-otpcol1Lbl {
   border: none;
@@ -10928,6 +10932,30 @@ a.button {
   .auth-otpcol1Lbl input {
     padding-right: 0; }
 
+.cartbtn {
+  height: 35px;
+  width: 35px;
+  padding: 5px;
+  margin: 5px;
+  position: relative; }
+  .cartbtn img {
+    height: 100%; }
+
+.cartbadge {
+  margin: 5px;
+  font-size: 14px;
+  background: #ff414d;
+  padding: 0 5px;
+  border-radius: 50%;
+  height: 20px;
+  color: white;
+  width: 20px;
+  text-align: center;
+  vertical-align: middle;
+  position: absolute;
+  right: -5px;
+  top: -5px; }
+
 .auth-col2 {
   text-align: right; }
 
@@ -10935,7 +10963,7 @@ a.button {
   font-size: 14px; }
 
 .auth-sharebtn {
-  width: 90% !important;
+  width: 100% !important;
   margin: 20px auto !important;
   background: #0dbabe !important;
   font-size: 16px !important;
