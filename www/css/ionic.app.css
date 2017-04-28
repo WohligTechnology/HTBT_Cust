@@ -10847,7 +10847,7 @@ a.button {
   width: 50px;
   background: #ff414d;
   border-radius: 50%;
-  padding: 13px; }
+  padding: 12px 0 0 14px; }
   .search-fix i {
     font-size: 26px;
     color: white; }
@@ -10936,7 +10936,7 @@ a.button {
   background: #f2f4f5;
   line-height: 40px;
   min-height: 40px;
-  width: 40%;
+  width: 42%;
   font-size: 14px;
   z-index: 2;
   box-shadow: 0 2px 0 0 lightgrey; }
@@ -10946,14 +10946,12 @@ a.button {
   line-height: 40px;
   min-height: 40px;
   float: right;
-  width: 40%;
+  width: 42%;
   font-size: 14px;
   box-shadow: 0 2px 0 0 lightgrey; }
 
 .auth-btnalign {
-  margin: 10px 0;
-  margin-left: 10px;
-  margin-right: 10px; }
+  margin: 10px 0; }
 
 .m35 {
   margin: 5px 35px; }
