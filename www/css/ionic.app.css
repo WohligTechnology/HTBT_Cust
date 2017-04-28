@@ -10716,7 +10716,7 @@ a.button {
   padding: 1.5px;
   margin: 1.5px; }
   .browse-card1 .icondiv {
-    height: 150px;
+    height: 170px;
     padding: 15px 0;
     display: block;
     text-align: center;
@@ -10728,13 +10728,22 @@ a.button {
     text-align: center;
     display: block;
     background: #ffffff;
-    line-height: 35px; }
+    line-height: 47px;
+    font-size: 18px; }
+
+.bar-footer .title {
+  height: 52px !important;
+  line-height: 52px !important;
+  font-size: 22px !important; }
+
+.bar-footer {
+  height: 50px !important; }
 
 .browse-card2 {
   padding: 1.5px;
   margin: 1.5px; }
   .browse-card2 .icondiv {
-    height: 150px;
+    height: 170px;
     padding: 15px 0;
     display: block;
     text-align: center;
@@ -10746,26 +10755,28 @@ a.button {
     text-align: center;
     display: block;
     background: #edeff0;
-    line-height: 35px; }
+    line-height: 47px;
+    font-size: 18px; }
 
 .oneliter-pack {
   padding: 1.5px;
   margin: 1.5px; }
   .oneliter-pack .icondiv {
-    height: 150px;
+    height: 170px;
     padding: 15px 0;
     display: block;
     text-align: center;
     background: #fafafa; }
     .oneliter-pack .icondiv img {
       height: 100%;
-      width: auto;
+      width: 100%;
       padding: 20px; }
   .oneliter-pack label {
     text-align: center;
     display: block;
     background: #edeff0;
-    line-height: 35px; }
+    line-height: 47px;
+    font-size: 18px; }
 
 .m10 {
   margin: 10px !important; }
@@ -10787,7 +10798,7 @@ a.button {
 
 .browse-moreImg {
   height: 100%;
-  width: 100;
+  width: auto;
   padding: 10px; }
 
 .browse-moredivalign {
@@ -10902,7 +10913,9 @@ a.button {
   line-height: 40px;
   min-height: 40px;
   width: 40%;
-  font-size: 16px; }
+  font-size: 16px;
+  z-index: 2;
+  box-shadow: 0 2px 0 0 lightgrey; }
 
 .auth-paybtn {
   background: #ff414d;
@@ -10958,6 +10971,19 @@ a.button {
 
 .auth-col2 {
   text-align: right; }
+
+.nav-height .bar.bar-stable .title {
+  line-height: 52px !important;
+  font-size: 22px !important; }
+
+.bar .title + .buttons {
+  position: absolute !important;
+  top: 5px !important;
+  right: 15px !important;
+  bottom: 5px !important; }
+
+.has-header {
+  top: 52px !important; }
 
 .auth-col2btn {
   font-size: 14px; }

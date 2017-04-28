@@ -1179,7 +1179,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
     margin: 1.5px;
 
     .icondiv {
-        height: 150px;
+        height: 170px;
         padding: 15px 0;
         display: block;
         text-align: center;
@@ -1195,8 +1195,19 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
         text-align: center;
         display: block;
         background: #ffffff;
-        line-height: 35px;
+        line-height: 47px;
+        font-size: 18px;
     }
+}
+
+.bar-footer .title {
+    height: 52px!important;
+    line-height: 52px!important;
+    font-size: 22px!important;
+}
+
+.bar-footer {
+    height: 50px!important;
 }
 
 .browse-card2 {
@@ -1204,7 +1215,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
     margin: 1.5px;
 
     .icondiv {
-        height: 150px;
+        height: 170px;
         padding: 15px 0;
         display: block;
         text-align: center;
@@ -1220,7 +1231,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
         text-align: center;
         display: block;
         background: #edeff0;
-        line-height: 35px;
+        line-height: 47px;
+        font-size: 18px;
     }
 }
 
@@ -1229,7 +1241,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
     margin: 1.5px;
 
     .icondiv {
-        height: 150px;
+        height: 170px;
         padding: 15px 0;
         display: block;
         text-align: center;
@@ -1237,7 +1249,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
 
         img {
             height: 100%;
-            width: auto;
+            width: 100%;
             padding: 20px;
         }
     }
@@ -1246,7 +1258,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
         text-align: center;
         display: block;
         background: #edeff0;
-        line-height: 35px;
+    line-height: 47px;
+            font-size: 18px;
     }
 }
 
@@ -1277,7 +1290,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
 
 .browse-moreImg {
     height: 100%;
-    width: 100;
+    width: auto;
     padding: 10px;
 }
 
@@ -1432,6 +1445,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
     min-height: 40px;
     width: 40%;
     font-size: 16px;
+    z-index: 2;
+    box-shadow: 0 2px 0 0 lightgrey;
 }
 
 .auth-paybtn {
@@ -1468,35 +1483,53 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
         padding-right: 0;
     }
 }
-.cartbtn{
-  height: 35px;
+
+.cartbtn {
+    height: 35px;
     width: 35px;
     padding: 5px;
     margin: 5px;
     position: relative;
-    img{
-      height: 100%;
+
+    img {
+        height: 100%;
     }
 }
-.cartbadge{
-  margin: 5px;
-  font-size: 14px;
-  background: #ff414d;
-  padding: 0 5px;
-  border-radius: 50%;
-  height: 20px;
-  color: white;
-  width: 20px;
-  text-align: center;
-  vertical-align: middle;
-  position: absolute;
-right: -5px;
-top: -5px;
+
+.cartbadge {
+    margin: 5px;
+    font-size: 14px;
+    background: #ff414d;
+    padding: 0 5px;
+    border-radius: 50%;
+    height: 20px;
+    color: white;
+    width: 20px;
+    text-align: center;
+    vertical-align: middle;
+    position: absolute;
+    right: -5px;
+    top: -5px;
 }
+
 .auth-col2 {
     text-align: right;
 }
 
+.nav-height .bar.bar-stable .title {
+    line-height: 52px!important;
+    font-size: 22px!important;
+}
+
+.bar .title + .buttons {
+    position: absolute!important;
+    top: 5px!important;
+    right: 15px!important;
+    bottom: 5px!important;
+}
+.has-header {
+    top: 52px!important;
+}
 .auth-col2btn {
     font-size: 14px;
 }
