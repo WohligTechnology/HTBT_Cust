@@ -884,6 +884,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default; // Include all of Ionic
 
 .nav-height {
     height: 52px;
+    box-shadow: 0 2px 0 0 lightgrey;
     .bar.bar-stable .title {
         font-size: 20px;
         line-height: 48px;

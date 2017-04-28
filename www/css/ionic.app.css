@@ -10509,7 +10509,8 @@ a.button {
   border-radius: 0; }
 
 .nav-height {
-  height: 52px; }
+  height: 52px;
+  box-shadow: 0 2px 0 0 lightgrey; }
   .nav-height .bar.bar-stable .title {
     font-size: 20px;
     line-height: 48px;
