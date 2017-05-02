@@ -3,29 +3,43 @@
     <ion-nav-bar class="bar-stable">
       <ion-nav-back-button>
       </ion-nav-back-button>
-      <ion-nav-buttons side="left">
+      <ion-nav-buttons side="left ">
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
       </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
-  <ion-side-menu side="left">
+  <ion-side-menu side="left" class="menu-header">
     <ion-header-bar class="bar-stable">
-      <h1 class="title">Left</h1>
+      <div class="menu-displaypic">
+        <img src="" alt="">
+      </div>
+      <div>
+        <label class="menu-displayName" for="">Customer Name</label>
+        <label class="menu-settings" for="">Settings</label>
+      </div>
     </ion-header-bar>
-    <ion-content>
-      <ion-list>
-        <ion-item menu-close ui-sref="login">
-          Login
-        </ion-item>
-        <ion-item menu-close ui-sref="app.dashboard">
-          DashBoard
-        </ion-item>
-        <ion-item menu-close ui-sref="app.help">
-          Help
-        </ion-item>
-      </ion-list>
+    <ion-content class="hasmenuhead menu-bgcolor">
+      <!--<ion-item menu-close ui-sref="login">
+        Login
+      </ion-item>
+      <ion-item menu-close ui-sref="app.dashboard">
+        DashBoard
+      </ion-item>
+      <ion-item menu-close ui-sref="app.help">
+        Help
+      </ion-item>-->
+      <div class="menu-div" menu-close ui-sref="app.dashboard">
+        <label class="menu-label" for="">Dashboard</label>
+      </div>
+      <div class="menu-div" menu-close ui-sref="app.orderhistory">
+        <label class="menu-label" for="">Order History</label>
+      </div>
+      <hr class="menu-hr">
+      <div class="menu-helpdiv" menu-close ui-sref="app.help">
+        <label class="menu-label" for="">Help</label>
+      </div>
     </ion-content>
   </ion-side-menu>
   <ion-side-menu class=" notify-header" side="right">

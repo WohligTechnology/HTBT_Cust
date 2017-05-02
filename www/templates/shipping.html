@@ -1,0 +1,48 @@
+<ion-view title="Enter Shipping Details">
+    <ion-nav-bar class="bar-stable nav-height">
+        <ion-nav-buttons side="left">
+            <button class="button button-clear ion-android-arrow-back sigupIconLeft" ng-click="goBackHandler()">
+        </button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <button class="button button-clear ion-android-more-vertical sigupRight">
+        </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content class="has-header shipping-Form has-footer">
+        <div class=" ">
+            <label class=" item-input shipping-label">Name already filled </label>
+            <label class=" item-input shipping-label">Contacts details already filled
+  </label>
+            <label class="item-input item-floating-label shipping-floatlabel">
+    <span class="input-label shipping-floatspan">Email-id</span>
+    <input class="shipping-input" type="text" placeholder="Email-ID">
+  </label>
+            <label class="item-input item-floating-label shipping-floatlabel">
+    <span class="input-label shipping-floatspan">Company Name(Optional)</span>
+    <input class="shipping-input" type="text" placeholder="Company Name(Optional)">
+  </label>
+            <label class="item-input item-floating-label shipping-floatlabel">
+    <span class="input-label shipping-floatspan">Shipping Address</span>
+    <input class="shipping-input" type="text" placeholder="Shipping Address">
+  </label>
+            <label class="item-input item-floating-label shipping-floatlabel">
+    <span class="input-label shipping-floatspan">Pincode</span>
+    <input class="shipping-input" type="text" placeholder="Pincode">
+  </label>
+        </div>
+        <!--<div class="list paddingDiv">
+      <label class="item item-input nameSignup">
+    <input class = "plcHldr" type="text" placeholder="Your Name">
+  </label>
+      <label class="item item-input">
+    <input class = "plcHldr" type="text" placeholder="Email Id(optional)">
+  </label>
+    </div>-->
+    </ion-content>
+    <div class="bar bar-footer signUpFooter footer-height">
+        <button class="button button-block button-positive footer-font" ui-sref="app.checkout">
+  Proceed
+</button>
+    </div>
+</ion-view>

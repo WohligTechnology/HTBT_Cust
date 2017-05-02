@@ -9954,9 +9954,9 @@ a.button {
   padding-right: 10px; }
   .signUpForm label {
     border: none;
-    border-bottom: 1px solid lightgrey;
     padding: 6px;
-    margin: 0 5px; }
+    margin: 0 5px;
+    border-bottom: 1px solid lightgrey !important; }
   .signUpForm input {
     background: transparent; }
 
@@ -10682,18 +10682,16 @@ a.button {
   padding: 15px; }
 
 .browse-col502 {
-  display: block;
-  padding: 70px 0 0;
-  height: 100%; }
+  padding: 28px 0 0;
+  height: 100%;
+  text-align: center; }
 
 .browse-col502lbl {
-  font-size: 38px;
-  color: #63d0d2; }
+  font-size: 25px; }
 
 .browse-col502aqua {
   display: block;
-  font-size: 22px;
-  color: #3d619b;
+  font-size: 16px;
   font-weight: 500;
   padding-top: 2px; }
 
@@ -11010,8 +11008,16 @@ a.button {
   right: 15px !important;
   bottom: 5px !important; }
 
-.has-header {
-  top: 52px !important; }
+.menu-header .menu .bar-header {
+  height: 200px;
+  background: white !important; }
+
+.menu-header .bar-stable {
+  height: 200px !important;
+  background: white !important; }
+
+.menu-header .hasmenuhead {
+  top: 200px; }
 
 .auth-col2btn {
   font-size: 16px;
@@ -11023,3 +11029,173 @@ a.button {
   background: #0dbabe !important;
   font-size: 19px !important;
   font-weight: 500; }
+
+.menu-displaypic {
+  background: #c6cbdf;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  position: absolute;
+  top: 25%;
+  left: 8%; }
+
+.menu-displayName {
+  position: absolute;
+  bottom: 25%;
+  left: 8%;
+  font-size: 16px; }
+
+.menu-settings {
+  position: absolute;
+  bottom: 13%;
+  left: 8%;
+  font-size: 16px; }
+
+.menu-bgcolor {
+  background: #f2f4f5; }
+
+.menu-div {
+  padding: 25px 0 0 25px; }
+
+.menu-helpdiv {
+  padding: 0px 0 0 25px; }
+
+.menu-label {
+  font-size: 20px; }
+
+.menu-hr {
+  margin: 20px;
+  color: #a1a8ad; }
+
+.shipping-label {
+  margin: 40px 0 0 5px !important;
+  font-size: 16px;
+  padding: 6px;
+  border-bottom: 1px solid lightgrey !important; }
+
+.shipping-floatspan {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  color: #ff414d;
+  width: 100%; }
+
+.shipping-input {
+  border-bottom: 1px solid lightgrey !important;
+  color: lightgray; }
+  .shipping-input:focus {
+    color: #ff414d;
+    border-bottom: 1px solid #ff414d !important; }
+
+.shipping-floatlabel {
+  border: none;
+  border-bottom: none !important;
+  padding: 6px;
+  margin: 0 5px; }
+
+.shipping-Form {
+  padding-left: 10px;
+  padding-right: 10px; }
+
+.chkout-planDiv {
+  text-align: center;
+  background: #e1e1e1;
+  padding: 15px;
+  margin: 15px 10px 0 10px; }
+  .chkout-planDiv .label {
+    font-size: 16px;
+    font-weight: 400; }
+
+.chkout-closebutton {
+  position: absolute;
+  right: 25px;
+  top: 4px; }
+  .chkout-closebutton:before {
+    font-size: 25px !important; }
+
+.chkout-subheight {
+  height: 150px;
+  background: white;
+  margin: 0 10px 0 10px;
+  width: auto; }
+
+.chkout-bgcolor {
+  background: #f2f4f5; }
+
+.chkout-fontsize {
+  font-size: 16px;
+  margin: 0 !important; }
+
+.chkout-align {
+  padding: 28px 0 0;
+  height: 100%; }
+
+.colorpure {
+  color: #3d619b; }
+
+.chkoutdiv {
+  text-align: center;
+  padding-top: 20px; }
+
+.chkout-line {
+  height: 80%;
+  display: inline-block;
+  border-right: 1px solid #dbdbdb; }
+
+.chkout-imgdivcol {
+  height: 100%;
+  text-align: center;
+  padding-left: 15%; }
+
+.chkoutcoupon {
+  background: white;
+  margin: 20px 10px 20px 10px;
+  width: auto; }
+  .chkoutcoupon label {
+    height: 100%;
+    padding-left: 5px;
+    line-height: 40px;
+    font-size: 16px; }
+  .chkoutcoupon input {
+    height: 25px;
+    border-bottom: 1px solid lightgray;
+    font-size: 16px; }
+
+.chkpadip {
+  padding-top: 6px; }
+
+.bgchkoutcol50Quant {
+  color: #6d797e;
+  padding-left: 10px;
+  padding-top: 10px; }
+  .bgchkoutcol50Quant label {
+    font-size: 16px; }
+
+.bgrowQuant {
+  background: white;
+  margin: 20px 10px 0 10px;
+  width: auto; }
+
+.bgchkoutcol502 {
+  text-align: center;
+  padding-top: 15px; }
+  .bgchkoutcol502 label {
+    font-size: 16px; }
+
+.savingscol501 {
+  padding-left: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px; }
+  .savingscol501 label {
+    font-size: 18px;
+    font-weight: 400; }
+
+.savingamtdiv {
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px; }
+  .savingamtdiv label {
+    font-size: 16px;
+    color: #ff414d; }
+  .savingamtdiv span {
+    font-size: 10px; }

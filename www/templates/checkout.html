@@ -1,0 +1,111 @@
+<ion-view title="Review & Checkout">
+    <ion-nav-bar class="bar-stable nav-height">
+        <ion-nav-buttons side="left">
+            <button class="button button-clear ion-android-arrow-back sigupIconLeft" ng-click="goBackHandler()">
+        </button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <button class="button button-clear ion-android-more-vertical sigupRight">
+        </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content class="has-header chkout-bgcolor has-footer">
+        <div>
+            <div class="chkout-planDiv">
+                <label for="">Subscription Plan</label>
+                <div>
+                    <i class="button button-icon icon ion-ios-close-outline chkout-closebutton" ng-click="closePopup();"></i>
+                </div>
+            </div>
+            <div class="row chkout-subheight">
+                <div class="col-40">
+                    <div class="chkout-imgdivcol">
+                        <img class="browse-sliderImg " src="img/aquashadow.png" alt="">
+                        <!--<div class="chkout-line">
+                        </div>-->
+                    </div>
+                </div>
+                <div class="col-20 chkoutdiv">
+                    <div class="chkout-line">
+                    </div>
+                </div>
+                <div class="col-40 ">
+                    <div class="chkout-align">
+                        <h2 class="chkout-fontsize">Aquafina</h2>
+                        <div for="" class="colorpure">Purified water <i class="ion ion-information-circled"></i></div>
+                        <div for="" class="desc">20 Ltr - Jar</div>
+                        <div for="" class="desc">₹ 80</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row chkoutcoupon">
+            <div class="col-50">
+                <label for="">Enter coupon code</label>
+            </div>
+            <div class="col-50 chkpadip">
+                <input type="text" placeholder="Type coupon code here">
+            </div>
+        </div>
+        <div class="row bgrowQuant ">
+            <div class="col-67 bgchkoutcol50Quant">
+                <div>
+                    <label for="">One Time Bottle Deposit
+                    
+                </label>
+                    <br>
+                    <span> 10 Jars x ₹ 150 /Jar </span>
+                </div>
+            </div>
+            <div class="col-33 bgchkoutcol502">
+                <div>
+                    <label for="">₹  1500</label>
+                </div>
+            </div>
+        </div>
+        <div class="row bgrowQuant ">
+            <div class="col-67 bgchkoutcol50Quant">
+                <div>
+                    <label for="">Jar Plan
+                    
+                </label>
+                    <br>
+                    <span> 40 Jars x ₹ 88 /Jar </span>
+                </div>
+            </div>
+            <div class="col-33 bgchkoutcol502">
+                <div>
+                    <label for="">₹  3420</label>
+                </div>
+            </div>
+        </div>
+        <div class="row bgrowQuant">
+            <div class="col-67 savingscol501 ">
+                <div>
+                    <label for="">Your Total savings
+                    
+                </label>
+                </div>
+            </div>
+            <div class="col-33 savingamtdiv">
+                <div>
+                    <label for="">₹  80</label>
+                    <span>(2%)</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col20">
+            </div>
+            <div class="col-10">
+            </div>
+            <div class="col67">
+            </div>
+        </div>
+    </ion-content>
+    <div class="bar bar-footer signUpFooter footer-height">
+        <button class="button button-block button-positive footer-font" ui-sref="app.checkout">
+  Pay ₹ 5,020/-
+</button>
+    </div>
+</ion-view>

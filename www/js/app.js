@@ -102,23 +102,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker'])
   })
 
   .state('app.browse-more', {
-    url: '/browse-more',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/browse-more.html',
-        controller: 'BrowseMoreCtrl'
+      url: '/browse-more',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/browse-more.html',
+          controller: 'BrowseMoreCtrl'
+        }
       }
-    }
-  })
-  .state('app.productSpecs', {
-    url: '/productSpecs',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/productSpecs.html',
-        controller: 'ProductSpecsCtrl'
+    })
+    .state('app.productSpecs', {
+      url: '/productSpecs',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/productSpecs.html',
+          controller: 'ProductSpecsCtrl'
+        }
       }
-    }
-  })
+    })
 
   .state('app.auth-payment', {
     url: '/auth-payment',
@@ -126,6 +126,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker'])
       'menuContent': {
         templateUrl: 'templates/auth-payment.html',
         controller: 'AuthPaymentCtrl'
+      }
+    }
+  })
+
+  .state('app.shipping', {
+    url: '/shipping',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/shipping.html',
+        controller: 'ShippingCtrl'
+      }
+    }
+  })
+
+  .state('app.checkout', {
+    url: '/checkout',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/checkout.html',
+        controller: 'CheckoutCtrl'
       }
     }
   })
