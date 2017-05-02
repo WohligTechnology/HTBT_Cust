@@ -9826,7 +9826,7 @@ a.button {
 
 .imgDiv {
   height: auto;
-  width: 40%;
+  width: 37%;
   left: 50%;
   position: absolute;
   top: 50%;
@@ -9888,8 +9888,9 @@ a.button {
   text-align: center;
   display: inline-block;
   width: 100%;
-  font-size: 16px !important;
-  font-weight: 500; }
+  font-size: 19px !important;
+  font-weight: 500;
+  padding-bottom: 5px; }
 
 .otpDiv {
   left: 50%;
@@ -9919,7 +9920,8 @@ a.button {
   margin-top: 5px;
   padding: 0;
   min-height: 17px;
-  line-height: 30px; }
+  line-height: 30px;
+  font-size: 15px; }
   .resendBtn button {
     border: transparent;
     line-height: 20px !important;
@@ -10300,7 +10302,7 @@ a.button {
 .otpin {
   display: block;
   text-align: center;
-  margin: 10px; }
+  margin: 14px; }
   .otpin input {
     height: 40px;
     width: 40px;
@@ -10714,15 +10716,15 @@ a.button {
   font-size: 24px; }
 
 .browse-grid {
-  padding: 10px;
   text-align: center;
   background: white; }
 
 .browse-text {
   margin: 0 15px;
   display: block;
-  font-size: 20px;
-  font-weight: 500; }
+  font-size: 24px;
+  font-weight: 500;
+  padding: 10px; }
 
 .browse-card1 {
   padding: 1.5px;
@@ -10746,12 +10748,12 @@ a.button {
     font-weight: 500 !important; }
 
 .bar-footer .title {
-  height: 52px !important;
+  height: 55px !important;
   line-height: 52px !important;
   font-size: 22px !important; }
 
 .bar-footer {
-  height: 50px !important; }
+  height: 55px !important; }
 
 .browse-card2 {
   padding: 1.5px;
