@@ -115,9 +115,20 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
 
 
 .controller('BrowseCtrl', function ($scope, $ionicSlideBoxDelegate) {
-  $scope.nextSlide = function () {
-    $ionicSlideBoxDelegate.next();
-  }
+    $scope.nextSlide = function () {
+      $ionicSlideBoxDelegate.next();
+    }
+    $scope.goBackHandler = function () {
+      window.history.back(); //This works
+    }
+  })
+  .controller('AddonsCtrl', function ($scope, $stateParams) {
+    $scope.goBackHandler = function () {
+      window.history.back(); //This works
+    }
+  })
+
+.controller('ReviewCtrl', function ($scope, $stateParams) {
   $scope.goBackHandler = function () {
     window.history.back(); //This works
   }

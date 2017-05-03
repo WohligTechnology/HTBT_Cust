@@ -160,6 +160,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker'])
     }
   })
 
+  .state('app.review', {
+    url: '/review',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/review.html',
+        controller: 'ReviewCtrl'
+      }
+    }
+  })
+
   .state('app.subpage2', {
     url: '/subpage2',
     views: {
@@ -180,6 +190,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker'])
     }
   })
 
+  .state('app.addons', {
+    url: '/add-ons',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/add-ons.html',
+        controller: 'AddonsCtrl'
+      }
+    }
+  })
 
   .state('app.playlists', {
       url: '/playlists',
