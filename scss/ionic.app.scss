@@ -39,7 +39,7 @@ $dark:                            #444 !default;
             
             .imgDiv {
                 height: auto;
-                width: 37%;
+                width: 40%;
                 left: 50%;
                 position: absolute;
                 top: 50%;
@@ -112,9 +112,8 @@ $dark:                            #444 !default;
                 text-align: center;
                 display: inline-block;
                 width: 100%;
-                font-size: 19px!important;
+                font-size: 16px!important;
                 font-weight: 500;
-                padding-bottom: 5px;
             }
             
             .otpDiv {
@@ -148,7 +147,6 @@ $dark:                            #444 !default;
                 padding: 0;
                 min-height: 17px;
                 line-height: 30px;
-                font-size: 15px;
                 button {
                     border: transparent;
                     line-height: 20px!important;
@@ -623,7 +621,7 @@ $dark:                            #444 !default;
             .otpin {
                 display: block;
                 text-align: center;
-                margin: 14px;
+                margin: 10px;
                 input {
                     height: 40px;
                     width: 40px;
@@ -1130,6 +1128,7 @@ $dark:                            #444 !default;
             }
             
             .browse-grid {
+                padding: 10px;
                 text-align: center;
                 background: white
             }
@@ -1137,9 +1136,8 @@ $dark:                            #444 !default;
             .browse-text {
                 margin: 0 15px;
                 display: block;
-                font-size: 24px;
+                font-size: 20px;
                 font-weight: 500;
-                padding: 10px;
             }
             
             .browse-card1 {
@@ -1168,13 +1166,13 @@ $dark:                            #444 !default;
             }
             
             .bar-footer .title {
-                height: 55px!important;
+                height: 52px!important;
                 line-height: 52px!important;
                 font-size: 22px!important;
             }
             
             .bar-footer {
-                height: 55px!important;
+                height: 50px!important;
             }
             
             .browse-card2 {
@@ -1677,6 +1675,7 @@ $dark:                            #444 !default;
                     height: 25px;
                     border-bottom: 1px solid lightgray;
                     font-size: 16px;
+                    width: 100%;
                 }
             }
             
@@ -1778,4 +1777,60 @@ $dark:                            #444 !default;
                 color: #6d797e;
                 padding: 100px 0 0 0;
                 margin: 50px 0 0 0;
+            }
+            
+            .checkbtmcard {
+                background: white;
+                margin: 5% 10% !important;
+                width: 80%;
+                padding: 5px;
+            }
+            
+            .verdiv {
+                height: 60%;
+                width: 1px;
+                background: grey;
+                margin-top: 12px;
+            }
+            
+            .custarr {
+                i {
+                    color: #6d797e;
+                    font-size: 22px;
+                    position: absolute;
+                    float: right;
+                    right: 0%;
+                    top: 25%;
+                }
+            }
+            
+            .mid-day {
+                margin-right: 15%;
+                margin-top: 6px;
+                h4 {
+                    color: #009688;
+                    text-align: center;
+                    font-size: 17px;
+                    margin: 0;
+                }
+            }
+            
+            .datemonth {
+                margin: 8px 13px;
+                .datediv {
+                    font-size: 26px;
+                    font-weight: 600;
+                }
+                .monthdiv {
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+            }
+            
+            .hidedate {
+                opacity: 0;
+                position: absolute;
+                top: 10px;
+                width: 80%!important;
+                z-index: 99;
             }
