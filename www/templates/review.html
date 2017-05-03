@@ -11,30 +11,27 @@
     </ion-nav-bar>
     <ion-content class="has-header chkout-bgcolor has-footer">
         <div>
-            <div class="chkout-planDiv">
-                <label for="">Subscription Plan</label>
+            <div class="row review-height">
                 <div>
-                    <i class="button button-icon icon ion-ios-close-outline chkout-closebutton" ng-click="closePopup();"></i>
+                    <i class="button button-icon icon ion-ios-close-outline review-closebutton" ng-click="closePopup();"></i>
                 </div>
-            </div>
-            <div class="row chkout-subheight">
                 <div class="col-40">
                     <div class="chkout-imgdivcol">
-                        <img class="browse-sliderImg " src="img/aquashadow.png" alt="">
+                        <img class="browse-sliderImg " src="img/aqua1liter.png" alt="">
                         <!--<div class="chkout-line">
                         </div>-->
                     </div>
                 </div>
-                <div class="col-20 chkoutdiv">
-                    <div class="chkout-line">
+                <div class="col-20 reviewdiv">
+                    <div class="review-line">
                     </div>
                 </div>
                 <div class="col-40 ">
                     <div class="chkout-align">
                         <h2 class="chkout-fontsize">Aquafina</h2>
                         <div for="" class="colorpure">Purified water <i class="ion ion-information-circled"></i></div>
-                        <div for="" class="desc">20 Ltr - Jar</div>
-                        <div for="" class="desc">₹ 80</div>
+                        <div for="" class="desc">1 Ltr - Bottle x 3</div>
+                        <div for="" class="desc">₹ 30</div>
                     </div>
                 </div>
             </div>
@@ -48,34 +45,32 @@
             </div>
         </div>
         <div class="row bgrowQuant ">
-            <div class="col-67 bgchkoutcol50Quant">
+            <div class="col-67 bgreviewcol50Quant">
                 <div>
-                    <label for="">One Time Bottle Deposit
+                    <label for="">Total Price
 
                 </label>
-                    <br>
-                    <span> 10 Jars x ₹ 150 /Jar </span>
                 </div>
             </div>
             <div class="col-33 bgchkoutcol502">
                 <div>
-                    <label for="">₹  1500</label>
+                    <label for="">₹  90</label>
                 </div>
             </div>
         </div>
         <div class="row bgrowQuant ">
-            <div class="col-67 bgchkoutcol50Quant">
+            <div class="col-67 bgreviewcol50Quant">
                 <div>
-                    <label for="">Jar Plan
+                    <label for="">Discount
 
                 </label>
-                    <br>
-                    <span> 40 Jars x ₹ 88 /Jar </span>
+                    <!--<br>
+                    <span> 40 Jars x ₹ 88 /Jar </span>-->
                 </div>
             </div>
             <div class="col-33 bgchkoutcol502">
                 <div>
-                    <label for="">₹  3420</label>
+                    <label for="">₹  90</label>
                 </div>
             </div>
         </div>
@@ -89,7 +84,7 @@
             </div>
             <div class="col-33 savingamtdiv">
                 <div>
-                    <label for="">₹  80</label>
+                    <label for="">₹  88</label>
                     <span>(2%)</span>
                 </div>
             </div>
@@ -125,8 +120,8 @@
         </div>
     </ion-content>
     <div class="bar bar-footer signUpFooter footer-height">
-        <button class="button button-block button-positive footer-font" ui-sref="app.checkout">
-  Pay ₹ 5,020/-
+        <button class="button button-block button-positive footer-font" ui-sref="app.auth-payment">
+  Pay ₹ 88/-
 </button>
     </div>
 </ion-view>
