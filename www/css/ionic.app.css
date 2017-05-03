@@ -11038,6 +11038,10 @@ a.button {
   position: absolute;
   top: 25%;
   left: 8%; }
+  .menu-displaypic img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%; }
 
 .menu-displayName {
   position: absolute;
