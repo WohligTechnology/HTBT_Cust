@@ -1729,3 +1729,53 @@ $dark:                            #444 !default;
                     font-size: 10px;
                 }
             }
+            
+            //subscriptionpage1
+            .mainmar25-50 {
+                text-align: center;
+                padding: 50px 25px 0 25px;
+                label {
+                    font-size: 18px;
+                    font-weight: 500;
+                }
+                span {
+                    font-size: 18px;
+                    font-weight: 500;
+                    color: #ff414d
+                }
+            }
+            
+            .inputarea {
+                margin: 15px;
+                input {
+                    text-align: center;
+                    margin: 0 auto;
+                    background: none;
+                    border-bottom: 2px solid red;
+                    width: 35%;
+                    font-size: 18px;
+                }
+            }
+            
+            .nextFooter {
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                background: #ff414d!important;
+                height: 44px;
+                button {
+                    border: none;
+                    width: 100%;
+                    background: transparent!important;
+                    padding: 0;
+                    margin: 0;
+                    font-size: 18px!important;
+                }
+            }
+            
+            .avgTxt {
+                text-align: center;
+                color: #6d797e;
+                padding: 100px 0 0 0;
+                margin: 50px 0 0 0;
+            }

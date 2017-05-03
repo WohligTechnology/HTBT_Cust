@@ -78,7 +78,13 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
 
 .controller('ShippingCtrl', function ($scope, $stateParams) {})
 
-.controller('CheckoutCtrl', function ($scope, $stateParams) {})
+.controller('CheckoutCtrl', function ($scope, $stateParams) {
+  $scope.goBackHandler = function () {
+    window.history.back(); //This works
+  }
+})
+
+.controller('Subpage1Ctrl', function ($scope, $stateParams) {})
 
 .controller('BrowseMoreCtrl', function ($scope, $stateParams) {
   $scope.goBackHandler = function () {
