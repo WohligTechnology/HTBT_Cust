@@ -88,6 +88,10 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
   }
 })
 
+
+.controller('Subpage1Ctrl', function ($scope, $stateParams) {})
+
+
 .controller('BrowseMoreCtrl', function ($scope, $stateParams) {
   $scope.goBackHandler = function () {
     window.history.back(); //This works
