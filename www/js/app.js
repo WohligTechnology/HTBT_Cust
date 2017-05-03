@@ -179,6 +179,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker'])
       }
     }
   })
+  
+  .state('app.subpage3', {
+    url: '/subpage3',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/subpage3.html',
+        controller: 'Subpage3Ctrl'
+      }
+    }
+  })
 
   .state('app.browse', {
     url: '/browse',
