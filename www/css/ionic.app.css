@@ -11286,3 +11286,84 @@ a.button {
   top: 10px;
   width: 80% !important;
   z-index: 99; }
+
+.header {
+  text-align: center;
+  font-size: 18px;
+  padding: 50px 0 20px 0;
+  font-weight: 400; }
+
+.onceweekDiv {
+  background: white;
+  margin: 15px;
+  width: auto; }
+
+.col-50pad {
+  padding: 25px 0 25px 10px; }
+
+.col-40pad {
+  padding: 25px 0 25px 5px; }
+
+.jarslbl {
+  font-size: 20px;
+  font-weight: 500;
+  color: #6d797e; }
+
+.onceLbl {
+  display: block;
+  font-size: 18px;
+  font-weight: 400;
+  color: #6d797e; }
+
+.lbl90 {
+  position: absolute;
+  top: -21px;
+  right: 10px;
+  font-size: 20px;
+  text-decoration: line-through;
+  color: #6d797e; }
+
+.rupsym {
+  font-size: 30px;
+  color: #c8cbc4; }
+
+.lbl88 {
+  font-size: 35px;
+  padding: 0px 0 0 5px;
+  font-weight: 500;
+  color: #ff414d; }
+
+.perjar {
+  color: #c8cbc4; }
+
+.border {
+  border-right: 1px solid #c8cbc4;
+  margin: 15px 0 15px 0; }
+
+.chooseDayDiv {
+  background: white;
+  width: auto;
+  padding: 25px 0 0 10px; }
+
+.choosedayLbl {
+  display: block;
+  font-size: 22px;
+  padding-top: 25px;
+  color: #0dbabe;
+  font-weight: 600; }
+
+.needrefill {
+  display: block;
+  font-size: 15px;
+  color: #8a9498; }
+
+.depositDiv {
+  text-align: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: #f2f4f5;
+  height: 44px; }
+
+.depositclrLbl {
+  color: #6d797e; }
