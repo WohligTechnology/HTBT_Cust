@@ -11390,7 +11390,7 @@ a.button {
   margin-bottom: -1px;
   display: table;
   width: 100%;
-  padding: 16px 10px 0 30px;
+  padding: 8px 10px 0 30px;
   background: #fff; }
   .add-ons-item .image-left-item {
     float: right;
@@ -11467,7 +11467,7 @@ a.button {
     transition: background-color 0.4s linear;
     position: absolute;
     left: 10px;
-    top: 24px; }
+    top: 25px; }
 
 img.most-popular {
   width: 28px;
