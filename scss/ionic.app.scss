@@ -14,7 +14,7 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
-
+            
             $light: #fff !default;
             $stable: #f8f8f8 !default;
             $positive: #ff414d !default;
@@ -37,7 +37,7 @@ $dark:                            #444 !default;
                 margin: 10px 5px;
                 padding-right: 15px;
             }
-
+            
             .imgDiv {
                 height: auto;
                 width: 40%;
@@ -46,24 +46,24 @@ $dark:                            #444 !default;
                 top: 50%;
                 transform: translate(-50%, -50%);
             }
-
+            
             .img {
                 width: 100%;
             }
-
+            
             .phnFooter {
                 padding: 0;
                 height: 40px;
                 background: #f2f4f5;
             }
-
+            
             .phnSpan {
                 width: 20%;
                 vertical-align: middle;
                 color: #757575;
                 font-size: 17px!important;
             }
-
+            
             .phnText {
                 display: inline-block!important;
                 background: #f2f4f5;
@@ -71,19 +71,19 @@ $dark:                            #444 !default;
                 padding: 0px !important;
                 font-size: 17px!important;
             }
-
+            
             .spanTextDiv {
                 width: 100%;
             }
-
+            
             .phnRow {
                 padding: 0;
             }
-
+            
             .phnCol66 {
                 padding: 8px;
             }
-
+            
             .phnCol33Div {
                 width: 100%;
                 height: 100%;
@@ -95,7 +95,7 @@ $dark:                            #444 !default;
                     font-weight: 500;
                 }
             }
-
+            
             .joinBtn {
                 width: 100%;
                 height: 100%;
@@ -108,7 +108,7 @@ $dark:                            #444 !default;
                 font-weight: 600;
                 padding: 0px!important;
             }
-
+            
             .otpLabel {
                 text-align: center;
                 display: inline-block;
@@ -116,7 +116,7 @@ $dark:                            #444 !default;
                 font-size: 16px!important;
                 font-weight: 500;
             }
-
+            
             .otpDiv {
                 left: 50%;
                 position: absolute;
@@ -124,7 +124,7 @@ $dark:                            #444 !default;
                 transform: translate(-50%, -50%);
                 width: 75%!important;
             }
-
+            
             .verifyDiv {
                 top: 124%;
                 position: absolute;
@@ -137,7 +137,7 @@ $dark:                            #444 !default;
                 line-height: 22px;
                 min-height: 42px;
             }
-
+            
             .resendBtn {
                 top: 160%;
                 position: absolute;
@@ -148,6 +148,7 @@ $dark:                            #444 !default;
                 padding: 0;
                 min-height: 17px;
                 line-height: 30px;
+                font-size: 15px!important;
                 button {
                     border: transparent;
                     line-height: 20px!important;
@@ -155,34 +156,33 @@ $dark:                            #444 !default;
                     border-radius: 0px!important;
                     background: transparent!important;
                     color: black!important;
-                    font-size: 12px;
                     font-weight: 600;
                 }
             }
-
+            
             .button.button-positive.button-clear {
                 color: black!important;
             }
-
+            
             .sigupIconLeft {
                 color: #091b27!important;
                 font-size: 24px!important;
                 padding: 0 0 0 12px !important;
             }
-
+            
             .sigupRight {
                 color: #091b27!important;
                 font-size: 24px!important;
                 padding: 2px 12px 0 0 !important;
                 display: block;
             }
-
+            
             .nameSignup {
                 margin-top: 44px;
                 border: transparent;
                 border-bottom: 1px solid lightgrey;
             }
-
+            
             .signUpForm {
                 padding-left: 10px;
                 padding-right: 10px;
@@ -196,11 +196,11 @@ $dark:                            #444 !default;
                     background: transparent;
                 }
             }
-
+            
             .plcHldr {
                 font-weight: 600;
             }
-
+            
             .signUpCard {
                 height: 100px;
                 margin: 0 !important;
@@ -223,7 +223,7 @@ $dark:                            #444 !default;
                     font-size: 14px;
                 }
             }
-
+            
             .signUpFooter {
                 width: 100%;
                 padding: 0;
@@ -238,7 +238,7 @@ $dark:                            #444 !default;
                     margin: 0;
                 }
             }
-
+            
             .signUpAdd {
                 display: block;
                 height: 30px;
@@ -253,7 +253,7 @@ $dark:                            #444 !default;
                     font-size: 20px;
                 }
             }
-
+            
             .mt-10 {
                 margin-top: 10px !important;
             }
@@ -261,7 +261,7 @@ $dark:                            #444 !default;
         text-align: left!important;
         padding-top: 1px!important;
     }*/
-
+            
             .dashboardLabel {
                 text-align: center;
                 padding-top: 10px;
@@ -269,7 +269,7 @@ $dark:                            #444 !default;
                     font-weight: 600;
                 }
             }
-
+            
             .roundePrgBar {
                 width: auto;
                 position: relative;
@@ -278,7 +278,7 @@ $dark:                            #444 !default;
                 text-align: center;
                 margin: 20px auto;
             }
-
+            
             .roundedPrgDiv {
                 height: 19px;
                 width: 8px;
@@ -289,14 +289,14 @@ $dark:                            #444 !default;
                 z-index: 3;
                 background: #0dbabe;
             }
-
+            
             .header-bellFont {
                 color: #091b27 !important;
                 font-size: 32px !important;
                 padding: 0 12px 0 0 !important;
                 display: block;
             }
-
+            
             .info {
                 font-size: 25px;
                 color: lightgrey;
@@ -305,25 +305,25 @@ $dark:                            #444 !default;
                 width: 100%;
                 text-align: center;
             }
-
+            
             .overallRupeeDiv {
                 text-align: center;
                 top: 30%;
                 position: absolute;
                 width: 100%;
             }
-
+            
             .rupeeFont {
                 font-size: 50px;
             }
-
+            
             .sinceDateDiv {
                 position: absolute;
                 width: 100%;
                 text-align: center;
                 bottom: 35%;
             }
-
+            
             .bottomTopMarRow {
                 border-top: 1px solid lightgrey!important;
                 color: grey;
@@ -331,11 +331,11 @@ $dark:                            #444 !default;
                 margin: 20px;
                 width: auto!important;
             }
-
+            
             .colPad {
                 padding: 0 !important;
             }
-
+            
             .rankLabel {
                 font-size: 24px;
                 font-weight: 500;
@@ -343,7 +343,7 @@ $dark:                            #444 !default;
                 width: 100%;
                 text-align: center;
             }
-
+            
             .numberDiv {
                 text-align: center;
                 i {
@@ -357,7 +357,7 @@ $dark:                            #444 !default;
                     padding: 0;
                 }
             }
-
+            
             .rankDiv {
                 text-align: center;
                 padding-right: 20px;
@@ -367,7 +367,7 @@ $dark:                            #444 !default;
                     font-weight: 500;
                 }
             }
-
+            
             .lastMonth {
                 text-align: center;
                 label {
@@ -383,7 +383,7 @@ $dark:                            #444 !default;
                     display: block;
                 }
             }
-
+            
             .newCustomer {
                 text-align: center;
                 label {
@@ -399,7 +399,7 @@ $dark:                            #444 !default;
                     display: block;
                 }
             }
-
+            
             .newCust {
                 text-align: center;
                 button {
@@ -414,7 +414,7 @@ $dark:                            #444 !default;
                     padding-right: 10px !important;
                 }
             }
-
+            
             .oldCust {
                 text-align: center;
                 margin-top: 10px;
@@ -431,7 +431,7 @@ $dark:                            #444 !default;
                     min-height: 35px!important;
                 }
             }
-
+            
             .ion-custom-user {
                 &:before {
                     content: url('../img/user.png');
@@ -443,11 +443,11 @@ $dark:                            #444 !default;
                     margin-top: -18px;
                 }
             }
-
+            
             .priceDiv {
                 background: #0dbabe;
             }
-
+            
             .priceCard {
                 .popup-head {
                     display: none;
@@ -456,7 +456,7 @@ $dark:                            #444 !default;
                     padding: 0 !important;
                 }
             }
-
+            
             .notify-card {
                 padding: 10px;
                 margin: 15px;
@@ -470,11 +470,11 @@ $dark:                            #444 !default;
                     text-align: justify;
                 }
             }
-
+            
             .bg-notify {
                 background: #f2f4f5;
             }
-
+            
             .notify-header {
                 .bar.bar-stable {
                     background: white;
@@ -487,11 +487,11 @@ $dark:                            #444 !default;
                     }
                 }
             }
-
+            
             .rel {
                 position: relative;
             }
-
+            
             .medal {
                 height: 100px;
                 width: 100%;
@@ -500,7 +500,7 @@ $dark:                            #444 !default;
                     height: 100%;
                 }
             }
-
+            
             .hidepager {
                 .slider-pager {
                     display: none;
@@ -509,7 +509,7 @@ $dark:                            #444 !default;
             /*.slider-pager .slider-pager-page {
           display: none
         }*/
-
+            
             .arrowbtn {
                 color: #ffd34d;
                 position: absolute;
@@ -519,7 +519,7 @@ $dark:                            #444 !default;
                     color: #ffd34d;
                 }
             }
-
+            
             .slide-div {
                 padding: 15px;
                 text-align: justify;
@@ -528,13 +528,13 @@ $dark:                            #444 !default;
                 }
                 color: white;
             }
-
+            
             .slide-close {
                 position: absolute;
                 right: 0;
                 top: 0;
             }
-
+            
             .rightarr {
                 color: #ffd34d;
                 position: absolute;
@@ -554,7 +554,7 @@ $dark:                            #444 !default;
                     font-weight: 500;
                 }
             }
-
+            
             .popupImg {
                 text-align: center;
                 img {
@@ -562,7 +562,7 @@ $dark:                            #444 !default;
                     width: 100px;
                 }
             }
-
+            
             .popupText {
                 text-align: center;
                 label {
@@ -581,7 +581,7 @@ $dark:                            #444 !default;
                     padding: 0 !important;
                 }
             }
-
+            
             .popupDiv {
                 text-align: center;
                 padding: 10px;
@@ -591,7 +591,7 @@ $dark:                            #444 !default;
                     font-weight: 500;
                 }
             }
-
+            
             .popupImg {
                 text-align: center;
                 img {
@@ -599,22 +599,22 @@ $dark:                            #444 !default;
                     width: 100px;
                 }
             }
-
+            
             .popupText {
                 text-align: center;
                 display: grid;
                 margin: 10px;
             }
-
+            
             .popupColor {
                 color: #727577;
             }
-
+            
             .popupTextColor {
                 font-size: 11px;
                 color: #727577;
             }
-
+            
             .otpin {
                 display: block;
                 text-align: center;
@@ -627,15 +627,18 @@ $dark:                            #444 !default;
                     text-align: center;
                     color: white;
                     box-shadow: 1px 2px 0 0 lightgrey;
+                    margin: 1px;
                 }
-            } //customer dashboard
+            }
+            
+            //customer dashboard
             .backdropImg {
                 width: 100%;
                 height: 200px;
                 background: url('../img/backdrop.jpg');
                 background-size: cover;
             }
-
+            
             .jar-div {
                 text-align: center;
                 display: block;
@@ -647,7 +650,7 @@ $dark:                            #444 !default;
                     margin-top: 25px !important;
                 }
             }
-
+            
             .bal-div {
                 display: block;
                 font-size: 76px;
@@ -656,7 +659,7 @@ $dark:                            #444 !default;
                 font-weight: 600;
                 line-height: 75px;
             }
-
+            
             .buy-more {
                 display: block;
                 text-align: center;
@@ -664,36 +667,36 @@ $dark:                            #444 !default;
                 width: 130px;
                 color: #ff414d!important;
             }
-
+            
             .ion-contentcolor {
                 background: #f2f4f5;
             }
-
+            
             .card-height {
                 height: auto;
                 row {
                     padding: 10px;
                 }
             }
-
+            
             .card-label {
                 font-size: 16px;
                 margin-top: 15px;
                 display: block;
                 font-weight: 400;
             }
-
+            
             .cardDayspan {
                 font-size: 18px;
                 font-weight: 500;
             }
-
+            
             .cardDate {
                 font-size: 18px;
                 color: #ff414d;
                 font-weight: 500;
             }
-
+            
             .card-imgDiv {
                 width: 100%;
                 padding: 10px;
@@ -705,7 +708,7 @@ $dark:                            #444 !default;
                     display: block;
                 }
             }
-
+            
             .card-schedule {
                 min-height: 30px;
                 line-height: 20px;
@@ -716,7 +719,7 @@ $dark:                            #444 !default;
                 color: white;
                 font-size: 14px;
             }
-
+            
             .card-labelspan {
                 margin-left: 10px;
             } //help and FAQ start
@@ -740,22 +743,22 @@ $dark:                            #444 !default;
                     }
                 }
             }
-
+            
             .hlpbk {
                 background: #f2f4f5;
             }
-
+            
             .help-grid {
                 padding: 10px;
             }
-
+            
             .brs-txt {
                 color: #ff414d;
                 margin: 0 15px;
                 display: block;
                 font-size: 16px;
             }
-
+            
             .helpcard {
                 background: white;
                 padding: 5px;
@@ -776,7 +779,7 @@ $dark:                            #444 !default;
                     display: block;
                 }
             }
-
+            
             .bmore {
                 display: block;
                 margin: 10% 15%;
@@ -797,37 +800,41 @@ $dark:                            #444 !default;
                     color: #ff414d;
                 }
             }
-
+            
             .sun {
                 color: #ff414d;
             }
-
+            
             .selected {
                 background: #ff414d;
                 border: none;
                 color: white;
             }
-
+            
             .dates {
                 text-align: center;
                 display: block;
                 font-size: 13px;
             }
-
+            
             .date-under {
                 border-bottom: 1px solid #ff414d;
             }
-
+            
             .datenote {
                 font-size: 11px!important;
             }
-
+            
             .schedule-head {
                 text-align: center;
                 display: block;
                 margin-top: 20px;
                 color: #213133;
-            } //calender end
+                font-size: 20px;
+                font-weight: 600;
+            }
+            
+            //calender end
             .jars-card {
                 text-align: center;
                 box-shadow: none;
@@ -837,17 +844,17 @@ $dark:                            #444 !default;
                     padding: 10px !important;
                 }
             }
-
+            
             .jar-label {
                 font-size: 18px;
                 font-weight: 500;
             }
-
+            
             .jarcount {
                 font-size: 28px;
                 vertical-align: middle;
             }
-
+            
             .jars-button {
                 display: inline-block;
                 font-size: 38px;
@@ -856,7 +863,7 @@ $dark:                            #444 !default;
                 background: transparent;
                 border: none;
             }
-
+            
             .jarsch-button {
                 display: block;
                 text-align: center;
@@ -866,7 +873,7 @@ $dark:                            #444 !default;
                 min-width: 115px;
                 border-radius: 0;
             }
-
+            
             .nav-height {
                 height: 52px;
                 box-shadow: 0 2px 0 0 lightgrey;
@@ -877,11 +884,11 @@ $dark:                            #444 !default;
                     padding-top: 1px !important;
                 }
             }
-
+            
             .footer-height {
                 height: 46px;
             }
-
+            
             .footer-font {
                 font-size: 16px !important;
                 font-weight: 500 !important;
@@ -894,59 +901,64 @@ $dark:                            #444 !default;
                 padding: 30px;
                 color: #6d797e;
             }
-
+            
             .confirm-checkmark {
-                width: 80%;
+                margin: 70px 30px 0 30px;
+                width: auto;
                 text-align: center;
-                margin: 0 auto;
                 img {
                     width: 80%;
                 }
             }
-
+            
             .conirfm-orderDiv {
                 text-align: center;
                 padding: 10px;
                 margin-top: 10px;
             }
-
+            
             .conirfm-orderlbl {
-                font-size: 22px;
+                font-size: 30px;
                 font-weight: 600;
+            }
+            
+            .confirm-date {
+                display: block;
+                font-size: 20px;
                 color: #6d797e;
             }
-
+            
             .confirm-successlbl {
                 font-size: 38px;
                 color: #0dbabe;
                 font-weight: 600;
                 line-height: 35px;
             }
-
+            
             .confirm-refillphn {
                 display: block;
-                font-size: 14px;
+                font-size: 20px;
                 color: #6d797e;
-                margin-top: 10px;
+                margin-top: 5px;
             }
-
+            
             .header-color {
                 background: white;
             }
-
+            
             .order-refillDiv {
                 background: #ff414d;
                 height: 200px;
                 text-align: center;
                 padding: 40px;
             }
-
+            
             .order-refilllbl {
                 color: white;
                 font-size: 20px;
                 font-weight: 500;
             }
-
+            
             .order-refillcount {
                 display: block;
                 font-size: 100px;
@@ -956,7 +968,7 @@ $dark:                            #444 !default;
                 margin: 0;
                 line-height: 85px;
             }
-
+            
             .order-thismonth {
                 background: white;
                 text-align: center;
@@ -968,69 +980,69 @@ $dark:                            #444 !default;
                 height: 40px;
                 font-weight: 500
             }
-
+            
             .order-row {
                 margin: 5px !important;
                 width: auto!important;
             }
-
+            
             .order-div {
                 height: 45px;
                 width: 1px;
                 display: inline-block;
                 vertical-align: middle;
             }
-
+            
             .highlight {
                 background: #ff414d;
                 color: white;
             }
-
+            
             .order-monthsDiv {
                 background: white;
                 padding: 22px;
                 margin: 5px 0;
             }
-
+            
             .order-jarslbl {
                 font-size: 18px;
                 font-weight: 500!important;
             }
-
+            
             .order-date {
                 font-size: 14px;
                 display: block;
                 padding: 0px 0 5px 15px
             }
-
+            
             .order-jarImg {
                 height: 100%;
                 width: 100%;
             }
-
+            
             .order-jarRow {
                 background: white;
                 padding: 15px 15px 15px 15px
             }
-
+            
             .order-tickDiv {
                 width: 30px;
                 height: 30px;
                 margin: 0 7px 0 auto;
             }
-
+            
             .order-dateProgress {
                 margin-top: 5px;
                 font-size: 14px;
                 display: block;
                 padding: 5px 15px;
             }
-
+            
             .order-prgress {
                 width: 30px!important;
                 height: 30px!important;
             }
-
+            
             .mnpre {
                 color: #ff414d;
                 position: absolute;
@@ -1038,7 +1050,7 @@ $dark:                            #444 !default;
                 left: 10%;
                 z-index: 999;
             }
-
+            
             .mnxt {
                 color: #ff414d;
                 position: absolute;
@@ -1046,88 +1058,89 @@ $dark:                            #444 !default;
                 right: 10%;
                 z-index: 999;
             }
-
+            
             .box1,
             .box2,
             .box3 {
                 height: 230px;
                 background: #f2f4f5;
             }
-
+            
             .ionSlider {
                 .ion-record:before {
                     font-size: 10px!important;
                 }
             }
-
+            
             .browse-sliderRow {
                 height: 100%;
                 background: #f2f4f5;
             }
-
+            
             .browse-slideImgDiv {
                 height: 100%;
                 text-align: center;
             }
-
+            
             .browse-sliderImg {
                 height: 100%;
                 padding: 15px;
             }
-
+            
             .browse-col502 {
-                  padding: 65px 0 0 15px;
+                padding: 65px 0 0 15px;
                 height: 100%;
             }
-
+            
             .browse-col502lbl {
                 font-size: 30px;
                 color: #0dbabe
             }
-
+            
             .browse-col502aqua {
-              display: block;
+                display: block;
                 font-size: 20px;
                 font-weight: 500;
                 padding-top: 2px;
                 color: #3d619b
             }
-
+            
             .browse-col502ltrcolor {
                 color: #979798;
                 font-size: 16px;
                 vertical-align: middle;
             }
-
+            
             .browse-col502slash {
                 font-size: 16px;
                 vertical-align: middle;
                 color: #979798;
             }
-
+            
             .browse-col502rupeesymb {
                 font-size: 16px;
                 color: #979798;
                 vertical-align: middle
             }
-
+            
             .browse-col502rupees {
                 font-size: 24px;
             }
-
+            
             .browse-grid {
-                padding: 10px;
+                padding: 20px 0 0 0;
                 text-align: center;
                 background: white
             }
-
+            
             .browse-text {
                 margin: 0 15px;
                 display: block;
                 font-size: 20px;
                 font-weight: 500;
+                padding-bottom: 10px;
             }
-
+            
             .browse-card1 {
                 padding: 1.5px;
                 margin: 1.5px;
@@ -1152,17 +1165,17 @@ $dark:                            #444 !default;
                     font-weight: 500!important;
                 }
             }
-
+            
             .bar-footer .title {
                 height: 52px!important;
                 line-height: 52px!important;
                 font-size: 22px!important;
             }
-
+            
             .bar-footer {
                 height: 50px!important;
             }
-
+            
             .browse-card2 {
                 padding: 1.5px;
                 margin: 1.5px;
@@ -1187,7 +1200,7 @@ $dark:                            #444 !default;
                     font-weight: 500!important;
                 }
             }
-
+            
             .oneliter-pack {
                 padding: 1.5px;
                 margin: 1.5px;
@@ -1215,58 +1228,58 @@ $dark:                            #444 !default;
                     font-weight: 500!important;
                 }
             }
-
+            
             .m10 {
                 margin: 10px !important;
             }
-
+            
             .browse-backgrndcolor {
                 background: #f7f6f6;
             }
-
+            
             .browse-hdrBckgrnd {
                 .bar.bar-stable {
                     background: white;
                 }
             }
-
+            
             .browse-moreImgDiv {
                 height: 170px;
                 text-align: center;
                 width: auto;
             }
-
+            
             .browse-moreDiv {
                 border-bottom: 1px solid lightgray;
                 margin: 0 50px;
             }
-
+            
             .browse-moreImg {
                 height: 100%;
                 width: auto;
                 padding: 10px;
             }
-
+            
             .browse-moredivalign {
                 text-align: center;
                 border-bottom: 1px solid #b8d9ef;
                 padding: 10px;
                 margin: 5px 50px;
             }
-
+            
             .browse-aqualbl {
                 font-size: 16px;
                 font-weight: 500;
             }
-
+            
             .mbt {
                 margin-bottom: 30px;
             }
-
+            
             .browse-morerupee {
                 color: #a2a9ad;
             }
-
+            
             .search-fix {
                 position: absolute;
                 right: 15px;
@@ -1281,7 +1294,7 @@ $dark:                            #444 !default;
                     color: white;
                 }
             }
-
+            
             .prdcticon {
                 height: 120px;
                 width: 100%;
@@ -1298,12 +1311,14 @@ $dark:                            #444 !default;
                     border-right: 1px solid #1a85cb;
                 }
             }
-
+            
             .details-div {
                 margin-top: 30px;
                 margin-left: 15px;
                 h2 {
                     color: #002d40;
+                    display: inline;
+                    font-weight: 500;
                 }
                 .name {
                     color: #3d619b;
@@ -1312,11 +1327,11 @@ $dark:                            #444 !default;
                     color: #091b27;
                 }
             }
-
+            
             .pad0 {
                 padding: 0;
             }
-
+            
             .addrm {
                 text-align: right;
                 i {
@@ -1340,7 +1355,7 @@ $dark:                            #444 !default;
                     margin: 5px;
                 }
             }
-
+            
             .bg-prdct {
                 background: #f2f4f5;
                 .prod-det {
@@ -1350,14 +1365,14 @@ $dark:                            #444 !default;
                     }
                 }
             }
-
+            
             .browse-morerupee {
                 color: #a2a9ad;
             } //auth-payment
             .auth-payment {
                 background: #f2f4f5;
             }
-
+            
             .auth-custinfo {
                 padding: 35px 0 0 20px !important;
                 font-size: 18px;
@@ -1365,7 +1380,7 @@ $dark:                            #444 !default;
                 font-size: 19px;
                 color: #54535c;
             }
-
+            
             .auth-custip {
                 background: transparent;
                 border: transparent;
@@ -1374,13 +1389,13 @@ $dark:                            #444 !default;
                 margin: 20px 0;
                 border-bottom: 1px solid lightgrey;
             }
-
+            
             .auth-custipPlc {
                 font-size: 16px!important;
                 font-weight: 500;
                 font-size: 16px;
             }
-
+            
             .auth-updbtn {
                 background: #f2f4f5;
                 line-height: 40px;
@@ -1390,7 +1405,7 @@ $dark:                            #444 !default;
                 z-index: 2;
                 box-shadow: 0 2px 0 0 lightgrey;
             }
-
+            
             .auth-paybtn {
                 background: #ff414d;
                 line-height: 40px;
@@ -1400,22 +1415,22 @@ $dark:                            #444 !default;
                 font-size: 14px;
                 box-shadow: 0 2px 0 0 lightgrey;
             }
-
+            
             .auth-btnalign {
                 margin: 10px 0;
             }
-
+            
             .m35 {
                 margin: 5px 35px;
             }
-
+            
             .auth-otprow {
                 background: #f2f4f5;
                 width: 100%;
                 padding: 0 10px;
                 margin: 20px 0;
             }
-
+            
             .auth-otpcol1Lbl {
                 border: none;
                 padding: 5px;
@@ -1428,7 +1443,7 @@ $dark:                            #444 !default;
                     font-weight: 500;
                 }
             }
-
+            
             .cartbtn {
                 height: 35px;
                 width: 35px;
@@ -1439,7 +1454,7 @@ $dark:                            #444 !default;
                     height: 100%;
                 }
             }
-
+            
             .cartbadge {
                 margin: 5px;
                 font-size: 14px;
@@ -1455,16 +1470,16 @@ $dark:                            #444 !default;
                 right: -5px;
                 top: -5px;
             }
-
+            
             .auth-col2 {
                 text-align: right;
             }
-
+            
             .nav-height .bar.bar-stable .title {
                 line-height: 52px!important;
                 font-size: 22px!important;
             }
-
+            
             .bar .title+.buttons {
                 position: absolute!important;
                 top: 5px!important;
@@ -1486,12 +1501,12 @@ $dark:                            #444 !default;
                     top: 200px;
                 }
             }
-
+            
             .auth-col2btn {
                 font-size: 16px;
                 font-weight: 500;
             }
-
+            
             .auth-sharebtn {
                 width: 100%!important;
                 margin: 20px auto !important;
@@ -1500,62 +1515,63 @@ $dark:                            #444 !default;
                 font-weight: 500;
             } //menu
             .menu-displaypic {
-                background: #c6cbdf;
                 width: 72px;
-                height: 72px;
-                border-radius: 50%;
                 position: absolute;
-                top: 25%;
+                top: 28%;
                 left: 8%;
-                img {
-                    height: 100%;
-                    width: 100%;
-                    border-radius: 50%;
-                }
+                height: auto;
             }
-
+            
+            .menu-displayimg {
+                height: auto;
+                width: 72px;
+            }
+            
             .menu-displayName {
                 position: absolute;
                 bottom: 25%;
                 left: 8%;
                 font-size: 16px;
+                font-weight: 500;
             }
-
+            
             .menu-settings {
                 position: absolute;
                 bottom: 13%;
                 left: 8%;
                 font-size: 16px;
+                font-weight: 500;
             }
-
+            
             .menu-bgcolor {
                 background: #f2f4f5;
             }
-
+            
             .menu-div {
-                padding: 25px 0 0 25px;
+                padding: 18px 0 0 25px;
             }
-
+            
             .menu-helpdiv {
                 padding: 0px 0 0 25px;
             }
-
+            
             .menu-label {
-                font-size: 20px;
+                font-size: 16px;
+                font-weight: 500;
             }
-
+            
             .menu-hr {
                 margin: 20px;
                 color: #a1a8ad
             }
-
+            
             .shipping-label {
                 margin: 40px 0 0 5px!important;
                 font-size: 16px;
                 padding: 6px;
                 border-bottom: 1px solid lightgrey!important;
             }
-
+            
             .shipping-floatspan {
                 margin: 0;
                 padding: 0;
@@ -1563,7 +1579,7 @@ $dark:                            #444 !default;
                 color: #ff414d;
                 width: 100%;
             }
-
+            
             .shipping-input {
                 border-bottom: 1px solid lightgrey!important;
                 color: lightgray;
@@ -1572,14 +1588,14 @@ $dark:                            #444 !default;
                     border-bottom: 1px solid #ff414d!important;
                 }
             }
-
+            
             .shipping-floatlabel {
                 border: none;
                 border-bottom: none!important;
                 padding: 6px;
                 margin: 0 5px;
             }
-
+            
             .shipping-Form {
                 padding-left: 10px;
                 padding-right: 10px;
@@ -1594,7 +1610,7 @@ $dark:                            #444 !default;
                     font-weight: 400;
                 }
             }
-
+            
             .chkout-closebutton {
                 position: absolute;
                 right: 25px;
@@ -1603,49 +1619,49 @@ $dark:                            #444 !default;
                     font-size: 25px!important;
                 }
             }
-
+            
             .chkout-subheight {
                 height: 150px;
                 background: white;
                 margin: 0 10px 0 10px;
                 width: auto;
             }
-
+            
             .chkout-bgcolor {
                 background: #f2f4f5
             }
-
+            
             .chkout-fontsize {
                 font-size: 16px;
                 margin: 0!important;
             }
-
+            
             .chkout-align {
                 padding: 28px 0 0;
                 height: 100%;
             }
-
+            
             .colorpure {
                 color: #3d619b;
             }
-
+            
             .chkoutdiv {
                 text-align: center;
                 padding-top: 20px;
             }
-
+            
             .chkout-line {
                 height: 80%;
                 display: inline-block;
                 border-right: 1px solid #dbdbdb;
             }
-
+            
             .chkout-imgdivcol {
                 height: 100%;
                 text-align: center;
                 padding-left: 15%
             }
-
+            
             .chkoutcoupon {
                 background: white;
                 margin: 20px 10px 20px 10px;
@@ -1661,13 +1677,20 @@ $dark:                            #444 !default;
                     border-bottom: 1px solid lightgray;
                     font-size: 16px;
                     width: 100%;
+                    height: auto
                 }
             }
-
+            
             .chkpadip {
-                padding-top: 6px;
+                input {
+                    padding-top: 10px;
+                }
+                label {
+                    color: #6d797e;
+                    font-weight: 500;
+                }
             }
-
+            
             .bgchkoutcol50Quant {
                 color: #6d797e;
                 padding-left: 10px;
@@ -1676,13 +1699,13 @@ $dark:                            #444 !default;
                     font-size: 16px;
                 }
             }
-
+            
             .bgrowQuant {
                 background: white;
                 margin: 20px 10px 0 10px;
                 width: auto;
             }
-
+            
             .bgchkoutcol502 {
                 text-align: center;
                 padding-top: 15px;
@@ -1690,7 +1713,7 @@ $dark:                            #444 !default;
                     font-size: 16px;
                 }
             }
-
+            
             .savingscol501 {
                 padding-left: 10px;
                 padding-top: 15px;
@@ -1700,11 +1723,12 @@ $dark:                            #444 !default;
                     font-weight: 400;
                 }
             }
-
+            
             .savingamtdiv {
                 text-align: center;
                 padding-top: 15px;
                 padding-bottom: 15px;
+                padding-left: 28px;
                 label {
                     font-size: 16px;
                     color: #ff414d;
@@ -1715,7 +1739,7 @@ $dark:                            #444 !default;
             } //subscriptionpage1
             .mainmar25-50 {
                 text-align: center;
-                padding: 50px 25px 0 25px;
+                padding: 50px 23px 0 23px;
                 label {
                     font-size: 18px;
                     font-weight: 500;
@@ -1726,7 +1750,7 @@ $dark:                            #444 !default;
                     color: #ff414d
                 }
             }
-
+            
             .inputarea {
                 margin: 15px;
                 input {
@@ -1738,7 +1762,7 @@ $dark:                            #444 !default;
                     font-size: 18px;
                 }
             }
-
+            
             .nextFooter {
                 width: 100%;
                 padding: 0;
@@ -1754,28 +1778,27 @@ $dark:                            #444 !default;
                     font-size: 18px!important;
                 }
             }
-
+            
             .avgTxt {
                 text-align: center;
                 color: #6d797e;
-                padding: 100px 0 0 0;
-                margin: 50px 0 0 0;
+                padding: 20px;
             }
-
+            
             .checkbtmcard {
                 background: white;
                 margin: 5% 10% !important;
                 width: 80%;
                 padding: 5px;
             }
-
+            
             .verdiv {
                 height: 60%;
                 width: 1px;
                 background: grey;
                 margin-top: 12px;
             }
-
+            
             .custarr {
                 i {
                     color: #6d797e;
@@ -1786,7 +1809,7 @@ $dark:                            #444 !default;
                     top: 25%;
                 }
             }
-
+            
             .mid-day {
                 margin-right: 15%;
                 margin-top: 6px;
@@ -1797,7 +1820,7 @@ $dark:                            #444 !default;
                     margin: 0;
                 }
             }
-
+            
             .datemonth {
                 margin: 8px 13px;
                 .datediv {
@@ -1809,7 +1832,7 @@ $dark:                            #444 !default;
                     font-weight: 600;
                 }
             }
-
+            
             .hidedate {
                 opacity: 0;
                 position: absolute;
@@ -1824,43 +1847,42 @@ $dark:                            #444 !default;
                 font-weight: 400;
                 color: #212121;
             }
-
+            
             .onceweekDiv {
                 background: white;
                 margin: 15px;
                 width: auto;
                 padding-bottom: 0;
             }
-
+            
             .col-margin {
                 margin: 15px 0 15px 0;
             }
-
+            
             .col-50pad {
                 padding: 8px 10px 4px 10px;
             }
-
+            
             .col-40pad {
                 padding: 15px 5px;
             }
-
+            
             .col-37pad {
                 padding: 20px 5px;
             }
-
+            
             .jarslbl {
                 font-size: 20px;
                 font-weight: 500;
-                color: #6d797e;
             }
-
+            
             .onceLbl {
                 display: block;
                 font-size: 18px;
                 font-weight: 400;
                 color: #6d797e;
             }
-
+            
             .lbl90 {
                 position: absolute;
                 top: -21px;
@@ -1869,45 +1891,45 @@ $dark:                            #444 !default;
                 text-decoration: line-through;
                 color: #6d797e
             }
-
+            
             .rupsym {
                 font-size: 26px;
                 color: #c8cbc4
             }
-
+            
             .lbl88 {
                 font-size: 26px;
                 padding: 0px 0 0 5px;
                 font-weight: 500;
                 color: #ff414d;
             }
-
+            
             .perjar {
-                color: #c8cbc4
+                color: #6d797e
             }
-
+            
             .border {
                 border-right: 1px solid #c8cbc4;
             }
-
+            
             .chooseDayDiv {
                 background: white; // width: auto;
                 // padding: 25px 0 0 10px;
             }
-
+            
             .choosedayLbl {
                 display: block;
                 font-size: 22px; // padding-top: 25px;
                 color: #0dbabe;
                 font-weight: 600
             }
-
+            
             .needrefill {
                 display: block;
                 font-size: 15px;
                 color: #8a9498
             }
-
+            
             .depositDiv {
                 text-align: center;
                 width: 100%;
@@ -1917,19 +1939,25 @@ $dark:                            #444 !default;
                 height: 44px;
                 padding-top: 10px;
             }
-
+            
             .depositclrLbl {
                 color: #6d797e;
             } //Sohan Scss
             .title-addons {
-                padding: 15px 30px 0;
+                padding: 50px 20px 0;
+                height: 210px;
+                width: auto;
+                background: white;
+                span {
+                    font-size: 16px;
+                    font-weight: 500;
+                }
             }
-
+            
             .add-ons-item {
                 color: #444;
                 position: relative;
                 z-index: 2;
-                margin: -1px;
                 font-size: 16px;
                 margin-bottom: -1px;
                 display: table;
@@ -1955,7 +1983,8 @@ $dark:                            #444 !default;
                     }
                 }
             }
-//review
+            
+            //review
             .review-height {
                 height: 150px;
                 background: white;
@@ -1992,11 +2021,23 @@ $dark:                            #444 !default;
                     font-size: 25px!important;
                 }
             }
-
-            .custom-radio {
-                position: relative;
+            
+            .custom {
                 padding: 20px 30px 0;
                 width: 100%;
+                span {
+                    font-weight: 500;
+                    font-size: 16px;
+                    color: #ff414d;
+                }
+                p {
+                    margin: 5px 0 0 0px!important;
+                    line-height: 1;
+                    font-size: 12px;
+                }
+                hr {
+                    color: #dbdbdb;
+                }
                 input[type="radio"] {
                     display: none;
                 }
@@ -2031,7 +2072,7 @@ $dark:                            #444 !default;
                     top: 25px;
                 }
             }
-
+            
             img.most-popular {
                 width: 28px;
                 height: auto;
@@ -2039,16 +2080,130 @@ $dark:                            #444 !default;
                 margin-top: -8px;
                 margin-left: -15px;
             }
-
+            
             p.onceLblr {
                 border-top: 1px solid #ddd;
                 padding: 3px 0 0;
+                color: #6d797e
             }
-
+            
             .lbl-100 {
                 font-size: 20px;
             }
-
+            
             .light-grey {
                 color: $light-grey;
+            }
+            
+            .padtop-10 {
+                padding-top: 10px
+            }
+            
+            .flexdiv {
+                display: flex;
+            }
+            
+            .review-tickDiv {
+                width: 26px;
+                height: 26px;
+                margin-left: 10px;
+                margin-top: 5px;
+            }
+            
+            .h4padcol {
+                margin: 0px!important;
+                font-size: 30px!important;
+            }
+            
+            .sub3rowcard {
+                background: #ff414d;
+                margin: 20px auto;
+                h4 {
+                    margin: 0px 0px 0px 10px!important;
+                    color: white;
+                }
+                p {
+                    margin: 0px 0px 0px 10px!important;
+                    color: white;
+                    font-size: 12px;
+                    line-height: 1;
+                }
+                span {
+                    margin: 0px 0px 0px 10px !important;
+                    color: white;
+                    font-size: 12px;
+                    display: block;
+                }
+            }
+            
+            .rowimgdiv {
+                margin: 0 auto;
+                padding-top: 14px;
+                width: 100%;
+                text-align: center;
+                img {
+                    width: 40%
+                }
+            }
+            
+            .borderdiv {
+                width: 100%;
+                height: 1px;
+                background: #dbdbdb;
+                margin-top: 10px;
+            }
+            
+            .stand {
+                label {
+                    color: #989fa4;
+                    font-weight: 500;
+                    font-size: 12px;
+                }
+            }
+            
+            .steel {
+                width: 100%;
+                height: 65px;
+                img {
+                    width: auto;
+                    height: 100%;
+                    float: right;
+                }
+            }
+            
+            .add {
+                padding: 0;
+                margin: 0;
+                margin-left: -6px;
+                i {
+                    margin: 5px;
+                    font-size: 14px;
+                    background: #ff414d;
+                    padding: 4px;
+                    border-radius: 50%;
+                    height: 20px;
+                    width: 20px;
+                    text-align: center;
+                    vertical-align: middle;
+                    &:before {
+                        color: white;
+                    }
+                }
+                span {
+                    font-size: 28px;
+                    font-weight: 500;
+                    vertical-align: middle;
+                    margin: 5px;
+                    color: black!important;
+                }
+            }
+            
+            .adjst {
+                margin-bottom: 10px;
+                padding-right: 10px;
+                padding-left: 0;
+            }
+            
+            .borbtm {
+                border-bottom: 1px solid #dbdbdb;
             }

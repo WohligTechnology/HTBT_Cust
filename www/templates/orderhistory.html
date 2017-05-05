@@ -1,103 +1,103 @@
 <ion-view title="Order History">
     <<ion-nav-bar class="bar-stable nav-height">
-      <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon sigupIconLeft" menu-toggle="left">
+        <ion-nav-buttons side="left">
+            <button class="button button-icon button-clear ion-navicon sigupIconLeft" menu-toggle="left">
           </button>
-      </ion-nav-buttons>
-      <ion-nav-buttons side="right">
-        <button class="button button-clear ion-ios-bell header-bellFont" menu-toggle="right">
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <button class="button button-clear ion-ios-bell header-bellFont" menu-toggle="right">
           </button>
-      </ion-nav-buttons>
-    </ion-nav-bar>
-    <ion-content class="has-header ion-contentcolor">
-        <div class="order-refillDiv" ui-sref="app.shipping">
-            <label class="order-refilllbl" for="">Jar Overview</label>
-            <label class="order-refillcount" for="">30</label>
-        </div>
-        <div class="row order-row ion-contentcolor" ng-init="show=1">
-            <div class="col-33 order-thismonth" ng-click="show=1" ng-class="{'highlight' : show == 1}">
-                This Month
+        </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="has-header ion-contentcolor">
+            <div class="order-refillDiv" ui-sref="app.shipping">
+                <label class="order-refilllbl" for="">Jar Overview</label>
+                <label class="order-refillcount" for="">40</label>
             </div>
-            <div class="col-33 order-thismonth" ng-click="show=2" ng-class="{'highlight' : show == 2}">
-                Last Month
-            </div>
-            <div class="col-33 order-thismonth" ng-click="show=3" ng-class="{'highlight' : show == 3}">
-                Last 3 Months
-            </div>
-        </div>
-        <div ng-if="show==1">
-            <label class="order-date " for="">February 17, 2017</label>
-            <div class="row order-jarRow">
-                <div class="col-66">
-                    <label class="order-jarslbl" for="">2 Jars</label>
+            <div class="row order-row ion-contentcolor" ng-init="show=1">
+                <div class="col-33 order-thismonth" ng-click="show=1" ng-class="{'highlight' : show == 1}">
+                    This Month
                 </div>
-                <div class="col-33">
-                    <div class="order-tickDiv">
-                        <img class="order-jarImg" src="img/small_tick.png" alt="">
+                <div class="col-33 order-thismonth" ng-click="show=2" ng-class="{'highlight' : show == 2}">
+                    Last Month
+                </div>
+                <div class="col-33 order-thismonth" ng-click="show=3" ng-class="{'highlight' : show == 3}">
+                    Last 3 Months
+                </div>
+            </div>
+            <div ng-if="show==1">
+                <label class="order-date " for="">February 17, 2017</label>
+                <div class="row order-jarRow">
+                    <div class="col-66">
+                        <label class="order-jarslbl" for="">+ 2 Jars</label>
+                    </div>
+                    <div class="col-33">
+                        <div class="order-tickDiv">
+                            <div class="order-prgress" round-progress max="100" current="35" color="#0dbabe" bgcolor="#eaeaea" radius="15" stroke="5"
+                                semi="false" rounded="false" clockwise="true" responsive="false" iterations="50" animation="easeInOutQuart"></div>
+                        </div>
+                    </div>
+                </div>
+                <label class="order-dateProgress" for="">February 17, 2017</label>
+                <div class="row order-jarRow">
+                    <div class="col-66">
+                        <label class="order-jarslbl" for="">- 2 Jars</label>
+                    </div>
+                    <div class="col-33">
+                        <div class="order-tickDiv">
+                            <img class="order-jarImg" src="img/small_tick.png" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
-            <label class="order-dateProgress" for="">February 17, 2017</label>
-            <div class="row order-jarRow">
-                <div class="col-66">
-                    <label class="order-jarslbl" for="">2 Jars</label>
+            <div ng-if="show==2">
+                <label class="order-date " for="">February 17, 2017</label>
+                <div class="row order-jarRow">
+                    <div class="col-66">
+                        <label class="order-jarslbl" for="">2 Jars</label>
+                    </div>
+                    <div class="col-33">
+                        <div class="order-tickDiv">
+                            <img class="order-jarImg" src="img/small_tick.png" alt="">
+                        </div>
+                    </div>
                 </div>
-                <div class="col-33">
-                    <div class="order-tickDiv">
-                        <div class="order-prgress" round-progress max="100" current="35" color="#0dbabe" bgcolor="#eaeaea" radius="15" stroke="5"
-                            semi="false" rounded="false" clockwise="true" responsive="false" iterations="50" animation="easeInOutQuart"></div>
+                <label class="order-dateProgress" for="">February 17, 2017</label>
+                <div class="row order-jarRow">
+                    <div class="col-66">
+                        <label class="order-jarslbl" for="">2 Jars</label>
+                    </div>
+                    <div class="col-33">
+                        <div class="order-tickDiv">
+                            <div class="order-prgress" round-progress max="100" current="35" color="#0dbabe" bgcolor="#eaeaea" radius="15" stroke="5"
+                                semi="false" rounded="false" clockwise="true" responsive="false" iterations="50" animation="easeInOutQuart"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div ng-if="show==2">
-            <label class="order-date " for="">February 17, 2017</label>
-            <div class="row order-jarRow">
-                <div class="col-66">
-                    <label class="order-jarslbl" for="">2 Jars</label>
+            <div ng-if="show==3">
+                <label class="order-date " for="">February 17, 2017</label>
+                <div class="row order-jarRow">
+                    <div class="col-66">
+                        <label class="order-jarslbl" for="">2 Jars</label>
+                    </div>
+                    <div class="col-33">
+                        <div class="order-tickDiv">
+                            <img class="order-jarImg" src="img/small_tick.png" alt="">
+                        </div>
+                    </div>
                 </div>
-                <div class="col-33">
-                    <div class="order-tickDiv">
-                        <img class="order-jarImg" src="img/small_tick.png" alt="">
+                <label class="order-dateProgress" for="">February 17, 2017</label>
+                <div class="row order-jarRow">
+                    <div class="col-66">
+                        <label class="order-jarslbl" for="">2 Jars</label>
+                    </div>
+                    <div class="col-33">
+                        <div class="order-tickDiv">
+                            <div class="order-prgress" round-progress max="100" current="35" color="#0dbabe" bgcolor="#eaeaea" radius="15" stroke="5"
+                                semi="false" rounded="false" clockwise="true" responsive="false" iterations="50" animation="easeInOutQuart"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <label class="order-dateProgress" for="">February 17, 2017</label>
-            <div class="row order-jarRow">
-                <div class="col-66">
-                    <label class="order-jarslbl" for="">2 Jars</label>
-                </div>
-                <div class="col-33">
-                    <div class="order-tickDiv">
-                        <div class="order-prgress" round-progress max="100" current="35" color="#0dbabe" bgcolor="#eaeaea" radius="15" stroke="5"
-                            semi="false" rounded="false" clockwise="true" responsive="false" iterations="50" animation="easeInOutQuart"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div ng-if="show==3">
-            <label class="order-date " for="">February 17, 2017</label>
-            <div class="row order-jarRow">
-                <div class="col-66">
-                    <label class="order-jarslbl" for="">2 Jars</label>
-                </div>
-                <div class="col-33">
-                    <div class="order-tickDiv">
-                        <img class="order-jarImg" src="img/small_tick.png" alt="">
-                    </div>
-                </div>
-            </div>
-            <label class="order-dateProgress" for="">February 17, 2017</label>
-            <div class="row order-jarRow">
-                <div class="col-66">
-                    <label class="order-jarslbl" for="">2 Jars</label>
-                </div>
-                <div class="col-33">
-                    <div class="order-tickDiv">
-                        <div class="order-prgress" round-progress max="100" current="35" color="#0dbabe" bgcolor="#eaeaea" radius="15" stroke="5"
-                            semi="false" rounded="false" clockwise="true" responsive="false" iterations="50" animation="easeInOutQuart"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </ion-content>
+        </ion-content>
