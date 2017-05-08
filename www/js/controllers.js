@@ -46,7 +46,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
   .controller('ProductSpecsCtrl', function ($scope, $stateParams) {
     $scope.goBackHandler = function () {
       window.history.back(); //This works
-    }
+    };
   })
   .controller('PlaylistsCtrl', function ($scope) {
     $scope.playlists = [{
@@ -79,77 +79,77 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
 .controller('ShippingCtrl', function ($scope, $stateParams) {
   $scope.goBackHandler = function () {
     window.history.back(); //This works
-  }
+  };
 })
 
 .controller('CheckoutCtrl', function ($scope, $stateParams) {
   $scope.goBackHandler = function () {
     window.history.back(); //This works
-  }
+  };
 })
 
 
 .controller('Subpage1Ctrl', function ($scope, $stateParams) {
   $scope.goBackHandler = function () {
     window.history.back(); //This works
-  }
+  };
 })
 
 .controller('Subpage2Ctrl', function ($scope, $stateParams) {
   $scope.goBackHandler = function () {
     window.history.back(); //This works
-  }
+  };
 })
 
 .controller('Subpage3Ctrl', function ($scope, $stateParams) {
   $scope.goBackHandler = function () {
     window.history.back(); //This works
-  }
+  };
 })
 
 .controller('BrowseMoreCtrl', function ($scope, $stateParams) {
   $scope.goBackHandler = function () {
     window.history.back(); //This works
-  }
+  };
 })
 
 .controller('AuthPaymentCtrl', function ($scope, $stateParams) {
   $scope.goBackHandler = function () {
     window.history.back(); //This works
-  }
+  };
 })
 
 
 .controller('BrowseCtrl', function ($scope, $ionicSlideBoxDelegate) {
     $scope.nextSlide = function () {
       $ionicSlideBoxDelegate.next();
-    }
+    };
     $scope.goBackHandler = function () {
       window.history.back(); //This works
-    }
+    };
   })
   .controller('AddonsCtrl', function ($scope, $stateParams) {
     $scope.goBackHandler = function () {
       window.history.back(); //This works
-    }
+    };
   })
 
 .controller('ReviewCtrl', function ($scope, $stateParams) {
   $scope.goBackHandler = function () {
     window.history.back(); //This works
-  }
+  };
 })
 
 .controller('OrderhistoryCtrl', function ($scope, $stateParams) {
   $scope.goBackHandler = function () {
     window.history.back(); //This works
-  }
+  };
 })
 
 .controller('ConfirmationCtrl', function ($scope, $stateParams) {
   $scope.goBackHandler = function () {
     window.history.back(); //This works
-  }
+  };
 })
 
 .controller('CalendarCtrl', function ($scope, $stateParams, ionicDatePicker, $ionicSlideBoxDelegate) {
@@ -376,12 +376,12 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
   $scope.slidePrevious = function () {
 
     $ionicSlideBoxDelegate.previous();
-  }
+  };
 
   $scope.slideNext = function () {
 
     $ionicSlideBoxDelegate.next();
-  }
+  };
   var ipObj1 = {
 
     callback: function (val) { //Mandatory
@@ -406,7 +406,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
   };
   $scope.goBackHandler = function () {
     window.history.back(); //This works
-  }
+  };
 
   $scope.openDatePicker = function () {
     ionicDatePicker.openDatePicker(ipObj1);
@@ -420,24 +420,24 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
       cssClass: "priceCard",
       scope: $scope
     });
-  }
+  };
   $scope.closePopup = function () {
     $scope.show.close();
-  }
+  };
   $scope.lockSlide = function () {
     $ionicSlideBoxDelegate.enableSlide(false);
-  }
+  };
   $scope.myActiveSlide = 1;
 
   $scope.slidePrevious = function () {
 
     $ionicSlideBoxDelegate.previous();
-  }
+  };
 
   $scope.slideNext = function () {
 
     $ionicSlideBoxDelegate.next();
-  }
+  };
 })
 
 .controller('SignUpCtrl', function ($scope, $stateParams, $ionicPopup) {
@@ -455,5 +455,5 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
 
   $scope.goBackHandler = function () {
     window.history.back(); //This works
-  }
+  };
 });
