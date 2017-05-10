@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', 'ngCordova'])
 
 .run(function ($ionicPlatform) {
   $ionicPlatform.ready(function () {
@@ -87,6 +87,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker'])
       'menuContent': {
         templateUrl: 'templates/confirmation.html',
         controller: 'ConfirmationCtrl'
+      }
+    }
+  })
+
+  .state('app.requirement', {
+    url: '/confirmation',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/requirement.html',
+        controller: 'RequirementCtrl'
       }
     }
   })
@@ -279,4 +289,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker'])
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
+
+
+})
+.directive('focusMe', function($timeout) {
+  return {
+    link: function(scope, element, attrs) {
+
+      $timeout(function() {
+        element[0].focus();
+      });
+    }
+  };
 });

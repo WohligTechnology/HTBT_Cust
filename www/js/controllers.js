@@ -1,6 +1,6 @@
-angular.module('starter.controllers', ['angular-svg-round-progressbar'])
+angular.module('starter.controllers', ['angular-svg-round-progressbar','ngCordova'])
 
-.controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function ($scope, $ionicModal, $timeout, $ionicPopover) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -11,6 +11,19 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
 
     // Form data for the login modal
     $scope.loginData = {};
+
+
+    $ionicPopover.fromTemplateUrl('templates/modal/popover.html', {
+        scope: $scope,
+        cssClass: 'menupop',
+
+      }).then(function(popover) {
+        $scope.popover = popover;
+      });
+
+      $scope.closePopover = function() {
+          $scope.popover.hide();
+       };
 
     // Create the login modal that we will use later
     $ionicModal.fromTemplateUrl('templates/login.html', {
@@ -43,10 +56,15 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
   .controller('HelpCtrl', function ($scope, $stateParams) {
 
   })
-  .controller('ProductSpecsCtrl', function ($scope, $stateParams) {
+  .controller('ProductSpecsCtrl', function ($scope, $stateParams,$state) {
     $scope.goBackHandler = function () {
       window.history.back(); //This works
     };
+  //   $scope.step1 = function () {
+  //     $state.go('app.subpage1').then(function() {
+  //   cordova.plugins.Keyboard.show();
+  // }); //This works
+  //   };
   })
 
 
@@ -55,6 +73,14 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
       window.history.back(); //This works
     };
   })
+
+  .controller('RequirementCtrl', function ($scope, $stateParams) {
+    $scope.goBackHandler = function () {
+      window.history.back(); //This works
+    };
+  })
+
+
 
   .controller('ProfileCtrl', function ($scope, $stateParams) {
     $scope.goBackHandler = function () {
@@ -466,6 +492,18 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
     console.log("hello");
     $scope.sorry.close();
   };
+
+  $ionicPopover.fromTemplateUrl('templates/modal/popover.html', {
+      scope: $scope,
+      cssClass: 'menupop',
+
+    }).then(function(popover) {
+      $scope.popover = popover;
+    });
+
+    $scope.closePopover = function() {
+        $scope.popover.hide();
+     };
 
   $scope.show='';
       $ionicPopover.fromTemplateUrl('templates/modal/terms.html', {

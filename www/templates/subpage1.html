@@ -5,7 +5,10 @@
         </button>
         </ion-nav-buttons>
         <ion-nav-buttons side="right">
-            <button class="button button-clear ion-android-more-vertical sigupRight">
+          <div class="cartbtn">
+              <img src="img/9.png" alt="" ui-sref="app.review">
+          </div>
+          <span class="cartbadge">3</span>
         </button>
         </ion-nav-buttons>
     </ion-nav-bar>
@@ -15,10 +18,10 @@
             <span>Per Week</span>
             <label for="">?</label>
         </div>
-        <div class="inputarea">
-            <input type="number">
+        <div class="inputarea" ui-sref="app.requirement">
+            <input type="number" focusMe autofocus>
         </div>
-        <div class="avgTxt">On average , 4 people consume 3 jars per week.</div>
+        <div class="avgTxt">On average , 4 people need 3 jars per week.</div>
     </ion-content>
     <div class="bar bar-footer nextFooter footer-height">
         <button class="button button-block button-positive footer-font" ui-sref="app.subpage3">

@@ -5,7 +5,7 @@
         </button>
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
-      <button class="button button-clear ion-android-more-vertical sigupRight">
+      <button class="button button-clear ion-android-more-vertical sigupRight" ng-click="popover.show($event)">
         </button>
     </ion-nav-buttons>
   </ion-nav-bar>
@@ -54,7 +54,7 @@ I have read & accept the
 </label>
 </li>
   <div class="bar bar-footer signUpFooter footer-height">
-    <button class="button button-block button-positive footer-font" ui-sref="app.dashboard">
+    <button class="button button-block button-positive footer-font" ui-sref="app.verification">
   Get Started
 </button>
   </div>

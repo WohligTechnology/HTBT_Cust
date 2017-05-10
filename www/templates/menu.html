@@ -7,6 +7,10 @@
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
       </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+      <button class="button button-clear ion-android-more-vertical sigupRight" ng-click="popover.show($event)">
+      </button>
+    </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
@@ -42,10 +46,11 @@
       </div>
     </ion-content>
   </ion-side-menu>
-  <ion-side-menu class=" notify-header" side="right">
+  <ion-side-menu class=" notify-header noti" side="right">
+
     <ion-header-bar class="bar-stable">
       <i class="ion ion-android-close" menu-close></i>
-      <h1 class="title">Notification</h1>
+      <h1 class="title ">Notification</h1>
     </ion-header-bar>
     <ion-content class="bg-notify">
       <div class="card notify-card">
