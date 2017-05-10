@@ -48,6 +48,20 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
       window.history.back(); //This works
     };
   })
+
+
+  .controller('VerificationCtrl', function ($scope, $stateParams) {
+    $scope.goBackHandler = function () {
+      window.history.back(); //This works
+    };
+  })
+
+  .controller('ProfileCtrl', function ($scope, $stateParams) {
+    $scope.goBackHandler = function () {
+      window.history.back(); //This works
+    };
+  })
+
   .controller('PlaylistsCtrl', function ($scope) {
     $scope.playlists = [{
       title: 'Reggae',
@@ -440,7 +454,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
   };
 })
 
-.controller('SignUpCtrl', function ($scope, $stateParams, $ionicPopup) {
+.controller('SignUpCtrl', function ($scope, $stateParams, $ionicPopup, $ionicPopover) {
   $scope.sorryPopup = function () {
     $scope.sorry = $ionicPopup.show({
       templateUrl: 'templates/modal/pincode.html',
@@ -452,6 +466,21 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar'])
     console.log("hello");
     $scope.sorry.close();
   };
+
+  $scope.show='';
+      $ionicPopover.fromTemplateUrl('templates/modal/terms.html', {
+        scope: $scope,
+        cssClass: 'menupop',
+
+      }).then(function(terms) {
+        $scope.terms = terms;
+      });
+
+
+
+      $scope.closePopover = function() {
+          $scope.terms.hide();
+       };
 
   $scope.goBackHandler = function () {
     window.history.back(); //This works

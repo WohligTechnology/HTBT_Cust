@@ -91,6 +91,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker'])
     }
   })
 
+  .state('app.verification', {
+    url: '/verification',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/verification.html',
+        controller: 'VerificationCtrl'
+      }
+    }
+  })
+
+  .state('app.profile', {
+    url: '/profile',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/profile.html',
+        controller: 'ProfileCtrl'
+      }
+    }
+  })
+
   .state('app.orderhistory', {
     url: '/orderhistory',
     views: {

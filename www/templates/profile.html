@@ -1,4 +1,4 @@
-<ion-view title="Sign up">
+<ion-view title="Profile">
   <ion-nav-bar class="bar-stable nav-height">
     <ion-nav-buttons side="left">
       <button class="button button-clear ion-android-arrow-back sigupIconLeft" ng-click="goBackHandler()">
@@ -12,27 +12,27 @@
   <ion-content class="has-header signUpForm has-footer">
     <div class="padtop-10">
       <label class=" item-input ">
-    <input type="text" placeholder="Your Name">
+    <input type="text" placeholder="Your Name" disabled="">
   </label>
       <label class=" item-input ">
-    <input type="text" placeholder="Email Id (Optional)">
+    <input type="text" placeholder="Email Id (Optional)" disabled="">
   </label>
 
 
       <label class=" item-input ">
-    <input type="text" placeholder="Address">
+    <input type="text" placeholder="Address" disabled="">
   </label>
       <label class=" item-input ">
     <input type="text" placeholder="" disabled>
   </label>
   <label class=" item-input ">
-<input type="number" placeholder="Mobile No">
+<input type="number" placeholder="Mobile No" disabled="">
 </label>
 <label class=" item-input ">
-<input type="number" placeholder="Landline No">
+<input type="number" placeholder="Landline No"disabled="">
 </label>
       <label class=" item-input ">
-    <input type="number" placeholder="Pincode" ng-click="sorryPopup()">
+    <input type="number" placeholder="Pincode" ng-click="sorryPopup()" disabled="">
   </label>
     </div>
     <!--<div class="list paddingDiv">
@@ -44,18 +44,9 @@
   </label>
     </div>-->
   </ion-content>
-
-  <li class="item item-checkbox noborder checkbox-assertive borderR chkalign mar10">
-I have read & accept the
-
-<span  class="termscolor" ng-click="terms.show($event)" >  terms & conditions</span>
-<label class="checkbox noborder ">
-<input type="checkbox" class="">
-</label>
-</li>
   <div class="bar bar-footer signUpFooter footer-height">
-    <button class="button button-block button-positive footer-font" ui-sref="app.dashboard">
-  Get Started
+    <button class="button button-block button-positive footer-font" ui-sref="app.verification">
+  Save
 </button>
   </div>
 </ion-view>

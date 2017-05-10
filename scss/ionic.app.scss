@@ -2209,4 +2209,227 @@ $dark:                            #444 !default;
                 border-bottom: 1px solid #dbdbdb;
             }
 
-            
+
+            //terms
+            .noborder{
+              border: none!important;
+            }
+
+
+            .borderR{
+
+            .checkbox input:before, .checkbox-icon:before {
+                display: table;
+                width: 60%;
+                height: 60%;
+                border-width: 1px;
+                border-style: solid;
+                border-radius: 0px!important;
+            margin-left: 10px!important;
+                content: ' ';
+                -webkit-transition: background-color 20ms ease-in-out;
+                transition: background-color 20ms ease-in-out;
+            }
+
+
+            }
+
+            .checkbox input:after, .checkbox-icon:after {
+                -webkit-transition: opacity 0.05s ease-in-out;
+                transition: opacity 0.05s ease-in-out;
+                -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+                position: absolute;
+                top: 12%;
+                left: 40%;
+                display: table;
+                width: 14px;
+                height: 6px;
+                border: 2px solid #fff;
+                border-top: 0;
+                border-right: 0;
+                content: ' ';
+                opacity: 0;
+            }
+
+
+
+            .item-checkbox .checkbox {
+                position: absolute;
+                top: 61%!important;
+                right: 42%;
+                left: 5%!important;
+                z-index: 3;
+                margin-top: -21px;
+
+            }
+            .chkalign
+              {
+                position: absolute;
+            bottom: 8%;
+            width: 100%;
+            font-size: 12px;
+              }
+
+
+            .termspop{
+
+
+            }
+
+            .termspopover{
+              opacity: 1;
+                top:15%!important;
+                left: 5%!important;
+
+              position: absolute;
+              top: 25%;
+              left: 50%;
+              z-index: 10;
+              display: block;
+              margin-top: 12px;
+              margin-left: -110px;
+              height: 70%!important;
+              width: 90%!important;
+              background-color: #fff;
+              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+              border-radius: 0!important;
+              opacity: 0;
+              text-align: justify;
+
+
+            }
+
+            .termspr{
+              padding: 0 10px;
+              font-size: 12px;
+            }
+
+
+            .termshead{
+              display: block;
+              position: absolute;
+
+              z-index: 0;
+              overflow: hidden;
+
+              min-width: 30px;
+              height: 43px;
+             text-align: left!important;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              font-size: 17px;
+              font-weight: 500;
+              line-height: 44px;
+              background: transparent;
+
+              h1 {
+                display: block;
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: 0;
+                z-index: 0;
+                overflow: hidden;
+                margin: 0 10px;
+                min-width: 30px;
+                height: 43px;
+                text-align: left;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-size: 17px;
+                font-weight: 500;
+                line-height: 44px;
+                padding-top: 10px;
+                color: #ff414d;
+            }
+            }
+
+            .termscolor{
+              color: #ff414d;
+            }
+
+
+            //common classes
+            .center{
+                  text-align: center;
+            }
+
+            .mrt{
+              margin-top: 10px
+            }
+            .m20 {
+                margin: 20px !important;
+            }
+
+            .m30 {
+                margin: 30px !important;
+            }
+
+            //verification
+
+            .veri-under{
+
+              display: block;
+              text-align: center;
+              font-size: 20px;
+              font-weight: 400;
+              padding-top: 50px;
+              color: #6d797e;
+            }
+
+            .veri-pro {
+                            display: block;
+                            text-align: center;
+                            font-size: 25px;
+                            font-weight: 500;
+                            color: #6d797e;
+                            padding-bottom: 20px;
+                        }
+                        //
+                        // display: block;
+                        // text-align: center;
+                        // font-size: 20px;
+                        // font-weight: 500;
+                        // color: #6d797e;
+
+                        .veri-team {
+                                        display: block;
+                                        text-align: center;
+                                        font-size: 20px;
+                                        font-weight: 500;
+                                        color: #6d797e;
+                                    }
+
+
+                                    .confirmtick-div{
+                                          margin: 0px 30px 0 30px;
+                                        width: auto;
+                                        text-align: center;
+                                        img{
+                                          width: 80%
+                                        }
+
+                                    }
+
+//auth-payment
+.order-othr{
+    text-align: center;
+    display: block;
+    border-bottom: 1px solid #ff414d;
+    color: #ff414d;
+    padding: 20px 10px 10px 10px;
+    margin: 0 15px;
+}
+
+
+.auth-card{
+  margin: 0px!important;
+}
+
+
+.auth-textbox{
+  bottom: 8%;
+  width: 100%;
+  font-size: 12px;
+}
