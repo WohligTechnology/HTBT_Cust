@@ -9,7 +9,7 @@
         </button>
         </ion-nav-buttons>
     </ion-nav-bar>
-    <ion-content class="has-header chkout-bgcolor has-footer">
+    <ion-content class="has-header chkout-bgcolor hasterms">
         <div>
             <div class="chkout-planDiv">
                 <label for="">Subscription Plan</label>
@@ -112,10 +112,10 @@
                         <h4>
                             Delivering on friday
                         </h4>
-                        <div class="text-center rel">
+                        <div class="text-center rel" ng-click="openDatePicker()">
                             Click here to change!
                         </div>
-                        <input type="date" class="hidedate">
+                        <!-- <input type="date" class="hidedate"> -->
                     </div>
                     <div class="custarr">
                         <i class="ion ion-chevron-right item-note "></i>
@@ -124,6 +124,14 @@
             </div>
         </div>
     </ion-content>
+    <li class="item item-checkbox noborder checkbox-assertive borderR chkalign mar10">
+  I have read & accept the
+
+  <span  class="termscolor" ng-click="terms.show($event)" >  terms & conditions</span>
+  <label class="checkbox noborder ">
+  <input type="checkbox" class="">
+  </label>
+  </li>
     <div class="bar bar-footer signUpFooter footer-height">
         <button class="button button-block button-positive footer-font" ui-sref="app.auth-payment">
   Pay ₹ 5,020/-

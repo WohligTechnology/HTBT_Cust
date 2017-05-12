@@ -2286,10 +2286,9 @@ $dark:                            #444 !default;
               opacity: 1;
                 top:15%!important;
                 left: 5%!important;
-
               position: absolute;
-              top: 25%;
-              left: 50%;
+              top: 50%!important;
+              left: 50%!important;
               z-index: 10;
               display: block;
               margin-top: 12px;
@@ -2301,8 +2300,7 @@ $dark:                            #444 !default;
               border-radius: 0!important;
               opacity: 0;
               text-align: justify;
-
-
+                transform: translate(-50%, -50%)!important;
             }
 
             .termspr{
@@ -2374,7 +2372,14 @@ $dark:                            #444 !default;
             .m30 {
                 margin: 30px !important;
             }
+            .disblock{
+  display:inline-block!important;
+      padding: 0!important;
+}
 
+.hasterms{
+  bottom: 90px;
+}
             //verification
 
             .veri-under{

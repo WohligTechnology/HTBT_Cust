@@ -11663,8 +11663,8 @@ p.onceLblr {
   top: 15% !important;
   left: 5% !important;
   position: absolute;
-  top: 25%;
-  left: 50%;
+  top: 50% !important;
+  left: 50% !important;
   z-index: 10;
   display: block;
   margin-top: 12px;
@@ -11675,7 +11675,8 @@ p.onceLblr {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   border-radius: 0 !important;
   opacity: 0;
-  text-align: justify; }
+  text-align: justify;
+  transform: translate(-50%, -50%) !important; }
 
 .termspr {
   padding: 0 10px;
@@ -11732,6 +11733,13 @@ p.onceLblr {
 
 .m30 {
   margin: 30px !important; }
+
+.disblock {
+  display: inline-block !important;
+  padding: 0 !important; }
+
+.hasterms {
+  bottom: 90px; }
 
 .veri-under {
   display: block;
