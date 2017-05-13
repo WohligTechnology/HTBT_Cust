@@ -10965,13 +10965,13 @@ a.button {
   box-shadow: 0 2px 0 0 lightgrey; }
 
 .auth-btnalign {
-  margin: 10px 0; }
+  margin: 10px 80px; }
 
 .m35 {
   margin: 5px 35px; }
 
 .auth-otprow {
-  background: #f2f4f5;
+  background: white;
   width: 100%;
   padding: 0 10px;
   margin: 20px 0; }
@@ -10979,7 +10979,7 @@ a.button {
 .auth-otpcol1Lbl {
   border: none;
   padding: 5px;
-  background: #f2f4f5;
+  background: white;
   width: 100%; }
   .auth-otpcol1Lbl input {
     padding-right: 0;
