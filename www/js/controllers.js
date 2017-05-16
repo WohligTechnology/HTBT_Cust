@@ -187,6 +187,13 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar','ngCordov
   };
 })
 
+.controller('OrderConfirmCtrl', function ($scope, $stateParams) {
+  $scope.goBackHandler = function () {
+    window.history.back(); //This works
+  };
+})
+
+
 .controller('Subpage3Ctrl', function ($scope, $stateParams) {
   $scope.goBackHandler = function () {
     window.history.back(); //This works

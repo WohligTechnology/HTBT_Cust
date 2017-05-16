@@ -95,6 +95,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
     }
   })
 
+  .state('app.orderconfirm', {
+    url: '/orderconfirm',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/orderconfirm.html',
+        controller: 'OrderConfirmCtrl'
+      }
+    }
+  })
+
   .state('app.requirement', {
     url: '/confirmation',
     views: {

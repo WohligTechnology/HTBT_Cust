@@ -11829,3 +11829,10 @@ p.onceLblr {
 .bar.bar-stable .title {
   right: auto !important;
   left: 30px !important; }
+
+.confirm-order {
+  display: block;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  color: #6d797e; }

@@ -1,34 +1,30 @@
-<ion-view title="Verification">
+<ion-view title="Confirmation">
     <ion-nav-bar class="bar-stable schedule-bar  nav-height">
         <ion-nav-buttons side="left">
             <button class="button button-clear ion-android-arrow-back sigupIconLeft" ng-click="goBackHandler()">
         </button>
         </ion-nav-buttons>
         <ion-nav-buttons side="right">
-            <!-- <button class="button button-clear ion-android-more-vertical sigupRight"> -->
+            <button class="button button-clear ion-android-more-vertical sigupRight">
         </button>
         </ion-nav-buttons>
     </ion-nav-bar>
     <ion-content class="has-header ion-contentcolor">
-      <div class="m30">
-      <label class="veri-under" for="">You are currently under</label>
-        <span class="veri-pro" for="">verification process</span>
-        <div class="confirmtick-div" >
-              <img src="img/receiving-time.png" alt="">
+        <label class="confirm-thankyou" for="">Thank You!</label>
+        <div class="confirmtick-div" ui-sref="app.orderhistory">
+            <img src="img/tick.png" alt="">
         </div>
-        <div class="center mrt">
+        <div class="conirfm-orderDiv">
             <!-- <label class="conirfm-orderlbl" for="">Delivery Scheduled!</label> -->
-            <label for="" class="veri-team">Someone from our team will</label>
-              <span class="veri-pro" for="">reach out shortly!</span>
+            <label for="" class="confirm-order">Your Order has been placed</label>
+            <label class="confirm-successlbl" for="">Successfully</label>
             <!-- <label class="confirm-refillphn" for="">We'll see you before 6 PM on</label>
             <label class="confirm-date" for="">Wednesday, March 29</label> -->
         </div>
-      </div>
     </ion-content>
     <div class="bar bar-footer signUpFooter footer-height">
-      <button class="button button-block button-positive footer-font" ui-sref="app.browse">
-    Get Started
+      <button class="button button-block button-positive footer-font" ui-sref="app.dashboard">
+    Go to Dashboard
   </button>
     </div>
-
   </ion-view>
