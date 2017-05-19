@@ -1,6 +1,6 @@
-angular.module('starter.controllers', ['angular-svg-round-progressbar','ngCordova'])
+angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter.services','ngCordova'])
 
-.controller('AppCtrl', function ($scope, $ionicModal, $timeout, $ionicPopover) {
+.controller('AppCtrl', function ($scope, $ionicModal, $timeout, $ionicPopover, $state, MyServices) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -200,11 +200,25 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar','ngCordov
   };
 })
 
-.controller('BrowseMoreCtrl', function ($scope, $stateParams) {
+.controller('BrowseMoreCtrl', function ($scope, $stateParams, MyServices) {
+
   $scope.goBackHandler = function () {
     window.history.back(); //This works
   };
+  $scope.product= {}
+  // alert($stateParams.category);
+  $scope.product.category = $stateParams.category;
+
+  console.log("dsjh",$scope.product,$stateParams)
+  MyServices.products($scope.product,function(data) {
+
+            console.log(data);
+            $scope.prod = data.data;
+            console.log("proctid",$scope.prod);
+
+  });
 })
+
 
 .controller('AuthPaymentCtrl', function ($scope, $stateParams) {
   $scope.goBackHandler = function () {
@@ -213,18 +227,38 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar','ngCordov
 })
 
 
-.controller('BrowseCtrl', function ($scope, $ionicSlideBoxDelegate) {
+.controller('BrowseCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices) {
     $scope.nextSlide = function () {
       $ionicSlideBoxDelegate.next();
     };
     $scope.goBackHandler = function () {
       window.history.back(); //This works
     };
+    MyServices.categories(function(data) {
+
+      console.log(data);
+      $scope.category = _.chunk(data.data, 2);
+      console.log($scope.category);
+    });
+
+      MyServices.featureprods(function(data) {
+
+            console.log(data);
+            $scope.feaprods = data.data;
+            console.log("let me know",$scope.feaprods);
+
+
+            // $ionicSlideBoxDelegate.slide(0);
+                      $ionicSlideBoxDelegate.update();
+
+    });
   })
   .controller('AddonsCtrl', function ($scope, $stateParams) {
     $scope.goBackHandler = function () {
       window.history.back(); //This works
     };
+
+
   })
 
 .controller('ReviewCtrl', function ($scope, $stateParams, ionicDatePicker) {
@@ -559,7 +593,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar','ngCordov
   };
 })
 
-.controller('SignUpCtrl', function ($scope, $stateParams, $ionicPopup, $ionicPopover) {
+.controller('SignUpCtrl', function ($scope, $stateParams, $ionicPopup, $ionicPopover, MyServices, $state) {
   $scope.sorryPopup = function () {
     $scope.sorry = $ionicPopup.show({
       templateUrl: 'templates/modal/pincode.html',
@@ -601,5 +635,21 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar','ngCordov
 
   $scope.goBackHandler = function () {
     window.history.back(); //This works
+  };
+
+  $scope.signupForm ={};
+  $scope.signupForm.accessLevel = "Customer"
+   $scope.signup = function() {
+    console.log("djfgjk",$scope.signupForm);
+    MyServices.signup($scope.signupForm, function(data) {
+
+      console.log(data);
+      if ("data.value == true") {
+        $state.go('app.verification');
+      } else {
+
+        $scope.showAlert(data.status, 'login', 'Error Message');
+      }
+    });
   };
 });

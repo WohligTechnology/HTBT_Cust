@@ -146,7 +146,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
   })
 
   .state('app.browse-more', {
-      url: '/browse-more',
+      url: '/browse-more/:category',
       views: {
         'menuContent': {
           templateUrl: 'templates/browse-more.html',
@@ -305,6 +305,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
   $urlRouterProvider.otherwise('/login');
 })
 
+
+
+
 .directive('focusMe', function($timeout) {
   return {
     link: function(scope, element, attrs) {
@@ -314,4 +317,55 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
       });
     }
   };
+})
+
+.directive('onlyDigits', function () {
+    return {
+      require: 'ngModel',
+      restrict: 'A',
+      link: function (scope, element, attr, ctrl) {
+        var digits;
+
+        function inputValue(val) {
+          if (val) {
+            if (attr.type == "tel") {
+              digits = val.replace(/[^0-9\+\\]/g, '');
+            } else {
+              digits = val.replace(/[^0-9\-\\]/g, '');
+            }
+
+
+            if (digits !== val) {
+              ctrl.$setViewValue(digits);
+              ctrl.$render();
+            }
+            return parseInt(digits, 10);
+          }
+          return undefined;
+        }
+        ctrl.$parsers.push(inputValue);
+      }
+    };
+})
+.filter('uploadpath', function() {
+  return function(input, width, height, style) {
+    var other = "";
+    if (width && width != "") {
+      other += "&width=" + width;
+    }
+    if (height && height != "") {
+      other += "&height=" + height;
+    }
+    if (style && style != "") {
+      other += "&style=" + style;
+    }
+    if (input) {
+      if (input.indexOf('https://') == -1) {
+        return imgpath + input + other;
+
+      } else {
+        return input;
+      }
+    }
+  }
 });

@@ -9,31 +9,58 @@
         </button>
     </ion-nav-buttons>
   </ion-nav-bar>
+  <form  ng-submit="signup()" name="userForm">
   <ion-content class="has-header signUpForm has-footer">
     <div class="padtop-10">
-      <label class=" item-input ">
-    <input type="text" placeholder="Your Name">
-  </label>
-      <label class=" item-input ">
-    <input type="text" placeholder="Email Id (Optional)">
-  </label>
+      <div>
+        <label class=" item-input ">
+        <input type="text" placeholder="Your Name"  ng-model="signupForm.name" name="name" required>
+        </label>
+        <p class="error-msg" ng-show="userForm.name.$error.required && userForm.name.$touched">Please Enter Your Name.</p>
+      </div>
 
 
-      <label class=" item-input ">
-    <input type="text" placeholder="Address">
+<div>
+  <label class=" item-input ">
+<input type="email" placeholder="Email Id (Optional)" ng-model="signupForm.email" name="email" required>
+</label>
+<p class="error-msg" ng-show="userForm.email.$error.required && userForm.email.$touched">Please Enter your Email Id.</p>
+</div>
+
+
+<div>
+  <label class=" item-input ">
+  <input type="text" placeholder="Address" ng-model="signupForm.address" name="estadd" required>
   </label>
+   <p class="error-msg" ng-show="userForm.estadd.$error.required && userForm.estadd.$touched">Please Enter your Address.</p>
+</div>
+
+
       <label class=" item-input ">
     <input type="text" placeholder="" disabled>
   </label>
+
+  <div>
+    <label class=" item-input ">
+    <input type="text" placeholder="Mobile No" ng-model="signupForm.mobile" name="mob" required only-Digits maxlength="10" minlength="10">
+    </label>
+     <p class="error-msg" ng-show="userForm.mob.$error.required && userForm.mob.$touched">Please Enter your Mobile No.</p>
+  </div>
+
+<div>
   <label class=" item-input ">
-<input type="number" placeholder="Mobile No">
-</label>
-<label class=" item-input ">
-<input type="number" placeholder="Landline No">
-</label>
-      <label class=" item-input ">
-    <input type="number" placeholder="Pincode" ng-click="sorryPopup()">
+  <input type="text" placeholder="Landline No"  ng-model="signupForm.landLine" name="landl" required only-Digits maxlength="11" minlength="11">
   </label>
+  <p class="error-msg" ng-show="userForm.landl.$error.required && userForm.landl.$touched">Please Enter your Landline No.</p>
+</div>
+
+<div>
+  <label class=" item-input ">
+  <input type="text" placeholder="Pincode"  ng-model="signupForm.pincode" name="pincode" required only-Digits maxlength="6" minlength="6">
+  </label>
+  <p class="error-msg" ng-show="userForm.pincode.$error.required && userForm.pincode.$touched">Please Enter your Pincode.</p>
+</div>
+
     </div>
     <!--<div class="list paddingDiv">
       <label class="item item-input nameSignup">
@@ -50,12 +77,13 @@ I have read & accept the
 
 <span  class="termscolor" ng-click="terms.show($event)" >  terms & conditions</span>
 <label class="checkbox noborder ">
-<input type="checkbox" class="">
+<input type="checkbox" class="" ng-model="click" ng-init="click=true">
 </label>
 </li>
-  <div class="bar bar-footer signUpFooter footer-height">
-    <button class="button button-block button-positive footer-font" ui-sref="app.verification">
+  <div class="bar bar-footer signUpFooter footer-height" ng-if="click">
+    <button class="button button-block button-positive footer-font" type="submit">
   Get Started
 </button>
   </div>
+  </form>
 </ion-view>

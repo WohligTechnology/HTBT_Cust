@@ -11836,3 +11836,7 @@ p.onceLblr {
   font-size: 20px;
   font-weight: 500;
   color: #6d797e; }
+
+.error-msg {
+  margin: 10px;
+  color: red !important; }
