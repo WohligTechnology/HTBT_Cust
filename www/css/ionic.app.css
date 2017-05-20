@@ -10746,10 +10746,12 @@ a.button {
     padding: 15px 0;
     display: block;
     text-align: center;
-    background: #e7e9ea; }
+    background: #e7e9ea;
+    overflow: hidden; }
     .browse-card1 .icondiv img {
       height: 100%;
-      width: auto; }
+      width: auto;
+      overflow: hidden; }
   .browse-card1 label {
     text-align: center;
     display: block;
@@ -11615,7 +11617,8 @@ p.onceLblr {
 .noborder {
   border: none !important; }
 
-.borderR .checkbox input:before, .borderR .checkbox-icon:before {
+.borderR .checkbox input:before,
+.borderR .checkbox-icon:before {
   display: table;
   width: 60%;
   height: 60%;
@@ -11627,7 +11630,8 @@ p.onceLblr {
   -webkit-transition: background-color 20ms ease-in-out;
   transition: background-color 20ms ease-in-out; }
 
-.checkbox input:after, .checkbox-icon:after {
+.checkbox input:after,
+.checkbox-icon:after {
   -webkit-transition: opacity 0.05s ease-in-out;
   transition: opacity 0.05s ease-in-out;
   -webkit-transform: rotate(-45deg);

@@ -56,7 +56,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
   .controller('HelpCtrl', function ($scope, $stateParams) {
 
   })
-  .controller('ProductSpecsCtrl', function ($scope, $stateParams,$state) {
+  .controller('ProductSpecsCtrl', function ($scope, $stateParams,$state,MyServices) {
     $scope.goBackHandler = function () {
       window.history.back(); //This works
     };
@@ -65,6 +65,19 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
   //   cordova.plugins.Keyboard.show();
   // }); //This works
   //   };
+
+    $scope.product = {}
+    // alert($stateParams.category);
+    $scope.product.category = $stateParams.category;
+
+    console.log("dsjh", $scope.product, $stateParams)
+    MyServices.products($scope.product, function (data) {
+
+      console.log(data);
+      $scope.prod = data.data;
+      console.log("proctid", $scope.prod);
+
+    });
   })
 
 
@@ -200,7 +213,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
   };
 })
 
-.controller('BrowseMoreCtrl', function ($scope, $stateParams, MyServices) {
+.controller('BrowseMoreCtrl', function ($scope, $stateParams, MyServices,$state) {
 
   $scope.goBackHandler = function () {
     window.history.back(); //This works
@@ -227,9 +240,21 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 })
 
 
-.controller('BrowseCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices) {
+.controller('BrowseCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices,$state) {
     $scope.nextSlide = function () {
       $ionicSlideBoxDelegate.next();
+    };
+      $scope.nextPage = function (sub, id) {
+      if (sub == 'Yes') {
+        $state.go('app.browse-more', {
+          'category': id
+        })
+      } else {
+        $state.go('app.productSpecs', {
+          'category': id
+        })
+
+      }
     };
     $scope.goBackHandler = function () {
       window.history.back(); //This works
