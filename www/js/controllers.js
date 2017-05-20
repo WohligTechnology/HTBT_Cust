@@ -1,6 +1,6 @@
-angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter.services','ngCordova'])
+angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter.services', 'ngCordova'])
 
-.controller('AppCtrl', function ($scope, $ionicModal, $timeout, $ionicPopover, $state, MyServices) {
+  .controller('AppCtrl', function ($scope, $ionicModal, $timeout, $ionicPopover, $state,  MyServices) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -14,16 +14,16 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
 
     $ionicPopover.fromTemplateUrl('templates/modal/popover.html', {
-        scope: $scope,
-        cssClass: 'menupop',
+      scope: $scope,
+      cssClass: 'menupop',
 
-      }).then(function(popover) {
-        $scope.popover = popover;
-      });
+    }).then(function (popover) {
+      $scope.popover = popover;
+    });
 
-      $scope.closePopover = function() {
-          $scope.popover.hide();
-       };
+    $scope.closePopover = function () {
+      $scope.popover.hide();
+    };
 
     // Create the login modal that we will use later
     $ionicModal.fromTemplateUrl('templates/login.html', {
@@ -56,15 +56,15 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
   .controller('HelpCtrl', function ($scope, $stateParams) {
 
   })
-  .controller('ProductSpecsCtrl', function ($scope, $stateParams,$state) {
+  .controller('ProductSpecsCtrl', function ($scope, $stateParams, $state) {
     $scope.goBackHandler = function () {
       window.history.back(); //This works
     };
-  //   $scope.step1 = function () {
-  //     $state.go('app.subpage1').then(function() {
-  //   cordova.plugins.Keyboard.show();
-  // }); //This works
-  //   };
+    //   $scope.step1 = function () {
+    //     $state.go('app.subpage1').then(function() {
+    //   cordova.plugins.Keyboard.show();
+    // }); //This works
+    //   };
   })
 
 
@@ -110,146 +110,142 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     }];
   })
 
-.controller('PlaylistCtrl', function ($scope, $stateParams) {})
+  .controller('PlaylistCtrl', function ($scope, $stateParams) {})
 
-.controller('VerifyCtrl', function ($scope, $stateParams) {})
+  .controller('VerifyCtrl', function ($scope, $stateParams) {})
 
-.controller('LoginCtrl', function ($scope, $stateParams) {})
+  .controller('LoginCtrl', function ($scope, $stateParams) {})
 
-.controller('ShippingCtrl', function ($scope, $stateParams) {
-  $scope.goBackHandler = function () {
-    window.history.back(); //This works
-  };
-})
+  .controller('ShippingCtrl', function ($scope, $stateParams) {
+    $scope.goBackHandler = function () {
+      window.history.back(); //This works
+    };
+  })
 
-.controller('CheckoutCtrl', function ($scope, $stateParams, ionicDatePicker, $ionicPopover) {
-  $scope.goBackHandler = function () {
-    window.history.back(); //This works
-  };
+  .controller('CheckoutCtrl', function ($scope, $stateParams, ionicDatePicker, $ionicPopover) {
+    $scope.goBackHandler = function () {
+      window.history.back(); //This works
+    };
 
-  $scope.goBackHandler = function () {
-    window.history.back(); //This works
-  };
+    $scope.goBackHandler = function () {
+      window.history.back(); //This works
+    };
 
-  $scope.show='';
+    $scope.show = '';
     $ionicPopover.fromTemplateUrl('templates/modal/terms.html', {
       scope: $scope,
       cssClass: 'menupop',
 
-    }).then(function(terms) {
+    }).then(function (terms) {
       $scope.terms = terms;
     });
 
 
 
-    $scope.closePopover = function() {
-        $scope.terms.hide();
-     };
+    $scope.closePopover = function () {
+      $scope.terms.hide();
+    };
 
-  var ipObj1 = {
-         callback: function (val) {  //Mandatory
-           console.log('Return value from the datepicker popup is : ' + val, new Date(val));
-         },
-         disabledDates: [            //Optional
-           new Date(2016, 2, 16),
-           new Date(2015, 3, 16),
-           new Date(2015, 4, 16),
-           new Date(2015, 5, 16),
-           new Date('Wednesday, August 12, 2015'),
-           new Date("08-16-2016"),
-           new Date(1439676000000)
-         ],
-         from: new Date(2012, 1, 1), //Optional
-         to: new Date(2016, 10, 30), //Optional
-         inputDate: new Date(),      //Optional
-         mondayFirst: true,          //Optional
-         disableWeekdays: [0],       //Optional
-         closeOnSelect: false,       //Optional
-         templateType: 'popup'       //Optional
-       };
+    var ipObj1 = {
+      callback: function (val) { //Mandatory
+        console.log('Return value from the datepicker popup is : ' + val, new Date(val));
+      },
+      disabledDates: [ //Optional
+        new Date(2016, 2, 16),
+        new Date(2015, 3, 16),
+        new Date(2015, 4, 16),
+        new Date(2015, 5, 16),
+        new Date('Wednesday, August 12, 2015'),
+        new Date("08-16-2016"),
+        new Date(1439676000000)
+      ],
+      from: new Date(2012, 1, 1), //Optional
+      to: new Date(2016, 10, 30), //Optional
+      inputDate: new Date(), //Optional
+      mondayFirst: true, //Optional
+      disableWeekdays: [0], //Optional
+      closeOnSelect: false, //Optional
+      templateType: 'popup' //Optional
+    };
 
-       $scope.openDatePicker = function(){
-         ionicDatePicker.openDatePicker(ipObj1);
-       };
+    $scope.openDatePicker = function () {
+      ionicDatePicker.openDatePicker(ipObj1);
+    };
 
-})
-
-
-.controller('Subpage1Ctrl', function ($scope, $stateParams) {
-  $scope.goBackHandler = function () {
-    window.history.back(); //This works
-  };
-})
-
-.controller('Subpage2Ctrl', function ($scope, $stateParams) {
-  $scope.goBackHandler = function () {
-    window.history.back(); //This works
-  };
-})
-
-.controller('OrderConfirmCtrl', function ($scope, $stateParams) {
-  $scope.goBackHandler = function () {
-    window.history.back(); //This works
-  };
-})
+  })
 
 
-.controller('Subpage3Ctrl', function ($scope, $stateParams) {
-  $scope.goBackHandler = function () {
-    window.history.back(); //This works
-  };
-})
+  .controller('Subpage1Ctrl', function ($scope, $stateParams) {
+    $scope.goBackHandler = function () {
+      window.history.back(); //This works
+    };
+  })
 
-.controller('BrowseMoreCtrl', function ($scope, $stateParams, MyServices) {
+  .controller('Subpage2Ctrl', function ($scope, $stateParams) {
+    $scope.goBackHandler = function () {
+      window.history.back(); //This works
+    };
+  })
 
-  $scope.goBackHandler = function () {
-    window.history.back(); //This works
-  };
-  $scope.product= {}
-  // alert($stateParams.category);
-  $scope.product.category = $stateParams.category;
-
-  console.log("dsjh",$scope.product,$stateParams)
-  MyServices.products($scope.product,function(data) {
-
-            console.log(data);
-            $scope.prod = data.data;
-            console.log("proctid",$scope.prod);
-
-  });
-})
+  .controller('OrderConfirmCtrl', function ($scope, $stateParams) {
+    $scope.goBackHandler = function () {
+      window.history.back(); //This works
+    };
+  })
 
 
-.controller('AuthPaymentCtrl', function ($scope, $stateParams) {
-  $scope.goBackHandler = function () {
-    window.history.back(); //This works
-  };
-})
+  .controller('Subpage3Ctrl', function ($scope, $stateParams) {
+    $scope.goBackHandler = function () {
+      window.history.back(); //This works
+    };
+  })
+
+  .controller('BrowseMoreCtrl', function ($scope, $stateParams, MyServices) {
+
+    $scope.goBackHandler = function () {
+      window.history.back(); //This works
+    };
+    $scope.product = {};
+    $scope.product.category = $stateParams.category;
+
+    MyServices.products($scope.product, function (data) {
+      console.log(data);
+      $scope.prod = data.data;
+      console.log("proctid", $scope.prod);
+    });
+  })
 
 
-.controller('BrowseCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices) {
+  .controller('AuthPaymentCtrl', function ($scope, $stateParams) {
+    $scope.goBackHandler = function () {
+      window.history.back(); //This works
+    };
+  })
+
+
+  .controller('BrowseCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices) {
     $scope.nextSlide = function () {
       $ionicSlideBoxDelegate.next();
     };
     $scope.goBackHandler = function () {
       window.history.back(); //This works
     };
-    MyServices.categories(function(data) {
+    MyServices.categories(function (data) {
 
       console.log(data);
       $scope.category = _.chunk(data.data, 2);
       console.log($scope.category);
     });
 
-      MyServices.featureprods(function(data) {
+    MyServices.featureprods(function (data) {
 
-            console.log(data);
-            $scope.feaprods = data.data;
-            console.log("let me know",$scope.feaprods);
+      console.log(data);
+      $scope.feaprods = data.data;
+      console.log("let me know", $scope.feaprods);
 
 
-            // $ionicSlideBoxDelegate.slide(0);
-                      $ionicSlideBoxDelegate.update();
+      // $ionicSlideBoxDelegate.slide(0);
+      $ionicSlideBoxDelegate.update();
 
     });
   })
@@ -261,395 +257,395 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
   })
 
-.controller('ReviewCtrl', function ($scope, $stateParams, ionicDatePicker) {
-  $scope.goBackHandler = function () {
-    window.history.back(); //This works
-  };
-  var ipObj1 = {
-         callback: function (val) {  //Mandatory
-           console.log('Return value from the datepicker popup is : ' + val, new Date(val));
-         },
-         disabledDates: [            //Optional
-           new Date(2016, 2, 16),
-           new Date(2015, 3, 16),
-           new Date(2015, 4, 16),
-           new Date(2015, 5, 16),
-           new Date('Wednesday, August 12, 2015'),
-           new Date("08-16-2016"),
-           new Date(1439676000000)
-         ],
-         from: new Date(2012, 1, 1), //Optional
-         to: new Date(2016, 10, 30), //Optional
-         inputDate: new Date(),      //Optional
-         mondayFirst: true,          //Optional
-         disableWeekdays: [0],       //Optional
-         closeOnSelect: false,       //Optional
-         templateType: 'popup'       //Optional
-       };
+  .controller('ReviewCtrl', function ($scope, $stateParams, ionicDatePicker) {
+    $scope.goBackHandler = function () {
+      window.history.back(); //This works
+    };
+    var ipObj1 = {
+      callback: function (val) { //Mandatory
+        console.log('Return value from the datepicker popup is : ' + val, new Date(val));
+      },
+      disabledDates: [ //Optional
+        new Date(2016, 2, 16),
+        new Date(2015, 3, 16),
+        new Date(2015, 4, 16),
+        new Date(2015, 5, 16),
+        new Date('Wednesday, August 12, 2015'),
+        new Date("08-16-2016"),
+        new Date(1439676000000)
+      ],
+      from: new Date(2012, 1, 1), //Optional
+      to: new Date(2016, 10, 30), //Optional
+      inputDate: new Date(), //Optional
+      mondayFirst: true, //Optional
+      disableWeekdays: [0], //Optional
+      closeOnSelect: false, //Optional
+      templateType: 'popup' //Optional
+    };
 
-       $scope.openDatePicker = function(){
-         ionicDatePicker.openDatePicker(ipObj1);
-       };
+    $scope.openDatePicker = function () {
+      ionicDatePicker.openDatePicker(ipObj1);
+    };
 
-})
+  })
 
-.controller('OrderhistoryCtrl', function ($scope, $stateParams) {
-  $scope.goBackHandler = function () {
-    window.history.back(); //This works
-  };
-})
+  .controller('OrderhistoryCtrl', function ($scope, $stateParams) {
+    $scope.goBackHandler = function () {
+      window.history.back(); //This works
+    };
+  })
 
-.controller('ConfirmationCtrl', function ($scope, $stateParams) {
-  $scope.goBackHandler = function () {
-    window.history.back(); //This works
-  };
-})
+  .controller('ConfirmationCtrl', function ($scope, $stateParams) {
+    $scope.goBackHandler = function () {
+      window.history.back(); //This works
+    };
+  })
 
-.controller('CalendarCtrl', function ($scope, $stateParams, ionicDatePicker, $ionicSlideBoxDelegate) {
+  .controller('CalendarCtrl', function ($scope, $stateParams, ionicDatePicker, $ionicSlideBoxDelegate) {
 
-  $scope.days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    $scope.days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  $scope.date = [{
-    d: '',
-    isAvl: false
-  }, {
-    d: '',
-    isAvl: false
-  }, {
-    d: '',
-    isAvl: false
-  }, {
-    d: '1',
-    isAvl: false
-  }, {
-    d: '2',
-    isAvl: false
-  }, {
-    d: '3',
-    isAvl: false
-  }, {
-    d: '4',
-    isAvl: false
-  }, {
-    d: '5',
-    isAvl: false
-  }, {
-    d: '6',
-    isAvl: false
-  }, {
-    d: '7',
-    isAvl: false
-  }, {
-    d: '8',
-    isAvl: true
-  }, {
-    d: '9',
-    isAvl: false
-  }, {
-    d: '10',
-    isAvl: true
-  }, {
-    d: '11',
-    isAvl: false
-  }, {
-    d: '12',
-    isAvl: false
-  }, {
-    d: '13',
-    isAvl: false
-  }, {
-    d: '14',
-    isAvl: false
-  }, {
-    d: '15',
-    isAvl: true
-  }, {
-    d: '16',
-    isAvl: false
-  }, {
-    d: '17',
-    isAvl: true
-  }, {
-    d: '18',
-    isAvl: false
-  }, {
-    d: '19',
-    isAvl: false
-  }, {
-    d: '20',
-    isAvl: false
-  }, {
-    d: '21',
-    isAvl: false
-  }, {
-    d: '22',
-    isAvl: true
-  }, {
-    d: '23',
-    isAvl: false
-  }, {
-    d: '24',
-    isAvl: true
-  }, {
-    d: '25',
-    isAvl: false
-  }, {
-    d: '26',
-    isAvl: false
-  }, {
-    d: '27',
-    isAvl: false
-  }, {
-    d: '28',
-    isAvl: false
-  }, {
-    d: '29',
-    isAvl: true
-  }, {
-    d: '30',
-    isAvl: false
-  }, {
-    d: '31',
-    isAvl: true
+    $scope.date = [{
+      d: '',
+      isAvl: false
+    }, {
+      d: '',
+      isAvl: false
+    }, {
+      d: '',
+      isAvl: false
+    }, {
+      d: '1',
+      isAvl: false
+    }, {
+      d: '2',
+      isAvl: false
+    }, {
+      d: '3',
+      isAvl: false
+    }, {
+      d: '4',
+      isAvl: false
+    }, {
+      d: '5',
+      isAvl: false
+    }, {
+      d: '6',
+      isAvl: false
+    }, {
+      d: '7',
+      isAvl: false
+    }, {
+      d: '8',
+      isAvl: true
+    }, {
+      d: '9',
+      isAvl: false
+    }, {
+      d: '10',
+      isAvl: true
+    }, {
+      d: '11',
+      isAvl: false
+    }, {
+      d: '12',
+      isAvl: false
+    }, {
+      d: '13',
+      isAvl: false
+    }, {
+      d: '14',
+      isAvl: false
+    }, {
+      d: '15',
+      isAvl: true
+    }, {
+      d: '16',
+      isAvl: false
+    }, {
+      d: '17',
+      isAvl: true
+    }, {
+      d: '18',
+      isAvl: false
+    }, {
+      d: '19',
+      isAvl: false
+    }, {
+      d: '20',
+      isAvl: false
+    }, {
+      d: '21',
+      isAvl: false
+    }, {
+      d: '22',
+      isAvl: true
+    }, {
+      d: '23',
+      isAvl: false
+    }, {
+      d: '24',
+      isAvl: true
+    }, {
+      d: '25',
+      isAvl: false
+    }, {
+      d: '26',
+      isAvl: false
+    }, {
+      d: '27',
+      isAvl: false
+    }, {
+      d: '28',
+      isAvl: false
+    }, {
+      d: '29',
+      isAvl: true
+    }, {
+      d: '30',
+      isAvl: false
+    }, {
+      d: '31',
+      isAvl: true
 
-  }, {
-    d: '',
-    isAvl: false
-  }];
-  $scope.date1 = _.chunk($scope.date, 7);
-  console.log($scope.date1);
-  $scope.dateA = [{
-    d: '30',
-    isAvl: false
-  }, {
-    d: '31',
-    isAvl: false
-  }, {
-    d: '',
-    isAvl: false
-  }, {
-    d: '',
-    isAvl: false
-  }, {
-    d: '',
-    isAvl: false
-  }, {
-    d: '',
-    isAvl: false
-  }, {
-    d: '1',
-    isAvl: false
-  }, {
-    d: '2',
-    isAvl: false
-  }, {
-    d: '3',
-    isAvl: false
-  }, {
-    d: '4',
-    isAvl: false
-  }, {
-    d: '5',
-    isAvl: false
-  }, {
-    d: '6',
-    isAvl: false
-  }, {
-    d: '7',
-    isAvl: false
-  }, {
-    d: '8',
-    isAvl: true
-  }, {
-    d: '9',
-    isAvl: false
-  }, {
-    d: '10',
-    isAvl: true
-  }, {
-    d: '11',
-    isAvl: false
-  }, {
-    d: '12',
-    isAvl: false
-  }, {
-    d: '13',
-    isAvl: false
-  }, {
-    d: '14',
-    isAvl: false
-  }, {
-    d: '15',
-    isAvl: true
-  }, {
-    d: '16',
-    isAvl: false
-  }, {
-    d: '17',
-    isAvl: true
-  }, {
-    d: '18',
-    isAvl: false
-  }, {
-    d: '19',
-    isAvl: false
-  }, {
-    d: '20',
-    isAvl: false
-  }, {
-    d: '21',
-    isAvl: false
-  }, {
-    d: '22',
-    isAvl: true
-  }, {
-    d: '23',
-    isAvl: false
-  }, {
-    d: '24',
-    isAvl: true
-  }, {
-    d: '25',
-    isAvl: false
-  }, {
-    d: '26',
-    isAvl: false
-  }, {
-    d: '27',
-    isAvl: false
-  }, {
-    d: '28',
-    isAvl: false
-  }, {
-    d: '29',
-    isAvl: true
-  }];
-  $scope.dateA1 = _.chunk($scope.dateA, 7);
-  console.log($scope.date1);
-  $scope.slidePrevious = function () {
+    }, {
+      d: '',
+      isAvl: false
+    }];
+    $scope.date1 = _.chunk($scope.date, 7);
+    console.log($scope.date1);
+    $scope.dateA = [{
+      d: '30',
+      isAvl: false
+    }, {
+      d: '31',
+      isAvl: false
+    }, {
+      d: '',
+      isAvl: false
+    }, {
+      d: '',
+      isAvl: false
+    }, {
+      d: '',
+      isAvl: false
+    }, {
+      d: '',
+      isAvl: false
+    }, {
+      d: '1',
+      isAvl: false
+    }, {
+      d: '2',
+      isAvl: false
+    }, {
+      d: '3',
+      isAvl: false
+    }, {
+      d: '4',
+      isAvl: false
+    }, {
+      d: '5',
+      isAvl: false
+    }, {
+      d: '6',
+      isAvl: false
+    }, {
+      d: '7',
+      isAvl: false
+    }, {
+      d: '8',
+      isAvl: true
+    }, {
+      d: '9',
+      isAvl: false
+    }, {
+      d: '10',
+      isAvl: true
+    }, {
+      d: '11',
+      isAvl: false
+    }, {
+      d: '12',
+      isAvl: false
+    }, {
+      d: '13',
+      isAvl: false
+    }, {
+      d: '14',
+      isAvl: false
+    }, {
+      d: '15',
+      isAvl: true
+    }, {
+      d: '16',
+      isAvl: false
+    }, {
+      d: '17',
+      isAvl: true
+    }, {
+      d: '18',
+      isAvl: false
+    }, {
+      d: '19',
+      isAvl: false
+    }, {
+      d: '20',
+      isAvl: false
+    }, {
+      d: '21',
+      isAvl: false
+    }, {
+      d: '22',
+      isAvl: true
+    }, {
+      d: '23',
+      isAvl: false
+    }, {
+      d: '24',
+      isAvl: true
+    }, {
+      d: '25',
+      isAvl: false
+    }, {
+      d: '26',
+      isAvl: false
+    }, {
+      d: '27',
+      isAvl: false
+    }, {
+      d: '28',
+      isAvl: false
+    }, {
+      d: '29',
+      isAvl: true
+    }];
+    $scope.dateA1 = _.chunk($scope.dateA, 7);
+    console.log($scope.date1);
+    $scope.slidePrevious = function () {
 
-    $ionicSlideBoxDelegate.previous();
-  };
+      $ionicSlideBoxDelegate.previous();
+    };
 
-  $scope.slideNext = function () {
+    $scope.slideNext = function () {
 
-    $ionicSlideBoxDelegate.next();
-  };
-  var ipObj1 = {
+      $ionicSlideBoxDelegate.next();
+    };
+    var ipObj1 = {
 
-    callback: function (val) { //Mandatory
-      console.log('Return value from the datepicker popup is : ' + val, new Date(val));
-    },
-    disabledDates: [ //Optional
-      new Date(2016, 2, 16),
-      new Date(2015, 3, 16),
-      new Date(2015, 4, 16),
-      new Date(2015, 5, 16),
-      new Date('Wednesday, August 12, 2015'),
-      new Date("08-16-2016"),
-      new Date(1439676000000)
-    ],
-    from: new Date(2012, 1, 1), //Optional
-    to: new Date(2016, 10, 30), //Optional
-    inputDate: new Date(), //Optional
-    mondayFirst: true, //Optional
-    disableWeekdays: [0], //Optional
-    closeOnSelect: false, //Optional
-    templateType: 'popup' //Optional
-  };
-  $scope.goBackHandler = function () {
-    window.history.back(); //This works
-  };
+      callback: function (val) { //Mandatory
+        console.log('Return value from the datepicker popup is : ' + val, new Date(val));
+      },
+      disabledDates: [ //Optional
+        new Date(2016, 2, 16),
+        new Date(2015, 3, 16),
+        new Date(2015, 4, 16),
+        new Date(2015, 5, 16),
+        new Date('Wednesday, August 12, 2015'),
+        new Date("08-16-2016"),
+        new Date(1439676000000)
+      ],
+      from: new Date(2012, 1, 1), //Optional
+      to: new Date(2016, 10, 30), //Optional
+      inputDate: new Date(), //Optional
+      mondayFirst: true, //Optional
+      disableWeekdays: [0], //Optional
+      closeOnSelect: false, //Optional
+      templateType: 'popup' //Optional
+    };
+    $scope.goBackHandler = function () {
+      window.history.back(); //This works
+    };
 
-  $scope.openDatePicker = function () {
-    ionicDatePicker.openDatePicker(ipObj1);
-  };
-})
+    $scope.openDatePicker = function () {
+      ionicDatePicker.openDatePicker(ipObj1);
+    };
+  })
 
-.controller('DashboardCtrl', function ($scope, $stateParams, $ionicPopup, $ionicSlideBoxDelegate) {
-  $scope.showPopup = function () {
-    $scope.show = $ionicPopup.show({
-      templateUrl: 'templates/modal/price.html',
-      cssClass: "priceCard",
-      scope: $scope
-    });
-  };
-  $scope.closePopup = function () {
-    $scope.show.close();
-  };
-  $scope.lockSlide = function () {
-    $ionicSlideBoxDelegate.enableSlide(false);
-  };
-  $scope.myActiveSlide = 1;
+  .controller('DashboardCtrl', function ($scope, $stateParams, $ionicPopup, $ionicSlideBoxDelegate) {
+    $scope.showPopup = function () {
+      $scope.show = $ionicPopup.show({
+        templateUrl: 'templates/modal/price.html',
+        cssClass: "priceCard",
+        scope: $scope
+      });
+    };
+    $scope.closePopup = function () {
+      $scope.show.close();
+    };
+    $scope.lockSlide = function () {
+      $ionicSlideBoxDelegate.enableSlide(false);
+    };
+    $scope.myActiveSlide = 1;
 
-  $scope.slidePrevious = function () {
+    $scope.slidePrevious = function () {
 
-    $ionicSlideBoxDelegate.previous();
-  };
+      $ionicSlideBoxDelegate.previous();
+    };
 
-  $scope.slideNext = function () {
+    $scope.slideNext = function () {
 
-    $ionicSlideBoxDelegate.next();
-  };
-})
+      $ionicSlideBoxDelegate.next();
+    };
+  })
 
-.controller('SignUpCtrl', function ($scope, $stateParams, $ionicPopup, $ionicPopover, MyServices, $state) {
-  $scope.sorryPopup = function () {
-    $scope.sorry = $ionicPopup.show({
-      templateUrl: 'templates/modal/pincode.html',
-      cssClass: "popupSorry",
-      scope: $scope
-    });
-  };
-  $scope.closeSorry = function () {
-    console.log("hello");
-    $scope.sorry.close();
-  };
+  .controller('SignUpCtrl', function ($scope, $stateParams, $ionicPopup, $ionicPopover, MyServices, $state) {
+    $scope.sorryPopup = function () {
+      $scope.sorry = $ionicPopup.show({
+        templateUrl: 'templates/modal/pincode.html',
+        cssClass: "popupSorry",
+        scope: $scope
+      });
+    };
+    $scope.closeSorry = function () {
+      console.log("hello");
+      $scope.sorry.close();
+    };
 
-  $ionicPopover.fromTemplateUrl('templates/modal/popover.html', {
+    $ionicPopover.fromTemplateUrl('templates/modal/popover.html', {
       scope: $scope,
       cssClass: 'menupop',
 
-    }).then(function(popover) {
+    }).then(function (popover) {
       $scope.popover = popover;
     });
 
-    $scope.closePopover = function() {
-        $scope.popover.hide();
-     };
+    $scope.closePopover = function () {
+      $scope.popover.hide();
+    };
 
-  $scope.show='';
-      $ionicPopover.fromTemplateUrl('templates/modal/terms.html', {
-        scope: $scope,
-        cssClass: 'menupop',
+    $scope.show = '';
+    $ionicPopover.fromTemplateUrl('templates/modal/terms.html', {
+      scope: $scope,
+      cssClass: 'menupop',
 
-      }).then(function(terms) {
-        $scope.terms = terms;
-      });
-
-
-
-      $scope.closePopover = function() {
-          $scope.terms.hide();
-       };
-
-  $scope.goBackHandler = function () {
-    window.history.back(); //This works
-  };
-
-  $scope.signupForm ={};
-  $scope.signupForm.accessLevel = "Customer"
-   $scope.signup = function() {
-    console.log("djfgjk",$scope.signupForm);
-    MyServices.signup($scope.signupForm, function(data) {
-
-      console.log(data);
-      if ("data.value == true") {
-        $state.go('app.verification');
-      } else {
-
-        $scope.showAlert(data.status, 'login', 'Error Message');
-      }
+    }).then(function (terms) {
+      $scope.terms = terms;
     });
-  };
-});
+
+
+
+    $scope.closePopover = function () {
+      $scope.terms.hide();
+    };
+
+    $scope.goBackHandler = function () {
+      window.history.back(); //This works
+    };
+
+    $scope.signupForm = {};
+    $scope.signupForm.accessLevel = "Customer"
+    $scope.signup = function () {
+      console.log("djfgjk", $scope.signupForm);
+      MyServices.signup($scope.signupForm, function (data) {
+
+        console.log(data);
+        if ("data.value == true") {
+          $state.go('app.verification');
+        } else {
+
+          $scope.showAlert(data.status, 'login', 'Error Message');
+        }
+      });
+    };
+  });
