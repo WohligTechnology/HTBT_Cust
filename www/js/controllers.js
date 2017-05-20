@@ -153,7 +153,6 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
 
 
-<<<<<<< HEAD
     $scope.closePopover = function() {
         $scope.terms.hide();
      };
@@ -240,8 +239,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
 
 .controller('BrowseCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices,$state) {
-=======
-    $scope.closePopover = function () {
+  $scope.closePopover = function () {
       $scope.terms.hide();
     };
 
@@ -323,7 +321,6 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
 
   .controller('BrowseCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices) {
->>>>>>> 51019b1dcfed29c8508574b067811d8da0609dff
     $scope.nextSlide = function () {
       $ionicSlideBoxDelegate.next();
     };
