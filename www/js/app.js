@@ -283,6 +283,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
         controller: 'SignUpCtrl'
       })
 
+      .state('pincode', {
+            cache:false,
+            url: '/pincode',
+            templateUrl: 'templates/pincode.html',
+            controller: 'PincodeCtrl'
+          })
+
       .state('app.dashboard', {
         url: '/dashboard',
         views: {

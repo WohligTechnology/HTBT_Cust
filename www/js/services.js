@@ -1,5 +1,5 @@
 // var adminurl = "http://104.198.28.29:80/api/"; //server
-var adminurl = "http://192.168.2.24:1337/api/"; //server
+var adminurl = "http://192.168.0.127:1337/api/"; //server
 
 
 // var imgpath = adminurl + "uploadfile/getupload?file=";
@@ -31,6 +31,15 @@ angular.module('starter.services', [])
         console.log(data);
         $http({
           url: adminurl + 'User/saveUserData',
+          method: 'POST',
+          withCredentials: true,
+          data: data
+        }).success(callback);
+      },
+
+      getByPin: function (data,callback) {
+        $http({
+          url: adminurl + 'Pincode/getByPin',
           method: 'POST',
           withCredentials: true,
           data: data

@@ -2484,3 +2484,10 @@ $dark:                            #444 !default;
                 margin: 10px;
                 color: red !important;
             }
+
+            .midpin {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}

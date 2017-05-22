@@ -61,7 +61,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     $scope.goBackHandler = function () {
       window.history.back(); //This works
     };
-  
+
 
     $scope.product = {}
     // alert($stateParams.category);
@@ -75,7 +75,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
       console.log("proctid", $scope.prod);
 
     });
- 
+
   })
 
 
@@ -321,6 +321,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     $scope.goBackHandler = function () {
       window.history.back(); //This works
     };
+
     var ipObj1 = {
       callback: function (val) { //Mandatory
         console.log('Return value from the datepicker popup is : ' + val, new Date(val));
@@ -648,7 +649,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
       $ionicSlideBoxDelegate.next();
     };
   })
-
+.controller('PincodeCtrl', function ($scope, $ionicPopup, $stateParams, $ionicActionSheet, $cordovaFileTransfer, $cordovaCamera, $ionicPopover, $state, MyServices, $cordovaImagePicker) {})
   .controller('SignUpCtrl', function ($scope, $stateParams, $ionicPopup, $ionicPopover, MyServices, $state) {
     $scope.sorryPopup = function () {
       $scope.sorry = $ionicPopup.show({
@@ -662,17 +663,17 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
       $scope.sorry.close();
     };
 
-    $ionicPopover.fromTemplateUrl('templates/modal/popover.html', {
-      scope: $scope,
-      cssClass: 'menupop',
-
-    }).then(function (popover) {
-      $scope.popover = popover;
-    });
-
-    $scope.closePopover = function () {
-      $scope.popover.hide();
-    };
+    // $ionicPopover.fromTemplateUrl('templates/modal/popover.html', {
+    //   scope: $scope,
+    //   cssClass: 'menupop',
+    //
+    // }).then(function (popover) {
+    //   $scope.popover = popover;
+    // });
+    //
+    // $scope.closePopover = function () {
+    //   $scope.popover.hide();
+    // };
 
     $scope.show = '';
     $ionicPopover.fromTemplateUrl('templates/modal/terms.html', {
@@ -683,7 +684,22 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
       $scope.terms = terms;
     });
 
-
+    // $ionicPopover.fromTemplateUrl('templates/modal/pincode.html', {
+    //       scope: $scope,
+    //       cssClass: 'menupop',
+    //
+    //     }).then(function (pincode) {
+    //       $scope.pincode = pincode;
+    //     });
+    //     $scope.closePincode = function () {
+    //       $scope.pincode.hide();
+    //     };
+    //     $scope.closePopover = function () {
+    //       $scope.terms.hide();
+    //     };
+    //     $scope.openpincode = function ($event) {
+    //       $scope.pincode.show($event);
+    //     };
 
     $scope.closePopover = function () {
       $scope.terms.hide();
@@ -700,12 +716,25 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
       MyServices.signup($scope.signupForm, function (data) {
 
         console.log(data);
-        if ("data.value == true") {
-          $state.go('app.verification');
+        $scope.signupForm = data.data;
+        console.log($scope.signupForm)
+        if ("data.status == true") {
+          $scope.pincode = {};
+          $scope.pincode.pin = data.data.pincode;
+          $.jStorage.set('profile', data, data);
+          MyServices.getByPin($scope.pincode, function (data) {
+            if (data.value) {
+              $state.go('app.verification');
+
+            } else {
+              console.log("dsjg");
+              $state.go('pincode');
+            }
+          });
         } else {
 
           $scope.showAlert(data.status, 'login', 'Error Message');
         }
       });
-    };
-  });
+   };
+});
