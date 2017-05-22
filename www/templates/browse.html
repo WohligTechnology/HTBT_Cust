@@ -19,7 +19,7 @@
                     <div class="row browse-sliderRow">
                         <div class="col-50">
                             <div class="browse-slideImgDiv">
-                                <img class="browse-sliderImg " ng-src="{{data.bigImage | uploadpath}}"" alt="">
+                                <img class="browse-sliderImg " ng-src="{{data.bigImage | uploadpath}}" alt="">
                             </div>
                         </div>
                         <div class="col-50 browse-col502">
@@ -77,14 +77,23 @@
 
             <div class="row" ng-if="category.length>0" ng-repeat="data1 in category">
                   <div class="col-50" ng-repeat="data in data1 track by $index">
-                      
-                       <div class="browse-card1"  ng-click="nextPage(data.subscription,data._id);">
+
+                       <div class="browse-card1" ng-if="$index==0" ng-click="nextPage(data.subscription,data._id);">
                         <div class="icondiv" >
+
                             <!--<img src="{{data2.catImage}}" alt="" ng-if="{{data2.catImage}}">-->
                             <img ng-src="{{data.catImage | uploadpath}}" alt="">
                         </div>
                         <label for="">{{data.name}}</label>
                     </div>
+
+                    <div class="browse-card2" ng-if="$index==1" ng-click="nextPage(data.subscription,data._id);">
+                     <div class="icondiv" >
+                         <!--<img src="{{data2.catImage}}" alt="" ng-if="{{data2.catImage}}">-->
+                         <img ng-src="{{data.catImage | uploadpath}}" alt="">
+                     </div>
+                     <label for="">{{data.name}}</label>
+                 </div>
                   </div>
                   <!--<div class="col-50" ui-sref="app.productSpecs" ng-repeat="data in data1">
 

@@ -10,7 +10,7 @@
     </ion-nav-buttons>
   </ion-nav-bar>
   <form  ng-submit="signup()" name="userForm">
-  <ion-content class="has-header signUpForm has-footer">
+  <ion-content class="has-header signUpForm hasterms">
     <div class="padtop-10">
       <div>
         <label class=" item-input ">
@@ -30,7 +30,7 @@
 
 <div>
   <label class=" item-input ">
-  <input type="text" placeholder="Address" ng-model="signupForm.address" name="estadd" required>
+  <input type="text" placeholder="Address" ng-model="signupForm.establishmentAddress" name="estadd" required>
   </label>
    <p class="error-msg" ng-show="userForm.estadd.$error.required && userForm.estadd.$touched">Please Enter your Address.</p>
 </div>

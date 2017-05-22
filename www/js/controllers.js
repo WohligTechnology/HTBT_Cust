@@ -271,7 +271,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
   })
 
 
-  .controller('BrowseCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices) {
+  .controller('BrowseCtrl', function ($scope, $ionicSlideBoxDelegate, MyServices, $state) {
     $scope.nextSlide = function () {
       $ionicSlideBoxDelegate.next();
     };
@@ -717,9 +717,10 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
         console.log(data);
         $scope.signupForm = data.data;
-        console.log($scope.signupForm)
+        console.log("mrindia",$scope.signupForm)
         if ("data.status == true") {
           $scope.pincode = {};
+          console.log("mugambo",$scope.pincode)
           $scope.pincode.pin = data.data.pincode;
           $.jStorage.set('profile', data, data);
           MyServices.getByPin($scope.pincode, function (data) {
