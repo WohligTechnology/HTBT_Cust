@@ -1,4 +1,5 @@
-<ion-view title="20 Litre Jars">
+<ion-view title="{{prod[0].category.name}}">
+    
     <ion-nav-bar class="bar-stable schedule-bar  nav-height">
         <ion-nav-buttons side="left">
             <button class="button button-clear ion-android-arrow-back sigupIconLeft" ng-click="goBackHandler()">
@@ -14,6 +15,7 @@
     </ion-nav-bar>
     <ion-content>
         <div class="mbt">
+           
             <div class="browse-moredivalign" ui-sref="app.subpage1" ng-repeat="prods in prod">
                 <div class="browse-moreImgDiv">
                     <img class="browse-moreImg " ng-src="{{prods.bigImage | uploadpath}}" alt="">
@@ -21,6 +23,7 @@
                 <div class="browse-aqualbl" for="">{{prods.name}}</div>
                 <div for="" class="colorpure">{{prods.tag}} <i class="ion ion-information-circled"></i></div>
                 <label class="browse-morerupee" for="">₹ {{prods.price}}</label>
+                
             </div>
             <!--<div class="browse-moredivalign" ui-sref="app.subpage1">
                 <div class="browse-moreImgDiv">
