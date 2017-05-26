@@ -36,6 +36,24 @@ angular.module('starter.services', [])
           data: data
         }).success(callback);
       },
+        saveData: function (data, callback) {
+        console.log(data);
+        $http({
+          url: adminurl + 'User/save',
+          method: 'POST',
+          withCredentials: true,
+          data: data
+        }).success(callback);
+      },
+      getonePro: function (data, callback) {
+        console.log(data);
+        $http({
+          url: adminurl + 'User/getone',
+          method: 'POST',
+          withCredentials: true,
+          data: data
+        }).success(callback);
+      },
 
       getByPin: function (data,callback) {
         $http({

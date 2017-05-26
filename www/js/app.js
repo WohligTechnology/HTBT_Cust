@@ -278,6 +278,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
       })
 
       .state('signup', {
+        cache:false,
         url: '/signup',
         templateUrl: 'templates/signup.html',
         controller: 'SignUpCtrl'

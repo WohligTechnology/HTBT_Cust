@@ -10870,7 +10870,8 @@ a.button {
   height: 120px;
   width: 100%;
   text-align: center;
-  margin: 15px 10px; }
+  margin: 15px 10px;
+  overflow: hidden; }
   .prdcticon img {
     height: 100%; }
   .prdcticon .line {
