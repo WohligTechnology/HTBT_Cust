@@ -11726,6 +11726,10 @@ p.onceLblr {
 .center {
   text-align: center; }
 
+.highlight {
+  background: #ff414d;
+  color: white !important; }
+
 .bbtrans {
   border-bottom: 1px solid transparent; }
 
@@ -11850,3 +11854,35 @@ p.onceLblr {
   position: absolute;
   left: 50%;
   top: 50%; }
+
+.time-row {
+  padding: 0px !important; }
+
+.no-pad {
+  padding: 0px !important; }
+
+.first-half {
+  text-align: center;
+  padding: 20px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #3c5059; }
+
+.second-half {
+  text-align: center;
+  padding: 20px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #3c5059; }
+
+.break-time {
+  height: 60%;
+  border-left: 1px solid #b8b8b8;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.time-highlight {
+  background: #ff414d;
+  color: white !important; }

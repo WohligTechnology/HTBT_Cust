@@ -65,7 +65,25 @@
                 </ion-slide>
             </ion-slide-box>
         </div>
-        <div class="card jars-card m10">
+        <div class="card m10 time-row rel">
+<div class="row no-pad">
+<div class="col-50 first-half" ng-click="show = 1" ng-class="{'time-highlight' : show == 1}" >
+  8 AM to 1 PM
+  <!-- <label class="time-label" for=""></label> -->
+</div>
+
+<div class="second-half col-50" ng-click="show = 2" ng-class="{'time-highlight' : show == 2}">
+  1 PM to 6 PM
+  <!-- <label class="time-label" for="">
+  </label> -->
+</div>
+</div>
+<div class="" ng-hide="show" >
+  <div class="break-time">
+  </div>
+ </div>
+        </div>
+        <div class="card jars-card ">
             <div class="item ">
                 <div>
                     <label class="jar-label" for="">How many jars do you need?</label>

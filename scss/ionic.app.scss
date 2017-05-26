@@ -1379,6 +1379,8 @@ $dark:                            #444 !default;
                 background: #f2f4f5;
             }
 
+
+
             .auth-custinfo {
                 padding: 35px 0 0 20px !important;
                 font-size: 18px;
@@ -2337,6 +2339,11 @@ $dark:                            #444 !default;
                 text-align: center;
             }
 
+            .highlight {
+              background: #ff414d;
+              color: white!important;
+            }
+
             .bbtrans {
                 border-bottom: 1px solid transparent;
             }
@@ -2490,4 +2497,51 @@ $dark:                            #444 !default;
   position: absolute;
   left: 50%;
   top: 50%;
+}
+
+
+.time-row{
+  // background: #b8b8b8;
+  padding: 0px!important;
+}
+
+.no-pad{
+padding: 0px!important;
+}
+
+.first-half{
+  // background: white;
+  text-align: center;
+padding: 20px;
+font-size: 15px;
+font-weight: 600;
+color: #3c5059;
+
+}
+.second-half{
+  // background: white;
+  text-align: center;
+padding: 20px;
+font-size: 15px;
+font-weight: 600;
+color: #3c5059;
+
+}
+
+.break-time{
+  height: 60%;
+  border-left: 1px solid #b8b8b8;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.time-label{
+
+}
+
+.time-highlight{
+  background: #ff414d;
+  color: white!important;
 }
