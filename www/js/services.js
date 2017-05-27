@@ -1,7 +1,8 @@
 // var adminurl = "http://192.168.43.147:80/api/"; //local
 
 // var adminurl = "http://104.198.28.29:80/api/"; //server
-var adminurl = "http://192.168.0.117:1337/api/"; //server
+// var adminurl = "http://192.168.0.117:1337/api/"; //server
+var adminurl = "http://localhost:1337/api/"
 
 // var imgpath = adminurl + "uploadfile/getupload?file=";
 var imgurl = adminurl + "upload/";
@@ -53,6 +54,7 @@ angular.module('starter.services', [])
           data: data
         }).success(callback);
       },
+
       getByPin: function (data, callback) {
         $http({
           url: adminurl + 'Pincode/getByPin',
@@ -93,6 +95,7 @@ angular.module('starter.services', [])
           data: data
         }).success(callback);
       },
+
       addToCart: function (products, callback) {
         var obj = {
           user: $.jStorage.get("profile")._id,
@@ -140,4 +143,29 @@ angular.module('starter.services', [])
       }
 
     };
+  });
+
+
+      //to get OTP
+      getOTP: function (data, callback) {
+        $http({
+          url: adminurl + 'user/generateOtp',
+          method: 'POST',
+          withCredentials: true,
+          data: data
+        }).success(callback);
+      },
+
+      //To verfiy OTP
+      verifyOTP: function (data, callback) {
+        $http({
+          url: adminurl + 'user/verifyOTP',
+          method: 'POST',
+          withCredentials: true,
+          data: data
+        }).success(callback);
+      }
+    };
+
+
   });

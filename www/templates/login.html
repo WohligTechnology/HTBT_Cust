@@ -20,11 +20,11 @@
       <div class="col-67 phnCol66">
         <div class="spanTextDiv">
           <span class="phnSpan">+91</span>
-          <input class="phnText" type="text" placeholder="Enter your contact no">
+          <input class="phnText" type="text" ng-model="loginInfo.mobile" placeholder="Enter your contact no">
         </div>
       </div>
       <div class="col-33 phnCol33Div">
-        <button class="button button-royal joinBtn" ui-sref='verify'>
+        <button class="button button-royal joinBtn" ng-click="getOTP(loginInfo)">
   Join us
 </button>
       </div>

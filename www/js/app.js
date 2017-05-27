@@ -272,25 +272,31 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
         })
 
 
-    .state('verify', {
-        url: '/verify',
+
+      .state('verify', {
+        url: '/verify/:no',
         templateUrl: 'templates/verify.html',
         controller: 'VerifyCtrl'
     })
 
+
     .state('signup', {
+
         cache: false,
         url: '/signup',
         templateUrl: 'templates/signup.html',
         controller: 'SignUpCtrl'
     })
 
-    .state('pincode', {
+
+      .state('pincode', {
         cache: false,
         url: '/pincode',
         templateUrl: 'templates/pincode.html',
         controller: 'PincodeCtrl'
+
     })
+
 
     .state('app.dashboard', {
         url: '/dashboard',
@@ -376,6 +382,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
             }
         }
     }
+
 })
 
 .filter('rangecal', function() {
