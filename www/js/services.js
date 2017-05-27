@@ -1,6 +1,7 @@
+// var adminurl = "http://192.168.43.147:80/api/"; //local
+
 // var adminurl = "http://104.198.28.29:80/api/"; //server
 var adminurl = "http://192.168.0.117:1337/api/"; //server
-
 
 // var imgpath = adminurl + "uploadfile/getupload?file=";
 var imgurl = adminurl + "upload/";
@@ -9,10 +10,13 @@ var imgpath = imgurl + "readFile?file=";
 
 angular.module('starter.services', [])
   .factory('MyServices', function ($http) {
+    var appDetails = {};
+    appDetails.cartQuantity = $.jStorage.get("cartQuantity");
     return {
-
+      getAppDetails: function () {
+        return appDetails;
+      },
       getProfile: function (id, callback) {
-        console.log(id);
         var data = {
           _id: id
         };
@@ -23,10 +27,6 @@ angular.module('starter.services', [])
           data: data
         }).success(callback);
       },
-
-
-
-
       signup: function (data, callback) {
         console.log(data);
         $http({
@@ -36,7 +36,7 @@ angular.module('starter.services', [])
           data: data
         }).success(callback);
       },
-        saveData: function (data, callback) {
+      saveData: function (data, callback) {
         console.log(data);
         $http({
           url: adminurl + 'User/save',
@@ -46,7 +46,6 @@ angular.module('starter.services', [])
         }).success(callback);
       },
       getonePro: function (data, callback) {
-        console.log(data);
         $http({
           url: adminurl + 'User/getone',
           method: 'POST',
@@ -54,8 +53,7 @@ angular.module('starter.services', [])
           data: data
         }).success(callback);
       },
-
-      getByPin: function (data,callback) {
+      getByPin: function (data, callback) {
         $http({
           url: adminurl + 'Pincode/getByPin',
           method: 'POST',
@@ -63,16 +61,21 @@ angular.module('starter.services', [])
           data: data
         }).success(callback);
       },
-
+      updateAndGetResponse: function (data, callback) {
+        $http({
+          url: adminurl + 'User/updateAndGetResponse',
+          method: 'POST',
+          withCredentials: true,
+          data: data
+        }).success(callback);
+      },
       categories: function (callback) {
-
         $http({
           url: adminurl + 'Categories/getCategories',
           method: 'POST',
           withCredentials: true,
         }).success(callback);
       },
-
       featureprods: function (callback) {
 
         $http({
@@ -89,12 +92,52 @@ angular.module('starter.services', [])
           withCredentials: true,
           data: data
         }).success(callback);
+      },
+      addToCart: function (products, callback) {
+        var obj = {
+          user: $.jStorage.get("profile")._id,
+          products: products,
+        };
+        $http({
+          url: adminurl + 'user/addToCart',
+          method: 'POST',
+          withCredentials: true,
+          data: obj
+        }).then(function (data) {
+          appDetails.cartQuantity = data.data.data;
+          $.jStorage.set("cartQuantity", data.data.data);
+          callback(data);
+        });
+      },
+      removeFromCart: function (productId, callback) {
+        var obj = {
+          user: $.jStorage.get("profile")._id,
+          product: productId,
+        };
+        $http({
+          url: adminurl + 'user/removeFromCart',
+          method: 'POST',
+          withCredentials: true,
+          data: obj
+        }).then(function (data) {
+          appDetails.cartQuantity = data.data.data;
+          $.jStorage.set("cartQuantity", data.data.data);
+          callback(data);
+        });
+      },
+      showCart: function (callback) {
+        var obj = {
+          user: $.jStorage.get("profile")._id
+        };
+        $http({
+          url: adminurl + 'user/showCart',
+          method: 'POST',
+          withCredentials: true,
+          data: obj
+        }).then(function (data) {
+          callback(data);
+        });
       }
 
-
-
     };
-
-
-
   });

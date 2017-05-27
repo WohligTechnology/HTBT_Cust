@@ -8,40 +8,48 @@
             <div class="cartbtn">
                 <img src="img/9.png" alt="" ui-sref="app.review">
             </div>
-            <span class="cartbadge">{{total}}</span>
+            <span class="cartbadge">{{userDetails.cartQuantity}}</span>
         </ion-nav-buttons>
     </ion-nav-bar>
     <ion-content class="bg-prdct has-footer">
         <div class="prod-det">
-            <div class="card" ng-repeat="pr in prod">
-                <div class="item item-text-wrap pad0" ng-init="pr.q=0">
+            <div class="card" ng-repeat="product in products">
+                <div class="item item-text-wrap pad0">
                     <div class="row">
                         <div class="col-33">
                             <div class="prdcticon">
-                                <img ng-src="{{pr.smallImage |uploadpath}}" alt="">
+                                <img ng-src="{{product.smallImage | uploadpath}}" alt="">
                                 <div class="line">
                                 </div>
                             </div>
                         </div>
                         <div class="col-66">
                             <div class="details-div">
-                                <h2>{{pr.name}} </h2>
-                                <span>({{pr.category.name}})</span>
-                                <div for="" class="name">{{pr.tags}} <i class="ion ion-information-circled"></i></div>
-                                <div for="" class="desc">1 Carton (12 Bottles)</div>
-                                <div for="" class="desc">₹ {{pr.price}}</div>
+                                <h2>{{product.name}} </h2>
+                                <span>({{product.category.name}})</span>
+                                <div for="" class="name">{{product.tags}} <i class="ion ion-information-circled"></i></div>
+                                <div for="" class="desc">{{product.description}}</div>
+                                <div for="" class="desc">₹ {{product.price}}</div>
                             </div>
                             <div class="addrm">
-                                <i class="ion ion-minus-round" ng-click="pr.q=pr.q-1;getTotal(-1);" ng-if="pr.q > 0"></i><span >{{pr.q}}</span><i class="ion ion-plus-round" ng-click="pr.q=pr.q+1;getTotal(1);" ></i>
+                                <button ng-click="changeProductQuantity(product,false);" ng-disabled="checkMinProduct(product);">
+                                <i class="ion ion-minus-round"></i>
+                                </button>
+                                <span>{{product.productQuantity||0}}</span>
+                                <button ng-click="changeProductQuantity(product,true);" ng-disabled="checkMaxProduct(product);"><i class="ion ion-plus-round" ></i></button>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        
+            <div class="card card-no " ng-if="products.length==0">
+                No Product Found
+            </div>
+
         </div>
     </ion-content>
-    <div class="bar bar-footer bar-positive" ng-click="saveJ(prod)">
-        <div class="title">Add  To Cart</div>
+    <div class="bar bar-footer bar-positive" ng-click="addToCart()">
+        <div class="title">Add To Cart</div>
     </div>
 </ion-view>
