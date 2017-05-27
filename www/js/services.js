@@ -1,5 +1,6 @@
 // var adminurl = "http://104.198.28.29:80/api/"; //server
-var adminurl = "http://192.168.0.117:1337/api/"; //server
+// var adminurl = "http://192.168.0.117:1337/api/"; //server
+var adminurl = "http://localhost:1337/api/"
 
 
 // var imgpath = adminurl + "uploadfile/getupload?file=";
@@ -36,7 +37,7 @@ angular.module('starter.services', [])
           data: data
         }).success(callback);
       },
-        saveData: function (data, callback) {
+      saveData: function (data, callback) {
         console.log(data);
         $http({
           url: adminurl + 'User/save',
@@ -55,7 +56,7 @@ angular.module('starter.services', [])
         }).success(callback);
       },
 
-      getByPin: function (data,callback) {
+      getByPin: function (data, callback) {
         $http({
           url: adminurl + 'Pincode/getByPin',
           method: 'POST',
@@ -89,12 +90,28 @@ angular.module('starter.services', [])
           withCredentials: true,
           data: data
         }).success(callback);
+      },
+
+      //to get OTP
+      getOTP: function (data, callback) {
+        $http({
+          url: adminurl + 'user/generateOtp',
+          method: 'POST',
+          withCredentials: true,
+          data: data
+        }).success(callback);
+      },
+
+      //To verfiy OTP
+      verifyOTP: function (data, callback) {
+        $http({
+          url: adminurl + 'user/verifyOTP',
+          method: 'POST',
+          withCredentials: true,
+          data: data
+        }).success(callback);
       }
-
-
-
     };
-
 
 
   });

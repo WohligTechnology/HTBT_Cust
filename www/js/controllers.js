@@ -130,14 +130,59 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
     .controller('PlaylistCtrl', function ($scope, $stateParams) {})
 
-    .controller('VerifyCtrl', function ($scope, $stateParams) {
+    .controller('VerifyCtrl', function ($scope, $stateParams, $state, MyServices) {
         $.jStorage.flush();
+        var reqObj = {};
+        var otp = {};
+        reqObj.mobile = $stateParams.no;
+
+        //Function to verify OTP
+        $scope.verifyOTP = function (value) {
+            reqObj.otp = value.first + value.second + value.third + value.forth;
+
+            MyServices.verifyOTP(reqObj, function (data) {
+                if (data.value) {
+                    $scope.profile = $.jStorage.set('profile', data.data);
+                    $state.go('signup');
+                } else {
+                    alert("OTP verification failed")
+                    $state.go('login');
+                }
+            })
+        }
     })
 
-    .controller('LoginCtrl', function ($scope, $stateParams,$state) {
+    .controller('LoginCtrl', function ($scope, $stateParams, $state, MyServices) {
+        //Variable declaration
+        $scope.loginInfo = {};
+
         $scope.profile = $.jStorage.get('profile');
         if ($scope.profile != null) {
             $state.go('app.browse');
+        }
+
+        $scope.getOTP = function (value) {
+            console.log("value", value);
+            if (value.mobile != null && value.mobile != "") {
+                MyServices.getOTP({
+                    mobile: value.mobile
+                }, function (data) {
+                    if (data.value) {
+                        if (data.data.message == "OTP sent") {
+                            $state.go('verify', {
+                                no: value.mobile
+                            });
+                        } else {
+                            alert("unable to generate OTP. Please try again");
+                        }
+                    } else {
+                        alert("unable to generate OTP. Please try again");
+                    }
+                })
+            } else {
+                alert("Please provide mobile number");
+            }
+
         }
 
     })
@@ -665,6 +710,8 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
         };
     })
     .controller('PincodeCtrl', function ($scope, $ionicPopup, $stateParams, $ionicActionSheet, $cordovaFileTransfer, $cordovaCamera, $ionicPopover, $state, MyServices, $cordovaImagePicker) {})
+
+
     .controller('SignUpCtrl', function ($scope, $stateParams, $ionicPopup, $ionicPopover, MyServices, $state) {
         $scope.sorryPopup = function () {
             $scope.sorry = $ionicPopup.show({
@@ -727,10 +774,11 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
         $scope.signupForm = {};
         $scope.signup = function () {
+            alert("1");
             $scope.signupForm.accessLevel = "Customer";
             console.log("djfgjk", $scope.signupForm);
             if (!$.jStorage.get('profile')) {
-
+                alert("2");
                 MyServices.signup($scope.signupForm, function (data) {
 
                     console.log(data);
@@ -764,6 +812,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
                     }
                 });
             } else {
+                alert("3");
                 MyServices.saveData($scope.signupForm, function (data) {
 
                     console.log(data);
