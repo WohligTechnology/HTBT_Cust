@@ -241,8 +241,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
                             cssClass: 'menupop',
 
                         }).then(function(terms) {
-                            $scope.terms = terms; >>>
-                            >>> > 266 cb315809abe8bf4e56784440d8d35801996d6
+                            $scope.terms = terms;
                         });
                         if (products.length > 0) {
                             MyServices.addToCart(products, function(data) {
