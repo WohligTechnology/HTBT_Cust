@@ -602,44 +602,44 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     $scope.userDetails = $.jStorage.get('profile');
     $scope.user = {};
     $scope.days = [{
-        "day":"Sun",
+        "day": "Sun",
         "value": false,
-        "position":0
+        "position": 0
     }, {
-        "day":"Mon",
+        "day": "Mon",
         "value": false,
-        "position":1
+        "position": 1
     }, {
-        "day":"Tue",
+        "day": "Tue",
         "value": false,
-        "position":2
+        "position": 2
     }, {
-        "day":"Wed",
+        "day": "Wed",
         "value": false,
-        "position":3
+        "position": 3
     }, {
-        "day":"Thu",
+        "day": "Thu",
         "value": false,
-        "position":4
+        "position": 4
     }, {
-        "day":"Fri",
+        "day": "Fri",
         "value": false,
-        "position":5
+        "position": 5
     }, {
-        "day":"Sat",
+        "day": "Sat",
         "value": false,
-        "position":6
+        "position": 6
     }]
     $scope.user.pin = $scope.userDetails.pincode;
     MyServices.getByPin($scope.user, function(data) {
         if (data.value) {
             $scope.pindays = data.data;
             _.forEach($scope.pindays.days, function(value) {
-            _.forEach($scope.days, function(value1) {
-                if(value.substr(0, 3) == value1.day){
-                  value1.value= true;
-                }
-            });
+                _.forEach($scope.days, function(value1) {
+                    if (value.substr(0, 3) == value1.day) {
+                        value1.value = true;
+                    }
+                });
             });
 
 
@@ -649,8 +649,9 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
 
     var calMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    $scope.getcurrentDate = new Date();
     $scope.getcurrentMonth = calMonths[new Date().getMonth()];
-    $scope.getNextMonth = calMonths[new Date().getMonth()+1];
+    $scope.getNextMonth = calMonths[new Date().getMonth() + 1];
 
     // these are the days of the week for each month, in order
     var calDaysForMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -676,7 +677,16 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
             var format = $scope.dateformat;
         }
         $scope.display = $filter('date')(timeStamp, format);
-        $scope.display1 = $filter('date')(timeStamp);
+        $scope.display1 = new Date(timeStamp);
+        $scope.getcurrentDate = new Date($scope.getcurrentDate);
+        console.log($scope.getcurrentDate);
+        if ($scope.display1 < $scope.getcurrentDate) {
+            console.log("sdhkdhsk");
+            var alertPopup = $ionicPopup.alert({
+                title: 'Incorrect Date',
+                template: 'Please select future Date'
+            });
+        }
         MyServices.setDate($scope.display1);
 
     }
