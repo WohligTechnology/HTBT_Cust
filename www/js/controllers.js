@@ -599,17 +599,58 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
 .controller('CalendarViewCtrl', function($scope, $stateParams, $filter, $ionicPopup, MyServices, $ionicSlideBoxDelegate) {
 
-    $scope.userDetails =
-
-        $scope.user = {};
+    $scope.userDetails = $.jStorage.get('profile');
+    $scope.user = {};
+    $scope.days = [{
+        "day":"Sun",
+        "value": false,
+        "position":0
+    }, {
+        "day":"Mon",
+        "value": false,
+        "position":1
+    }, {
+        "day":"Tue",
+        "value": false,
+        "position":2
+    }, {
+        "day":"Wed",
+        "value": false,
+        "position":3
+    }, {
+        "day":"Thu",
+        "value": false,
+        "position":4
+    }, {
+        "day":"Fri",
+        "value": false,
+        "position":5
+    }, {
+        "day":"Sat",
+        "value": false,
+        "position":6
+    }]
     $scope.user.pin = $scope.userDetails.pincode;
     MyServices.getByPin($scope.user, function(data) {
         if (data.value) {
-            $scope.days = data.data;
+            $scope.pindays = data.data;
+            _.forEach($scope.pindays.days, function(value) {
+            _.forEach($scope.days, function(value1) {
+                if(value.substr(0, 3) == value1.day){
+                  value1.value= true;
+                }
+            });
+            });
+
+
         }
         console.log($scope.days);
     });
+
+
     var calMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    $scope.getcurrentMonth = calMonths[new Date().getMonth()];
+    $scope.getNextMonth = calMonths[new Date().getMonth()+1];
 
     // these are the days of the week for each month, in order
     var calDaysForMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -673,6 +714,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
             selectedYear--;
         } else {
             $scope.dislayMonth = selectedMonth--;
+
         }
         $scope.displayMonthCalendar();
     }
@@ -845,7 +887,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
             $ionicSlideBoxDelegate.next();
         };
     })
-.controller('PincodeCtrl', function($scope, $ionicPopup, $stateParams, $ionicActionSheet, $cordovaFileTransfer, $cordovaCamera, $ionicPopover, $state, MyServices, $cordovaImagePicker) {})
+    .controller('PincodeCtrl', function($scope, $ionicPopup, $stateParams, $ionicActionSheet, $cordovaFileTransfer, $cordovaCamera, $ionicPopover, $state, MyServices, $cordovaImagePicker) {})
 
 .controller('SignUpCtrl', function($scope, $stateParams, $ionicPopup, $ionicPopover, MyServices, $state) {
     $scope.sorryPopup = function() {

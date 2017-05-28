@@ -11883,7 +11883,8 @@ p.onceLblr {
 .col.fadeYear,
 .ionic_Calendar .col.fadeDateDisp {
   background-color: white;
-  color: white; }
+  color: white;
+  visibility: hidden; }
 
 .ionic_Calendar .DaysDisplay .col {
   border: 1px solid transparent;
@@ -11942,6 +11943,9 @@ p.onceLblr {
   .timeslot .row .col-50 {
     padding: 20px;
     text-align: center; }
+
+.deliverday {
+  border-bottom: 1px solid #ff414d !important; }
 
 .time-highlight {
   background: #ff414d;

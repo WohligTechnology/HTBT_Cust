@@ -2690,6 +2690,7 @@ p.onceLblr {
 .ionic_Calendar .col.fadeDateDisp {
     background-color: white;
     color: white;
+    visibility: hidden;
 }
 
 .ionic_Calendar .DaysDisplay .col {
@@ -2766,7 +2767,9 @@ p.onceLblr {
         }
     }
 }
-
+.deliverday{
+  border-bottom: 1px solid #ff414d!important;
+}
 .time-highlight {
     background: #ff414d;
     color: white;
