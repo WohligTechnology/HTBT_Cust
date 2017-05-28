@@ -932,7 +932,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
                         $scope.user.pin = data.data.pincode
                         MyServices.getByPin($scope.user, function(data) {
                             if (data.value) {
-                                $s $scope.profile = $.jStorage.get('profile');
+                                $scope.profile = $.jStorage.get('profile');
                                 tate.go('app.browse');
 
                             } else {
