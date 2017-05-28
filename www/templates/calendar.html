@@ -10,8 +10,7 @@
         </ion-nav-buttons>
     </ion-nav-bar>
     <ion-content class="has-header ion-contentcolor">
-        <label for="" class="schedule-head">Select a Date</label>
-    {{displayDate}}
+        <label for="" class="schedule-head">Select a Date </label>
       <div class="ionic_Calendar card" ng-controller="CalendarViewCtrl">
         <div class="calendar_Date" >
           <div class="row" style=" background-color: transparent;  color: black;">
@@ -57,7 +56,9 @@
                 </div>
             </div>
         </div>
-        <button class="button button-positive jarsch-button" ui-sref='app.confirmation'>
+        {{calDate}}
+        <button class="button button-positive jarsch-button" ng-click="getDate()">
+        <!-- <button class="button button-positive jarsch-button" ui-sref='app.confirmation'> -->
       Schedule
     </button>
     </ion-content>

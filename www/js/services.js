@@ -1,8 +1,7 @@
 // var adminurl = "http://192.168.43.147:80/api/"; //local
 
 // var adminurl = "http://104.198.28.29:80/api/"; //server
-// var adminurl = "http://192.168.0.117:1337/api/"; //server
-var adminurl = "http://localhost:1337/api/"
+var adminurl = "http://192.168.0.117:1337/api/"; //server
 
 // var imgpath = adminurl + "uploadfile/getupload?file=";
 var imgurl = adminurl + "upload/";
@@ -12,6 +11,7 @@ var imgpath = imgurl + "readFile?file=";
 angular.module('starter.services', [])
   .factory('MyServices', function ($http) {
     var appDetails = {};
+    var calDate = new Date();
     appDetails.cartQuantity = $.jStorage.get("cartQuantity");
     return {
       getAppDetails: function () {
@@ -54,7 +54,6 @@ angular.module('starter.services', [])
           data: data
         }).success(callback);
       },
-
       getByPin: function (data, callback) {
         $http({
           url: adminurl + 'Pincode/getByPin',
@@ -79,7 +78,6 @@ angular.module('starter.services', [])
         }).success(callback);
       },
       featureprods: function (callback) {
-
         $http({
           url: adminurl + 'product/getAllFeaturedProduct',
           method: 'POST',
@@ -87,7 +85,6 @@ angular.module('starter.services', [])
         }).success(callback);
       },
       products: function (data, callback) {
-        console.log(data);
         $http({
           url: adminurl + 'product/getAllCategoryProduct',
           method: 'POST',
@@ -95,7 +92,33 @@ angular.module('starter.services', [])
           data: data
         }).success(callback);
       },
+      showCardQuantity: function (callback) {
+        var obj = {
+          user: $.jStorage.get("profile")._id
+        };
+        $http({
+          url: adminurl + 'user/showCartQuantity',
+          method: 'POST',
+          withCredentials: true,
+          data: obj
+        }).then(function (data) {
+          appDetails.cartQuantity = data.data.data;
+          $.jStorage.set("cartQuantity", data.data.data);
+          callback(appDetails.cartQuantity);
+        });
+      },
+      setDate: function (sDate) {
 
+       calDate= sDate;
+
+        console.log(calDate,sDate);
+     },
+
+     getDate: function () {
+       console.log(calDate);
+
+       return calDate;
+     },
       addToCart: function (products, callback) {
         var obj = {
           user: $.jStorage.get("profile")._id,
@@ -140,32 +163,20 @@ angular.module('starter.services', [])
         }).then(function (data) {
           callback(data);
         });
-      }
-
-    };
-  });
-
-
-      //to get OTP
-      getOTP: function (data, callback) {
-        $http({
-          url: adminurl + 'user/generateOtp',
-          method: 'POST',
-          withCredentials: true,
-          data: data
-        }).success(callback);
       },
-
-      //To verfiy OTP
-      verifyOTP: function (data, callback) {
-        $http({
-          url: adminurl + 'user/verifyOTP',
-          method: 'POST',
-          withCredentials: true,
-          data: data
-        }).success(callback);
+      getProductPrice: function (product, quantity) {
+        var foundPrice = {};
+        var orderedPrice = _.orderBy(product.priceList, ['endRange'], ['asc']);
+        _.each(orderedPrice, function (obj) {
+          if (parseInt(quantity) <= parseInt(obj.endRange)) {
+            foundPrice = obj;
+            product.priceUsed = obj.finalPrice;
+            product.totalPriceUsed = obj.finalPrice * parseInt(quantity);
+            return false;
+          }
+        });
+        return product.priceUsed;
       }
+
     };
-
-
   });

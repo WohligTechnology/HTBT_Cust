@@ -1,62 +1,26 @@
-<ion-view title="{{prod[0].category.name}}">
-    
+<ion-view title="{{prod[0].category.name}} Jars">
     <ion-nav-bar class="bar-stable schedule-bar  nav-height">
         <ion-nav-buttons side="left">
             <button class="button button-clear ion-android-arrow-back sigupIconLeft" ng-click="goBackHandler()">
         </button>
         </ion-nav-buttons>
         <ion-nav-buttons side="right">
-          <div class="cartbtn">
-              <img src="img/9.png" alt="" ui-sref="app.review">
-          </div>
-          <span class="cartbadge">3</span>
-        </button>
+            <div class="cartbtn">
+                <img src="img/9.png" alt="" ui-sref="app.review">
+            </div>
+            <span class="cartbadge">{{userDetails.cartQuantity}}</span>
         </ion-nav-buttons>
     </ion-nav-bar>
     <ion-content>
         <div class="mbt">
-           
-            <div class="browse-moredivalign" ui-sref="app.subpage1" ng-repeat="prods in prod">
+            <div class="browse-moredivalign" ng-click="productTap(product);" ng-repeat="product in products">
                 <div class="browse-moreImgDiv">
-                    <img class="browse-moreImg " ng-src="{{prods.bigImage | uploadpath}}" alt="">
+                    <img class="browse-moreImg " ng-src="{{product.bigImage | uploadpath}}" alt="">
                 </div>
-                <div class="browse-aqualbl" for="">{{prods.name}}</div>
-                <div for="" class="colorpure">{{prods.tag}} <i class="ion ion-information-circled"></i></div>
-                <label class="browse-morerupee" for="">₹ {{prods.price}}</label>
-                
+                <div class="browse-aqualbl" for="">{{product.name}}</div>
+                <div for="" class="colorpure">{{product.tag}} <i class="ion ion-information-circled"></i></div>
+                <label class="browse-morerupee" for="">₹ {{product.price}}</label>
             </div>
-            <!--<div class="browse-moredivalign" ui-sref="app.subpage1">
-                <div class="browse-moreImgDiv">
-                    <img class="browse-moreImg " src="img/greenbottle.png" alt="">
-                </div>
-                <div class="browse-aqualbl" for="">Aquafina</div>
-                <div for="" class="colorpure">Purified water <i class="ion ion-information-circled"></i></div>
-                <label class="browse-morerupee" for="">₹ 90</label>
-            </div>
-            <div class="browse-moredivalign" ui-sref="app.subpage1">
-                <div class="browse-moreImgDiv">
-                    <img class="browse-moreImg " src="img/bisleriaquacan.png" alt="">
-                </div>
-                <div class="browse-aqualbl" for="">Aquafina</div>
-                <div for="" class="colorpure">Purified water <i class="ion ion-information-circled"></i></div>
-                <label class="browse-morerupee" for="">₹ 90</label>
-            </div>
-            <div class="browse-moredivalign" ui-sref="app.subpage1">
-                <div class="browse-moreImgDiv">
-                    <img class="browse-moreImg " src="img/greenbottle.png" alt="">
-                </div>
-                <div class="browse-aqualbl" for="">Aquafina</div>
-                <div for="" class="colorpure">Purified water <i class="ion ion-information-circled"></i></div>
-                <label class="browse-morerupee" for="">₹ 90</label>
-            </div>
-            <div class="browse-moredivalign" ui-sref="app.subpage1">
-                <div class="browse-moreImgDiv">
-                    <img class="browse-moreImg " src="img/bisleriaquacan.png" alt="">
-                </div>
-                <div class="browse-aqualbl" for="">Aquafina</div>
-                <div for="" class="colorpure">Purified water <i class="ion ion-information-circled"></i></div>
-                <label class="browse-morerupee" for="">₹ 90</label>
-            </div>-->
         </div>
     </ion-content>
 </ion-view>
