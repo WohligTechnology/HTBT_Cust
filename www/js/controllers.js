@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter.services', 'ngCordova'])
+angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter.services', "starter.subscription", 'ngCordova'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $ionicPopover, $state,  MyServices) {
 
@@ -397,10 +397,18 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
 })
 
-.controller('Subpage1Ctrl', function($scope, $stateParams) {
+.controller('Subpage1Ctrl', function($scope, MyServices, Subscription, $state, $stateParams) {
+    $scope.userDetails = MyServices.getAppDetails();
+    MyServices.showCardQuantity(function(num) {
+        $scope.totalQuantity = num;
+    });
+    $scope.subscription = Subscription.getObj();
+    Subscription.validate($state);
     $scope.goBackHandler = function() {
         window.history.back(); //This works
     };
+    console.log($scope.subscription);
+
 })
 
 .controller('Subpage2Ctrl', function($scope, $stateParams) {
@@ -415,13 +423,23 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     };
 })
 
-.controller('Subpage3Ctrl', function($scope, $stateParams) {
+.controller('Subpage3Ctrl', function($scope, $stateParams, MyServices, Subscription, $state) {
+    $scope.userDetails = MyServices.getAppDetails();
+    MyServices.showCardQuantity(function(num) {
+        $scope.totalQuantity = num;
+    });
+    $scope.subscription = Subscription.getObj();
+    Subscription.validate($state);
     $scope.goBackHandler = function() {
         window.history.back(); //This works
     };
+    $scope.getProductPrice = MyServices.getProductPrice;
+    $scope.addPlan = function(planName) {
+        $scope.subscription.plan = planName;
+    };
 })
 
-.controller('BrowseMoreCtrl', function($scope, $stateParams, MyServices) {
+.controller('BrowseMoreCtrl', function($scope, $state, $stateParams, $ionicPopup, MyServices, Subscription) {
     $scope.userDetails = MyServices.getAppDetails();
     MyServices.showCardQuantity(function(num) {
         $scope.totalQuantity = num;
@@ -456,7 +474,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     };
 })
 
-.controller('BrowseCtrl', function($scope, $ionicSlideBoxDelegate, $ionicPopup, MyServices, $state) {
+.controller('BrowseCtrl', function($scope, $ionicSlideBoxDelegate,$timeout, $ionicPopup, MyServices, $state) {
         $scope.userDetails = MyServices.getAppDetails();
         $scope.nextPage = function(sub, id) {
             if (sub == 'Yes') {
@@ -470,6 +488,17 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
                 });
             }
         };
+
+        $scope.slideHasChanged = function(index) {
+            $ionicSlideBoxDelegate.cssClass = 'fade-in'
+            $scope.slideIndex = index;
+            if (($ionicSlideBoxDelegate.count() - 1) == index) {
+                $timeout(function() {
+                    $ionicSlideBoxDelegate.slide(0);
+                }, $scope.interval);
+            }
+        };
+        $scope.interval = 5000;
         $scope.goBackHandler = function() {
             window.history.back(); //This works
         };
@@ -493,19 +522,51 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
         });
         MyServices.featureprods(function(data) {
 
-            console.log(data);
             $scope.feaprods = data.data;
-            console.log("let me know", $scope.feaprods);
             $ionicSlideBoxDelegate.update();
 
         });
     })
-    .controller('AddonsCtrl', function($scope, $stateParams) {
+    .controller('AddonsCtrl', function($scope, $stateParams, Subscription, MyServices) {
+        $scope.userDetails = MyServices.getAppDetails();
+
         $scope.goBackHandler = function() {
             window.history.back(); //This works
         };
+        $scope.changeProductQuantity = function(product, change) {
+            if (_.isNaN(parseInt(product.productQuantity))) {
+                product.productQuantity = 0;
+            }
+            if (change) {
+                product.productQuantity++;
+            } else {
+                product.productQuantity--;
+            }
+        };
+        $scope.checkMinProduct = function(product) {
+            if (product.productQuantity <= 0) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        $scope.checkMaxProduct = function(product) {
+            if (product.productQuantity >= parseInt(product.quantity)) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        MyServices.getAllOtherProduct({}, function(data) {
 
+            $scope.AllOtherProduct = data.data.results;
+            $scope.AllOtherProduct = _.groupBy($scope.AllOtherProduct, 'addones');
+            $scope.saveTime = $scope.AllOtherProduct[Object.keys($scope.AllOtherProduct)[0]];
+            $scope.saveSpace = $scope.AllOtherProduct[Object.keys($scope.AllOtherProduct)[1]];
 
+        });
+        $scope.subscription = Subscription.getObj();
+        console.log($scope.subscription);
     })
 
 .controller('ReviewCtrl', function($scope, $stateParams, ionicDatePicker, $ionicPopup, MyServices) {
@@ -648,6 +709,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 .controller('CalendarViewCtrl', function($scope, $stateParams, $filter, $ionicPopup, MyServices, $ionicSlideBoxDelegate) {
 
     $scope.userDetails = $.jStorage.get('profile');
+    $scope.incorrect = false;
     $scope.user = {};
     $scope.days = [{
         "day": "Sun",
@@ -727,15 +789,16 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
         MyServices.setDate($scope.display1);
         $scope.display = $filter('date')(timeStamp, format);
         $scope.display1 = new Date(timeStamp);
-        $scope.getcurrentDate = new Date($scope.getcurrentDate);
-        console.log($scope.getcurrentDate);
-        if ($scope.display1 < $scope.getcurrentDate) {
-            console.log("sdhkdhsk");
+        $scope.getcurrentDate = new Date();
+
+        if ($scope.display1 < $scope.getcurrentDate && $scope.incorrect) {
             var alertPopup = $ionicPopup.alert({
                 title: 'Incorrect Date',
                 template: 'Please select future Date'
             });
         }
+        $scope.incorrect = true;
+        console.log($scope.incorrect);
         MyServices.setDate($scope.display1);
 
     }

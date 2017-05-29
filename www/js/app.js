@@ -206,6 +206,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
     })
 
     .state('app.review', {
+      cache:false,
         url: '/review',
         views: {
             'menuContent': {

@@ -5,59 +5,55 @@
         </button>
         </ion-nav-buttons>
         <ion-nav-buttons side="right">
-          <div class="cartbtn">
-              <img src="img/9.png" alt="" ui-sref="app.review">
-          </div>
-          <span class="cartbadge">3</span>
-        </button>
+            <div class="cartbtn">
+                <img src="img/9.png" alt="" ui-sref="app.checkout">
+            </div>
+            <span class="cartbadge">{{userDetails.cartQuantity}}</span>
         </ion-nav-buttons>
     </ion-nav-bar>
     <ion-content class="has-header chkout-bgcolor has-footer">
         <div class="header">Which plan would you like?</div>
-        <div class="row onceweekDiv" ui-sref="app.addons">
+        <div class="row onceweekDiv" ui-sref="app.addons" ng-click="addPlan('Quarterly');">
             <div class="col-67 col-50pad border col-margin">
                 <label class="jarslbl" for="">Quarterly Plan</label>
-                <p class="onceLblr" for="">120 Jars</p>
+                <p class="onceLblr" for="">{{subscription.product[0].quantity * 12}} Jars</p>
             </div>
-            <!--<div class="col-20 border">
-            </div>-->
             <div class="col-33 col-37pad col-margin">
                 <div class="rel">
-                    <label class="lbl90"> 90</label>
+                    <label class="lbl90"> {{subscription.productDetail.price}} </label>
                 </div>
                 <label class="rupsym" for="">₹</label>
-                <label class="lbl88" for=""> 86</label>
+                <label class="lbl88" for=""> {{getProductPrice(subscription.productDetail, subscription.product[0].quantity * 12)}} </label>
                 <label class="perjar" for="">/Jar</label>
             </div>
         </div>
-        <div class="row onceweekDiv" ui-sref="app.addons">
+        <div class="row onceweekDiv" ui-sref="app.addons" ng-click="addPlan('Monthly');">
             <img src="img/most-popular.png" alt="" class="most-popular">
             <div class="col-67 col-50pad border col-margin">
                 <label class="jarslbl" for="">Monthly Plan </label>
-                <p class="onceLblr" for="">40 Jars</p>
+                <p class="onceLblr" for="">{{subscription.product[0].quantity*4}} Jars</p>
             </div>
-            <!--<div class="col-20 border">
-            </div>-->
             <div class="col-33 col-37pad col-margin">
                 <div class="rel">
-                    <label class="lbl90"> 90</label>
+                    <label class="lbl90"> {{subscription.productDetail.price}} </label>
                 </div>
                 <label class="rupsym" for="">₹</label>
-                <label class="lbl88" for=""> 88</label>
+                <label class="lbl88" for=""> {{getProductPrice(subscription.productDetail, subscription.product[0].quantity * 4)}} </label>
                 <label class="perjar" for="">/Jar</label>
             </div>
         </div>
         </div>
-        <div class="row onceweekDiv" ui-sref="app.addons">
+        <div class="row onceweekDiv" ui-sref="app.addons" ng-click="addPlan('Onetime');">
             <div class="col-67 col-50pad border col-margin">
                 <label class="jarslbl" for="">One Time</label>
-                <p class="onceLblr" for="">10 Jars</p>
+                <p class="onceLblr" for="">{{subscription.product[0].quantity*1}} Jars</p>
             </div>
-            <!--<div class="col-20 border">
-            </div>-->
             <div class="col-33 col-37pad col-margin">
+                <div class="rel">
+                    <label class="lbl90"> {{subscription.productDetail.price}} </label>
+                </div>
                 <label class="rupsym" for="">₹</label>
-                <label class="lbl88" for=""> 90</label>
+                <label class="lbl88" for=""> {{getProductPrice(subscription.productDetail, subscription.product[0].quantity * 1)}} </label>
                 <label class="perjar" for="">/Jar</label>
             </div>
         </div>

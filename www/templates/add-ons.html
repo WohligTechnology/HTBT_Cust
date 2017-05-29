@@ -8,7 +8,7 @@
           <div class="cartbtn">
               <img src="img/9.png" alt="" ui-sref="app.checkout">
           </div>
-          <span class="cartbadge">3</span>
+          <span class="cartbadge">{{userDetails.cartQuantity}}</span>
         </button>
         </ion-nav-buttons>
     </ion-nav-bar>
@@ -38,18 +38,29 @@
                         <span> Save Space</span>
                         <p>Store 4 Jars for the space of 1! <br> Buy a stand for Rs. 100. </p>
                         <div class="borderdiv"></div>
-                        <div class="row .pad-right10 mabt">
+                        <div class="row .pad-right10 mabt" ng-repeat="ss in saveSpace">
                             <div class="col-40 stand">
-                                <label for="">Steel Stand</label>
+                                <label for="">{{ss.name}}</label>
                                 <div class="add">
-                                    <i class="ion ion-minus-round"></i><span>3</span><i class="ion ion-plus-round"></i>
+                                    <i class="ion ion-minus-round" ng-click="changeProductQuantity(ss,false);" ng-disabled="checkMinProduct(ss);"></i>
+                                    <span>{{ss.productQuantity||0}}</span>
+                                    <i class="ion ion-plus-round" ng-click="changeProductQuantity(ss,true);" ng-disabled="checkMaxProduct(ss);"></i>
                                 </div>
+                                <!-- <div class="addrm">
+                                    <button ng-click="changeProductQuantity(product,false);" ng-disabled="checkMinProduct(product);">
+                                    <i class="ion ion-minus-round"></i>
+                                    </button>
+                                    <span>{{product.productQuantity||0}}</span>
+                                    <button ng-click="changeProductQuantity(product,true);" ng-disabled="checkMaxProduct(product);"><i class="ion ion-plus-round" ></i></button>
+
+                                </div> -->
                             </div>
                             <div class="col-20">
                             </div>
                             <div class="col">
                                 <div class="steel ">
-                                    <img src="img/cartonmachine.png" alt="">
+                                    <img ng-src="{{ss.smallImage | uploadpath}}" alt="" ng-if="ss.smallImage">
+                                    <img src="img/cartonmachine.png" alt="" ng-if="!ss.smallImage">
                                 </div>
                             </div>
                         </div>
@@ -64,20 +75,23 @@
                         <span> Save Time</span>
                         <p>No need to search!<br>Rent out dispensers for Rs. 500/month </p>
                         <div class="borderdiv"></div>
-                        <div class="row adjst">
+                        <div class="row adjst" ng-repeat="st in saveTime">
                             <div class="col-75 stand borbtm">
-                                <label for="">Flooring Stand Dispensers</label>
+                                <label for="">{{st.name}}</label>
                                 <div class="add">
-                                    <i class="ion ion-minus-round"></i><span>3</span><i class="ion ion-plus-round"></i>
-                                </div>
+                                  <i class="ion ion-minus-round" ng-click="changeProductQuantity(st,false);" ng-disabled="checkMinProduct(st);"></i>
+                                  <span>{{st.productQuantity||0}}</span>
+                                  <i class="ion ion-plus-round" ng-click="changeProductQuantity(st,true);" ng-disabled="checkMaxProduct(st);"></i>
+                              </div>
                             </div>
                             <div class="col-25">
                                 <div class="steel ">
-                                    <img src="img/bigdispenser.png" alt="">
+                                  <img ng-src="{{st.smallImage | uploadpath}}" alt="" ng-if="st.smallImage">
+                                  <img src="img/smalldispenser.png" alt="" ng-if="!st.smallImage">
                                 </div>
                             </div>
                         </div>
-                        <div class="row adjst">
+                        <!-- <div class="row adjst">
                             <div class="col-75 stand">
                                 <label for="">Tabletop Dispenser</label>
                                 <div class="add">
@@ -89,7 +103,7 @@
                                     <img src="img/smalldispenser.png" alt="">
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!--</label>-->
                     </div>
                 </div>

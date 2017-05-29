@@ -187,6 +187,14 @@ angular.module('starter.services', [])
           data: data
         }).success(callback);
       },
+      getAllOtherProduct: function (data, callback) {
+        $http({
+          url: adminurl + 'product/getAllOtherProduct',
+          method: 'POST',
+          withCredentials: true,
+          data: data
+        }).success(callback);
+      },
 
       //To verfiy OTP
       verifyOTP: function (data, callback) {

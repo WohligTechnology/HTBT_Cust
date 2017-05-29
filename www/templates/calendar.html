@@ -23,7 +23,7 @@
         </div>
       <div class="row Daysheading DaysDisplay" ng-repeat = "rowVal in datesDisp  track by $index" ng-class="{'marginTop0':$first}">
           <div class="col" ng-repeat = "colVal in rowVal  track by $index" ng-init="dateIndex = $index" ng-class="{'fadeDateDisp':(colVal.type == 'oldMonth' || colVal.type == 'newMonth'), 'redsun':(dateIndex == 0), 'deliverday':(days[dateIndex].value == true && ( dislayMonth == getcurrentMonth || getNextMonth == dislayMonth) ),'selDate':(colVal.date == displayDate && colVal.type == 'currentMonth')}"  ng-click="selectedDateClick(colVal)"
-           ng-disabled="!days[dateIndex].value && !( dislayMonth == getcurrentMonth || getNextMonth == dislayMonth)">{{colVal.date}}</div>
+           ng-disabled="!days[dateIndex].value || ( dislayMonth != getcurrentMonth && getNextMonth != dislayMonth)">{{colVal.date}}</div>
         </div>
         </div>
         <p class="item-note datenote">*we're available on highlighted days only</p>
@@ -57,7 +57,6 @@
                 </div>
             </div>
         </div>
-        {{calDate}}
         <button class="button button-positive jarsch-button" ng-click="getDate()">
         <!-- <button class="button button-positive jarsch-button" ui-sref='app.confirmation'> -->
       Schedule

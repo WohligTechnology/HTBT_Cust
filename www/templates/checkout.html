@@ -5,7 +5,7 @@
         </button>
         </ion-nav-buttons>
         <ion-nav-buttons side="right">
-          <button class="button button-clear ion-android-more-vertical sigupRight" ng-click="popover.show($event)">
+            <button class="button button-clear ion-android-more-vertical sigupRight" ng-click="popover.show($event)">
         </button>
         </ion-nav-buttons>
     </ion-nav-bar>
@@ -47,6 +47,12 @@
                 <input type="text" placeholder="Type coupon code here">
             </div>
         </div>
+        <!--<div class="flexdiv">
+          <label for="">Coupon Applied</label>
+          <div class="review-tickDiv">
+              <img class="order-jarImg" src="img/small_tick.png" alt="">
+          </div>
+          </div>-->
         <div class="row bgrowQuant ">
             <div class="col-67 bgchkoutcol50Quant">
                 <div>
@@ -125,15 +131,15 @@
         </div>
     </ion-content>
     <li class="item item-checkbox noborder checkbox-assertive borderR chkalign mar10">
-  I have read & accept the
+        I have read & accept the
 
-  <span  class="termscolor" ng-click="terms.show($event)" >  terms & conditions</span>
-  <label class="checkbox noborder ">
+        <span class="termscolor" ng-click="terms.show($event)">  terms & conditions</span>
+        <label class="checkbox noborder ">
   <input type="checkbox" class="">
   </label>
-  </li>
+    </li>
     <div class="bar bar-footer signUpFooter footer-height">
-        <button class="button button-block button-positive footer-font" ui-sref="app.auth-payment">
+        <button class="button button-block button-positive footer-font">
   Pay ₹ 5,020/-
 </button>
     </div>

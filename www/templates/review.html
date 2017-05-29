@@ -1,7 +1,7 @@
 <ion-view title="Review & Checkout">
     <ion-nav-bar class="bar-stable nav-height">
         <ion-nav-buttons side="left">
-            <button class="button button-clear ion-android-arrow-back sigupIconLeft" ng-click="goBackHandler()">
+            <button class="button button-clear ion-android-arrow-back sigupIconLeft" ui-sref="app.browse">
         </button>
         </ion-nav-buttons>
         <ion-nav-buttons side="right">
@@ -74,7 +74,7 @@
                 </div>
             </div>
         </div>
-        <div class="row checkbtmcard" ng-hide="products.length==0">
+        <!-- <div class="row checkbtmcard" ng-hide="products.length==0">
             <div class="col-25">
                 <div class="datemonth text-center">
                     <div class="datediv">
@@ -101,11 +101,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </ion-content>
 
     <div class="bar bar-footer signUpFooter footer-height">
-        <button class="button button-block button-positive footer-font" ui-sref="app.auth-payment">
+        <button class="button button-block button-positive footer-font" >
   Pay ₹ {{calculateTotalPrice()}}/-
 </button>
     </div>
