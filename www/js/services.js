@@ -109,16 +109,16 @@ angular.module('starter.services', [])
       },
       setDate: function (sDate) {
 
-       calDate= sDate;
+        calDate = sDate;
 
-        console.log(calDate,sDate);
-     },
+        console.log(calDate, sDate);
+      },
 
-     getDate: function () {
-       console.log(calDate);
+      getDate: function () {
+        console.log(calDate);
 
-       return calDate;
-     },
+        return calDate;
+      },
       addToCart: function (products, callback) {
         var obj = {
           user: $.jStorage.get("profile")._id,
@@ -176,6 +176,26 @@ angular.module('starter.services', [])
           }
         });
         return product.priceUsed;
+      },
+
+      //to get OTP
+      getOTP: function (data, callback) {
+        $http({
+          url: adminurl + 'user/generateOtp',
+          method: 'POST',
+          withCredentials: true,
+          data: data
+        }).success(callback);
+      },
+
+      //To verfiy OTP
+      verifyOTP: function (data, callback) {
+        $http({
+          url: adminurl + 'user/verifyOTP',
+          method: 'POST',
+          withCredentials: true,
+          data: data
+        }).success(callback);
       }
 
     };

@@ -164,7 +164,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     }
 })
 
-.controller('LoginCtrl', function($scope, $stateParams, $state, MyServices) {
+.controller('LoginCtrl', function($scope, $stateParams, $state, MyServices, $ionicPopup) {
     //Variable declaration
     $scope.loginInfo = {};
 
@@ -188,16 +188,36 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
                         });
                     } else {
                         alert("unable to generate OTP. Please try again");
+                        var alertPopup = $ionicPopup.alert({
+                            title: 'Unable to generate OTP',
+                            template: 'Please try again'
+                        });
                     }
                 } else {
-                    alert("unable to generate OTP. Please try again");
+                    var alertPopup = $ionicPopup.alert({
+                        title: 'Unable to generate OTP',
+                        template: 'Please try again'
+                    });
                 }
             })
         } else {
-            alert("Please provide mobile number");
+            var alertPopup = $ionicPopup.alert({
+                title: 'Please provide mobile number'
+            });
         }
 
     }
+
+
+    // $scope.getOTP = function () {
+    //     var alertPopup = $ionicPopup.alert({
+    //         title: 'Unable to generate OTP',
+    //         template: 'Please try again'
+    //     });
+    //     alertPopup.then(function (res) {
+    //         console.log('Thank you for not eating my delicious ice cream cone');
+    //     });
+    // };
 
 })
 
@@ -493,6 +513,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
         window.history.back(); //This works
     };
 
+
     function showCart() {
         MyServices.showCart(function(data) {
             if (data.data && data.data.data) {
@@ -594,6 +615,33 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
         $scope.calDate = MyServices.getDate(); //This works
     };
 
+})
+
+
+.controller('OrderhistoryCtrl', function($scope, $stateParams) {
+    $scope.goBackHandler = function() {
+        window.history.back(); //This works
+    };
+})
+
+.controller('ConfirmationCtrl', function($scope, $stateParams) {
+    $scope.goBackHandler = function() {
+        window.history.back(); //This works
+    };
+})
+
+
+
+.controller('CalendarCtrl', function($scope, $stateParams, $filter, MyServices, ionicDatePicker, $ionicSlideBoxDelegate) {
+    $scope.calDate = new Date();
+    $scope.goBackHandler = function() {
+        window.history.back(); //This works
+    };
+    $scope.getDate = function() {
+        $scope.calDate = MyServices.getDate(); //This works
+    };
+
+
 
 })
 
@@ -629,7 +677,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
         "day": "Sat",
         "value": false,
         "position": 6
-    }]
+    }];
     $scope.user.pin = $scope.userDetails.pincode;
     MyServices.getByPin($scope.user, function(data) {
         if (data.value) {
@@ -647,9 +695,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
         console.log($scope.days);
     });
 
-
     var calMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    $scope.getcurrentDate = new Date();
     $scope.getcurrentMonth = calMonths[new Date().getMonth()];
     $scope.getNextMonth = calMonths[new Date().getMonth() + 1];
 
@@ -676,6 +722,9 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
         } else {
             var format = $scope.dateformat;
         }
+        $scope.display = $filter('date')(timeStamp, format);
+        $scope.display1 = $filter('date')(timeStamp);
+        MyServices.setDate($scope.display1);
         $scope.display = $filter('date')(timeStamp, format);
         $scope.display1 = new Date(timeStamp);
         $scope.getcurrentDate = new Date($scope.getcurrentDate);
