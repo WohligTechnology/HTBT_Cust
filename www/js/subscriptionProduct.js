@@ -6,7 +6,12 @@ angular.module('starter.subscription', [])
                 product: null,
                 quantity: null
             }],
-            productDetail: null
+            productDetail: null,
+            otherProducts: [],
+            totalAmt:null,
+            totalQuantity:null,
+            user:null,
+
         };
         return {
             setObj: function (newObj) {

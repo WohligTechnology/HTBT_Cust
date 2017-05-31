@@ -221,55 +221,116 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
 })
 
-.controller('ShippingCtrl', function($scope, $stateParams) {
-    $scope.goBackHandler = function() {
-        window.history.back(); //This works
-    };
-})
-
-.controller('CheckoutCtrl', function($scope, $stateParams, ionicDatePicker, $ionicPopover) {
-    $scope.goBackHandler = function() {
-        window.history.back(); //This works
-    };
-
-    $scope.goBackHandler = function() {
-        window.history.back(); //This works
-    };
-
-    $scope.show = '';
-    $ionicPopover.fromTemplateUrl('templates/modal/terms.html', {
-        scope: $scope,
-        cssClass: 'menupop',
-
-    }).then(function(terms) {
-        $scope.terms = terms;
+.controller('CheckoutCtrl', function($scope, $stateParams, MyServices, Subscription, $state, ionicDatePicker, $ionicPopover) {
+    $scope.userDetails = MyServices.getAppDetails();
+    MyServices.showCardQuantity(function(num) {
+        $scope.totalQuantity = num;
     });
-    if (products.length > 0) {
-        MyServices.addToCart(products, function(data) {
-            if (data.status == 200) {
-                var alertPopup = $ionicPopup.alert({
-                    title: "Products Added to Cart",
-                    template: "Products Added to Cart Successfully"
-                });
-                alertPopup.then(function(res) {
-                    $state.go("app.review");
-                });
-            } else {
-                $ionicPopup.alert({
-                    title: "Error Occured",
-                    template: "Error Occured while adding Products to Cart"
-                });
+    $scope.subscription = Subscription.getObj();
+    Subscription.validate($state);
+    $scope.Quarterly = 12;
+    $scope.Monthly = 4;
+    $scope.Onetime = 1;
+    console.log($scope.subscription);
+    $scope.goBackHandler = function() {
+        window.history.back(); //This works
+    };
+    $scope.getProductPrice = MyServices.getProductPrice;
+    $scope.addPlan = function(planName) {
+        $scope.subscription.plan = planName;
+    };
+    $scope.calculateTotalPrice = function() {
+        var total = 0;
+        var savingPriceTotal = 0;
+        $scope.totalAmt = 0;
+        $scope.otherProductstotal = 0;
+        $scope.deposit = 0;
+        $scope.subscription.totalQuantity = 0;
+
+
+        _.each($scope.subscription.otherProducts, function(n) {
+            $scope.otherProductstotal += n.price * n.productQuantity;
+        });
+        if ($scope.subscription.productDetail.applicableBefore > $scope.subscription.product[0].quantity) {
+            $scope.deposit = ($scope.subscription.product[0].quantity * $scope.subscription.productDetail.AmtDeposit);
+        }
+        if ($scope.subscription.plan == 'Quarterly') {
+            $scope.subscription.totalQuantity = 12 * $scope.subscription.product[0].quantity;
+            total = 12 * ($scope.subscription.product[0].quantity * $scope.subscription.productDetail.priceUsed);
+            savingPriceTotal = ($scope.subscription.totalQuantity * $scope.subscription.productDetail.price);
+            $scope.savingAmount = savingPriceTotal - total;
+            $scope.savingPercent = ($scope.savingAmount / savingPriceTotal * 100);
+            $scope.totalAmt = $scope.deposit + $scope.otherProductstotal + total;
+
+            return $scope.savingAmount;
+        } else if ($scope.subscription.plan == 'Monthly') {
+            $scope.subscription.totalQuantity = 4 * $scope.subscription.product[0].quantity;
+            total = ($scope.subscription.totalQuantity * $scope.subscription.productDetail.priceUsed);
+            savingPriceTotal = 4 * ($scope.subscription.product[0].quantity * $scope.subscription.productDetail.price);
+            $scope.savingAmount = savingPriceTotal - total;
+            $scope.savingPercent = ($scope.savingAmount / savingPriceTotal * 100);
+            $scope.totalAmt = $scope.deposit + $scope.otherProductstotal + total;
+            return $scope.savingAmount;
+        } else {
+            $scope.subscription.totalQuantity = $scope.subscription.product[0].quantity;
+            total = ($scope.subscription.totalQuantity * $scope.subscription.productDetail.priceUsed);
+            savingPriceTotal = ($scope.subscription.product[0].quantity * $scope.subscription.productDetail.price);
+            $scope.savingAmount = savingPriceTotal - total;
+            $scope.savingPercent = ($scope.savingAmount / savingPriceTotal * 100);
+            $scope.totalAmt = $scope.deposit + $scope.otherProductstotal + total;
+            return $scope.savingAmount;
+        }
+
+    };
+
+
+    $scope.gotopayment = function() {
+
+        // // $scope.subscription.user=$.jStorage.get('profile')._id;
+        // $scope.subscription.customer={};
+        // $scope.subscription.customer=$.jStorage.get('profile');
+        // _.each($scope.subscription.otherProducts, function(n) {
+        //   $scope.subscription.product.push(n);
+        // });
+        // $scope.subscription.totalAmt=  $scope.totalAmt;
+        console.log($scope.subscription);
+        $scope.OrderData = {};
+        $scope.OrderData.totalAmount = $scope.totalAmt;
+        $scope.OrderData.customer = $.jStorage.get('profile');
+        $scope.OrderData.totalQuantity = $scope.subscription.totalQuantity;
+        MyServices.getProductPrice($scope.subscription.productDetail, $scope.subscription.product[0].quantity)
+
+        $scope.OrderData.product = [{
+            product: {},
+            productQuantity: null,
+            finalPrice: null,
+        }];
+        $scope.OrderData.product[0].product = $scope.subscription.productDetail;
+        $scope.OrderData.product[0].productQuantity = $scope.subscription.product[0].quantity;
+        $scope.OrderData.product[0].finalPrice =   MyServices.getProductPrice($scope.subscription.productDetail, $scope.subscription.product[0].quantity) ;
+        $scope.OrderData.product[0].jarDeposit = $scope.deposit;
+        $scope.OrderData.methodOfpayemnt = 'Customer';
+        $scope.OrderData.orderFor = 'CustomerForSelf';
+
+
+        _.each($scope.subscription.otherProducts, function(n) {
+            $scope.product = {};
+            $scope.product.product = n._id;
+            $scope.product.productQuantity = n.productQuantity;
+            $scope.product.finalPrice = n.price;
+            $scope.OrderData.product.push($scope.product);
+        });
+        var options = "location=no,toolbar=yes";
+        var target = "_blank";
+        var url = "";
+        MyServices.saveOrderCheckout($scope.OrderData, function(data) {
+            console.log(data);
+            if (data.value) {
+                $scope.finalURL = 'http://192.168.0.117:8081/signup/' + data._id;
+                var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
             }
         });
-    } else {
-        $ionicPopup.alert({
-            title: "No Product",
-            template: "No Product for Add to Cart"
-        });
-
-    }
-
-
+    };
 })
 
 .controller('RequirementCtrl', function($scope, $stateParams) {
@@ -343,58 +404,6 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     $scope.goBackHandler = function() {
         window.history.back(); //This works
     };
-})
-
-.controller('CheckoutCtrl', function($scope, $stateParams, ionicDatePicker, $ionicPopover) {
-    $scope.goBackHandler = function() {
-        window.history.back(); //This works
-    };
-
-    $scope.goBackHandler = function() {
-        window.history.back(); //This works
-    };
-
-    $scope.show = '';
-    $ionicPopover.fromTemplateUrl('templates/modal/terms.html', {
-        scope: $scope,
-        cssClass: 'menupop',
-
-    }).then(function(terms) {
-        $scope.terms = terms;
-    });
-
-
-
-    $scope.closePopover = function() {
-        $scope.terms.hide();
-    };
-
-    var ipObj1 = {
-        callback: function(val) { //Mandatory
-            console.log('Return value from the datepicker popup is : ' + val, new Date(val));
-        },
-        disabledDates: [ //Optional
-            new Date(2016, 2, 16),
-            new Date(2015, 3, 16),
-            new Date(2015, 4, 16),
-            new Date(2015, 5, 16),
-            new Date('Wednesday, August 12, 2015'),
-            new Date("08-16-2016"),
-            new Date(1439676000000)
-        ],
-        from: new Date(2012, 1, 1), //Optional
-        to: new Date(2016, 10, 30), //Optional
-        inputDate: new Date(), //Optional
-        mondayFirst: true, //Optional
-        disableWeekdays: [0], //Optional
-        closeOnSelect: false, //Optional
-        templateType: 'popup' //Optional
-    };
-
-    $scope.openDatePicker = function() {
-        ionicDatePicker.openDatePicker(ipObj1);
-    };
-
 })
 
 .controller('Subpage1Ctrl', function($scope, MyServices, Subscription, $state, $stateParams) {
@@ -474,100 +483,122 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     };
 })
 
-.controller('BrowseCtrl', function($scope, $ionicSlideBoxDelegate,$timeout, $ionicPopup, MyServices, $state) {
-        $scope.userDetails = MyServices.getAppDetails();
-        $scope.nextPage = function(sub, id) {
-            if (sub == 'Yes') {
-                $state.go('app.browse-more', {
-                    'category': id
-                });
+.controller('BrowseCtrl', function($scope, $ionicSlideBoxDelegate, $timeout, $ionicPopup, MyServices, $state) {
+    $scope.userDetails = MyServices.getAppDetails();
+    $scope.nextPage = function(sub, id) {
+        if (sub == 'Yes') {
+            $state.go('app.browse-more', {
+                'category': id
+            });
 
-            } else {
-                $state.go('app.productSpecs', {
-                    'category': id
-                });
+        } else {
+            $state.go('app.productSpecs', {
+                'category': id
+            });
+        }
+    };
+
+    $scope.slideHasChanged = function(index) {
+        $ionicSlideBoxDelegate.cssClass = 'fade-in'
+        $scope.slideIndex = index;
+        if (($ionicSlideBoxDelegate.count() - 1) == index) {
+            $timeout(function() {
+                $ionicSlideBoxDelegate.slide(0);
+            }, $scope.interval);
+        }
+    };
+    $scope.interval = 5000;
+    $scope.goBackHandler = function() {
+        window.history.back(); //This works
+    };
+    MyServices.categories(function(data) {
+
+        console.log(data);
+        $scope.category = _.chunk(data.data, 2);
+        console.log($scope.category);
+
+    });
+    $scope.profile = $.jStorage.get('profile');
+    $scope.getProfield = {};
+    console.log($scope.profile);
+    $scope.getProfield._id = $scope.profile._id;
+    MyServices.getProfile($scope.getProfield, function(data) {
+        if (data.value) {
+            $scope.browse = data.data;
+        } else {
+
+        }
+    });
+    MyServices.featureprods(function(data) {
+
+        $scope.feaprods = data.data;
+        $ionicSlideBoxDelegate.update();
+
+    });
+})
+
+.controller('AddonsCtrl', function($scope, $stateParams, Subscription, $state, MyServices) {
+    $scope.goBackHandler = function() {
+        window.history.back(); //This works
+    };
+    $scope.userDetails = MyServices.getAppDetails();
+    MyServices.showCardQuantity(function(num) {
+        $scope.totalQuantity = num;
+    });
+    $scope.subscription = Subscription.getObj();
+    Subscription.validate($state);
+    $scope.getProductPrice = MyServices.getProductPrice;
+    $scope.addPlan = function(planName) {
+        $scope.subscription.plan = planName;
+    };
+    MyServices.getOtherProducts(function(data) {
+        if (data.status == 200) {
+            if (data.data && data.data.data && data.data.data.results) {
+                $scope.otherProducts = _.groupBy(data.data.data.results, "addones");
+                $scope.saveSpace = $scope.otherProducts["Save Space"];
+                $scope.saveTime = $scope.otherProducts["Save Time"];
             }
-        };
-
-        $scope.slideHasChanged = function(index) {
-            $ionicSlideBoxDelegate.cssClass = 'fade-in'
-            $scope.slideIndex = index;
-            if (($ionicSlideBoxDelegate.count() - 1) == index) {
-                $timeout(function() {
-                    $ionicSlideBoxDelegate.slide(0);
-                }, $scope.interval);
-            }
-        };
-        $scope.interval = 5000;
-        $scope.goBackHandler = function() {
-            window.history.back(); //This works
-        };
-        MyServices.categories(function(data) {
-
-            console.log(data);
-            $scope.category = _.chunk(data.data, 2);
-            console.log($scope.category);
-
+        } else {
+            $ionicPopup.alert({
+                title: "Error Occured",
+                template: "Error Occured while retriving Products"
+            });
+        }
+    });
+    $scope.checkMinProduct = function(product) {
+        if (product.productQuantity <= 0) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+    $scope.checkMaxProduct = function(product) {
+        if (product.productQuantity >= parseInt(product.quantity)) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+    $scope.changeProductQuantity = function(product, change) {
+        if (_.isNaN(parseInt(product.productQuantity))) {
+            product.productQuantity = 0;
+        }
+        if (change) {
+            product.productQuantity++;
+        } else {
+            product.productQuantity--;
+        }
+        $scope.addProduct(product);
+    };
+    $scope.addProduct = function(product) {
+        _.remove($scope.subscription.otherProducts, function(n) {
+            return n._id == product._id;
         });
-        $scope.profile = $.jStorage.get('profile');
-        $scope.getProfield = {};
-        console.log($scope.profile);
-        $scope.getProfield._id = $scope.profile._id;
-        MyServices.getProfile($scope.getProfield, function(data) {
-            if (data.value) {
-                $scope.browse = data.data;
-            } else {
-
-            }
-        });
-        MyServices.featureprods(function(data) {
-
-            $scope.feaprods = data.data;
-            $ionicSlideBoxDelegate.update();
-
-        });
-    })
-    .controller('AddonsCtrl', function($scope, $stateParams, Subscription, MyServices) {
-        $scope.userDetails = MyServices.getAppDetails();
-
-        $scope.goBackHandler = function() {
-            window.history.back(); //This works
-        };
-        $scope.changeProductQuantity = function(product, change) {
-            if (_.isNaN(parseInt(product.productQuantity))) {
-                product.productQuantity = 0;
-            }
-            if (change) {
-                product.productQuantity++;
-            } else {
-                product.productQuantity--;
-            }
-        };
-        $scope.checkMinProduct = function(product) {
-            if (product.productQuantity <= 0) {
-                return true;
-            } else {
-                return false;
-            }
-        };
-        $scope.checkMaxProduct = function(product) {
-            if (product.productQuantity >= parseInt(product.quantity)) {
-                return true;
-            } else {
-                return false;
-            }
-        };
-        MyServices.getAllOtherProduct({}, function(data) {
-
-            $scope.AllOtherProduct = data.data.results;
-            $scope.AllOtherProduct = _.groupBy($scope.AllOtherProduct, 'addones');
-            $scope.saveTime = $scope.AllOtherProduct[Object.keys($scope.AllOtherProduct)[0]];
-            $scope.saveSpace = $scope.AllOtherProduct[Object.keys($scope.AllOtherProduct)[1]];
-
-        });
-        $scope.subscription = Subscription.getObj();
-        console.log($scope.subscription);
-    })
+        if (product.productQuantity > 0) {
+            $scope.subscription.otherProducts.push(product);
+        }
+    };
+})
 
 .controller('ReviewCtrl', function($scope, $stateParams, ionicDatePicker, $ionicPopup, MyServices) {
     $scope.goBackHandler = function() {
@@ -655,43 +686,17 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
 })
 
-.controller('OrderhistoryCtrl', function($scope, $stateParams) {
-    $scope.goBackHandler = function() {
-        window.history.back(); //This works
-    };
-})
-
 .controller('ConfirmationCtrl', function($scope, $stateParams) {
     $scope.goBackHandler = function() {
         window.history.back(); //This works
     };
 })
 
-.controller('CalendarCtrl', function($scope, $stateParams, $filter, MyServices, ionicDatePicker, $ionicSlideBoxDelegate) {
-    $scope.calDate = new Date();
-    $scope.goBackHandler = function() {
-        window.history.back(); //This works
-    };
-    $scope.getDate = function() {
-        $scope.calDate = MyServices.getDate(); //This works
-    };
-
-})
-
-
 .controller('OrderhistoryCtrl', function($scope, $stateParams) {
     $scope.goBackHandler = function() {
         window.history.back(); //This works
     };
 })
-
-.controller('ConfirmationCtrl', function($scope, $stateParams) {
-    $scope.goBackHandler = function() {
-        window.history.back(); //This works
-    };
-})
-
-
 
 .controller('CalendarCtrl', function($scope, $stateParams, $filter, MyServices, ionicDatePicker, $ionicSlideBoxDelegate) {
     $scope.calDate = new Date();
