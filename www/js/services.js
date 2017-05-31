@@ -1,7 +1,8 @@
 // var adminurl = "http://192.168.43.147:80/api/"; //local
 
 // var adminurl = "http://104.198.28.29:80/api/"; //server
-var adminurl = "http://192.168.0.117:1337/api/"; //server
+// var adminurl = "http://192.168.0.117:1337/api/"; //server
+var adminurl = "http://htbt.wohlig.co.in/api/"; //server
 
 // var imgpath = adminurl + "uploadfile/getupload?file=";
 var imgurl = adminurl + "upload/";
@@ -180,6 +181,7 @@ angular.module('starter.services', [])
 
             //to get OTP
             getOTP: function(data, callback) {
+              console.log(data);
                 $http({
                     url: adminurl + 'user/generateOtp',
                     method: 'POST',
@@ -196,14 +198,22 @@ angular.module('starter.services', [])
                     callback(data);
                 });
             },
-            saveOrderCheckout: function(product, quantity) {
+
+            saveOrderCheckout: function(data, callback) {
                 $http({
                     url: adminurl + 'Order/saveOrderCheckout',
                     method: 'POST',
                     withCredentials: true,
-                }).then(function(data) {
-                    callback(data);
-                });
+                    data: data
+                }).success(callback);
+            },
+            saveOrderCheckoutCart: function(data, callback) {
+                $http({
+                    url: adminurl + 'Order/saveOrderCheckoutCart',
+                    method: 'POST',
+                    withCredentials: true,
+                    data: data
+                }).success(callback);
             },
             //To verfiy OTP
             verifyOTP: function(data, callback) {

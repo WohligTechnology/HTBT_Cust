@@ -12,13 +12,8 @@
         </ion-nav-buttons>
     </ion-nav-bar>
     <ion-content class="has-header browse-backgrndcolor">
-        <ion-slide-box class="ionSlider" on-slide-changed="slideHasChanged($index)"
-        auto-play="true"
-slide-interval="{{interval}}"
-show-pager="true"
-pager-click="changeSlide(index)"
-on-slide-changed="slideHasChanged(index)" show-pager="true">
-            <ion-slide ng-if="feaprods.length>0" ng-repeat="data in feaprods" [options]="{pager:true}">
+        <ion-slide-box class="ionSlider" on-slide-changed="slideHasChanged($index)" auto-play="true" slide-interval="{{interval}}" show-pager="true" pager-click="changeSlide(index)" on-slide-changed="slideHasChanged(index)" show-pager="true">
+            <ion-slide ng-if="feaprods.length>0" ng-repeat="data in feaprods" [options]="{pager:true}" ng-click="productTap(data)">
                 <div class="box box1">
                     <div class="row browse-sliderRow">
                         <div class="col-50">

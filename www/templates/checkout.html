@@ -114,12 +114,12 @@
 
         <span class="termscolor" ng-click="terms.show($event)">  terms & conditions</span>
         <label class="checkbox noborder ">
-   <input type="checkbox" class="">
+   <input type="checkbox" class="" ng-model="terms">
    </label>
     </li>
     <div class="bar bar-footer signUpFooter footer-height">
-        <button class="button button-block button-positive footer-font" ng-click="gotopayment()">
-  Pay ₹ {{totalAmt}}/-
-</button>
+        <button class="button button-block button-positive footer-font" ng-click="gotopayment()" ng-disabled="!terms">
+          Pay ₹ {{totalAmt}}/-
+        </button>
     </div>
 </ion-view>

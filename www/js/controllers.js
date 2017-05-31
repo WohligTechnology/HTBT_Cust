@@ -296,7 +296,12 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
         console.log($scope.subscription);
         $scope.OrderData = {};
         $scope.OrderData.totalAmount = $scope.totalAmt;
-        $scope.OrderData.customer = $.jStorage.get('profile');
+        $scope.OrderData.customer = {};
+        // $scope.OrderData.customer = $.jStorage.get('profile');
+        $scope.OrderData.customer.name = $.jStorage.get('profile').name;
+        $scope.OrderData.customer.mobile = $.jStorage.get('profile').mobile;
+        $scope.OrderData.methodOfPayemnt = 'Customer';
+        $scope.OrderData.orderFor = 'CustomerForSelf';
         $scope.OrderData.totalQuantity = $scope.subscription.totalQuantity;
         MyServices.getProductPrice($scope.subscription.productDetail, $scope.subscription.product[0].quantity)
 
@@ -307,10 +312,9 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
         }];
         $scope.OrderData.product[0].product = $scope.subscription.productDetail;
         $scope.OrderData.product[0].productQuantity = $scope.subscription.product[0].quantity;
-        $scope.OrderData.product[0].finalPrice =   MyServices.getProductPrice($scope.subscription.productDetail, $scope.subscription.product[0].quantity) ;
+        $scope.OrderData.product[0].finalPrice = MyServices.getProductPrice($scope.subscription.productDetail, $scope.subscription.product[0].quantity);
         $scope.OrderData.product[0].jarDeposit = $scope.deposit;
-        $scope.OrderData.methodOfpayemnt = 'Customer';
-        $scope.OrderData.orderFor = 'CustomerForSelf';
+
 
 
         _.each($scope.subscription.otherProducts, function(n) {
@@ -323,11 +327,31 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
         var options = "location=no,toolbar=yes";
         var target = "_blank";
         var url = "";
+        console.log($scope.OrderData);
         MyServices.saveOrderCheckout($scope.OrderData, function(data) {
             console.log(data);
             if (data.value) {
-                $scope.finalURL = 'http://192.168.0.117:8081/signup/' + data._id;
+                $scope.finalURL = 'http://192.168.0.117:8081/orderconfirmation/' + data._id;
                 var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+                ref.addEventListener('loadstop', function(event) {
+                    // event.url="http://wohlig.co.in/paisoapk/success.html?orderid=1231321231";
+                    var url = event.url.split(".html")[0] + ".html";
+                    var orderid = event.url.split("=")[1];
+                    console.log(url, order_id);
+                    if (url == "http://192.168.0.117:8081/sorry") {
+                        ref.close();
+                        var alertPopup = $ionicPopup.alert({
+                            template: '<h4 style="text-align:center;">Some Error Occurred. Payment Failed</h4>'
+                        });
+                        alertPopup.then(function(res) {
+                            alertPopup.close();
+                            $state.go('app.orderconfirm');
+                        });
+                    } else if (url == "http://192.168.0.117:8081/thankyou") {
+                        ref.close();
+                        $state.go('app.orderconfirm');
+                    }
+                });
             }
         });
     };
@@ -483,7 +507,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     };
 })
 
-.controller('BrowseCtrl', function($scope, $ionicSlideBoxDelegate, $timeout, $ionicPopup, MyServices, $state) {
+.controller('BrowseCtrl', function($scope, $ionicSlideBoxDelegate,Subscription, $timeout, $ionicPopup, MyServices, $state) {
     $scope.userDetails = MyServices.getAppDetails();
     $scope.nextPage = function(sub, id) {
         if (sub == 'Yes') {
@@ -497,7 +521,23 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
             });
         }
     };
-
+    $scope.subscription = Subscription.getObj();
+    MyServices.showCardQuantity(function(num) {
+        $scope.totalQuantity = num;
+    });
+    $scope.productTap = function(product) {
+        $scope.subscription.product[0].product = product._id;
+        $scope.subscription.productDetail = product;
+        console.log($scope.subscription);
+        if ($scope.totalQuantity === 0 ) {
+            $state.go("app.subpage1");
+        } else {
+            $ionicPopup.alert({
+                title: "Product already in Cart",
+                template: "Please remove all the Products from the cart to proceed with Subscription Products."
+            });
+        }
+    };
     $scope.slideHasChanged = function(index) {
         $ionicSlideBoxDelegate.cssClass = 'fade-in'
         $scope.slideIndex = index;
@@ -600,7 +640,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     };
 })
 
-.controller('ReviewCtrl', function($scope, $stateParams, ionicDatePicker, $ionicPopup, MyServices) {
+.controller('ReviewCtrl', function($scope, $stateParams, ionicDatePicker, $state, $ionicPopup, MyServices) {
     $scope.goBackHandler = function() {
         window.history.back(); //This works
     };
@@ -654,6 +694,40 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
                 $ionicPopup.alert({
                     title: "Error Occured",
                     template: "Error Occured while Removing Products to Cart"
+                });
+            }
+        });
+    };
+    $scope.placeOrder = function(productId) {
+        $scope.OrderData = {};
+        $scope.OrderData.customer = {};
+        $scope.OrderData.customer.name = $.jStorage.get('profile').name;
+        $scope.OrderData.customer.mobile = $.jStorage.get('profile').mobile;
+        $scope.OrderData.methodOfPayemnt = 'Customer';
+        $scope.OrderData.orderFor = 'CustomerForSelf';
+        MyServices.saveOrderCheckoutCart($scope.OrderData, function(data) {
+            if (data.value) {
+                $scope.finalURL = 'http://192.168.0.117:8081/orderconfirmation/' + data._id;
+                var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+
+                ref.addEventListener('loadstop', function(event) {
+                    // event.url="http://wohlig.co.in/paisoapk/success.html?orderid=1231321231";
+                    var url = event.url.split(".html")[0] + ".html";
+                    var orderid = event.url.split("=")[1];
+                    console.log(url, order_id);
+                    if (url == "http://192.168.0.117:8081/sorry") {
+                        ref.close();
+                        var alertPopup = $ionicPopup.alert({
+                            template: '<h4 style="text-align:center;">Some Error Occurred. Payment Failed</h4>'
+                        });
+                        alertPopup.then(function(res) {
+                            alertPopup.close();
+                            $state.go('app.orderconfirm');
+                        });
+                    } else if (url == "http://192.168.0.117:8081/thankyou") {
+                        ref.close();
+                        $state.go('app.orderconfirm');
+                    }
                 });
             }
         });
