@@ -4,10 +4,10 @@
       <div class="otpDiv">
         <label for="" class="otpLabel">Enter the 4-digit OTP code you <br> received through SMS</label>
         <div class="otpin">
-          <input type="text" ng-model="otp.first">
-          <input type="text" ng-model="otp.second">
-          <input type="text" ng-model="otp.third">
-          <input type="text" ng-model="otp.forth">
+          <input type="text"  class="inputs"  maxlength="1" ng-model="otp.first">
+          <input type="text"  class="inputs"  maxlength="1" ng-model="otp.second">
+          <input type="text" class="inputs"  maxlength="1" ng-model="otp.third">
+          <input type="text" class="inputs"  maxlength="1" ng-model="otp.forth">
         </div>
         <button class="button button-assertive verifyDiv" ng-click="verifyOTP(otp)">
   VERIFY

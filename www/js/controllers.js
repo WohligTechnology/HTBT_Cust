@@ -160,6 +160,17 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     reqObj.mobile = $stateParams.no;
     reqObj.accessLevel = "Customer";
 
+
+$(".inputs").keyup(function () {
+    if (this.value.length == this.maxLength) {
+      var $next = $(this).next('.inputs');
+      if ($next.length)
+          $(this).next('.inputs').focus();
+      else
+          $(this).blur();
+    }
+});
+
     //Function to verify OTP
     $scope.verifyOTP = function(value) {
         reqObj.otp = value.first + value.second + value.third + value.forth;
