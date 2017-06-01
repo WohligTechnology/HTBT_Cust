@@ -183,7 +183,7 @@ angular.module('starter.services', [])
             getOTP: function(data, callback) {
               console.log(data);
                 $http({
-                    url: adminurl + 'user/saveUserData',
+                    url: adminurl + 'user/generateOtp',
                     method: 'POST',
                     withCredentials: true,
                     data: data
