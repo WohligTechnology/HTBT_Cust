@@ -11,7 +11,19 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
         // Form data for the login modal
         $scope.loginData = {};
+        $scope.profile = $.jStorage.get('profile');
 
+        $scope.getProfield = {};
+        console.log($scope.profile);
+        $scope.getProfield._id = $scope.profile._id;
+        MyServices.getProfile($scope.getProfield, function(data) {
+            console.log(data);
+            if (data.value) {
+                $scope.signupForm = data.data;
+            } else {
+
+            }
+        });
 
         $ionicPopover.fromTemplateUrl('templates/modal/popover.html', {
             scope: $scope,
@@ -146,12 +158,12 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     var reqObj = {};
     var otp = {};
     reqObj.mobile = $stateParams.no;
-    reqObj.accessLevel = "Relationship Partner";
+    reqObj.accessLevel = "Customer";
 
     //Function to verify OTP
     $scope.verifyOTP = function(value) {
         reqObj.otp = value.first + value.second + value.third + value.forth;
-
+console.log(value);
         MyServices.verifyOTP(reqObj, function(data) {
             if (data.value) {
                 $scope.profile = $.jStorage.set('profile', data.data);
@@ -175,14 +187,14 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
     $scope.getOTP = function(value) {
         console.log("value", value);
-        value.accessLevel = "Relationship Partner"
+        value.accessLevel = "Customer"
         if (value.mobile != null && value.mobile != "") {
             MyServices.getOTP({
                 mobile: value.mobile,
                 accessLevel: value.accessLevel
             }, function(data) {
                 if (data.value) {
-                    if (data.data.message == "OTP sent") {
+                    if (data.value) {
                         $state.go('verify', {
                             no: value.mobile
                         });
@@ -331,7 +343,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
         MyServices.saveOrderCheckout($scope.OrderData, function(data) {
             console.log(data);
             if (data.value) {
-                $scope.finalURL = 'http://192.168.0.117:8081/orderconfirmation/' + data._id;
+                $scope.finalURL = 'http://192.168.0.117:8081/orderconfirmation/' + data.data._id;
                 var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
                 ref.addEventListener('loadstop', function(event) {
                     // event.url="http://wohlig.co.in/paisoapk/success.html?orderid=1231321231";
@@ -370,7 +382,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     });
 })
 
-.controller('ProfileCtrl', function($scope, $stateParams) {
+.controller('ProfileCtrl', function($scope, $stateParams,MyServices,$state) {
     $scope.goBackHandler = function() {
         window.history.back(); //This works
     };
@@ -698,6 +710,9 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
             }
         });
     };
+    var options = "location=no,toolbar=yes";
+    var target = "_blank";
+    var url = "";
     $scope.placeOrder = function(productId) {
         $scope.OrderData = {};
         $scope.OrderData.customer = {};
@@ -707,7 +722,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
         $scope.OrderData.orderFor = 'CustomerForSelf';
         MyServices.saveOrderCheckoutCart($scope.OrderData, function(data) {
             if (data.value) {
-                $scope.finalURL = 'http://192.168.0.117:8081/orderconfirmation/' + data._id;
+                $scope.finalURL = 'http://192.168.0.117:8081/orderconfirmation/' + data.data._id;
                 var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
 
                 ref.addEventListener('loadstop', function(event) {
@@ -1176,7 +1191,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
                         MyServices.getByPin($scope.user, function(data) {
                             if (data.value) {
                                 $scope.profile = $.jStorage.get('profile');
-                                tate.go('app.browse');
+                                $state.go('app.browse');
 
                             } else {
                                 console.log("dsjg");

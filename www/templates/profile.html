@@ -1,40 +1,79 @@
 <ion-view title="Profile">
   <ion-nav-bar class="bar-stable nav-height">
     <ion-nav-buttons side="left">
-      <button class="button button-clear ion-android-arrow-back sigupIconLeft" ng-click="goBackHandler()">
+      <button class="button button-clear ion-android-arrow-back sigupIconLeft" >
         </button>
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
-      <!-- <button class="button button-clear ion-android-more-vertical sigupRight"> -->
+      <button class="button button-clear ion-android-more-vertical sigupRight">
         </button>
     </ion-nav-buttons>
   </ion-nav-bar>
-  <ion-content class="has-header signUpForm has-footer">
-    <div class="padtop-10">
-      <label class=" item-input ">
-    <input type="text" placeholder="Your Name">
-  </label>
-      <label class=" item-input ">
-    <input type="text" placeholder="Email Id (Optional)" >
-  </label>
+   <form  ng-submit="save()" name="userForm">
+  <ion-content class="has-header signUpForm hasterms">
+
+    <div class="iptext ">
+      <div>
+        <label class=" item-input iptext ">
+    <input class="iptext" type="text" placeholder="Your Name"  ng-model="signupForm.name"  value="{{signupForm.name}}" name="name" required>
 
 
-      <label class=" item-input ">
-    <input type="text" placeholder="Address"  >
   </label>
-      <label class=" item-input ">
-    <input type="text" placeholder="" disabled >
+  <p class="error-msg" ng-show="userForm.name.$error.required && userForm.name.$touched">Please Enter Your Name.</p>
+         </div>
+
+      <div>
+        <label class=" item-input ">
+    <input type="email" placeholder="Email Id (Optional)" ng-model="signupForm.email" name="email"  value="{{signupForm.email}}" required>
+
   </label>
+<p class="error-msg" ng-show="userForm.email.$error.required && userForm.email.$touched">Please Enter your Email Id.</p>
+      </div>
+
+
+<div>
   <label class=" item-input ">
-<input type="number" placeholder="Mobile No" >
-</label>
-<label class=" item-input ">
-<input type="number" placeholder="Landline No">
-</label>
-      <label class=" item-input ">
-    <input type="number" placeholder="Pincode" ng-click="sorryPopup()" >
+    <input type="text" placeholder="Establishment Name"  ng-model="signupForm.establishmentName" value="{{signupForm.establishmentName}}" name="establishmentname" required>
   </label>
+  <p class="error-msg" ng-show="userForm.establishmentname.$error.required && userForm.establishmentname.$touched">Please Enter your Establishment Name.</p>
+</div>
+
+<div>
+<label class=" item-input ">
+    <input type="text" placeholder="Establishment Address"  ng-model="signupForm.establishmentAddress"   value="{{signupForm.establishmentAddress}}" name="estadd" required>
+  </label>
+  <p class="error-msg" ng-show="userForm.estadd.$error.required && userForm.estadd.$touched">Please Enter your Establishment Address.</p>
+</div>
+
+
+      <label class=" item-input ">
+    <input type="text" placeholder="" disabled>
+  </label>
+
+  <div>
+<label class=" item-input "  >
+ <input type="text" placeholder="Mobile No." ng-model="signupForm.mobile" name="mob"  value="{{signupForm.mobile}}" required only-Digits maxlength="10" minlength="10">
+</label>
+   <p class="error-msg" ng-show="userForm.mob.$error.required && userForm.mob.$touched">Please Enter your Mobile No.</p>
+  </div>
+
+
+  <div>
+ <label class=" item-input ">
+ <input type="text" placeholder="Landline No." ng-model="signupForm.landLine" name="landline"  value="{{signupForm.landline}}" required only-Digits maxlength="11" minlength="11">
+</label>
+ <p class="error-msg" ng-show="userForm.landline.$error.required && userForm.landline.$touched">Please Enter your Landline No.</p>
+  </div>
+
+
+ <div>
+<label class=" item-input " >
+    <input type="text" placeholder="Pincode" ng-click="sorryPopup()" ng-model="signupForm.pincode" name="pincode"  value="{{signupForm.pincode}}" required only-Digits maxlength="6" minlength="6">
+  </label>
+  <p class="error-msg" ng-show="userForm.pincode.$error.required && userForm.pincode.$touched">Please Enter your Pincode.</p>
     </div>
+ </div>
+
     <!--<div class="list paddingDiv">
       <label class="item item-input nameSignup">
     <input class = "plcHldr" type="text" placeholder="Your Name">
@@ -43,10 +82,17 @@
     <input class = "plcHldr" type="text" placeholder="Email Id(optional)">
   </label>
     </div>-->
+
+
+
   </ion-content>
-  <div class="bar bar-footer signUpFooter footer-height">
-    <button class="button button-block button-positive footer-font">
+
+
+  <div class="bar bar-footer footer-height signUpFooter" >
+    <button class="button button-block button-positive footer-font"  type="submit">
   Save
 </button>
   </div>
+</form>
+
 </ion-view>
