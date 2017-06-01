@@ -4,11 +4,15 @@
             <button class="button button-clear ion-android-arrow-back sigupIconLeft" ng-click="goBackHandler()">
         </button>
         </ion-nav-buttons>
-        <ion-nav-buttons side="right">
+        <!-- <ion-nav-buttons side="right">
             <div class="cartbtn">
                 <img src="img/9.png" alt="" ui-sref="app.checkout">
             </div>
             <span class="cartbadge">{{userDetails.cartQuantity}}</span>
+        </ion-nav-buttons> -->
+        <ion-nav-buttons side="right">
+          <button class="button button-clear ion-android-more-vertical sigupRight disblock" ng-click="popover.show($event)">
+          </button>
         </ion-nav-buttons>
     </ion-nav-bar>
     <ion-content class="has-header chkout-bgcolor has-footer">
@@ -18,12 +22,12 @@
             <label for="">?</label>
         </div>
         <div class="inputarea">
-            <input type="number" autofocus focusMe ng-model="subscription.product[0].quantity">
+            <input type="text" autofocus only-Digits focusMe ng-model="subscription.product[0].quantity">
         </div>
         <div class="avgTxt">On average , 4 people need 3 jars per week.</div>
     </ion-content>
     <div class="bar bar-footer nextFooter footer-height">
-        <button class="button button-block button-positive footer-font" ui-sref="app.subpage3">
+        <button class="button button-block button-positive footer-font" ng-click="checkLimit(subscription.product[0].quantity)" ng-disabled="!subscription.product[0].quantity">
   Next
 </button>
     </div>

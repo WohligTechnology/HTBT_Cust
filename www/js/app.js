@@ -146,6 +146,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
     })
 
     .state('app.browse-more', {
+      cache:false,
         url: '/browse-more/:category',
         views: {
             'menuContent': {
@@ -196,7 +197,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
     })
 
     .state('app.subpage1', {
-        url: '/subpage1',
+        url: '/subpage1/:id',
         views: {
             'menuContent': {
                 templateUrl: 'templates/subpage1.html',

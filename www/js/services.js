@@ -1,8 +1,8 @@
 // var adminurl = "http://192.168.43.147:80/api/"; //local
 
 // var adminurl = "http://104.198.28.29:80/api/"; //server
-var adminurl = "http://192.168.0.117:1337/api/"; //server
-// var adminurl = "http://htbt.wohlig.co.in/api/"; //server
+// var adminurl = "http://192.168.1.121:1337/api/"; //server
+var adminurl = "http://htbt.wohlig.co.in/api/"; //server
 
 // var imgpath = adminurl + "uploadfile/getupload?file=";
 var imgurl = adminurl + "upload/";
@@ -50,6 +50,14 @@ angular.module('starter.services', [])
             getonePro: function(data, callback) {
                 $http({
                     url: adminurl + 'User/getone',
+                    method: 'POST',
+                    withCredentials: true,
+                    data: data
+                }).success(callback);
+            },
+            getoneProduct: function(data, callback) {
+                $http({
+                    url: adminurl + 'product/getone',
                     method: 'POST',
                     withCredentials: true,
                     data: data
@@ -171,6 +179,7 @@ angular.module('starter.services', [])
                 _.each(orderedPrice, function(obj) {
                     if (parseInt(quantity) <= parseInt(obj.endRange)) {
                         foundPrice = obj;
+                        console.log(obj, quantity);
                         product.priceUsed = obj.finalPrice;
                         product.totalPriceUsed = obj.finalPrice * parseInt(quantity);
                         return false;
