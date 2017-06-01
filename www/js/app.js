@@ -277,6 +277,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
 
       .state('verify', {
         url: '/verify/:no',
+        cache:false,
         templateUrl: 'templates/verify.html',
         controller: 'VerifyCtrl'
     })

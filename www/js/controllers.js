@@ -160,7 +160,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     };
 })
 
-.controller('VerifyCtrl', function($scope, $stateParams, $state, MyServices) {
+.controller('VerifyCtrl', function($scope, $stateParams, $state,$ionicPopup, MyServices) {
     $.jStorage.flush();
     var reqObj = {};
     var otp = {};
@@ -187,8 +187,12 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
                 $scope.profile = $.jStorage.set('profile', data.data);
                 $state.go('signup');
             } else {
-                alert("OTP verification failed")
-                $state.go('login');
+              // alert("unable to generate OTP. Please try again");
+              var alertPopup = $ionicPopup.alert({
+                  title: 'Invalid OTP',
+                  template: 'Please try again'
+              });
+              $state.go('login');
             }
         })
     }
