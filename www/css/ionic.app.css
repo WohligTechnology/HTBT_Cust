@@ -10876,7 +10876,7 @@ display: none
   overflow: hidden; }
   .prdcticon img {
     height: 100%;
-    width: 50%; }
+    width: auto; }
   .prdcticon .line {
     height: 90%;
     display: inline-block;

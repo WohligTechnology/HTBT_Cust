@@ -69,7 +69,7 @@
             </div>
             <div class="col-33 savingamtdiv">
                 <div>
-                    <label for="">₹  {{savingAmount}}</label>
+                    <label for="">₹  {{savingAmount || 0}}</label>
                     <span>({{savingPercent|number:2}}%)</span>
                 </div>
             </div>
@@ -103,10 +103,17 @@
             </div>
         </div> -->
     </ion-content>
+    <li class="item item-checkbox noborder checkbox-assertive borderR chkalign mar10">
+        I have read & accept the
 
+        <span class="termscolor" ng-click="terms.show($event)">  terms & conditions</span>
+        <label class="checkbox noborder ">
+   <input type="checkbox" class="" ng-model="terms">
+   </label>
+    </li>
     <div class="bar bar-footer signUpFooter footer-height">
-        <button class="button button-block button-positive footer-font" ng-click="placeOrder()">
-  Pay ₹ {{calculateTotalPrice()}}/-
-</button>
+        <button class="button button-block button-positive footer-font" ng-click="placeOrder()" ng-disabled="!terms">
+          Pay ₹ {{calculateTotalPrice()}}/-
+        </button>
     </div>
 </ion-view>
