@@ -160,17 +160,16 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     };
 })
 
-<<<<<<< HEAD
+
 .controller('SorryCtrl', function($scope, $stateParams) {
     $scope.goBackHandler = function() {
         window.history.back(); //This works
     };
 })
 
-.controller('VerifyCtrl', function($scope, $stateParams, $state, MyServices) {
-=======
+
 .controller('VerifyCtrl', function($scope, $stateParams, $state,$ionicPopup, MyServices) {
->>>>>>> 96c9b45bb1ae3a04eaf580dcc6f15d998d76818b
+
     $.jStorage.flush();
     var reqObj = {};
     var otp = {};
