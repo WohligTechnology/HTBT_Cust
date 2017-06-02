@@ -145,6 +145,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
         }
     })
 
+    .state('app.sorry', {
+        url: '/sorry',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/sorry.html',
+                controller: 'SorryCtrl'
+            }
+        }
+    })
+
     .state('app.browse-more', {
         url: '/browse-more/:category',
         views: {
