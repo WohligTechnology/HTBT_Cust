@@ -11950,3 +11950,42 @@ p.onceLblr {
 .time-highlight {
   background: #ff414d;
   color: white; }
+
+.reldiv {
+  position: relative;
+  height: 100vh;
+  text-align: center; }
+
+.sorrymsg {
+  padding: 10px;
+  font-size: 16px;
+  color: #6d797e; }
+
+.sorryno {
+  font-weight: 500;
+  color: #6d797e; }
+
+.position-center {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 100%; }
+
+.thankyou {
+  font-size: 32px;
+  padding: 10px;
+  text-align: center;
+  font-weight: 500; }
+
+.img-div {
+  text-align: center; }
+  .img-div img {
+    width: 200px; }
+
+.orderplaced {
+  font-size: 21px;
+  width: 100%;
+  padding: 10px 10px 0 10px;
+  text-align: center;
+  color: #6d797e; }
