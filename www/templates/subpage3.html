@@ -5,10 +5,10 @@
         </button>
         </ion-nav-buttons>
         <ion-nav-buttons side="right">
-            <div class="cartbtn">
+            <!-- <div class="cartbtn">
                 <img src="img/9.png" alt="" ui-sref="app.checkout">
             </div>
-            <span class="cartbadge">{{userDetails.cartQuantity}}</span>
+            <span class="cartbadge">{{userDetails.cartQuantity}}</span> -->
         </ion-nav-buttons>
     </ion-nav-bar>
     <ion-content class="has-header chkout-bgcolor has-footer">
@@ -35,7 +35,7 @@
             </div>
             <div class="col-33 col-37pad col-margin">
                 <div class="rel">
-                    <label class="lbl90"> {{subscription.productDetail.price}} </label>
+                    <label class="lbl90" ng-if=""> {{subscription.productDetail.price}} </label>
                 </div>
                 <label class="rupsym" for="">₹</label>
                 <label class="lbl88" for=""> {{getProductPrice(subscription.productDetail, subscription.product[0].quantity * 4)}} </label>
@@ -49,7 +49,7 @@
                 <p class="onceLblr" for="">{{subscription.product[0].quantity*1}} Jars</p>
             </div>
             <div class="col-33 col-37pad col-margin">
-                <div class="rel">
+                <div class="rel" >
                     <label class="lbl90"> {{subscription.productDetail.price}} </label>
                 </div>
                 <label class="rupsym" for="">₹</label>

@@ -1,7 +1,7 @@
 // var adminurl = "http://192.168.43.147:80/api/"; //local
 
 // var adminurl = "http://104.198.28.29:80/api/"; //server
-// var adminurl = "http://192.168.1.121:1337/api/"; //server
+// var adminurl = "http://192.168.0.117:1337/api/"; //server
 var adminurl = "http://htbt.wohlig.co.in/api/"; //server
 
 // var imgpath = adminurl + "uploadfile/getupload?file=";
@@ -101,6 +101,14 @@ angular.module('starter.services', [])
                     data: data
                 }).success(callback);
             },
+            getDeliveryRequestByUser: function(data, callback) {
+                $http({
+                    // url: adminurl + 'DeliveryRequest/getDeliveryRequestByUser',
+                    method: 'POST',
+                    withCredentials: true,
+                    data: data
+                }).success(callback);
+            },
             showCardQuantity: function(callback) {
                 var obj = {
                     user: $.jStorage.get("profile")._id
@@ -179,7 +187,7 @@ angular.module('starter.services', [])
                 _.each(orderedPrice, function(obj) {
                     if (parseInt(quantity) <= parseInt(obj.endRange)) {
                         foundPrice = obj;
-                        console.log(obj, quantity);
+                        // console.log(obj, quantity);
                         product.priceUsed = obj.finalPrice;
                         product.totalPriceUsed = obj.finalPrice * parseInt(quantity);
                         return false;

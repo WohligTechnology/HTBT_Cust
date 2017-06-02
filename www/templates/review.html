@@ -1,29 +1,26 @@
 <ion-view title="Review & Checkout">
     <ion-nav-bar class="bar-stable nav-height">
         <ion-nav-buttons side="left">
-            <button class="button button-clear ion-android-arrow-back sigupIconLeft" ui-sref="app.browse">
+            <button class="button button-clear ion-android-arrow-back sigupIconLeft" ng-click="goBackHandler()">
         </button>
         </ion-nav-buttons>
-        <ion-nav-buttons side="right">
-            <button class="button button-clear ion-android-more-vertical sigupRight">
-        </button>
-        </ion-nav-buttons>
+
     </ion-nav-bar>
     <ion-content class="has-header chkout-bgcolor has-footer">
         <div class="rel" ng-repeat="product in products">
             <div class="row review-height">
                 <i class="button button-icon icon ion-ios-close-outline review-closebutton" ng-click="removeCart(product.product._id)"></i>
                 <div class="col-33">
-                    <div class="chkout-imgdivcol">
-                        <img class="browse-sliderImg " ng-src="{{product.product.smallImage | uploadpath}}" alt="">
+                    <div class="prdcticon">
+                        <img class=" " ng-src="{{product.product.smallImage | uploadpath}}" alt="">
 
                     </div>
                 </div>
-                <div class="col-20 reviewdiv">
+                <!--<div class="col-20 reviewdiv">
                     <div class="review-line">
                     </div>
-                </div>
-                <div class="">
+                </div>-->
+                <div class="col-66">
                     <div class="chkout-align">
                         <h2 class="chkout-fontsize">{{product.product.name}}</h2>
                         <div for="" class="colorpure">{{product.product.tags}} <i class="ion ion-information-circled"></i></div>
@@ -33,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div class="card card-no " ng-if="products.length==0">
+        <div class="card card-no " style="padding: 20%;text-align: center;" ng-if="products.length==0">
             No Product Found
         </div>
         <div class="row chkoutcoupon" ng-hide="products.length==0">
@@ -55,7 +52,7 @@
             </div>
             <div class="col-33 bgchkoutcol502">
                 <div>
-                    <label for="">₹   {{calculateTotalPrice()}}</label>
+                    <label for="">₹ {{calculateTotalPrice()}}</label>
                 </div>
             </div>
         </div>
@@ -69,12 +66,13 @@
             </div>
             <div class="col-33 savingamtdiv">
                 <div>
-                    <label for="">₹  {{savingAmount || 0}}</label>
+                    <label for="">₹  {{savingAmount}}</label>
                     <span>({{savingPercent|number:2}}%)</span>
                 </div>
             </div>
         </div>
-        <!-- <div class="row checkbtmcard" ng-hide="products.length==0">
+
+        <!--<div class="row checkbtmcard" ng-hide="products.length==0">
             <div class="col-25">
                 <div class="datemonth text-center">
                     <div class="datediv">
@@ -101,19 +99,26 @@
                     </div>
                 </div>
             </div>
-        </div> -->
-    </ion-content>
-    <li class="item item-checkbox noborder checkbox-assertive borderR chkalign mar10">
-        I have read & accept the
+        </div>-->
 
-        <span class="termscolor" ng-click="terms.show($event)">  terms & conditions</span>
-        <label class="checkbox noborder ">
-   <input type="checkbox" class="" ng-model="terms">
-   </label>
+
+
+
+    </ion-content>
+
+    <li class="item item-checkbox noborder checkbox-assertive borderR
+chkalign mar10">
+        <label class="checkbox noborder checkboxterms">
+   <input type="checkbox" ng-model="terms" class="">
+   </label> I have read & accept the
+        <span class="termscolor" ng-click="terms.show($event)">  Terms
+& Conditions</span>
     </li>
+
+
     <div class="bar bar-footer signUpFooter footer-height">
-        <button class="button button-block button-positive footer-font" ng-click="placeOrder()" ng-disabled="!terms">
-          Pay ₹ {{calculateTotalPrice()}}/-
-        </button>
+        <button ng-disabled="!terms" class="button button-block button-positive footer-font" ui-sref="app.auth-payment-cart">
+  Pay ₹ {{calculateTotalPrice()}}/-
+</button>
     </div>
 </ion-view>

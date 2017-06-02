@@ -359,7 +359,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
             $scope.OrderData.product.push($scope.product);
         });
         var options = "location=no,toolbar=yes";
-        var target = "_system";
+        var target = "_blank";
         var url = "";
         console.log($scope.OrderData);
         MyServices.saveOrderCheckout($scope.OrderData, function(data) {
@@ -369,9 +369,9 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
                 var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
                 ref.addEventListener('loadstop', function(event) {
                     // event.url="http://wohlig.co.in/paisoapk/success.html?orderid=1231321231";
-                    var url = event.url.split(".html")[0] + ".html";
-                    var orderid = event.url.split("=")[1];
-                    console.log(url, order_id);
+                    var url = event.url;
+                    // var orderid = event.url.split("=")[1];
+                    console.log(url);
                     if (url == "http://htbt.wohlig.co.in/sorry") {
                         ref.close();
                         var alertPopup = $ionicPopup.alert({
@@ -398,7 +398,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
 })
 
-.controller('ProfileCtrl', function($scope, $stateParams, MyServices, $state) {
+.controller('ProfileCtrl', function($scope, $stateParams, MyServices,$ionicPopup, $state) {
     $scope.goBackHandler = function() {
         window.history.back(); //This works
     };
@@ -415,6 +415,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
         if (data.value) {
             $scope.signupForm = data.data;
             console.log($scope.review);
+
         } else {
 
         }
@@ -437,7 +438,11 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
                     $scope.signupForm = data.data;
                     $scope.user = {};
                     $scope.user.pin = data.data.pincode
-
+                    $ionicPopup.alert({
+                        title: "Profile",
+                        template: "Profile saved Successfully"
+                    });
+                    $state.go('app.dashboard');
                 });
 
 
@@ -472,12 +477,21 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     MyServices.getoneProduct($scope.product, function(data) {
         if (data.value) {
             $scope.product = data.data;
+            $scope.pricelist=_.orderBy($scope.product.pricelist, ['endRange'], ['asc']);
+            console.log($scope.pricelist);
         } else {
 
         }
     });
+    var orderedPrice = _.orderBy($scope.subscription.productDetail.priceList, function (n) {
+                return parseInt(n.endRange);
+            });
+            var lastQuantity = 0;
+            if (orderedPrice.length > 0) {
+                lastQuantity = parseInt(orderedPrice[orderedPrice.length - 1].endRange);
+            }
     $scope.checkLimit = function(limit) {
-        if ($scope.product.limit >= limit) {
+        if (lastQuantity>limit) {
           $state.go('app.subpage3');
         }else{
           $state.go('app.requirement');
@@ -760,7 +774,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
         });
     };
     var options = "location=no,toolbar=yes";
-    var target = "_system";
+    var target = "_blank";
     var url = "";
     $scope.placeOrder = function(productId) {
         $scope.OrderData = {};
@@ -776,9 +790,9 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
                 ref.addEventListener('loadstop', function(event) {
                     // event.url="http://wohlig.co.in/paisoapk/success.html?orderid=1231321231";
-                    var url = event.url.split(".html")[0] + ".html";
-                    var orderid = event.url.split("=")[1];
-                    console.log(url, order_id);
+                    var url = event.url;
+                    // var orderid = event.url.split("=")[1];
+                    console.log(url);
                     if (url == "http://htbt.wohlig.co.in/sorry") {
                         ref.close();
                         var alertPopup = $ionicPopup.alert({
@@ -1145,14 +1159,14 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
         MyServices.getProfile($scope.getProfield, function(data) {
             console.log(data);
             if (data.value) {
-                $scope.dashboardData = data.data;
+                $scope.dashboardData1 = data.data;
+                console.log($scope.dashboardData1);
             } else {
 
             }
         });
-
-    })
-    .controller('PincodeCtrl', function($scope, $ionicPopup, $stateParams, $ionicActionSheet, $cordovaFileTransfer, $cordovaCamera, $ionicPopover, $state, MyServices, $cordovaImagePicker) {})
+})
+.controller('PincodeCtrl', function($scope, $ionicPopup, $stateParams, $ionicActionSheet, $cordovaFileTransfer, $cordovaCamera, $ionicPopover, $state, MyServices, $cordovaImagePicker) {})
 
 .controller('SignUpCtrl', function($scope, $stateParams, $ionicPopup, $ionicPopover, MyServices, $state) {
     $scope.sorryPopup = function() {

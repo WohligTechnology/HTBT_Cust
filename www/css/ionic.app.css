@@ -10744,16 +10744,15 @@ display: none
   padding: 1.5px;
   margin: 1.5px; }
   .browse-card1 .icondiv {
-    height: 170px;
+    height: auto;
+    width: 100%;
     padding: 15px 0;
     display: block;
     text-align: center;
-    background: #e7e9ea;
-    overflow: hidden; }
+    background: #e7e9ea; }
     .browse-card1 .icondiv img {
-      height: 100%;
-      width: auto;
-      overflow: hidden; }
+      height: auto;
+      width: 100%; }
   .browse-card1 label {
     text-align: center;
     display: block;
@@ -10775,14 +10774,15 @@ display: none
   padding: 1.5px;
   margin: 1.5px; }
   .browse-card2 .icondiv {
-    height: 170px;
+    height: auto;
+    width: 100%;
     padding: 15px 0;
     display: block;
     text-align: center;
     background: #fafafa; }
     .browse-card2 .icondiv img {
-      height: 100%;
-      width: auto; }
+      height: auto;
+      width: 100%; }
   .browse-card2 label {
     text-align: center;
     display: block;
@@ -10870,13 +10870,19 @@ display: none
 
 .prdcticon {
   height: 120px;
-  width: 120px;
   text-align: center;
-  margin: 15px 10px;
-  overflow: hidden; }
+  margin: 10px 0 10px 10px;
+  padding-right: 10px;
+  position: relative;
+  border-right: 1px solid #ddd; }
   .prdcticon img {
-    height: 100%;
-    width: auto; }
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    transform: translate(-50%, -50%) !important;
+    top: 50% !important;
+    left: 50% !important;
+    padding-right: 10px; }
   .prdcticon .line {
     height: 90%;
     display: inline-block;
@@ -11217,6 +11223,28 @@ display: none
   padding-top: 15px; }
   .bgchkoutcol502 label {
     font-size: 16px; }
+
+.chkout-image {
+  height: 120px;
+  text-align: center;
+  margin: 10px 0 10px 10px;
+  padding-right: 10px;
+  position: relative;
+  border-right: 1px solid #278cce; }
+  .chkout-image img {
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    transform: translate(-50%, -50%) !important;
+    top: 50% !important;
+    left: 50% !important;
+    padding-right: 10px; }
+  .chkout-image .line {
+    height: 90%;
+    display: inline-block;
+    padding: 10px;
+    margin: 8px 0 8px 5%;
+    border-right: 1px solid #1a85cb; }
 
 .savingscol501 {
   padding-left: 10px;
