@@ -36,12 +36,12 @@
     <input type="text" placeholder="" disabled>
   </label> -->
 
-  <div>
+  <!--<div>
     <label class=" item-input ">
-    <input type="text" placeholder="Mobile No" ng-model="signupForm.mobile" name="mob"  value="{{signupForm.mobile}}"  required only-Digits maxlength="10" minlength="10">
+    <input type="number" placeholder="Mobile No" ng-model="signupForm.mobile" name="mob"  value="{{signupForm.mobile}}"  required limit-to = "10">
     </label>
      <p class="error-msg" ng-show="userForm.mob.$error.required && userForm.mob.$touched">Please Enter your Mobile No.</p>
-  </div>
+  </div>-->
 
 <!-- <div>
   <label class=" item-input ">
@@ -52,7 +52,7 @@
 
 <div>
   <label class=" item-input ">
-  <input type="text" placeholder="Pincode"  ng-model="signupForm.pincode" name="pincode" value="{{signupForm.pincode}}"  required only-Digits maxlength="6" minlength="6">
+  <input type="number" placeholder="Pincode"  ng-model="signupForm.pincode" name="pincode" value="{{signupForm.pincode}}"  required limit-to = "6">
   </label>
   <p class="error-msg" ng-show="userForm.pincode.$error.required && userForm.pincode.$touched">Please Enter your Pincode.</p>
 </div>
