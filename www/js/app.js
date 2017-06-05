@@ -148,8 +148,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
     .state('sorry', {
         url: '/sorry',
 
-                templateUrl: 'templates/sorry.html',
-                controller: 'SorryCtrl'
+        templateUrl: 'templates/sorry.html',
+        controller: 'SorryCtrl'
 
 
     })
@@ -157,13 +157,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
     .state('linkexpire', {
         url: '/linkexpire',
 
-                templateUrl: 'templates/linkexpire.html',
-                controller: 'LinkExpireCtrl'
+        templateUrl: 'templates/linkexpire.html',
+        controller: 'LinkExpireCtrl'
 
     })
 
     .state('app.browse-more', {
-      cache:false,
+        cache: false,
         url: '/browse-more/:category',
         views: {
             'menuContent': {
@@ -204,6 +204,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
     })
 
     .state('app.checkout', {
+        cache: false,
         url: '/checkout',
         views: {
             'menuContent': {
@@ -224,7 +225,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
     })
 
     .state('app.review', {
-      cache:false,
+        cache: false,
         url: '/review',
         views: {
             'menuContent': {
@@ -292,16 +293,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
 
 
 
-      .state('verify', {
+    .state('verify', {
         url: '/verify/:no',
-        cache:false,
+        cache: false,
         templateUrl: 'templates/verify.html',
         controller: 'VerifyCtrl'
     })
 
 
     .state('signup', {
-
         cache: false,
         url: '/signup',
         templateUrl: 'templates/signup.html',
@@ -309,7 +309,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
     })
 
 
-      .state('pincode', {
+    .state('pincode', {
         cache: false,
         url: '/pincode',
         templateUrl: 'templates/pincode.html',
@@ -417,14 +417,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
     };
 })
 
- .directive("limitTo", [function() {
-      return {
-          restrict: "A",
-          link: function(scope, elem, attrs) {
-              var limit = parseInt(attrs.limitTo);
-              angular.element(elem).on("keypress", function(e) {
-                  if (this.value.length == limit) e.preventDefault();
-              });
-          }
-      }
-  }]);
+.directive("limitTo", [function() {
+    return {
+        restrict: "A",
+        link: function(scope, elem, attrs) {
+            var limit = parseInt(attrs.limitTo);
+            angular.element(elem).on("keypress", function(e) {
+                if (this.value.length == limit) e.preventDefault();
+            });
+        }
+    }
+}]);

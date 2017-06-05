@@ -2864,11 +2864,17 @@ p.onceLblr {
 .sameadd{
   padding: 5px 0px 5px 40px;
 font-size: 14px;
+margin-top: 5px;
 p{
   font-size: 12px;
-  margin-top: 10px;
 }
 }
-.bb1{
-  border-bottom: 1px solid $lightgrey!important;
+.shipcheck{
+  position: absolute;
+    top: 61% !important;
+    right: 42%;
+    left: 5% !important;
+    z-index: 3;
+    margin-top: -21px;
+
 }

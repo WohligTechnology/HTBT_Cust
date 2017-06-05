@@ -1,4 +1,4 @@
-<ion-view title="Review & Checkout">
+<ion-view title="Review & Checkout" cache-view="false">
     <ion-nav-bar class="bar-stable nav-height">
         <ion-nav-buttons side="left">
             <button class="button button-clear ion-android-arrow-back sigupIconLeft" ng-click="goBackHandler()">
@@ -116,8 +116,8 @@ chkalign mar10">
 
 
     <div class="bar bar-footer signUpFooter footer-height">
-        <button ng-disabled="!terms" class="button button-block button-positive footer-font" ng-click="placeOrder()">
-  Pay ₹ {{calculateTotalPrice()}}/-
-</button>
+        <button ng-disabled="!terms || calculateTotalPrice() == 0" class="button button-block button-positive footer-font" ng-click="placeOrder()">
+          Pay ₹ {{calculateTotalPrice()}}/-
+        </button>
     </div>
 </ion-view>

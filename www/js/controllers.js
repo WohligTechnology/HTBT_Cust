@@ -313,8 +313,8 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     };
 
     $scope.calculateTotalPrice = function() {
-        var total = 0;
-        var savingPriceTotal = 0;
+        $scope.total = 0;
+        $scope.savingPriceTotal = 0;
         $scope.totalAmt = 0;
         $scope.otherProductstotal = 0;
         $scope.totalQuantity = 0;
@@ -323,62 +323,36 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
             $scope.otherProductstotal += n.price * n.productQuantity;
         });
         if ($scope.subscription.productDetail.applicableBefore > $scope.subscription.product[0].quantity) {
-            total += parseFloat(subscription.productDetail.AmtDeposit) * parseInt($scope.subscription.product[0].quantity);
+            $scope.total += parseFloat(subscription.productDetail.AmtDeposit) * parseInt($scope.subscription.product[0].quantity);
         }
-        total += parseInt($scope.otherProductstotal);
+        $scope.total += parseInt($scope.otherProductstotal);
         $scope.totalPriceForJar = parseFloat(MyServices.getProductPrice($scope.subscription.productDetail, $scope.subscription.productQuantity)) * $scope.subscription.productQuantity;
-        total += $scope.totalPriceForJar;
-        return total;
+        $scope.total += $scope.totalPriceForJar;
+        return $scope.total;
     };
 
     $scope.gotopayment = function() {
 
-        // // $scope.subscription.user=$.jStorage.get('profile')._id;
-        // $scope.subscription.customer={};
-        // $scope.subscription.customer=$.jStorage.get('profile');
-        // _.each($scope.subscription.otherProducts, function(n) {
-        //   $scope.subscription.product.push(n);
-        // });
-        // $scope.subscription.totalAmt=  $scope.totalAmt;
+
         console.log($scope.subscription);
-        $scope.OrderData = {};
-        $scope.OrderData.totalAmount = $scope.totalAmt;
-        $scope.OrderData.customer = {};
-        // $scope.OrderData.customer = $.jStorage.get('profile');
-        $scope.OrderData.customer.name = $.jStorage.get('profile').name;
-        $scope.OrderData.customer.mobile = $.jStorage.get('profile').mobile;
-        $scope.OrderData.methodOfPayment = 'Customer';
-        $scope.OrderData.orderFor = 'CustomerForSelf';
-        $scope.OrderData.totalQuantity = $scope.subscription.totalQuantity;
-        MyServices.getProductPrice($scope.subscription.productDetail, $scope.subscription.product[0].quantity)
 
-        $scope.OrderData.product = [{
-            product: {},
-            productQuantity: null,
-            finalPrice: null,
-        }];
-        $scope.OrderData.product[0].product = $scope.subscription.productDetail;
-        $scope.OrderData.product[0].productQuantity = $scope.subscription.product[0].quantity;
-        $scope.OrderData.product[0].finalPrice = MyServices.getProductPrice($scope.subscription.productDetail, $scope.subscription.product[0].quantity);
-        $scope.OrderData.product[0].jarDeposit = $scope.deposit;
+        $scope.subscription.customer={};
+        $scope.subscription.customer.name = $.jStorage.get('profile').name;
+        $scope.subscription.customer.mobile = $.jStorage.get('profile').mobile;
+        $scope.subscription.methodOfPayment = 'Customer';
+        $scope.subscription.orderFor = 'CustomerForSelf';
+        $scope.subscription.methodOfOrder = 'Application';
+        $scope.subscription.totalAmt = $scope.total;
+        $scope.subscription.totalQuantity = $scope.totalQuantity;
 
-
-
-        _.each($scope.subscription.otherProducts, function(n) {
-            $scope.product = {};
-            $scope.product.product = n;
-            $scope.product.productQuantity = n.productQuantity;
-            $scope.product.finalPrice = n.price;
-            $scope.OrderData.product.push($scope.product);
-        });
         var options = "location=no,toolbar=yes";
         var target = "_blank";
         var url = "";
-        console.log($scope.OrderData);
-        MyServices.saveOrderCheckout($scope.OrderData, function(data) {
-            console.log(data);
-            if (data.value) {
-                $scope.finalURL = 'http://htbt.wohlig.co.in/orderconfirmation/' + data.data._id;
+        console.log($scope.subscription);
+        MyServices.saveOrderCheckout($scope.subscription, function(data) {
+            console.log(data.data.data._id);
+            if (data.status == 200) {
+                $scope.finalURL = 'http://htbt.wohlig.co.in/orderconfirmation/' + data.data.data._id;
                 var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
                 ref.addEventListener('loadstop', function(event) {
                     // event.url="http://wohlig.co.in/paisoapk/success.html?orderid=1231321231";
@@ -392,7 +366,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
                         });
                         alertPopup.then(function(res) {
                             alertPopup.close();
-                            $state.go('app.orderconfirm');
+                            $state.go('app.sorry');
                         });
                     } else if (url == "http://htbt.wohlig.co.in/thankyou") {
                         ref.close();
@@ -481,7 +455,8 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
   MyServices.OrderGetOne( formData, function (data) {
     if (data.value === true) {
       console.log("Order/getOne", data.data);
-      $scope.shipping=data.data;
+      $scope.shippingDetails=data.data;
+      $scope.shippingAddress=data.data.customer;
 
     }
   });
@@ -798,33 +773,34 @@ $scope.addShipBilDetails = function (orderData) {
         $scope.OrderData.customer.mobile = $.jStorage.get('profile').mobile;
         $scope.OrderData.methodOfPayment = 'Customer';
         $scope.OrderData.orderFor = 'CustomerForSelf';
+        $scope.OrderData.methodOfOrder = 'Application';
         MyServices.saveOrderCheckoutCart($scope.OrderData, function(data) {
             if (data.value) {
                 $ionicLoading.hide();
-                console.log("sad");
-                $state.go('app.shipping',{orderId:data.data._id});
-                // $scope.finalURL = 'http://htbt.wohlig.co.in/orderconfirmation/' + data.data._id;
-                // var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
-                //
-                // ref.addEventListener('loadstop', function(event) {
-                //     // event.url="http://wohlig.co.in/paisoapk/success.html?orderid=1231321231";
-                //     var url = event.url;
-                //     // var orderid = event.url.split("=")[1];
-                //     console.log(url);
-                //     if (url == "http://htbt.wohlig.co.in/sorry") {
-                //         ref.close();
-                //         var alertPopup = $ionicPopup.alert({
-                //             template: '<h4 style="text-align:center;">Some Error Occurred. Payment Failed</h4>'
-                //         });
-                //         alertPopup.then(function(res) {
-                //             alertPopup.close();
-                //             $state.go('app.orderconfirm');
-                //         });
-                //     } else if (url == "http://htbt.wohlig.co.in/thankyou") {
-                //         ref.close();
-                //         $state.go('app.orderconfirm');
-                //     }
-                // });
+                // console.log("sad");
+                // $state.go('app.shipping',{orderId:data.data._id});
+                $scope.finalURL = 'http://htbt.wohlig.co.in/orderconfirmation/' + data.data._id;
+                var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+
+                ref.addEventListener('loadstop', function(event) {
+                    // event.url="http://wohlig.co.in/paisoapk/success.html?orderid=1231321231";
+                    var url = event.url;
+                    // var orderid = event.url.split("=")[1];
+                    console.log(url);
+                    if (url == "http://htbt.wohlig.co.in/sorry") {
+                        ref.close();
+                        var alertPopup = $ionicPopup.alert({
+                            template: '<h4 style="text-align:center;">Some Error Occurred. Payment Failed</h4>'
+                        });
+                        alertPopup.then(function(res) {
+                            alertPopup.close();
+                            $state.go('app.sorry');
+                        });
+                    } else if (url == "http://htbt.wohlig.co.in/thankyou") {
+                        ref.close();
+                        $state.go('app.orderconfirm');
+                    }
+                });
             }
         });
     };
@@ -1153,14 +1129,21 @@ $scope.addShipBilDetails = function (orderData) {
         MyServices.getProfile($scope.getProfield, function(data) {
             console.log(data);
             if (data.value) {
-                $scope.dashboardData1 = data.data;
-                console.log($scope.dashboardData1);
+                $scope.dashboardData = data.data;
             } else {
 
             }
         });
-    })
-    .controller('PincodeCtrl', function($scope, $ionicPopup, $stateParams, $ionicActionSheet, $cordovaFileTransfer, $cordovaCamera, $ionicPopover, $state, MyServices, $cordovaImagePicker) {})
+        MyServices.getDeliveryRequestByUser($scope.getProfield, function(data) {
+            console.log(data);
+            if (data.value) {
+                $scope.delivery = data.data;
+            } else {
+
+            }
+        });
+})
+.controller('PincodeCtrl', function($scope, $ionicPopup, $stateParams, $ionicActionSheet, $cordovaFileTransfer, $cordovaCamera, $ionicPopover, $state, MyServices, $cordovaImagePicker) {})
 
 .controller('SignUpCtrl', function($scope, $stateParams, $ionicPopup, $ionicPopover, MyServices, $state) {
     $scope.sorryPopup = function() {

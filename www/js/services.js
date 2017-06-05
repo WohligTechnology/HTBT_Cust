@@ -1,8 +1,8 @@
 // var adminurl = "http://192.168.43.147:80/api/"; //local
 
 // var adminurl = "http://104.198.28.29:80/api/"; //server
-var adminurl = "http://192.168.0.117:1337/api/"; //server
-// var adminurl = "http://htbt.wohlig.co.in/api/"; //server
+// var adminurl = "http://192.168.0.117:1337/api/"; //server
+var adminurl = "http://htbt.wohlig.co.in/api/"; //server
 
 // var imgpath = adminurl + "uploadfile/getupload?file=";
 var imgurl = adminurl + "upload/";
@@ -35,6 +35,9 @@ angular.module('starter.services', [])
                         return false;
                     }
                 });
+                if (quantity > parseInt(orderedPrice[orderedPrice.length - 1].endRange)) {
+                    product.priceUsed = orderedPrice[orderedPrice.length - 1].finalPrice;
+                }
             }
 
             return product.priceUsed;
@@ -132,7 +135,7 @@ angular.module('starter.services', [])
             },
             getDeliveryRequestByUser: function(data, callback) {
                 $http({
-                    // url: adminurl + 'DeliveryRequest/getDeliveryRequestByUser',
+                    url: adminurl + 'DeliveryRequest/getDeliveryRequestByUser',
                     method: 'POST',
                     withCredentials: true,
                     data: data
@@ -231,57 +234,50 @@ angular.module('starter.services', [])
                     callback(data);
                 });
             },
-            saveOrderCheckout: function (data, callback) {
-                  var data2 = data;
-                  data2.productDetail.productQuantity = data.product[0].quantity;
-                  var num = 1;
-                  data2.product = [];
-                  switch (data.plan) {
+            saveOrderCheckout: function(data, callback) {
+                var data2 = data;
+                data2.productDetail.productQuantity = data.product[0].quantity;
+                var num = 1;
+                data2.product = [];
+                switch (data.plan) {
                     case "Monthly":
-                      num = 4;
-                      break;
+                        num = 4;
+                        break;
                     case "Quarterly":
-                      num = 12;
-                      break;
+                        num = 12;
+                        break;
                     case "Onetime":
-                      num = 1;
-                      break;
-                  }
-                  data2.product.push({
+                        num = 1;
+                        break;
+                }
+                data2.product.push({
                     product: data2.productDetail,
                     productQuantity: parseInt(data2.productDetail.productQuantity) * num,
                     jarDeposit: data2.productDetail.AmtDeposit
-                  });
+                });
+                data2.totalQuantity = parseInt(data2.productDetail.productQuantity) * num;
 
-
-                  _.each(data2.otherProducts, function (n) {
+                _.each(data2.otherProducts, function(n) {
                     data2.product.push({
-                      product: n,
-                      productQuantity: n.productQuantity,
-                      jarDeposit: n.AmtDeposit
+                        product: n,
+                        productQuantity: n.productQuantity,
+                        jarDeposit: n.AmtDeposit
                     });
-                  });
+                });
 
-                  delete data2.productDetail;
-                  delete data2.otherProducts;
-                  data2.orderFor = "CustomerForSelf";
-                  $http({
-                    url: adminurl + 'Order/saveOrderCheckout',
-                    method: 'POST',
-                    withCredentials: true,
-                    data: data2
-                  }).then(function (data) {
-                    callback(data);
-                  });
-                },
-            saveOrderCheckout: function(data, callback) {
+                delete data2.productDetail;
+                delete data2.otherProducts;
+                data2.orderFor = "CustomerForSelf";
                 $http({
                     url: adminurl + 'Order/saveOrderCheckout',
                     method: 'POST',
                     withCredentials: true,
-                    data: data
-                }).success(callback);
+                    data: data2
+                }).then(function(data) {
+                    callback(data);
+                });
             },
+
             OrderGetOne: function(data, callback) {
                 $http({
                     url: adminurl + 'Order/getOne',
