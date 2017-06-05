@@ -368,7 +368,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
         _.each($scope.subscription.otherProducts, function(n) {
             $scope.product = {};
-            $scope.product.product = n._id;
+            $scope.product.product = n;
             $scope.product.productQuantity = n.productQuantity;
             $scope.product.finalPrice = n.price;
             $scope.OrderData.product.push($scope.product);
@@ -488,6 +488,14 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     $scope.subscription = Subscription.getObj();
 
     Subscription.validate($state);
+
+var orderedPrice = _.orderBy($scope.subscription.productDetail.priceList, function (n) {
+                return parseInt(n.endRange);
+            });
+            var lastQuantity = 0;
+            if (orderedPrice.length > 0) {
+                lastQuantity = parseInt(orderedPrice[orderedPrice.length - 1].endRange);
+            }
 
     MyServices.getoneProduct($scope.product, function(data) {
         if (data.value) {
