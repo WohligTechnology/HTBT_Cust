@@ -11163,7 +11163,7 @@ display: none
   margin: 0 !important; }
 
 .chkout-align {
-  padding: 28px 0 0;
+  padding: 20px;
   height: 100%; }
 
 .colorpure {
@@ -11651,6 +11651,20 @@ p.onceLblr {
 .noborder {
   border: none !important; }
 
+.checkboxterms {
+  width: 28px;
+  height: 28px;
+  display: block;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-appearance: none;
+  position: absolute !important;
+  /* margin-left: 10px !important; */
+  transform: translate(-70%, 25%) !important;
+  top: 44% !important;
+  left: 0% !important; }
+
 .borderR .checkbox input:before,
 .borderR .checkbox-icon:before {
   display: table;
@@ -12017,3 +12031,16 @@ p.onceLblr {
   padding: 10px 10px 0 10px;
   text-align: center;
   color: #6d797e; }
+
+.bgtrans {
+  background-color: transparent !important; }
+
+.sameadd {
+  padding: 5px 0px 5px 40px;
+  font-size: 14px; }
+  .sameadd p {
+    font-size: 12px;
+    margin-top: 10px; }
+
+.bnone {
+  border-bottom: 1px solid transparent !important; }

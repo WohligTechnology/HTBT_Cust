@@ -13,6 +13,32 @@ angular.module('starter.services', [])
     .factory('MyServices', function($http) {
         var appDetails = {};
         var calDate = new Date();
+
+        function getProductPrice(product, quantity) {
+            var foundPrice = {};
+            var orderedPrice = _.orderBy(product.priceList, function(n) {
+                return parseInt(n.endRange);
+            });
+
+            if (orderedPrice.length === 0) {
+                product.finalPrice = product.price;
+                product.priceUsed = product.price;
+                product.finalQuantity = quantity;
+                product.totalPriceUsed = product.price * parseInt(quantity);
+                return parseInt(product.price);
+            } else {
+                _.each(orderedPrice, function(obj) {
+                    if (parseInt(quantity) <= parseInt(obj.endRange)) {
+                        foundPrice = obj;
+                        product.priceUsed = obj.finalPrice;
+                        product.totalPriceUsed = obj.finalPrice * parseInt(quantity);
+                        return false;
+                    }
+                });
+            }
+
+            return product.priceUsed;
+        }
         appDetails.cartQuantity = $.jStorage.get("cartQuantity");
         return {
             getAppDetails: function() {
@@ -28,6 +54,9 @@ angular.module('starter.services', [])
                     withCredentials: true,
                     data: data
                 }).success(callback);
+            },
+            getProductPrice: function(product, quantity) {
+                return getProductPrice(product, quantity);
             },
             signup: function(data, callback) {
                 console.log(data);
@@ -181,24 +210,11 @@ angular.module('starter.services', [])
                     callback(data);
                 });
             },
-            getProductPrice: function(product, quantity) {
-                var foundPrice = {};
-                var orderedPrice = _.orderBy(product.priceList, ['endRange'], ['asc']);
-                _.each(orderedPrice, function(obj) {
-                    if (parseInt(quantity) <= parseInt(obj.endRange)) {
-                        foundPrice = obj;
-                        // console.log(obj, quantity);
-                        product.priceUsed = obj.finalPrice;
-                        product.totalPriceUsed = obj.finalPrice * parseInt(quantity);
-                        return false;
-                    }
-                });
-                return product.priceUsed;
-            },
+
 
             //to get OTP
             getOTP: function(data, callback) {
-              console.log(data);
+                console.log(data);
                 $http({
                     url: adminurl + 'user/generateOtp',
                     method: 'POST',
@@ -215,10 +231,60 @@ angular.module('starter.services', [])
                     callback(data);
                 });
             },
+            saveOrderCheckout: function (data, callback) {
+                  var data2 = data;
+                  data2.productDetail.productQuantity = data.product[0].quantity;
+                  var num = 1;
+                  data2.product = [];
+                  switch (data.plan) {
+                    case "Monthly":
+                      num = 4;
+                      break;
+                    case "Quarterly":
+                      num = 12;
+                      break;
+                    case "Onetime":
+                      num = 1;
+                      break;
+                  }
+                  data2.product.push({
+                    product: data2.productDetail,
+                    productQuantity: parseInt(data2.productDetail.productQuantity) * num,
+                    jarDeposit: data2.productDetail.AmtDeposit
+                  });
 
+
+                  _.each(data2.otherProducts, function (n) {
+                    data2.product.push({
+                      product: n,
+                      productQuantity: n.productQuantity,
+                      jarDeposit: n.AmtDeposit
+                    });
+                  });
+
+                  delete data2.productDetail;
+                  delete data2.otherProducts;
+                  data2.orderFor = "CustomerForSelf";
+                  $http({
+                    url: adminurl + 'Order/saveOrderCheckout',
+                    method: 'POST',
+                    withCredentials: true,
+                    data: data2
+                  }).then(function (data) {
+                    callback(data);
+                  });
+                },
             saveOrderCheckout: function(data, callback) {
                 $http({
                     url: adminurl + 'Order/saveOrderCheckout',
+                    method: 'POST',
+                    withCredentials: true,
+                    data: data
+                }).success(callback);
+            },
+            OrderGetOne: function(data, callback) {
+                $http({
+                    url: adminurl + 'Order/getOne',
                     method: 'POST',
                     withCredentials: true,
                     data: data

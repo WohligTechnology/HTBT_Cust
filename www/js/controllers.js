@@ -77,81 +77,92 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     })
 
 .controller('ProductSpecsCtrl', function($scope, $stateParams, $ionicPopup, $state, MyServices) {
-    $scope.goBackHandler = function() {
-        window.history.back();
-    };
-    $scope.userDetails = MyServices.getAppDetails();
+  $scope.goBackHandler = function () {
+          window.history.back();
+      };
+      $scope.userDetails = MyServices.getAppDetails();
 
-    $scope.profile = $.jStorage.get('profile');
-    MyServices.products({
-        category: $stateParams.category
-    }, function(data) {
-        $scope.products = data.data;
-        _.each($scope.products, function(n) {
-            n.productQuantity = 0;
-        });
-    });
-    $scope.checkMinProduct = function(product) {
-        if (product.productQuantity <= 0) {
-            return true;
-        } else {
-            return false;
-        }
-    };
-    $scope.checkMaxProduct = function(product) {
-        if (product.productQuantity >= parseInt(product.quantity)) {
-            return true;
-        } else {
-            return false;
-        }
-    };
-    $scope.changeProductQuantity = function(product, change) {
-        if (_.isNaN(parseInt(product.productQuantity))) {
-            product.productQuantity = 0;
-        }
-        if (change) {
-            product.productQuantity++;
-        } else {
-            product.productQuantity--;
-        }
-    };
-    $scope.addToCart = function() {
-        var products = _.map(_.filter($scope.products, function(n) {
-            return (n.productQuantity && n.productQuantity >= 1);
-        }), function(n) {
+      $scope.profile = $.jStorage.get('profile');
+      MyServices.products({
+          category: $stateParams.category
+      }, function (data) {
+          $scope.products = data.data;
+          _.each($scope.products, function (n) {
+              n.productQuantity = 0;
+          });
+      });
+      $scope.checkMinProduct = function (product) {
+          if (!product.productQuantity || product.productQuantity <= 0) {
+              return true;
+          } else {
+              return false;
+          }
+      };
+      $scope.checkMaxProduct = function (product) {
+          if (product.productQuantity >= parseInt(product.quantity)) {
+              return true;
+          } else {
+              return false;
+          }
+      };
+      $scope.changeProductQuantity = function (product, change) {
+          if (_.isNaN(parseInt(product.productQuantity))) {
+              product.productQuantity = 0;
+          }
+          if (change) {
+              product.productQuantity++;
+          } else {
+              product.productQuantity--;
+          }
+      };
+      $scope.addToCart = function () {
+          var products = _.map(_.filter($scope.products, function (n) {
+              return (n.productQuantity && n.productQuantity >= 1);
+          }), function (n) {
+              return {
+                  productQuantity: n.productQuantity,
+                  product: n._id,
+                  totalAmount: n.productQuantity * parseFloat(n.price)
+              };
+          });
+          if (products.length > 0) {
+              MyServices.addToCart(products, function (data) {
+                  if (data.status == 200) {
+                      var myPopup = $ionicPopup.show({
+                          title: 'Products Added to Cart',
+                          subTitle: 'Products are added to cart successfully',
+                          buttons: [{
 
-            return {
-                productQuantity: n.productQuantity,
-                product: n._id,
-                totalAmount: n.productQuantity * parseFloat(n.price)
-            };
-        });
-        if (products.length > 0) {
-            MyServices.addToCart(products, function(data) {
-                if (data.status == 200) {
-                    var alertPopup = $ionicPopup.alert({
-                        title: "Products Added to Cart",
-                        template: "Products Added to Cart Successfully"
-                    });
-                    alertPopup.then(function(res) {
-                        $state.go("app.review");
-                    });
-                } else {
-                    $ionicPopup.alert({
-                        title: "Error Occured",
-                        template: "Error Occured while adding Products to Cart"
-                    });
-                }
-            });
-        } else {
-            $ionicPopup.alert({
-                title: "No Product",
-                template: "No Product for Add to Cart"
-            });
+                                  text: 'Go to Cart',
+                                  onTap: function (e) {
+                                      $state.go("app.review");
+                                  }
+                              },
+                              {
+                                  text: 'Continue',
+                                  type: 'button-positive',
+                                  onTap: function (e) {
+                                      $state.go("app.browse");
+                                  }
+                              }
+                          ]
+                      });
+                  } else {
+                      $ionicPopup.alert({
+                          title: "Error Occured",
+                          template: "Error Occured while adding Products to Cart"
+                      });
+                  }
+              });
+          } else {
+              $ionicPopup.alert({
+                  title: "No Product",
+                  template: "No Product for Add to Cart"
+              });
 
-        }
+          }
 
-    };
+      };
 })
 
 .controller('VerificationCtrl', function($scope, $stateParams) {
@@ -174,7 +185,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 })
 
 
-.controller('VerifyCtrl', function($scope, $stateParams, $state,$ionicPopup, MyServices) {
+.controller('VerifyCtrl', function($scope, $stateParams, $state, $ionicPopup, MyServices) {
 
     $.jStorage.flush();
     var reqObj = {};
@@ -202,12 +213,12 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
                 $scope.profile = $.jStorage.set('profile', data.data);
                 $state.go('signup');
             } else {
-              // alert("unable to generate OTP. Please try again");
-              var alertPopup = $ionicPopup.alert({
-                  title: 'Invalid OTP',
-                  template: 'Please try again'
-              });
-              $state.go('login');
+                // alert("unable to generate OTP. Please try again");
+                var alertPopup = $ionicPopup.alert({
+                    title: 'Invalid OTP',
+                    template: 'Please try again'
+                });
+                $state.go('login');
             }
         })
     }
@@ -271,16 +282,28 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 })
 
 .controller('CheckoutCtrl', function($scope, $stateParams, MyServices, Subscription, $state, ionicDatePicker, $ionicPopover) {
+
+    $ionicPopover.fromTemplateUrl('templates/modal/terms.html', {
+        scope: $scope,
+        cssClass: 'menupop',
+
+    }).then(function(terms) {
+        $scope.terms = terms;
+    });
+
+    $scope.closePopover = function() {
+        $scope.terms.hide();
+    };
+
     $scope.userDetails = MyServices.getAppDetails();
+    $scope.terms = {};
     MyServices.showCardQuantity(function(num) {
         $scope.totalQuantity = num;
     });
     $scope.subscription = Subscription.getObj();
-    Subscription.validate($state);
-    $scope.Quarterly = 12;
-    $scope.Monthly = 4;
-    $scope.Onetime = 1;
     console.log($scope.subscription);
+    console.log($scope.subscription.toString());
+    Subscription.validate($state);
     $scope.goBackHandler = function() {
         window.history.back(); //This works
     };
@@ -288,50 +311,25 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     $scope.addPlan = function(planName) {
         $scope.subscription.plan = planName;
     };
+
     $scope.calculateTotalPrice = function() {
         var total = 0;
         var savingPriceTotal = 0;
         $scope.totalAmt = 0;
         $scope.otherProductstotal = 0;
+        $scope.totalQuantity = 0;
         $scope.deposit = 0;
-        $scope.subscription.totalQuantity = 0;
-
-
         _.each($scope.subscription.otherProducts, function(n) {
             $scope.otherProductstotal += n.price * n.productQuantity;
         });
         if ($scope.subscription.productDetail.applicableBefore > $scope.subscription.product[0].quantity) {
-            $scope.deposit = ($scope.subscription.product[0].quantity * $scope.subscription.productDetail.AmtDeposit);
+            total += parseFloat(subscription.productDetail.AmtDeposit) * parseInt($scope.subscription.product[0].quantity);
         }
-        if ($scope.subscription.plan == 'Quarterly') {
-            $scope.subscription.totalQuantity = 12 * $scope.subscription.product[0].quantity;
-            total = 12 * ($scope.subscription.product[0].quantity * $scope.subscription.productDetail.priceUsed);
-            savingPriceTotal = ($scope.subscription.totalQuantity * $scope.subscription.productDetail.price);
-            $scope.savingAmount = savingPriceTotal - total;
-            $scope.savingPercent = ($scope.savingAmount / savingPriceTotal * 100);
-            $scope.totalAmt = $scope.deposit + $scope.otherProductstotal + total;
-
-            return $scope.savingAmount;
-        } else if ($scope.subscription.plan == 'Monthly') {
-            $scope.subscription.totalQuantity = 4 * $scope.subscription.product[0].quantity;
-            total = ($scope.subscription.totalQuantity * $scope.subscription.productDetail.priceUsed);
-            savingPriceTotal = 4 * ($scope.subscription.product[0].quantity * $scope.subscription.productDetail.price);
-            $scope.savingAmount = savingPriceTotal - total;
-            $scope.savingPercent = ($scope.savingAmount / savingPriceTotal * 100);
-            $scope.totalAmt = $scope.deposit + $scope.otherProductstotal + total;
-            return $scope.savingAmount;
-        } else {
-            $scope.subscription.totalQuantity = $scope.subscription.product[0].quantity;
-            total = ($scope.subscription.totalQuantity * $scope.subscription.productDetail.priceUsed);
-            savingPriceTotal = ($scope.subscription.product[0].quantity * $scope.subscription.productDetail.price);
-            $scope.savingAmount = savingPriceTotal - total;
-            $scope.savingPercent = ($scope.savingAmount / savingPriceTotal * 100);
-            $scope.totalAmt = $scope.deposit + $scope.otherProductstotal + total;
-            return $scope.savingAmount;
-        }
-
+        total += parseInt($scope.otherProductstotal);
+        $scope.totalPriceForJar = parseFloat(MyServices.getProductPrice($scope.subscription.productDetail, $scope.subscription.productQuantity)) * $scope.subscription.productQuantity;
+        total += $scope.totalPriceForJar;
+        return total;
     };
-
 
     $scope.gotopayment = function() {
 
@@ -413,7 +411,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
 })
 
-.controller('ProfileCtrl', function($scope, $stateParams, MyServices,$ionicPopup, $state) {
+.controller('ProfileCtrl', function($scope, $stateParams, MyServices, $ionicPopup, $state) {
     $scope.goBackHandler = function() {
         window.history.back(); //This works
     };
@@ -472,71 +470,61 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     }
 })
 
-.controller('ShippingCtrl', function($scope, $stateParams) {
+.controller('ShippingCtrl', function($scope, $stateParams,MyServices) {
     $scope.goBackHandler = function() {
         window.history.back(); //This works
     };
+    if ($stateParams.orderId) {
+  console.log("orderId", $stateParams.orderId);
+  var formData = {};
+  formData._id = $stateParams.orderId;
+  MyServices.OrderGetOne( formData, function (data) {
+    if (data.value === true) {
+      console.log("Order/getOne", data.data);
+      $scope.shipping=data.data;
+
+    }
+  });
+};
+$scope.addShipBilDetails = function (orderData) {
+  //redirect them to cart summery and payment gateway
+  apiService.apiCall("Order/save", orderData, function (data) {
+    if (data.value === true) {
+      console.log("Order updated successfully---");
+      $state.go("payment", {
+        "orderId": orderData._id
+      });
+    }
+  });
+}
 })
 
 .controller('Subpage1Ctrl', function($scope, MyServices, Subscription, $state, $stateParams) {
     $scope.userDetails = MyServices.getAppDetails();
-    $scope.product = {};
-    $scope.product._id = $stateParams.id;
     MyServices.showCardQuantity(function(num) {
         $scope.totalQuantity = num;
     });
     $scope.subscription = Subscription.getObj();
-
     Subscription.validate($state);
 
-var orderedPrice = _.orderBy($scope.subscription.productDetail.priceList, function (n) {
-                return parseInt(n.endRange);
-            });
-            var lastQuantity = 0;
-            if (orderedPrice.length > 0) {
-                lastQuantity = parseInt(orderedPrice[orderedPrice.length - 1].endRange);
-            }
-
-    MyServices.getoneProduct($scope.product, function(data) {
-        if (data.value) {
-            $scope.product = data.data;
-            $scope.pricelist=_.orderBy($scope.product.pricelist, ['endRange'], ['asc']);
-            console.log($scope.pricelist);
+    $scope.goBackHandler = function() {
+        window.history.back(); //This works
+    };
+    $scope.takeToNext = function() {
+        var orderedPrice = _.orderBy($scope.subscription.productDetail.priceList, function(n) {
+            return parseInt(n.endRange);
+        });
+        var lastQuantity = 0;
+        if (orderedPrice.length > 0) {
+            lastQuantity = parseInt(orderedPrice[orderedPrice.length - 1].endRange);
+        }
+        if ($scope.subscription.product[0].quantity >= lastQuantity) {
+            $state.go("app.requirement");
         } else {
-
-        }
-    });
-    var orderedPrice = _.orderBy($scope.subscription.productDetail.priceList, function (n) {
-                return parseInt(n.endRange);
-            });
-            var lastQuantity = 0;
-            if (orderedPrice.length > 0) {
-                lastQuantity = parseInt(orderedPrice[orderedPrice.length - 1].endRange);
-            }
-    $scope.checkLimit = function(limit) {
-        if (lastQuantity>limit) {
-          $state.go('app.subpage3');
-        }else{
-          $state.go('app.requirement');
+            $state.go("app.subpage3");
         }
     };
-    $scope.goBackHandler = function() {
-        window.history.back(); //This works
-    };
-    console.log($scope.subscription);
 
-})
-
-.controller('Subpage2Ctrl', function($scope, $stateParams) {
-    $scope.goBackHandler = function() {
-        window.history.back(); //This works
-    };
-})
-
-.controller('OrderConfirmCtrl', function($scope, $stateParams) {
-    $scope.goBackHandler = function() {
-        window.history.back(); //This works
-    };
 })
 
 .controller('Subpage3Ctrl', function($scope, $stateParams, MyServices, Subscription, $state) {
@@ -550,7 +538,9 @@ var orderedPrice = _.orderBy($scope.subscription.productDetail.priceList, functi
         window.history.back(); //This works
     };
     $scope.getProductPrice = MyServices.getProductPrice;
-    $scope.addPlan = function(planName) {
+    $scope.addPlan = function(planName, times) {
+        MyServices.getProductPrice($scope.subscription.productDetail, $scope.subscription.product[0].quantity * times);
+        $scope.subscription.productQuantity = $scope.subscription.product[0].quantity * times;
         $scope.subscription.plan = planName;
     };
 })
@@ -679,6 +669,7 @@ var orderedPrice = _.orderBy($scope.subscription.productDetail.priceList, functi
         $scope.totalQuantity = num;
     });
     $scope.subscription = Subscription.getObj();
+    $scope.subscription.otherProducts = [];
     Subscription.validate($state);
     $scope.getProductPrice = MyServices.getProductPrice;
     $scope.addPlan = function(planName) {
@@ -699,7 +690,8 @@ var orderedPrice = _.orderBy($scope.subscription.productDetail.priceList, functi
         }
     });
     $scope.checkMinProduct = function(product) {
-        if (product.productQuantity <= 0) {
+
+        if (!product.productQuantity || product.productQuantity <= 0) {
             return true;
         } else {
             return false;
@@ -733,27 +725,21 @@ var orderedPrice = _.orderBy($scope.subscription.productDetail.priceList, functi
     };
 })
 
-.controller('ReviewCtrl', function($scope, $stateParams, ionicDatePicker, $state, $ionicPopup, MyServices) {
+.controller('ReviewCtrl', function($scope, $stateParams, $ionicLoading, $state, $ionicPopup, $ionicPopover, MyServices) {
     $scope.goBackHandler = function() {
         window.history.back(); //This works
     };
+    $ionicPopover.fromTemplateUrl('templates/modal/terms.html', {
+        scope: $scope,
+        cssClass: 'menupop',
 
+    }).then(function(terms) {
+        $scope.terms = terms;
+    });
 
-    //
-    // $scope.getProductPrice = function(product, quantity) {
-    //     var foundPrice = {};
-    //     var orderedPrice = _.orderBy(product.priceList, ['endRange'], ['asc']);
-    //     _.each(orderedPrice, function(obj) {
-    //         if (parseInt(quantity) <= parseInt(obj.endRange)) {
-    //             foundPrice = obj;
-    //             product.priceUsed = obj.finalPrice;
-    //             product.totalPriceUsed = obj.finalPrice * parseInt(quantity);
-    //             return false;
-    //         }
-    //     });
-    //     return product.priceUsed;
-    // };
-    // // $scope.getProductPrice = MyServices.getProductPrice;
+    $scope.closePopover = function() {
+        $scope.terms.hide();
+    };
 
     function showCart() {
         MyServices.showCart(function(data) {
@@ -764,7 +750,6 @@ var orderedPrice = _.orderBy($scope.subscription.productDetail.priceList, functi
     }
     showCart();
     $scope.getProductPrice = MyServices.getProductPrice;
-
     $scope.calculateTotalPrice = function() {
         var total = 0;
         var savingPriceTotal = 0;
@@ -799,7 +784,14 @@ var orderedPrice = _.orderBy($scope.subscription.productDetail.priceList, functi
     var options = "location=no,toolbar=yes";
     var target = "_blank";
     var url = "";
-    $scope.placeOrder = function(productId) {
+    $scope.placeOrder = function() {
+        $ionicLoading.show({
+            content: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+        });
         $scope.OrderData = {};
         $scope.OrderData.customer = {};
         $scope.OrderData.customer.name = $.jStorage.get('profile').name;
@@ -808,56 +800,35 @@ var orderedPrice = _.orderBy($scope.subscription.productDetail.priceList, functi
         $scope.OrderData.orderFor = 'CustomerForSelf';
         MyServices.saveOrderCheckoutCart($scope.OrderData, function(data) {
             if (data.value) {
-                $scope.finalURL = 'http://htbt.wohlig.co.in/orderconfirmation/' + data.data._id;
-                var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
-
-                ref.addEventListener('loadstop', function(event) {
-                    // event.url="http://wohlig.co.in/paisoapk/success.html?orderid=1231321231";
-                    var url = event.url;
-                    // var orderid = event.url.split("=")[1];
-                    console.log(url);
-                    if (url == "http://htbt.wohlig.co.in/sorry") {
-                        ref.close();
-                        var alertPopup = $ionicPopup.alert({
-                            template: '<h4 style="text-align:center;">Some Error Occurred. Payment Failed</h4>'
-                        });
-                        alertPopup.then(function(res) {
-                            alertPopup.close();
-                            $state.go('app.orderconfirm');
-                        });
-                    } else if (url == "http://htbt.wohlig.co.in/thankyou") {
-                        ref.close();
-                        $state.go('app.orderconfirm');
-                    }
-                });
+                $ionicLoading.hide();
+                console.log("sad");
+                $state.go('app.shipping',{orderId:data.data._id});
+                // $scope.finalURL = 'http://htbt.wohlig.co.in/orderconfirmation/' + data.data._id;
+                // var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+                //
+                // ref.addEventListener('loadstop', function(event) {
+                //     // event.url="http://wohlig.co.in/paisoapk/success.html?orderid=1231321231";
+                //     var url = event.url;
+                //     // var orderid = event.url.split("=")[1];
+                //     console.log(url);
+                //     if (url == "http://htbt.wohlig.co.in/sorry") {
+                //         ref.close();
+                //         var alertPopup = $ionicPopup.alert({
+                //             template: '<h4 style="text-align:center;">Some Error Occurred. Payment Failed</h4>'
+                //         });
+                //         alertPopup.then(function(res) {
+                //             alertPopup.close();
+                //             $state.go('app.orderconfirm');
+                //         });
+                //     } else if (url == "http://htbt.wohlig.co.in/thankyou") {
+                //         ref.close();
+                //         $state.go('app.orderconfirm');
+                //     }
+                // });
             }
         });
     };
-    var ipObj1 = {
-        callback: function(val) { //Mandatory
-            console.log('Return value from the datepicker popup is : ' + val, new Date(val));
-        },
-        disabledDates: [ //Optional
-            new Date(2016, 2, 16),
-            new Date(2015, 3, 16),
-            new Date(2015, 4, 16),
-            new Date(2015, 5, 16),
-            new Date('Wednesday, August 12, 2015'),
-            new Date("08-16-2016"),
-            new Date(1439676000000)
-        ],
-        from: new Date(2012, 1, 1), //Optional
-        to: new Date(2016, 10, 30), //Optional
-        inputDate: new Date(), //Optional
-        mondayFirst: true, //Optional
-        disableWeekdays: [0], //Optional
-        closeOnSelect: false, //Optional
-        templateType: 'popup' //Optional
-    };
 
-    $scope.openDatePicker = function() {
-        ionicDatePicker.openDatePicker(ipObj1);
-    };
 
 })
 
@@ -1188,8 +1159,8 @@ var orderedPrice = _.orderBy($scope.subscription.productDetail.priceList, functi
 
             }
         });
-})
-.controller('PincodeCtrl', function($scope, $ionicPopup, $stateParams, $ionicActionSheet, $cordovaFileTransfer, $cordovaCamera, $ionicPopover, $state, MyServices, $cordovaImagePicker) {})
+    })
+    .controller('PincodeCtrl', function($scope, $ionicPopup, $stateParams, $ionicActionSheet, $cordovaFileTransfer, $cordovaCamera, $ionicPopover, $state, MyServices, $cordovaImagePicker) {})
 
 .controller('SignUpCtrl', function($scope, $stateParams, $ionicPopup, $ionicPopover, MyServices, $state) {
     $scope.sorryPopup = function() {

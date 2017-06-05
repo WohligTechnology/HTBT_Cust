@@ -1,7 +1,7 @@
 <ion-view title="Step 3 of 3">
     <ion-nav-bar class="bar-stable schedule-bar  nav-height">
         <ion-nav-buttons side="left">
-            <button class="button button-clear ion-android-arrow-back sigupIconLeft" ng-click="goBackHandler()">
+            <button class="button button-clear ion-android-arrow-back sigupIconLeft" ui-sref="app.subpage3">
         </button>
         </ion-nav-buttons>
     </ion-nav-bar>
@@ -14,26 +14,19 @@
                         <p>Store 4 Jars for the space of 1! <br> Buy a stand for Rs. 100. </p>
                         <div class="borderdiv"></div>
                         <div class="row pad-right10 mabt" ng-repeat="product in saveSpace">
-                            <div class="col-40 stand">
-                                <label for="">{{product.name}}</label>
-                                <!-- <div class="add">
+                            <div class="col-60 stand">
+                                <h5 style="text-transform: capitalize;" for="">{{product.name}} <label for="">₹ {{product.price}}/-</label></h5>
+                                <div class="add addrm" style="text-align:left;">
                                     <button ng-click="changeProductQuantity(product,false);" ng-disabled="checkMinProduct(product);">
                                     <i class="ion ion-minus-round"></i>
                                     </button>
                                     <span>{{product.productQuantity||0}}</span>
                                     <button ng-click="changeProductQuantity(product,true);" ng-disabled="checkMaxProduct(product);"><i class="ion ion-plus-round" ></i></button>
-                                </div> -->
-                                <div class="add">
-                                  <i class="ion ion-minus-round" ng-click="changeProductQuantity(product,false);" ng-disabled="checkMinProduct(product);"></i>
-                                  <span>{{product.productQuantity||0}}</span>
-                                  <i class="ion ion-plus-round" ng-click="changeProductQuantity(product,true);" ng-disabled="checkMaxProduct(product);"></i>
-                              </div>
-                            </div>
-                            <div class="col-20">
+                                </div>
                             </div>
                             <div class="col">
                                 <div class="steel ">
-                                    <img ng-src="{{product.smallImage | uploadpath}}" alt="">
+                                    <img ng-src="{{product.smallImage|uploadpath}}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -45,24 +38,19 @@
                         <p>No need to search!<br>Rent out dispensers for Rs. 500/month </p>
                         <div class="borderdiv"></div>
                         <div class="row adjst" ng-repeat="product in saveTime">
-                            <div class="col-75 stand borbtmsub3">
-                                <label for="">{{product.name}}</label>
-                                <!-- <div class="add">
+                            <div class="col-75 stand ">
+                                <h5 style="text-transform: capitalize;" for="">{{product.name}} <label for="">₹ {{product.price}}/-</label></h5>
+                                <div class="add addrm" style="text-align:left;">
                                     <button ng-click="changeProductQuantity(product,false);" ng-disabled="checkMinProduct(product);">
                                 <i class="ion ion-minus-round"></i>
                                 </button>
                                     <span>{{product.productQuantity||0}}</span>
                                     <button ng-click="changeProductQuantity(product,true);" ng-disabled="checkMaxProduct(product);"><i class="ion ion-plus-round" ></i></button>
-                                </div> -->
-                                <div class="add">
-                                  <i class="ion ion-minus-round" ng-click="changeProductQuantity(product,false);" ng-disabled="checkMinProduct(product);"></i>
-                                  <span>{{product.productQuantity||0}}</span>
-                                  <i class="ion ion-plus-round" ng-click="changeProductQuantity(product,true);" ng-disabled="checkMaxProduct(product);"></i>
-                              </div>
+                                </div>
                             </div>
                             <div class="col-25">
                                 <div class="steel ">
-                                  <img ng-src="{{product.smallImage | uploadpath}}" alt="">
+                                    <img ng-src="{{product.smallImage|uploadpath}}" alt="">
                                 </div>
                             </div>
                         </div>

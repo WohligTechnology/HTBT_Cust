@@ -1,75 +1,55 @@
 <ion-view title="Review & Checkout">
     <ion-nav-bar class="bar-stable nav-height">
         <ion-nav-buttons side="left">
-            <button class="button button-clear ion-android-arrow-back sigupIconLeft" ng-click="goBackHandler()">
+            <button class="button button-clear ion-android-arrow-back
+sigupIconLeft" ui-sref="app.addons">
         </button>
         </ion-nav-buttons>
     </ion-nav-bar>
     <ion-content class="has-header chkout-bgcolor hasterms">
         <div>
             <div class="chkout-planDiv">
-                <label for="">Subscription Plan <strong>{{subscription.plan}}</strong> </label>
+                <label for="">Subscription Plan
+<strong>{{subscription.plan}}</strong> </label>
                 <div>
-                    <i class="button button-icon icon ion-ios-close-outline chkout-closebutton" ng-click="closePopup();"></i>
+                    <i class="button button-icon icon
+ion-ios-close-outline chkout-closebutton" ng-click="closePopup();"></i>
                 </div>
             </div>
             <div class="row chkout-subheight">
                 <div class="col-33">
                     <div class="chkout-image">
-                        <img class="" ng-src="{{subscription.productDetail.smallImage | uploadpath}}" alt="">
+                        <img class=" " ng-src="{{subscription.productDetail.bigImage | uploadpath}}" alt="">
                     </div>
                 </div>
-                <!--<div class="col-20 chkoutdiv">
-                    <div class="chkout-line">
-                    </div>
-                </div>-->
                 <div class="col-66 ">
                     <div class="chkout-align">
                         <h2 class="chkout-fontsize">{{subscription.productDetail.name}}</h2>
-                        <div for="" class="colorpure">{{subscription.productDetail.tag}} <i class="ion ion-information-circled"></i></div>
+                        <div for="" class="colorpure">{{subscription.productDetail.tag}} <i class="ion
+ion-information-circled"></i></div>
                         <div for="" class="desc">{{subscription.productDetail.description}}</div>
-                        <div for="" class="desc">₹ {{subscription.productDetail.price}}</div>
+                        <div for="" class="desc">₹ {{subscription.productDetail.priceUsed}}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row chkoutcoupon">
-            <div class="col-50">
-                <label for="">Enter coupon code</label>
-            </div>
-            <div class="col-50 chkpadip">
-                <input type="text" placeholder="Type coupon code here">
-            </div>
-        </div>
-        <div class="row bgrowQuant " ng-repeat="op in subscription.otherProducts">
-            <div class="col-67 bgchkoutcol50Quant" >
-                <div>
-                    <label for="">{{op.name}}
 
-                </label>
-                    <br>
-                    <span> {{op.productQuantity}} Prouct x ₹ {{op.price}} /Prouct </span>
-                </div>
-            </div>
-            <div class="col-33 bgchkoutcol502">
-                <div>
-                    <label for="">₹  {{op.productQuantity *  op.price}}</label>
-                </div>
-            </div>
-        </div>
         <div class="row bgrowQuant " ng-if="subscription.productDetail.applicableBefore>subscription.product[0].quantity">
-            <div class="col-67 bgchkoutcol50Quant" >
+            <div class="col-67 bgchkoutcol50Quant">
                 <div>
                     <label for="">One Time Bottle Deposit
 
                 </label>
                     <br>
-                    <span> {{subscription.product[0].quantity}} Jars x ₹ {{subscription.productDetail.AmtDeposit}} /Jar </span>
+                    <span> {{subscription.product[0].quantity}} Jars x
+₹ {{subscription.productDetail.AmtDeposit}} /Jar </span>
                 </div>
             </div>
             <div class="col-33 bgchkoutcol502">
                 <div>
-                    <label for="">₹  {{deposit}}</label>
+                    <label for="">₹
+{{deposit}}</label>
                 </div>
             </div>
         </div>
@@ -80,46 +60,57 @@
 
                 </label>
                     <br>
-                    <span ng-if="subscription.plan == 'Quarterly'"> {{12*subscription.product[0].quantity}} Jars x ₹ {{subscription.productDetail.priceUsed}} /Jar </span>
-                    <span ng-if="subscription.plan == 'Monthly'"> {{4*subscription.product[0].quantity}} Jars x ₹ {{subscription.productDetail.priceUsed}} /Jar </span>
-                    <span ng-if="subscription.plan == 'Onetime'"> {{1*subscription.product[0].quantity}} Jars x ₹ {{subscription.productDetail.priceUsed}} /Jar </span>
+                    <span ng-if="subscription.plan == 'Quarterly'">
+{{12*subscription.product[0].quantity}} Jars x ₹
+{{subscription.productDetail.priceUsed}} /Jar </span>
+                    <span ng-if="subscription.plan == 'Monthly'">
+{{4*subscription.product[0].quantity}} Jars x ₹
+{{subscription.productDetail.priceUsed}} /Jar </span>
+                    <span ng-if="subscription.plan == 'Onetime'">
+{{1*subscription.product[0].quantity}} Jars x ₹
+{{subscription.productDetail.priceUsed}} /Jar </span>
                 </div>
             </div>
             <div class="col-33 bgchkoutcol502">
                 <div>
-                    <label for="" ng-if="subscription.plan == 'Quarterly'">₹  {{subscription.productDetail.totalPriceUsed * 12}}</label>
-                    <label for="" ng-if="subscription.plan == 'Monthly'">₹  {{subscription.productDetail.totalPriceUsed * 4}}</label>
-                    <label for="" ng-if="subscription.plan == 'Onetime'">₹  {{subscription.productDetail.totalPriceUsed * 1}}</label>
+                    <label for="">₹  {{totalPriceForJar}}</label>
                 </div>
             </div>
         </div>
-        <div class="row bgrowQuant">
-            <div class="col-67 savingscol501 " >
+
+        <div class="row bgrowQuant " ng-repeat="op in
+subscription.otherProducts">
+            <div class="col-67 bgchkoutcol50Quant">
                 <div>
-                    <label for="">Your Total savings
+                    <label for="">{{op.name}}
 
                 </label>
+                    <br>
+                    <span> {{op.productQuantity}} Product x ₹
+{{op.price}} /Product </span>
                 </div>
             </div>
-            <div class="col-33 savingamtdiv">
+            <div class="col-33 bgchkoutcol502">
                 <div>
-                    <label for="">₹ {{calculateTotalPrice()}}</label>
-                    <span>({{savingPercent | number: 2}}%)</span>
+                    <label for="">₹  {{op.productQuantity *  op.price}}</label>
                 </div>
             </div>
         </div>
-    </ion-content>
-    <li class="item item-checkbox noborder checkbox-assertive borderR chkalign mar10">
-        I have read & accept the
 
-        <span class="termscolor" ng-click="terms.show($event)">  terms & conditions</span>
-        <label class="checkbox noborder ">
-   <input type="checkbox" class="" ng-model="terms">
-   </label>
+    </ion-content>
+    <li class="item item-checkbox noborder checkbox-assertive borderR
+chkalign mar10">
+        <label class="checkbox noborder checkboxterms">
+   <input type="checkbox" ng-model="terms.value" class="">
+   </label> I have read & accept the
+
+        <span class="termscolor" ng-click="terms.show($event)">  Terms
+& Conditions</span>
+
     </li>
     <div class="bar bar-footer signUpFooter footer-height">
-        <button class="button button-block button-positive footer-font" ng-click="gotopayment()" ng-disabled="!terms">
-          Pay ₹ {{totalAmt}}/-
-        </button>
+        <button class="button button-block button-positive footer-font" ng-disabled="!terms.value" ng-click="gotopayment()">
+  Pay ₹ {{calculateTotalPrice()}}/-
+</button>
     </div>
 </ion-view>

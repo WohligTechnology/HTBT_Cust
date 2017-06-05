@@ -108,16 +108,15 @@
 
     <li class="item item-checkbox noborder checkbox-assertive borderR
 chkalign mar10">
-        <label class="checkbox noborder checkboxterms">
+        <label class="checkbox noborder ">
    <input type="checkbox" ng-model="terms" class="">
    </label> I have read & accept the
-        <span class="termscolor" ng-click="terms.show($event)">  Terms
-& Conditions</span>
+        <span class="termscolor" ng-click="terms.show($event)">  Terms & Conditions</span>
     </li>
 
 
     <div class="bar bar-footer signUpFooter footer-height">
-        <button ng-disabled="!terms" class="button button-block button-positive footer-font" ui-sref="app.auth-payment-cart">
+        <button ng-disabled="!terms" class="button button-block button-positive footer-font" ng-click="placeOrder()">
   Pay ₹ {{calculateTotalPrice()}}/-
 </button>
     </div>

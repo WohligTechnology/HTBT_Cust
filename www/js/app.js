@@ -147,19 +147,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
 
     .state('sorry', {
         url: '/sorry',
-        
+
                 templateUrl: 'templates/sorry.html',
                 controller: 'SorryCtrl'
-            
-        
+
+
     })
 
     .state('linkexpire', {
         url: '/linkexpire',
-       
+
                 templateUrl: 'templates/linkexpire.html',
                 controller: 'LinkExpireCtrl'
-        
+
     })
 
     .state('app.browse-more', {
@@ -194,7 +194,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
     })
 
     .state('app.shipping', {
-        url: '/shipping',
+        url: '/shipping/:orderId',
         views: {
             'menuContent': {
                 templateUrl: 'templates/shipping.html',
