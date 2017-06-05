@@ -52,9 +52,9 @@
 
 <div>
   <label class=" item-input ">
-  <input type="number" placeholder="Pincode"  ng-model="signupForm.pincode" name="pincode" value="{{signupForm.pincode}}"  required limit-to = "6">
+  <input limit-to="6"  type="number" placeholder="Pincode"  ng-model="signupForm.pincode" name="pincode" value="{{signupForm.pincode}}" ng-min="100000" ng-max="999999"  required >
   </label>
-  <p class="error-msg" ng-show="userForm.pincode.$error.required && userForm.pincode.$touched">Please Enter your Pincode.</p>
+  <p class="error-msg" ng-show="userForm.pincode.$invalid && userForm.pincode.$touched">Please Enter your Pincode.</p>
 </div>
 
     </div>
@@ -70,7 +70,7 @@ I have read & accept the
 </label>
 </li>
   <div class="bar bar-footer signUpFooter footer-height" ng-if="click">
-    <button class="button button-block button-positive footer-font" type="submit">
+    <button class="button button-block button-positive footer-font" ng-disabled="userForm.$invalid" type="submit">
   Get Started
 </button>
   </div>
