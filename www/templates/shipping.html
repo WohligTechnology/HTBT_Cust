@@ -1,7 +1,7 @@
 <ion-view title="Enter Shipping Details">
     <ion-nav-bar class="bar-stable nav-height">
         <ion-nav-buttons side="left">
-            <button class="button button-clear ion-android-arrow-back sigupIconLeft" ng-click="goBackHandler()">
+            <button class="button button-clear ion-android-arrow-back sigupIconLeft" >
         </button>
         </ion-nav-buttons>
         <ion-nav-buttons side="right">
@@ -9,110 +9,100 @@
         </button>
         </ion-nav-buttons>
     </ion-nav-bar>
-    <ion-content class="has-header  has-footer">
-        <!-- <div class=" ">
-            <label class=" item-input shipping-label">{{shipping.customer.name}}</label>
-            <label class=" item-input shipping-label">{{shipping.customer.mobile}}
-  </label>
-            <label class="item-input item-floating-label shipping-floatlabel">
-    <span class="input-label shipping-floatspan">Email-id</span>
-    <input class="shipping-input" type="text" placeholder="Email-ID" value="{{shipping.customer.email}}" ng-model="shipping.customer.email">
-  </label>
-            <label class="item-input item-floating-label shipping-floatlabel">
-    <span class="input-label shipping-floatspan">Company Name(Optional)</span>
-    <input class="shipping-input" type="text" placeholder="Company Name(Optional)">
-  </label>
-            <label class="item-input item-floating-label shipping-floatlabel">
-    <span class="input-label shipping-floatspan">Shipping Address</span>
-    <input class="shipping-input" type="text" placeholder="Shipping Address">
-  </label>
-            <label class="item-input item-floating-label shipping-floatlabel">
-    <span class="input-label shipping-floatspan">Pincode</span>
-    <input class="shipping-input bgtrans" type="text" placeholder="Pincode" value="{{shipping.customer.pincode}}" ng-model="shipping.customer.pincode" disabled>
-  </label>
-
-        </div> -->
-
+    <ion-content class="has-header   has-footer">
         <div class="padtop-10">
             <div class="signUpForm">
                 <label class=" item-input  ">
-            <input type="text" placeholder="Your Name"  ng-model="signupForm.name" value="{{shipping.customer.name}}" name="name" required>
+            <input type="text" placeholder="Your Name"  ng-model="shippingAddress.name" value="{{shippingAddress.name}}" name="name" required>
             </label>
             </div>
 
-            <div>
+            <div class="signUpForm">
                 <label class=" item-input ">
-                  <input type="text" placehbb1older="Mobile No" ng-model="signupForm.mobile" name="mob"  value="{{shipping.customer.mobile}}"  required only-Digits maxlength="10" minlength="10">
+                  <input type="text" placehbb1older="Mobile No" ng-model="shippingAddress.mobile" name="mob"  value="{{shippingAddress.mobile}}"  required only-Digits maxlength="10" minlength="10">
                   </label>
             </div>
-            <div>
+            <div class="signUpForm">
                 <label class=" item-input ">
-                  <input type="email" placeholder="Email Id (Optional)" ng-model="signupForm.email" value="{{shipping.customer.email}}" name="email" required>
+                  <input type="email" placeholder="Email Id (Optional)" ng-model="shippingAddress.email" value="{{shippingAddress.email}}" name="email" required>
                 </label>
                 <p class="error-msg" ng-show="userForm.email.$error.required && userForm.email.$touched">Please Enter your Email Id.</p>
             </div>
 
 
-            <div>
+            <div class="signUpForm">
                 <label class=" item-input bb1">
-      <input type="text" placeholder="Address" ng-model="signupForm.establishmentAddress" value="{{shipping.customer.establishmentAddress}}" name="estadd" required>
+      <input type="text" placeholder="Company Name" ng-model="shippingAddress.companyName" value="{{shippingAddress.companyName}}" name="company" required>
+      </label>
+                <p class="error-msg" ng-show="userForm.company.$error.required && userForm.company.$touched">Please Enter your company name.</p>
+            </div>
+            <div class="signUpForm">
+                <label class=" item-input bb1">
+      <input type="text" placeholder="Shipping Address" ng-model="shippingAddress.address" value="{{shippingAddress.address}}" name="shippingAddress" required>
       </label>
                 <p class="error-msg" ng-show="userForm.estadd.$error.required && userForm.estadd.$touched">Please Enter your Address.</p>
             </div>
-            <label class=" item-input bb1">
-        <input type="text" class="bgtrans" placeholder="" disabled>
-      </label>
+            <div class="signUpForm">
+              <label class=" item-input ">
+          <input type="text" class="bgtrans" placeholder="" disabled>
+        </label>
+            </div>
 
-            <div>
-                <label class=" item-input bb1">
-                <input type="text" placeholder="Pincode"  ng-model="signupForm.pincode" name="pincode" value="{{shipping.customer.pincode}}"  required only-Digits maxlength="6" minlength="6">
+            <div class="signUpForm">
+                <label class=" item-input">
+                <input type="text" placeholder="Pincode"  ng-model="shippingAddress.pincode" name="pincode" value="{{shippingAddress.pincode}}"  required only-Digits maxlength="6" minlength="6">
                 </label>
                 <p class="error-msg" ng-show="userForm.pincode.$error.required && userForm.pincode.$touched">Please Enter your Pincode.</p>
             </div>
-
         </div>
         <li class="item item-checkbox noborder checkbox-assertive borderR
-      sameadd">
-
-            <label class="checkbox noborder checkboxterms">
-               <input type="checkbox" ng-model="terms.value" class="" id="shipping">
+      sameadd" >
+            <label class="checkbox noborder shipcheck">
+               <input type="checkbox" ng-model="billingAddress.shippingCheck" class="" id="shippingCheck" ng-checked="{{billingAddress.shippingCheck}}">
             </label>
-            <p for="shipping">My billing address is same as my shipping address</p>
-
+            <p for="shipping" ng-click="billingAddress.shippingCheck =!billingAddress.shippingCheck">My billing address is same as my shipping address</p>
         </li>
-        <div class="padtop-10" ng-if="!terms.value">
-            <div>
+        <div class="padtop-10" ng-show="!billingAddress.shippingCheck">
+            <div class="signUpForm">
                 <label class=" item-input ">
-            <input type="text" placeholder="Your Name"  ng-model="signupForm.name" value="{{shipping.customer.name}}" name="name" required>
+            <input type="text" placeholder="Your Name"  ng-model="billingAddress.name" value="{{billingAddress.name}}" name="name" required>
             </label>
             </div>
 
-            <div>
+            <div class="signUpForm">
                 <label class=" item-input ">
-                  <input type="text" placeholder="Mobile No" ng-model="signupForm.mobile" name="mob"  value="{{shipping.customer.mobile}}"  required only-Digits maxlength="10" minlength="10">
+                  <input type="text" placeholder="Mobile No" ng-model="billingAddress.mobile" name="mob"  value="{{billingAddress.mobile}}"  required only-Digits maxlength="10" minlength="10">
                   </label>
             </div>
-            <div>
+            <div class="signUpForm">
                 <label class=" item-input ">
-                  <input type="email" placeholder="Email Id (Optional)" ng-model="signupForm.email" value="{{shipping.customer.email}}" name="email" required>
+                  <input type="email" placeholder="Email Id (Optional)" ng-model="billingAddress.email" value="{{billingAddress.email}}" name="email" required>
                 </label>
                 <p class="error-msg" ng-show="userForm.email.$error.required && userForm.email.$touched">Please Enter your Email Id.</p>
             </div>
-
-
-            <div>
-                <label class=" item-input ">
-      <input type="text" placeholder="Address" ng-model="signupForm.establishmentAddress" value="{{shipping.customer.establishmentAddress}}" name="estadd" required>
+            <div class="signUpForm">
+                <label class=" item-input bb1">
+      <input type="text" placeholder="Company Name" ng-model="billingAddress.companyName" value="{{billingAddress.companyName}}" name="company" required>
       </label>
+                <p class="error-msg" ng-show="userForm.company.$error.required && userForm.company.$touched">Please Enter your company name.</p>
+            </div>
+
+            <div class="signUpForm">
+                <label class=" item-input ">
+                <input type="text" placeholder="Billing Address" ng-model="billingAddress.address" value="{{billingAddress.address}}" name="billingAddress" required>
+              </label>
                 <p class="error-msg" ng-show="userForm.estadd.$error.required && userForm.estadd.$touched">Please Enter your Address.</p>
             </div>
-            <label class=" item-input ">
-        <input type="text" class="bgtrans" placeholder="" disabled>
-      </label>
+            <div class="signUpForm">
+              <label class=" item-input ">
+          <input type="text" class="bgtrans" placeholder="" disabled>
+        </label>
+            </div>
 
-            <div>
+
+            <div class="signUpForm">
                 <label class=" item-input ">
-                <input type="text" placeholder="Pincode"  ng-model="signupForm.pincode" name="pincode" value="{{shipping.customer.pincode}}"  required only-Digits maxlength="6" minlength="6">
+                <input type="text" placeholder="Pincode"  ng-model="billingAddress.pincode" name="pincode" value="{{billingAddress.pincode}}"  required only-Digits maxlength="6" minlength="6">
                 </label>
                 <p class="error-msg" ng-show="userForm.pincode.$error.required && userForm.pincode.$touched">Please Enter your Pincode.</p>
             </div>
@@ -121,7 +111,7 @@
     </ion-content>
 
     <div class="bar bar-footer signUpFooter footer-height">
-        <button class="button button-block button-positive footer-font" ui-sref="app.checkout">
+        <button class="button button-block button-positive footer-font" ng-click="saveDetails(billingAddress,shippingAddress)">
   Proceed
 </button>
     </div>

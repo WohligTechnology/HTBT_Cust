@@ -63,9 +63,11 @@
         <div class="backdropImg ">
             <div class="jar-div"><label for="">Your Jar Balance</label></div>
             <label class="bal-div" for="">{{dashboardData.jarBalance || 0}}</label>
+
+
             <button class="button button-light buy-more" ui-sref="app.subpage1">
-  Buy More
-</button>
+              Buy More
+            </button>
         </div>
         <div class="card card-height">
             <div class="row">
@@ -74,7 +76,7 @@
                         <label class="card-label" for="" ng-if="!delivery[0].status">We'll be in your area on</label>
                         <label class="card-label" for="" ng-if="delivery[0].status">Delivery schedule for</label>
                         <span class="cardDayspan">{{delivery[0].requestDate | date :'EEEE'}}</span>
-                        <span class="cardDate">{{delivery[0].requestDate | date :'MMMM dd'}}</span>
+                        <span class="cardDate">{{delivery[0].requestDate | date :'MMMM dd,'}}</span>
                     </div>
                     <button class="button card-schedule" ui-sref="app.calendar" ng-if="!delivery[0].status">
                     <span> Schedule delivery </span>

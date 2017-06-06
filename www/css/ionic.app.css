@@ -11227,7 +11227,7 @@ display: none
 .chkout-image {
   height: 120px;
   text-align: center;
-  margin: 10px 0px 10px 10px;
+  margin: 10px 0 10px 10px;
   padding-right: 10px;
   position: relative;
   border-right: 1px solid #278cce; }
@@ -12014,7 +12014,7 @@ p.onceLblr {
 .orderplaced {
   font-size: 21px;
   width: 100%;
-  padding: 10px 10px 0 10px;
+  padding: 10px 10px 0;
   text-align: center;
   color: #6d797e; }
 
@@ -12022,11 +12022,17 @@ p.onceLblr {
   background-color: transparent !important; }
 
 .sameadd {
-  padding: 5px 0px 5px 40px;
-  font-size: 14px; }
+  padding: 5px 0 5px 40px;
+  font-size: 14px;
+  margin-top: 5px; }
   .sameadd p {
     font-size: 12px;
-    margin-top: 10px; }
+    margin-left: 20px; }
 
-.bb1 {
-  border-bottom: 1px solid lightgrey !important; }
+.shipcheck {
+  position: absolute;
+  top: 61% !important;
+  right: 42%;
+  left: 5% !important;
+  z-index: 3;
+  margin-top: -21px; }

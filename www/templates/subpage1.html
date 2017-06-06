@@ -1,7 +1,7 @@
 <ion-view title="Step 1 of 3">
     <ion-nav-bar class="bar-stable nav-height">
         <ion-nav-buttons side="left">
-            <button class="button button-clear ion-android-arrow-back sigupIconLeft" ng-click="goBackHandler()">
+            <button class="button button-clear ion-android-arrow-back sigupIconLeft" ui-sref="app.browse-more">
         </button>
         </ion-nav-buttons>
 
@@ -13,7 +13,7 @@
             <label for="">?</label>
         </div>
         <div class="inputarea">
-            <input type="number" autofocus focusMe ng-model="subscription.product[0].quantity">
+            <input type="number"onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" autofocus focusMe ng-model="subscription.product[0].quantity">
         </div>
         <div class="avgTxt">On average , 4 people need 3 jars per week.</div>
     </ion-content>
