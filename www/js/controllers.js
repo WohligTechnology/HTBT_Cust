@@ -77,92 +77,90 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     })
 
 .controller('ProductSpecsCtrl', function($scope, $stateParams, $ionicPopup, $state, MyServices) {
-  $scope.goBackHandler = function () {
-          window.history.back();
-      };
-      $scope.userDetails = MyServices.getAppDetails();
+    $scope.goBackHandler = function() {
+        window.history.back();
+    };
+    $scope.userDetails = MyServices.getAppDetails();
 
-      $scope.profile = $.jStorage.get('profile');
-      MyServices.products({
-          category: $stateParams.category
-      }, function (data) {
-          $scope.products = data.data;
-          _.each($scope.products, function (n) {
-              n.productQuantity = 0;
-          });
-      });
-      $scope.checkMinProduct = function (product) {
-          if (!product.productQuantity || product.productQuantity <= 0) {
-              return true;
-          } else {
-              return false;
-          }
-      };
-      $scope.checkMaxProduct = function (product) {
-          if (product.productQuantity >= parseInt(product.quantity)) {
-              return true;
-          } else {
-              return false;
-          }
-      };
-      $scope.changeProductQuantity = function (product, change) {
-          if (_.isNaN(parseInt(product.productQuantity))) {
-              product.productQuantity = 0;
-          }
-          if (change) {
-              product.productQuantity++;
-          } else {
-              product.productQuantity--;
-          }
-      };
-      $scope.addToCart = function () {
-          var products = _.map(_.filter($scope.products, function (n) {
-              return (n.productQuantity && n.productQuantity >= 1);
-          }), function (n) {
-              return {
-                  productQuantity: n.productQuantity,
-                  product: n._id,
-                  totalAmount: n.productQuantity * parseFloat(n.price)
-              };
-          });
-          if (products.length > 0) {
-              MyServices.addToCart(products, function (data) {
-                  if (data.status == 200) {
-                      var myPopup = $ionicPopup.show({
-                          title: 'Products Added to Cart',
-                          subTitle: 'Products are added to cart successfully',
-                          buttons: [{
+    $scope.profile = $.jStorage.get('profile');
+    MyServices.products({
+        category: $stateParams.category
+    }, function(data) {
+        $scope.products = data.data;
+        _.each($scope.products, function(n) {
+            n.productQuantity = 0;
+        });
+    });
+    $scope.checkMinProduct = function(product) {
+        if (!product.productQuantity || product.productQuantity <= 0) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+    $scope.checkMaxProduct = function(product) {
+        if (product.productQuantity >= parseInt(product.quantity)) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+    $scope.changeProductQuantity = function(product, change) {
+        if (_.isNaN(parseInt(product.productQuantity))) {
+            product.productQuantity = 0;
+        }
+        if (change) {
+            product.productQuantity++;
+        } else {
+            product.productQuantity--;
+        }
+    };
+    $scope.addToCart = function() {
+        var products = _.map(_.filter($scope.products, function(n) {
+            return (n.productQuantity && n.productQuantity >= 1);
+        }), function(n) {
+            return {
+                productQuantity: n.productQuantity,
+                product: n._id,
+                totalAmount: n.productQuantity * parseFloat(n.price)
+            };
+        });
+        if (products.length > 0) {
+            MyServices.addToCart(products, function(data) {
+                if (data.status == 200) {
+                    var myPopup = $ionicPopup.show({
+                        title: 'Products Added to Cart',
+                        subTitle: 'Products are added to cart successfully',
+                        buttons: [{
 
-                                  text: 'Go to Cart',
-                                  onTap: function (e) {
-                                      $state.go("app.review");
-                                  }
-                              },
-                              {
-                                  text: 'Continue',
-                                  type: 'button-positive',
-                                  onTap: function (e) {
-                                      $state.go("app.browse");
-                                  }
-                              }
-                          ]
-                      });
-                  } else {
-                      $ionicPopup.alert({
-                          title: "Error Occured",
-                          template: "Error Occured while adding Products to Cart"
-                      });
-                  }
-              });
-          } else {
-              $ionicPopup.alert({
-                  title: "No Product",
-                  template: "No Product for Add to Cart"
-              });
+                            text: 'Go to Cart',
+                            onTap: function(e) {
+                                $state.go("app.review");
+                            }
+                        }, {
+                            text: 'Continue',
+                            type: 'button-positive',
+                            onTap: function(e) {
+                                $state.go("app.browse");
+                            }
+                        }]
+                    });
+                } else {
+                    $ionicPopup.alert({
+                        title: "Error Occured",
+                        template: "Error Occured while adding Products to Cart"
+                    });
+                }
+            });
+        } else {
+            $ionicPopup.alert({
+                title: "No Product",
+                template: "No Product for Add to Cart"
+            });
 
-          }
+        }
 
-      };
+    };
 })
 
 .controller('VerificationCtrl', function($scope, $stateParams) {
@@ -336,7 +334,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
         console.log($scope.subscription);
 
-        $scope.subscription.customer={};
+        $scope.subscription.customer = {};
         $scope.subscription.customer.name = $.jStorage.get('profile').name;
         $scope.subscription.customer.mobile = $.jStorage.get('profile').mobile;
         $scope.subscription.methodOfPayment = 'Customer';
@@ -352,27 +350,30 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
         MyServices.saveOrderCheckout($scope.subscription, function(data) {
             console.log(data.data.data._id);
             if (data.status == 200) {
-                $scope.finalURL = 'http://htbt.wohlig.co.in/orderconfirmation/' + data.data.data._id;
-                var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
-                ref.addEventListener('loadstop', function(event) {
-                    // event.url="http://wohlig.co.in/paisoapk/success.html?orderid=1231321231";
-                    var url = event.url;
-                    // var orderid = event.url.split("=")[1];
-                    console.log(url);
-                    if (url == "http://htbt.wohlig.co.in/sorry") {
-                        ref.close();
-                        var alertPopup = $ionicPopup.alert({
-                            template: '<h4 style="text-align:center;">Some Error Occurred. Payment Failed</h4>'
-                        });
-                        alertPopup.then(function(res) {
-                            alertPopup.close();
-                            $state.go('app.sorry');
-                        });
-                    } else if (url == "http://htbt.wohlig.co.in/thankyou") {
-                        ref.close();
-                        $state.go('app.orderconfirm');
-                    }
-                });
+              console.log("sad");
+              $state.go('app.shipping',{orderId:data.data.data._id});
+
+                // $scope.finalURL = 'http://htbt.wohlig.co.in/orderconfirmation/' + data.data.data._id;
+                // var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+                // ref.addEventListener('loadstop', function(event) {
+                //     // event.url="http://wohlig.co.in/paisoapk/success.html?orderid=1231321231";
+                //     var url = event.url;
+                //     // var orderid = event.url.split("=")[1];
+                //     console.log(url);
+                //     if (url == "http://htbt.wohlig.co.in/sorry") {
+                //         ref.close();
+                //         var alertPopup = $ionicPopup.alert({
+                //             template: '<h4 style="text-align:center;">Some Error Occurred. Payment Failed</h4>'
+                //         });
+                //         alertPopup.then(function(res) {
+                //             alertPopup.close();
+                //             $state.go('app.sorry');
+                //         });
+                //     } else if (url == "http://htbt.wohlig.co.in/thankyou") {
+                //         ref.close();
+                //         $state.go('app.orderconfirm');
+                //     }
+                // });
             }
         });
     };
@@ -444,34 +445,44 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     }
 })
 
-.controller('ShippingCtrl', function($scope, $stateParams,MyServices) {
+.controller('ShippingCtrl', function($scope, $stateParams, MyServices) {
+  $scope.shippingCheck = true;
+
     $scope.goBackHandler = function() {
         window.history.back(); //This works
     };
     if ($stateParams.orderId) {
-  console.log("orderId", $stateParams.orderId);
-  var formData = {};
-  formData._id = $stateParams.orderId;
-  MyServices.OrderGetOne( formData, function (data) {
-    if (data.value === true) {
-      console.log("Order/getOne", data.data);
-      $scope.shippingDetails=data.data;
-      $scope.shippingAddress=data.data.customer;
+        console.log("orderId", $stateParams.orderId);
+        var formData = {};
+        formData._id = $stateParams.orderId;
+        MyServices.OrderGetOne(formData, function(data) {
+            if (data.value === true) {
+                console.log("Order/getOne", data.data);
+                $scope.shippingDetails = data.data;
+                $scope.shippingAddress = data.data.customer;
+                $scope.billingAddress = "";
+                $scope.billingAddress.shippingCheck = true;
+            }
+        });
 
-    }
-  });
-};
-$scope.addShipBilDetails = function (orderData) {
-  //redirect them to cart summery and payment gateway
-  apiService.apiCall("Order/save", orderData, function (data) {
-    if (data.value === true) {
-      console.log("Order updated successfully---");
-      $state.go("payment", {
-        "orderId": orderData._id
-      });
-    }
-  });
-}
+        $scope.saveDetails = function(billingAddress, shippingAddress) {
+          if (billingAddress.shippingCheck) {
+            $scope.shippingDetails.billingAddress = shippingAddress;
+            $scope.shippingDetails.shippingAddress = shippingAddress;
+          }else{
+            $scope.shippingDetails.billingAddress = billingAddress;
+            $scope.shippingDetails.shippingAddress = shippingAddress;
+          }
+
+            MyServices.OrderSave($scope.shippingDetails, function(data) {
+                if (data.value === true) {
+                    console.log("Order/save", data.data);
+                    $scope.OrderSaveData = data.data;
+                }
+            });
+        }
+    };
+
 })
 
 .controller('Subpage1Ctrl', function($scope, MyServices, Subscription, $state, $stateParams) {
@@ -1142,8 +1153,8 @@ $scope.addShipBilDetails = function (orderData) {
 
             }
         });
-})
-.controller('PincodeCtrl', function($scope, $ionicPopup, $stateParams, $ionicActionSheet, $cordovaFileTransfer, $cordovaCamera, $ionicPopover, $state, MyServices, $cordovaImagePicker) {})
+    })
+    .controller('PincodeCtrl', function($scope, $ionicPopup, $stateParams, $ionicActionSheet, $cordovaFileTransfer, $cordovaCamera, $ionicPopover, $state, MyServices, $cordovaImagePicker) {})
 
 .controller('SignUpCtrl', function($scope, $stateParams, $ionicPopup, $ionicPopover, MyServices, $state) {
     $scope.sorryPopup = function() {

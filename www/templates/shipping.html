@@ -1,7 +1,7 @@
 <ion-view title="Enter Shipping Details">
     <ion-nav-bar class="bar-stable nav-height">
         <ion-nav-buttons side="left">
-            <button class="button button-clear ion-android-arrow-back sigupIconLeft" ng-click="goBackHandler()">
+            <button class="button button-clear ion-android-arrow-back sigupIconLeft" >
         </button>
         </ion-nav-buttons>
         <ion-nav-buttons side="right">
@@ -38,7 +38,7 @@
             </div>
             <div class="signUpForm">
                 <label class=" item-input bb1">
-      <input type="text" placeholder="Address" ng-model="shippingAddress.address" value="{{shippingAddress.address}}" name="estadd" required>
+      <input type="text" placeholder="Shipping Address" ng-model="shippingAddress.address" value="{{shippingAddress.address}}" name="shippingAddress" required>
       </label>
                 <p class="error-msg" ng-show="userForm.estadd.$error.required && userForm.estadd.$touched">Please Enter your Address.</p>
             </div>
@@ -56,14 +56,13 @@
             </div>
         </div>
         <li class="item item-checkbox noborder checkbox-assertive borderR
-      sameadd" ng-init="shippingCheck =true">
-
+      sameadd" >
             <label class="checkbox noborder shipcheck">
-               <input type="checkbox" ng-model="shippingCheck" class="" id="shippingCheck" ng-checked="{{shippingCheck}}">
+               <input type="checkbox" ng-model="billingAddress.shippingCheck" class="" id="shippingCheck" ng-checked="{{billingAddress.shippingCheck}}">
             </label>
-            <p for="shipping" ng-click="shippingCheck =!shippingCheck">My billing address is same as my shipping address</p>
+            <p for="shipping" ng-click="billingAddress.shippingCheck =!billingAddress.shippingCheck">My billing address is same as my shipping address</p>
         </li>
-        <div class="padtop-10" ng-show="!shippingCheck">
+        <div class="padtop-10" ng-show="!billingAddress.shippingCheck">
             <div class="signUpForm">
                 <label class=" item-input ">
             <input type="text" placeholder="Your Name"  ng-model="billingAddress.name" value="{{billingAddress.name}}" name="name" required>
@@ -90,7 +89,7 @@
 
             <div class="signUpForm">
                 <label class=" item-input ">
-                <input type="text" placeholder="Address" ng-model="billingAddress.establishmentAddress" value="{{billingAddress.establishmentAddress}}" name="estadd" required>
+                <input type="text" placeholder="Billing Address" ng-model="billingAddress.address" value="{{billingAddress.address}}" name="billingAddress" required>
               </label>
                 <p class="error-msg" ng-show="userForm.estadd.$error.required && userForm.estadd.$touched">Please Enter your Address.</p>
             </div>
@@ -112,7 +111,7 @@
     </ion-content>
 
     <div class="bar bar-footer signUpFooter footer-height">
-        <button class="button button-block button-positive footer-font" ui-sref="app.checkout">
+        <button class="button button-block button-positive footer-font" ng-click="saveDetails(billingAddress,shippingAddress)">
   Proceed
 </button>
     </div>

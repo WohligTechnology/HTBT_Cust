@@ -1839,29 +1839,32 @@ display: none
 }
 
 .chkout-image {
-  height: 120px;
-  text-align: center;
-  margin: 10px 0px 10px 10px;
-  padding-right: 10px;
-  position: relative;
-  border-right: 1px solid #278cce;
-  img {
-    max-width: 100%;
-    max-height: 100%;
-    position: absolute;
-    transform: translate(-50%, -50%)!important;
-    top: 50%!important;
-    left: 50%!important;
-    padding-right: 10px
-  }
-  .line {
-    height: 90%;
-    display: inline-block;
-    padding: 10px;
-    margin: 8px 0 8px 5%;
-    border-right: 1px solid #1a85cb;
-  }
+    height: 120px;
+    text-align: center;
+    margin: 10px 0 10px 10px;
+    padding-right: 10px;
+    position: relative;
+    border-right: 1px solid #278cce;
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+        position: absolute;
+        transform: translate(-50%, -50%)!important;
+        top: 50%!important;
+        left: 50%!important;
+        padding-right: 10px;
+    }
+
+    .line {
+        height: 90%;
+        display: inline-block;
+        padding: 10px;
+        margin: 8px 0 8px 5%;
+        border-right: 1px solid #1a85cb;
+    }
 }
+
 .savingscol501 {
     padding-left: 10px;
     padding-top: 15px;
@@ -2806,8 +2809,6 @@ p.onceLblr {
     background: #ff414d;
     color: white;
 }
-
-
 //sorry
 .reldiv {
     position: relative;
@@ -2815,66 +2816,68 @@ p.onceLblr {
     text-align: center;
 }
 
-
-.sorrymsg{
+.sorrymsg {
     padding: 10px;
     font-size: 16px;
-    color: #6d797e
-
+    color: #6d797e;
 }
 
- .sorryno{
-        font-weight: 500;
-        color: #6d797e
-    }
+.sorryno {
+    font-weight: 500;
+    color: #6d797e;
+}
 
-    .position-center{
-     position: absolute;
+.position-center {
+    position: absolute;
     transform: translate(-50%,-50%);
     top: 50%;
     left: 50%;
     width: 100%;
 }
 
-.thankyou{
+.thankyou {
     font-size: 32px;
     padding: 10px;
     text-align: center;
-    font-weight: 500
+    font-weight: 500;
 }
 
+.img-div {
+    text-align: center;
 
-.img-div{
-   text-align: center;
-   img{
- width: 200px;
-   }
+    img {
+        width: 200px;
+    }
 }
 
-.orderplaced{
+.orderplaced {
     font-size: 21px;
     width: 100%;
-    padding: 10px 10px 0 10px;
+    padding: 10px 10px 0;
     text-align: center;
     color: #6d797e;
 }
-.bgtrans{
-  background-color: transparent!important;
+
+.bgtrans {
+    background-color: transparent!important;
 }
-.sameadd{
-  padding: 5px 0px 5px 40px;
-font-size: 14px;
-margin-top: 5px;
-p{
-  font-size: 12px;
+
+.sameadd {
+    padding: 5px 0 5px 40px;
+    font-size: 14px;
+    margin-top: 5px;
+
+    p {
+        font-size: 12px;
+        margin-left: 20px;
+    }
 }
-}
-.shipcheck{
-  position: absolute;
+
+.shipcheck {
+    position: absolute;
     top: 61% !important;
     right: 42%;
     left: 5% !important;
     z-index: 3;
     margin-top: -21px;
-
 }
