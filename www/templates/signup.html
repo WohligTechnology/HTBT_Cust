@@ -60,15 +60,17 @@
     </div>
 
   </ion-content>
+<div>
+      <li class="item item-checkbox noborder checkbox-assertive borderR chkalign mar10">
+        I have read & accept the
 
-  <li class="item item-checkbox noborder checkbox-assertive borderR chkalign mar10">
-I have read & accept the
-
-<span  class="termscolor" ng-click="terms.show($event)" >  terms & conditions</span>
-<label class="checkbox noborder ">
-<input type="checkbox" class="" ng-model="click" ng-init="click=true">
-</label>
-</li>
+        <span class="termscolor" ng-click="terms.show($event)">  Terms & Conditions</span>
+        <label class="checkbox noborder checkboxterms">
+ <input type="checkbox" class="" ng-model="click" ng-init="click=true">
+ </label>
+      </li>
+    </div>
+ 
   <div class="bar bar-footer signUpFooter footer-height" ng-if="click">
     <button class="button button-block button-positive footer-font" ng-disabled="userForm.$invalid" type="submit">
   Get Started

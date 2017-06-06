@@ -11651,20 +11651,6 @@ p.onceLblr {
 .noborder {
   border: none !important; }
 
-.checkboxterms {
-  width: 28px;
-  height: 28px;
-  display: block;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  -webkit-appearance: none;
-  position: absolute !important;
-  /* margin-left: 10px !important; */
-  transform: translate(-70%, 25%) !important;
-  top: 44% !important;
-  left: 0% !important; }
-
 .borderR .checkbox input:before,
 .borderR .checkbox-icon:before {
   display: table;
@@ -12042,5 +12028,5 @@ p.onceLblr {
     font-size: 12px;
     margin-top: 10px; }
 
-.bnone {
-  border-bottom: 1px solid transparent !important; }
+.bb1 {
+  border-bottom: 1px solid lightgrey !important; }
