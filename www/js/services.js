@@ -1,9 +1,7 @@
 // var adminurl = "http://192.168.43.147:80/api/"; //local
 
-// var adminurl = "http://104.198.28.29:80/api/"; //server
-var adminurl = "http://192.168.43.20:1337/api/"; //server
-// var adminurl = "http://192.168.0.117:1337/api/"; //server
-// var adminurl = "http://htbt.wohlig.co.in/api/"; //server
+// var adminurl = "http://192.168.2.21:1337/api/"; //server
+var adminurl = "http://htbt.wohlig.co.in/api/"; //server
 
 // var imgpath = adminurl + "uploadfile/getupload?file=";
 var imgurl = adminurl + "upload/";

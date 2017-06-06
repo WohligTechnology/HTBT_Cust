@@ -445,9 +445,9 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     }
 })
 
-.controller('ShippingCtrl', function($scope, $stateParams, MyServices) {
+.controller('ShippingCtrl', function($scope, $stateParams,$ionicPlatform, MyServices,RazorpayCheckout) {
   $scope.shippingCheck = true;
-
+$scope.shippingDetails={}
     $scope.goBackHandler = function() {
         window.history.back(); //This works
     };
@@ -458,58 +458,266 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
         MyServices.OrderGetOne(formData, function(data) {
             if (data.value === true) {
                 console.log("Order/getOne", data.data);
-                $scope.shippingDetails = data.data;
+                // $scope.shippingDetails = data.data;
                 $scope.shippingAddress = data.data.customer;
-                $scope.billingAddress = "";
+                $scope.billingAddress = {};
                 $scope.billingAddress.shippingCheck = true;
+                $scope.orderData = data.data;
+                var pinForm = {};
+                pinForm.pin = $scope.orderData.shippingAddress.pincode;
+                MyServices.getByPin(pinForm, function(pinData) {
+                  if (pinData.value === true) {
+                    $scope.daysByPincode = pinData.data;
+                    console.log($scope.daysByPincode.days);
+                  } else {
+                    $state.go("pincode");
+                  }
+                });
+                // if (_.isEqual($scope.orderData.paymentStatus, 'Paid')) {
+                //   $state.go("linkexpire");
+                // }
+                _.each($scope.orderData.product, function (n, key) {
+                  $scope.amountToBePaid += parseFloat(n.product.price) * parseInt(n.productQuantity);
+                });
+                $scope.options = {
+                  'key': 'rzp_test_BrwXxB7w8pKsfS',
+                  'amount': parseInt($scope.orderData.totalPrice) * 100,
+                  'name': $scope.orderData.customer.name,
+                  'description': 'Pay for Order ' + $scope.orderData.orderID,
+                  'image': '',
+                  'handler': function (transaction) {
+                    $scope.transactionHandler(transaction);
+                  },
+                  'prefill': {
+                    'name': $scope.orderData.customer.name,
+                    'email': $scope.orderData.customer.email,
+                    'contact': $scope.orderData.customer.mobile
+                  },
+                  theme: {
+                    color: '#3399FF'
+                  }
+                };
             }
         });
+    };
+    $scope.saveDetails = function(billingAddress, shippingAddress) {
+      console.log("null",billingAddress,shippingAddress);
+      if (billingAddress.shippingCheck) {
 
-        $scope.saveDetails = function(billingAddress, shippingAddress) {
-          if (billingAddress.shippingCheck) {
-            $scope.shippingDetails.billingAddress = shippingAddress;
-            $scope.shippingDetails.shippingAddress = shippingAddress;
-          }else{
-            $scope.shippingDetails.billingAddress = billingAddress;
-            $scope.shippingDetails.shippingAddress = shippingAddress;
+        $scope.shippingDetails.billingAddress = shippingAddress;
+        $scope.shippingDetails.shippingAddress = shippingAddress;
+      }else{
+        $scope.shippingDetails.billingAddress = billingAddress;
+        $scope.shippingDetails.shippingAddress = shippingAddress;
+      }
+
+        MyServices.OrderSave($scope.shippingDetails, function(data) {
+            if (data.value === true) {
+                console.log("Order/save", data.data);
+                $scope.OrderSaveData = data.data;
+                $scope.pay();
+            }
+        });
+    }
+
+    //
+    // $scope.pay = function () {
+    //   console.log("inside payment");
+    //   $.getScript('https://checkout.razorpay.com/v1/checkout.js', function () {
+    //     var rzp1 = new Razorpay($scope.options);
+    //     rzp1.open();
+    //
+    //   });
+    // };
+
+    var called = false
+
+var successCallback = function(payment_id) {
+  alert('payment_id: ' + payment_id);
+  called = false
+};
+
+var cancelCallback = function(error) {
+  alert(error.description + ' (Error ' + error.code + ')');
+  called = false
+};
+
+$ionicPlatform.ready(function(){
+  $scope.pay = function() {
+    if (!called) {
+      RazorpayCheckout.open($scope.options, successCallback, cancelCallback);
+      called = true
+    }
+  }
+});
+
+    $scope.transactionHandler = function (success) {
+      console.log("transaction", success);
+      if (success.razorpay_payment_id) {
+        $state.go("thankyou");
+        $scope.orderData.razorpay_payment_id = success.razorpay_payment_id;
+        $scope.orderData.status = 'Confirmed';
+        apiService.apiCall("Order/orderConfirmationOrPay", $scope.orderData, function (data) {
+          if (data.value === true) {
+            console.log("payAndCapture");
+            //redirect to thank you page
+
           }
+        });
+      }
+    };
+    $scope.orderConfirmation = function (orderData) {
+      orderData.status = 'Confirmed';
+      apiService.apiCall("Order/orderConfirmationOrPay", orderData, function (data) {
+        if (data.value === true) {
+          $state.go("thankyou");
+          console.log("Order confirmed successfully--- redirect to thank you page");
 
-            MyServices.OrderSave($scope.shippingDetails, function(data) {
-                if (data.value === true) {
-                    console.log("Order/save", data.data);
-                    $scope.OrderSaveData = data.data;
-                }
-            });
         }
+      });
+    }
+
+    $scope.terms = function () {
+      $uibModal.open({
+        animation: true,
+        templateUrl: "views/terms.html",
+        // $scope:scope
+      })
+      // $scope.template = TemplateService.getHTML("/terms.html");
+    }
+    $scope.today = function () {
+      $scope.dt = new Date();
+    };
+    $scope.today();
+
+    $scope.clear = function () {
+      $scope.dt = null;
     };
 
+    $scope.inlineOptions = {
+      customClass: getDayClass,
+      minDate: new Date(),
+      showWeeks: true
+    };
+
+    $scope.dateOptions = {
+      dateDisabled: disabled,
+      formatYear: 'yy',
+      maxDate: new Date(2020, 5, 22),
+      minDate: new Date(),
+      startingDay: 1
+    };
+
+    // Disable weekend selection
+    function disabled(data) {
+      var currentDay = _.upperCase(moment(data.date).format("dddd"));
+      var retVal = true;
+      _.each($scope.daysByPincode.days, function (n) {
+        var capN = _.upperCase(n);
+        if (capN == currentDay) {
+          retVal = false;
+        }
+      });
+      var diff = moment(data.date).diff(moment(), 'days')
+      console.log(a);
+      if (diff <= 0) {
+        retVal = true;
+      }
+      return retVal;
+    }
+
+    $scope.toggleMin = function () {
+      $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
+      $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
+    };
+
+    $scope.toggleMin();
+
+    $scope.open1 = function () {
+      $scope.popup1.opened = true;
+    };
+
+    $scope.open2 = function () {
+      $scope.popup2.opened = true;
+    };
+
+    $scope.setDate = function (year, month, day) {
+      $scope.dt = new Date(year, month, day);
+    };
+
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+    $scope.altInputFormats = ['M!/d!/yyyy'];
+
+    $scope.popup1 = {
+      opened: false
+    };
+
+    $scope.popup2 = {
+      opened: false
+    };
+
+    var tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    var afterTomorrow = new Date();
+    afterTomorrow.setDate(tomorrow.getDate() + 1);
+    $scope.events = [{
+        date: tomorrow,
+        status: 'full'
+      },
+      {
+        date: afterTomorrow,
+        status: 'partially'
+      }
+    ];
+
+    function getDayClass(data) {
+      var date = data.date,
+        mode = data.mode;
+      if (mode === 'day') {
+        var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+
+        for (var i = 0; i < $scope.events.length; i++) {
+          var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+
+          if (dayToCheck === currentDay) {
+            return $scope.events[i].status;
+          }
+        }
+      }
+
+      return '';
+    }
 })
 
 .controller('Subpage1Ctrl', function($scope, MyServices, Subscription, $state, $stateParams) {
-    $scope.userDetails = MyServices.getAppDetails();
-    MyServices.showCardQuantity(function(num) {
-        $scope.totalQuantity = num;
-    });
-    $scope.subscription = Subscription.getObj();
-    Subscription.validate($state);
+  $scope.userDetails = MyServices.getAppDetails();
+  MyServices.showCardQuantity(function (num) {
+      $scope.totalQuantity = num;
+  });
+  $scope.subscription = Subscription.getObj();
+  Subscription.validate($state);
 
-    $scope.goBackHandler = function() {
-        window.history.back(); //This works
-    };
-    $scope.takeToNext = function() {
-        var orderedPrice = _.orderBy($scope.subscription.productDetail.priceList, function(n) {
-            return parseInt(n.endRange);
-        });
-        var lastQuantity = 0;
-        if (orderedPrice.length > 0) {
-            lastQuantity = parseInt(orderedPrice[orderedPrice.length - 1].endRange);
-        }
-        if ($scope.subscription.product[0].quantity >= lastQuantity) {
-            $state.go("app.requirement");
-        } else {
-            $state.go("app.subpage3");
-        }
-    };
+  $scope.goToProduct = function () {
+      var id = $.jStorage.get("prevId");
+      $state.go("app.browse-more", {
+          category: id
+      });
+  };
+  $scope.takeToNext = function () {
+      var orderedPrice = _.orderBy($scope.subscription.productDetail.priceList, function (n) {
+          return parseInt(n.endRange);
+      });
+      var lastQuantity = 0;
+      if (orderedPrice.length > 0) {
+          lastQuantity = parseInt(orderedPrice[orderedPrice.length - 1].endRange);
+      }
+      if ($scope.subscription.product[0].quantity >= lastQuantity) {
+          $state.go("app.requirement");
+      } else {
+          $state.go("app.subpage3");
+      }
+  };
 
 })
 
@@ -569,81 +777,107 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 })
 
 .controller('BrowseCtrl', function($scope, $ionicSlideBoxDelegate, Subscription, $timeout, $ionicPopup, MyServices, $state) {
-    $scope.userDetails = MyServices.getAppDetails();
-    $scope.nextPage = function(sub, id) {
-        if (sub == 'Yes') {
-            $state.go('app.browse-more', {
-                'category': id
-            });
+  $scope.userDetails = MyServices.getAppDetails();
 
-        } else {
-            $state.go('app.productSpecs', {
-                'category': id
-            });
-        }
-    };
-    $scope.subscription = Subscription.getObj();
-    MyServices.showCardQuantity(function(num) {
-        $scope.totalQuantity = num;
-    });
-    $scope.productTap = function(product) {
-        $scope.subscription.product[0].product = product._id;
-        $scope.subscription.productDetail = product;
-        console.log($scope.subscription);
-        if ($scope.totalQuantity === 0) {
-            $state.go("app.subpage1", {
-                id: product._id
-            });
-        } else {
-            $ionicPopup.alert({
-                title: "Product already in Cart",
-                template: "Please remove all the Products from the cart to proceed with Subscription Products."
-            });
-        }
-    };
-    $scope.slideHasChanged = function(index) {
-        $ionicSlideBoxDelegate.cssClass = 'fade-in'
-        $scope.slideIndex = index;
-        if (($ionicSlideBoxDelegate.count() - 1) == index) {
-            $timeout(function() {
-                $ionicSlideBoxDelegate.slide(0);
-            }, $scope.interval);
-        }
-    };
-    $scope.interval = 5000;
-    $scope.goBackHandler = function() {
-        window.history.back(); //This works
-    };
-    MyServices.categories(function(data) {
+  $scope.slideHasChanged = function (index) {
+      $ionicSlideBoxDelegate.cssClass = 'fade-in'
+      $scope.slideIndex = index;
+      if (($ionicSlideBoxDelegate.count() - 1) == index) {
+          $timeout(function () {
+              $ionicSlideBoxDelegate.slide(0);
 
-        console.log(data);
-        $scope.category = _.chunk(data.data, 2);
-        console.log($scope.category);
+          }, $scope.interval);
+      }
+  };
 
-    });
-    $scope.profile = $.jStorage.get('profile');
-    $scope.getProfield = {};
-    MyServices.getProfile($scope.getProfield, function(data) {
-        if (data.value) {
-            $scope.browse = data.data;
-        } else {
+  $scope.interval = 5000;
+  $scope.homeSlider = {};
+  $scope.homeSlider.data = [];
+  $scope.homeSlider.currentPage = 0;
 
-        }
-    });
-    $scope.getProfield._id = $scope.profile._id;
-    MyServices.getProfile($scope.getProfield, function(data) {
-        if (data.value) {
-            $scope.browse = data.data;
-        } else {
+  $scope.setupSlider = function () {
 
-        }
-    });
-    MyServices.featureprods(function(data) {
+      //some options to pass to our slider
+      $scope.homeSlider.sliderOptions = {
+          initialSlide: 0,
+          direction: 'horizontal', //or vertical
+          speed: 300,
 
-        $scope.feaprods = data.data;
-        $ionicSlideBoxDelegate.update();
+          autoplay: "5000",
+          effect: 'fade',
 
-    });
+      };
+
+
+      //create delegate reference to link with slider
+      $scope.homeSlider.sliderDelegate = null;
+
+      //watch our sliderDelegate reference, and use it when it becomes available
+      $scope.$watch('homeSlider.sliderDelegate', function (newVal, oldVal) {
+          if (newVal != null) {
+              $scope.homeSlider.sliderDelegate.on('slideChangeEnd', function () {
+                  $scope.homeSlider.currentPage = $scope.homeSlider.sliderDelegate.activeIndex;
+                  //use $scope.$apply() to refresh any content external to the slider
+                  $scope.$apply();
+              });
+          }
+      });
+  };
+
+  $scope.setupSlider();
+
+
+
+  //detect when sliderDelegate has been defined, and attatch some event listeners
+  $scope.$watch('sliderDelegate', function (newVal, oldVal) {
+      if (newVal != null) {
+          $scope.sliderDelegate.on('slideChangeEnd', function () {
+              console.log('updated slide to ' + $scope.sliderDelegate.activeIndex);
+              $scope.$apply();
+          });
+      }
+  });
+  $scope.nextPage = function (sub, id) {
+      $.jStorage.set("prevId", id);
+      if (sub == 'Yes') {
+          $state.go('app.browse-more', {
+              'category': id
+          });
+
+      } else {
+          $state.go('app.productSpecs', {
+              'category': id
+          });
+      }
+  };
+
+
+
+  $scope.goBackHandler = function () {
+      window.history.back(); //This works
+  };
+  MyServices.categories(function (data) {
+
+      console.log(data);
+      $scope.category = _.chunk(data.data, 2);
+      console.log($scope.category);
+
+  });
+  $scope.profile = $.jStorage.get('profile');
+  $scope.getProfield = {};
+  console.log($scope.profile);
+  $scope.getProfield._id = $scope.profile._id;
+  MyServices.getProfile($scope.getProfield, function (data) {
+      if (data.value) {
+          $scope.browse = data.data;
+      } else {
+
+      }
+  });
+  MyServices.featureprods(function (data) {
+      $scope.feaprods = data.data;
+      $ionicSlideBoxDelegate.update();
+  });
 })
 
 .controller('AddonsCtrl', function($scope, $stateParams, Subscription, $state, MyServices) {

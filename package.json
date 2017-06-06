@@ -24,6 +24,7 @@
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
     "cordova-plugin-inappbrowser"
+    "com.razorpay.cordova"
 
   ],
   "cordovaPlatforms": [
