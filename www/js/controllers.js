@@ -340,6 +340,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
         $scope.subscription.methodOfPayment = 'Customer';
         $scope.subscription.orderFor = 'CustomerForSelf';
         $scope.subscription.methodOfOrder = 'Application';
+        $scope.subscription.methodofjoin = 'App';
         $scope.subscription.totalAmt = $scope.total;
         $scope.subscription.totalQuantity = $scope.totalQuantity;
 
@@ -1019,6 +1020,7 @@ $ionicPlatform.ready(function(){
         $scope.OrderData.methodOfPayment = 'Customer';
         $scope.OrderData.orderFor = 'CustomerForSelf';
         $scope.OrderData.methodOfOrder = 'Application';
+        $scope.OrderData.methodofjoin = 'App';
         MyServices.saveOrderCheckoutCart($scope.OrderData, function(data) {
             if (data.value) {
                 $ionicLoading.hide();
