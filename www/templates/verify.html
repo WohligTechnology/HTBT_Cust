@@ -1,26 +1,26 @@
 <ion-view>
-    <ion-pane>
-        <div class="logorel">
-            <div class="otpDiv">
-                <label for="" class="otpLabel">Enter the 4-digit OTP code you <br> received through SMS</label>
-                <div class="otpin">
-                    <input type="number" class="inputs" min="0" max="9" maxlength="1" limit-to="1" ng-model="otp.first">
-                    <input type="number" class="inputs" min="0" max="9" maxlength="1" limit-to="1" ng-model="otp.second">
-                    <input type="number" class="inputs" min="0" max="9" maxlength="1" limit-to="1" ng-model="otp.third">
-                    <input type="number" class="inputs" min="0" max="9" maxlength="1" limit-to="1" ng-model="otp.forth">
-                </div>
-                <button class="button button-assertive verifyDiv" ng-click="verifyOTP(otp)">
+  <ion-pane>
+    <div class="logorel">
+      <div class="otpDiv">
+        <label for="" class="otpLabel">Enter the 4-digit OTP code you <br> received through SMS</label>
+        <div class="otpin">
+          <input type="number" autofocus focusMe class="inputs" maxlength="1" ng-model="otp.first" ng-change="disableotp(otp)">
+          <input type="number" class="inputs" maxlength="1" ng-model="otp.second" ng-change="disableotp(otp)">
+          <input type="number" class="inputs" maxlength="1" ng-model="otp.third" ng-change="disableotp(otp)">
+          <input type="number" class="inputs" maxlength="1" ng-model="otp.forth" ng-change="disableotp(otp)">
+        </div>
+        <button class="button button-assertive verifyDiv" ng-click="verifyOTP(otp)" ng-disabled="!otpenable">
   VERIFY
 </button>
-                <!-- <button class="button button-clear button-positive resendBtn">
-  Resend Code
-</button> -->
-            </div>
-        </div>
-        <div class="">
-        </div>
-        <div class="">
-        </div>
-        </div>
-    </ion-pane>
+        <button class="button button-clear button-positive resendBtn" ng-click="getOTP()" ng-if="resend">
+  Resend OTP
+</button>
+      </div>
+    </div>
+    <div class="">
+    </div>
+    <div class="">
+    </div>
+    </div>
+  </ion-pane>
 </ion-view>

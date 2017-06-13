@@ -17,9 +17,13 @@
         <div class="conirfm-orderDiv">
             <label class="conirfm-orderlbl" for="">Delivery Scheduled!</label>
             <!--<label class="confirm-successlbl" for="">Successfully</label>-->
-            <label class="confirm-refillphn" for="">We'll see you before 6 PM on</label>
-            <label class="confirm-date" for="">Wednesday, March 29</label>
+            <label class="confirm-refillphn" for="">We'll see you before {{deliverData.delivertime}} on</label>
+            <label class="confirm-date" for="">{{deliverData.deliverdate | date :'EEEE, MMMM dd'}}</label>
         </div>
     </ion-content>
-    
+    <div class="bar bar-footer signUpFooter footer-height">
+      <button class="button button-block button-positive footer-font" ui-sref="app.dashboard">
+    Go to Dashboard
+  </button>
+    </div>
   </ion-view>

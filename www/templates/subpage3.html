@@ -38,11 +38,12 @@
             </div>
         </div>
         </div>
-        <div class="row onceweekDiv" ui-sref="app.addons" ng-click="addPlan('Onetime',1);">
+        <div class="onceweekDiv" ui-sref="app.addons" ng-click="addPlan('Onetime',1);">
+          <div class="row">
             <div class="col-67 col-50pad border col-margin">
                 <label class="jarslbl" for="">One Time</label>
                 <p class="onceLblr" for="">{{subscription.product[0].quantity*1}} Jars</p>
-                <p ng-if="subscription.productDetail.AmtDeposit">Amount Deposit: {{subscription.productDetail.AmtDeposit}}</p>
+
             </div>
             <div class="col-33 col-37pad col-margin">
                 <div class="rel" ng-hide="getProductPrice(subscription.productDetail, subscription.product[0].quantity * 1) == subscription.productDetail.price">
@@ -53,7 +54,12 @@
                 <label class="perjar" for="">/Jar</label>
 
             </div>
+          </div>
+          <p class="amtdepo" ng-if="subscription.productDetail.AmtDeposit">Deposit of ₹ {{subscription.productDetail.AmtDeposit}} per jar</p>
+
+
         </div>
+
     </ion-content>
     <div class="bar bar-footer depositDiv footer-height">
         <div class="depositDiv">

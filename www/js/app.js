@@ -76,7 +76,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
             }
         })
         .state('app.calendar', {
-            url: '/calendar',
+            url: '/calendar/:orderId',
+            cache: false,
             views: {
                 'menuContent': {
                     templateUrl: 'templates/calendar.html',
@@ -86,7 +87,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
         })
 
     .state('app.confirmation', {
-        url: '/confirmation',
+        cache: false,
+        url: '/confirmation/:deliverId',
         views: {
             'menuContent': {
                 templateUrl: 'templates/confirmation.html',
@@ -319,6 +321,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
 
 
     .state('app.dashboard', {
+        cache: false,
         url: '/dashboard',
         views: {
             'menuContent': {

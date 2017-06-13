@@ -1,4 +1,4 @@
-<ion-view title="Review & Checkout" cache-view="false">
+<ion-view title="Review & Checkout">
     <ion-nav-bar class="bar-stable nav-height">
         <ion-nav-buttons side="left">
             <button class="button button-clear ion-android-arrow-back sigupIconLeft" ng-click="goBackHandler()">
@@ -16,16 +16,15 @@
 
                     </div>
                 </div>
-                <!--<div class="col-20 reviewdiv">
-                    <div class="review-line">
-                    </div>
-                </div>-->
                 <div class="col-66">
                     <div class="chkout-align">
                         <h2 class="chkout-fontsize">{{product.product.name}}</h2>
-                        <div for="" class="colorpure">{{product.product.tags}} <i class="ion ion-information-circled"></i></div>
-                        <div for="" class="desc">{{product.productQuantity}}</div>
-                        <div for="" class="desc">₹ {{getProductPrice(product.product,product.productQuantity)}}</div>
+                        <div for="" class="desc">Quantity: <b>{{product.productQuantity}}</b> </div>
+                        <div for="" class="desc">Price:
+                            <b>₹ {{getProductPrice(product.product,product.productQuantity)}}</b>
+                            <strike ng-hide="product.product.price==getProductPrice(product.product,product.productQuantity)">{{product.product.price}}</strike>
+                        </div>
+                        <div for="" class="desc">Total: <b>₹ {{getProductPrice(product.product,product.productQuantity) * product.productQuantity}}</b></div>
                     </div>
                 </div>
             </div>
@@ -42,7 +41,7 @@
 
             </div>
         </div>
-        <div class="row bgrowQuant " ng-hide="products.length==0">
+        <!--<div class="row bgrowQuant " ng-hide="products.length==0">
             <div class="col-67 bgreviewcol50Quant">
                 <div>
                     <label for="">Total Price
@@ -52,7 +51,7 @@
             </div>
             <div class="col-33 bgchkoutcol502">
                 <div>
-                    <label for="">₹ {{calculateTotalPrice()}}</label>
+                    <label for="">₹   {{calculateTotalPrice()}}</label>
                 </div>
             </div>
         </div>
@@ -70,7 +69,7 @@
                     <span>({{savingPercent|number:2}}%)</span>
                 </div>
             </div>
-        </div>
+        </div>-->
 
         <!--<div class="row checkbtmcard" ng-hide="products.length==0">
             <div class="col-25">
@@ -107,17 +106,18 @@
     </ion-content>
 
     <li class="item item-checkbox noborder checkbox-assertive borderR
-chkalign mar10">
-        <label class="checkbox noborder ">
-   <input type="checkbox" ng-model="terms" class="">
-   </label> I have read & accept the
-        <span class="termscolor" ng-click="terms.show($event)">  Terms & Conditions</span>
+chkalign mar10" ng-if="calculateTotalPrice() != 0">
+        <label class="checkbox noborder checkboxterms">
+   <input type="checkbox" ng-model="terms.value" class="">
+ </label> I have read & accepted the
+        <span class="termscolor" ng-click="terms.show($event)">  Terms
+& Conditions</span>
     </li>
 
 
-    <div class="bar bar-footer signUpFooter footer-height">
-        <button ng-disabled="!terms || calculateTotalPrice() == 0" class="button button-block button-positive footer-font" ng-click="placeOrder()">
-          Pay ₹ {{calculateTotalPrice()}}/-
-        </button>
+    <div class="bar bar-footer signUpFooter footer-height" ng-if="calculateTotalPrice() != 0">
+        <button ng-disabled="!terms.value" class="button button-block button-positive footer-font" ng-click="placeOrder()">
+  Pay ₹ {{calculateTotalPrice()}}/-
+</button>
     </div>
 </ion-view>

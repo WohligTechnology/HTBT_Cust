@@ -11,38 +11,45 @@
     </ion-nav-bar>
     <ion-content class="has-header ion-contentcolor">
         <label for="" class="schedule-head">Select a Date </label>
-      <div class="ionic_Calendar card" ng-controller="CalendarViewCtrl">
-        <div class="calendar_Date" >
-          <div class="row" style=" background-color: transparent;  color: black;">
-            <div class="col txtCenter arrowcal" ><i class="icon ion-chevron-left" ng-click="selectedMonthPrevClick()"></i></div>
-            <div class="col col-75 txtCenter monthtext" ng-click="UIdisplayDatetoMonth()">{{dislayMonth}} </div>
-            <div class="col txtCenter arrowcal"><i class="icon ion-chevron-right"  ng-click="selectedMonthNextClick()"></i></div>
-          </div>
-        <div class="row Daysheading Daysheading_Label" style="background-color: transparent;  color: black">
-            <div class="col redsun">Sun</div><div class="col">Mon</div><div class="col">Tue</div><div class="col">Wed</div><div class="col">Thu</div><div class="col">Fri</div><div class="col">Sat</div>
-        </div>
-      <div class="row Daysheading DaysDisplay" ng-repeat = "rowVal in datesDisp  track by $index" ng-class="{'marginTop0':$first}">
-          <div class="col" ng-repeat = "colVal in rowVal  track by $index" ng-init="dateIndex = $index" ng-class="{'fadeDateDisp':(colVal.type == 'oldMonth' || colVal.type == 'newMonth'), 'redsun':(dateIndex == 0), 'deliverday':(days[dateIndex].value == true && ( dislayMonth == getcurrentMonth || getNextMonth == dislayMonth) ),'selDate':(colVal.date == displayDate && colVal.type == 'currentMonth')}"  ng-click="selectedDateClick(colVal)"
-           ng-disabled="!days[dateIndex].value || ( dislayMonth != getcurrentMonth && getNextMonth != dislayMonth)">{{colVal.date}}</div>
-        </div>
-        </div>
-        <p class="item-note datenote">*we're available on highlighted days only</p>
+        <div class="ionic_Calendar card" ng-controller="CalendarViewCtrl">
+            <div class="calendar_Date">
+                <div class="row" style=" background-color: transparent;  color: black;">
+                    <div class="col txtCenter arrowcal"><i class="icon ion-chevron-left" ng-click="selectedMonthPrevClick()"></i></div>
+                    <div class="col col-75 txtCenter monthtext" ng-click="UIdisplayDatetoMonth()">{{dislayMonth}} </div>
+                    <div class="col txtCenter arrowcal"><i class="icon ion-chevron-right" ng-click="selectedMonthNextClick()"></i></div>
+                </div>
+                <div class="row Daysheading Daysheading_Label" style="background-color: transparent;  color: black">
+                    <div class="col redsun">Sun</div>
+                    <div class="col">Mon</div>
+                    <div class="col">Tue</div>
+                    <div class="col">Wed</div>
+                    <div class="col">Thu</div>
+                    <div class="col">Fri</div>
+                    <div class="col">Sat</div>
+                </div>
+                <div class="row Daysheading DaysDisplay" ng-repeat="rowVal in datesDisp  track by $index" ng-class="{'marginTop0':$first}">
+                    <div class="col" ng-repeat="colVal in rowVal  track by $index" ng-init="dateIndex = $index" ng-class="{'fadeDateDisp':(colVal.type == 'oldMonth' || colVal.type == 'newMonth'), 'redsun':(dateIndex == 0), 'deliverday':(days[dateIndex].value == true  ),'selDate':(colVal.date == displayDate && colVal.type == 'currentMonth')}"
+                        ng-click="selectedDateClick(colVal)" ng-disabled="!days[dateIndex].value || ( dislayMonth != getcurrentMonth && getNextMonth != dislayMonth)">{{colVal.date}}</div>
+                </div>
+            </div>
+            <p class="item-note datenote">*we're available on highlighted days only</p>
 
         </div>
 
-<div class="card m10 time-row rel timeslot">
-  <div class="row no-pad " ng-init="show=1">
-<div class="col-50 " ng-click="show = 1" ng-class="{'time-highlight' : show == 1}" >
-  8 AM to 1 PM
-  <!-- <label class="time-label" for=""></label> -->
-</div>
+        <div class="card m10 time-row rel timeslot">
 
-<div class=" col-50" ng-click="show = 2" ng-class="{'time-highlight' : show == 2}">
-  1 PM to 6 PM
-  <!-- <label class="time-label" for="">
+            <div class="row no-pad " ng-init="calendarData.delivertime='8 AM to 1 PM'">
+                <div class="col-50 " ng-click="calendarData.delivertime = '8 AM to 1 PM' " ng-class="{'time-highlight' : calendarData.delivertime == '8 AM to 1 PM'}">
+                    8 AM to 1 PM
+                    <!-- <label class="time-label" for=""></label> -->
+                </div>
+
+                <div class=" col-50" ng-click="calendarData.delivertime = '1 PM to 6 PM'" ng-class="{'time-highlight' : calendarData.delivertime == '1 PM to 6 PM'}">
+                    1 PM to 6 PM
+                    <!-- <label class="time-label" for="">
   </label> -->
-</div>
-</div>
+                </div>
+            </div>
 
         </div>
         <div class="card jars-card ">
@@ -50,14 +57,14 @@
                 <div>
                     <label class="jar-label" for="">How many jars do you need?</label>
                 </div>
-                <div ng-init="count=0">
-                    <button class="ion ion-minus-circled jars-button" ng-click="count=count-1"></button>
-                    <span class="jarcount">{{count}}</span>
-                    <button class="ion  ion-plus-circled jars-button" ng-click="count=count+1"></button>
+                <div ng-init="calendarData.Quantity=0">
+                    <button class="ion ion-minus-circled jars-button" ng-click="calendarData.Quantity=calendarData.Quantity-1" ng-disabled="calendarData.Quantity<=0"></button>
+                    <span class="jarcount">{{calendarData.Quantity}}</span>
+                    <button class="ion  ion-plus-circled jars-button" ng-click="calendarData.Quantity=calendarData.Quantity+1" ng-disabled="calendarData.Quantity>=limitQuantity"></button>
                 </div>
             </div>
         </div>
-        <button class="button button-positive jarsch-button" ng-click="getDate()">
+        <button class="button button-positive jarsch-button" ng-click="scheduleDelivery(calendarData)">
         <!-- <button class="button button-positive jarsch-button" ui-sref='app.confirmation'> -->
       Schedule
     </button>

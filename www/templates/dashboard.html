@@ -62,7 +62,7 @@
     </div> -->
         <div class="backdropImg ">
             <div class="jar-div"><label for="">Your Jar Balance</label></div>
-            <label class="bal-div" for="">{{dashboardData.jarBalance || 0}}</label>
+            <label class="bal-div" for="">{{dashboardData.subscribedProd[0].jarBalance || 0}}</label>
 
 
             <button class="button button-light buy-more" ui-sref="app.subpage1">
@@ -75,13 +75,13 @@
                     <div class="card-labelspan" >
                         <label class="card-label" for="" ng-if="!delivery[0].status">We'll be in your area on</label>
                         <label class="card-label" for="" ng-if="delivery[0].status">Delivery schedule for</label>
-                        <span class="cardDayspan">{{delivery[0].requestDate | date :'EEEE'}}</span>
-                        <span class="cardDate">{{delivery[0].requestDate | date :'MMMM dd,'}}</span>
+                        <span class="cardDayspan">{{delivery[0].deliverdate | date :'EEEE'}}</span>
+                        <span class="cardDate">{{delivery[0].deliverdate | date :'MMMM dd,'}}</span>
                     </div>
-                    <button class="button card-schedule" ui-sref="app.calendar" ng-if="!delivery[0].status">
+                    <button class="button card-schedule" ui-sref="app.calendar({orderId:dashboardData.subscribedProd[0].recentOrder})" ng-if="!delivery[0].status">
                     <span> Schedule delivery </span>
                     </button>
-                    <button class="button card-schedule" ng-if="delivery[0].status">
+                    <button class="button card-schedule" ng-if="delivery[0].status" ng-click="cancelJarDelivery()">
                     <span> Cancel delivery</span>
                     </button>
                 </div>

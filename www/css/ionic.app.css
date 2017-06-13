@@ -12036,3 +12036,126 @@ p.onceLblr {
   left: 5% !important;
   z-index: 3;
   margin-top: -21px; }
+
+.ordersname {
+  border-right: 1px solid #d2d2d2;
+  margin: 0px 10px 0 0; }
+  .ordersname h4 {
+    font-size: 15px;
+    margin: 5px 0;
+    color: #454545;
+    font-weight: 600; }
+  .ordersname label {
+    font-size: 12px;
+    color: #454545; }
+
+.productspopup .popup-sub-title {
+  margin: 5px 0 0 0;
+  padding: 0;
+  font-weight: normal;
+  font-size: 15px; }
+
+.productspopup h3 img {
+  max-width: 50px;
+  max-height: 50px; }
+
+.productspopup .popup-head {
+  padding: 15px 10px;
+  border-bottom: none !important;
+  text-align: center;
+  background: white; }
+
+.productspopup .popup-buttons {
+  padding: 0px;
+  min-height: 45px; }
+
+.productspopup .popup-buttons .button {
+  height: 20px;
+  background: #fafafa;
+  position: absolute;
+  position: absolute;
+  bottom: 0;
+  width: 50%;
+  border-radius: 0px;
+  font-size: 14px; }
+
+.productspopup .popup-buttons .button:last-child {
+  height: 20px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  border-radius: 0px;
+  background: #ff414d;
+  font-size: 14px; }
+
+.successpopup .popup-sub-title {
+  margin: 5px 0 0 0;
+  padding: 0;
+  font-weight: normal;
+  font-size: 15px; }
+
+.successpopup h3 img {
+  max-width: 50px;
+  max-height: 50px; }
+
+.successpopup .popup-head {
+  padding: 15px 10px;
+  border-bottom: none !important;
+  text-align: center;
+  background: white; }
+
+.successpopup .popup-buttons {
+  padding: 0px;
+  min-height: 45px; }
+
+.successpopup .popup-buttons .button {
+  height: 20px;
+  background: #fafafa;
+  position: absolute;
+  position: absolute;
+  bottom: 0;
+  width: 50%;
+  border-radius: 0px;
+  font-size: 14px; }
+
+.successpopup .popup-buttons .button:last-child {
+  height: 20px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  border-radius: 0px;
+  background: #ff414d;
+  font-size: 14px; }
+
+.removedpopup h3 img {
+  max-width: 50px;
+  max-height: 50px; }
+
+.removedpopup .popup-head {
+  padding: 15px 10px;
+  border-bottom: none !important;
+  text-align: center;
+  background: white; }
+
+.removedpopup .popup-buttons {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  padding: 10px;
+  min-height: 65px;
+  background: white; }
+
+.amtdepo {
+  background: #e1e3e5;
+  padding-left: 20px; }

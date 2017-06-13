@@ -1,11 +1,7 @@
 <ion-view title="Browse">
     <ion-nav-bar class="bar-stable schedule-bar  nav-height">
-        <!-- <ion-nav-buttons side="left">
-            <button class="button button-clear ion-android-arrow-back sigupIconLeft" menu-toggle="left">
-        </button>
-        </ion-nav-buttons> -->
         <ion-nav-buttons side="left">
-            <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
+            <button class="button button-clear ion-android-arrow-back sigupIconLeft" ui-sref="app.dashboard">
         </button>
         </ion-nav-buttons>
         <ion-nav-buttons side="right">
@@ -16,8 +12,10 @@
         </ion-nav-buttons>
     </ion-nav-bar>
     <ion-content class="has-header browse-backgrndcolor">
-        <ion-slide-box class="ionSlider" on-slide-changed="slideHasChanged($index)" auto-play="true" slide-interval="{{interval}}" show-pager="true" pager-click="changeSlide(index)" on-slide-changed="slideHasChanged(index)" show-pager="true">
-            <ion-slide ng-if="feaprods.length>0" ng-repeat="data in feaprods" [options]="{pager:true}" ng-click="productTap(data)">
+      <div class=""  >
+        <ion-slide-box options="homeSlider.sliderOptions" slider="homeSlider.sliderDelegate" does-continue="true" animation='fade'
+            auto-play="true" effect='fade' slide-interval="{{interval}}" show-pager="true" pager-click="changeSlide(index)" on-slide-changed="slideHasChanged(index)">
+            <ion-slide ng-if="feaprods.length>0" ng-repeat="data in feaprods" [options]="{pager:true}">
                 <div class="box box1">
                     <div class="row browse-sliderRow">
                         <div class="col-50">
@@ -45,16 +43,21 @@
                         <div class="icondiv">
                             <img ng-src="{{data.catImage | uploadpath}}" alt="">
                         </div>
-                        <!-- <label for="">{{data.name}}</label> -->
+                        <!--<label for="">{{data.name}}</label>-->
                     </div>
                     <div class="browse-card2" ng-if="(outerIndex + innerIndex )% 2 != 0" ng-click="nextPage(data.subscription,data._id);">
                         <div class="icondiv">
                             <img ng-src="{{data.catImage | uploadpath}}" alt="">
                         </div>
-                        <!-- <label for="">{{data.name}}</label> -->
+                        <!--<label for="">{{data.name}}</label>-->
                     </div>
                 </div>
             </div>
         </div>
+      </div>
+      <!-- <div class="loader" ng-if="loader">
+        <img src="img/loading.gif" alt="">
+      </div> -->
+
     </ion-content>
 </ion-view>

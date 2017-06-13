@@ -1,5 +1,5 @@
 angular.module('starter.subscription', [])
-    .factory('Subscription', function ($http) {
+    .factory('Subscription', function($http) {
 
         var subScriptionObj = {
             product: [{
@@ -7,20 +7,22 @@ angular.module('starter.subscription', [])
                 quantity: null
             }],
             productDetail: null,
+            productQuantity: 0,
             otherProducts: [],
-            totalAmt:null,
-            totalQuantity:null,
-            user:null,
-
+            customerName: null,
+            customerMobile: null,
+            totalQuantity: null,
+            totalAmt: null,
+            user: null
         };
         return {
-            setObj: function (newObj) {
+            setObj: function(newObj) {
                 subScriptionObj = newObj;
             },
-            getObj: function () {
+            getObj: function() {
                 return subScriptionObj;
             },
-            validate: function ($state) {
+            validate: function($state) {
                 if (!subScriptionObj.product[0].product) {
                     $state.go("app.browse");
                 }
