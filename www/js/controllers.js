@@ -253,6 +253,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
             mobile: $stateParams.no,
             accessLevel: "Customer"
         }, function(data) {
+
             if (data.value) {
                 $ionicLoading.hide();
                 $timeout(function() {
@@ -285,24 +286,18 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
                 mobile: value.mobile,
                 accessLevel: value.accessLevel
             }, function(data) {
-                if (data.value) {
-                    if (data.value) {
-                        $state.go('verify', {
-                            no: value.mobile
-                        });
-                    } else {
-                        alert("unable to generate OTP. Please try again");
-                        var alertPopup = $ionicPopup.alert({
-                            title: 'Unable to generate OTP',
-                            template: 'Please try again'
-                        });
-                    }
+                console.log(data);
+                if (data.data.value) {
+                    $state.go('verify', {
+                        no: value.mobile
+                    });
                 } else {
                     var alertPopup = $ionicPopup.alert({
                         title: 'Unable to generate OTP',
                         template: 'Please try again'
                     });
                 }
+
             })
         } else {
             var alertPopup = $ionicPopup.alert({
@@ -560,11 +555,12 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
                         image: 'https://i.imgur.com/3g7nmJC.png',
                         currency: 'INR',
                         key: 'rzp_test_BrwXxB7w8pKsfS',
+                        // key: 'rzp_live_gFWckrbme2wT4J',
+                        external: {
+                            wallets: ['paytm']
+                        },
                         amount: parseInt($scope.orderData.totalAmount) * 100,
                         name: $scope.orderData.customer.name,
-                        handler: function(transaction) {
-                            $scope.transactionHandler(transaction);
-                        },
                         prefill: {
                             email: $scope.orderData.customer.email,
                             contact: $scope.orderData.customer.mobile,
@@ -641,24 +637,51 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
         // This is a dirty flag to hack around it
         var called = false
 
-        var successCallback = function(payment_id) {
-            console.log('payment_id: ' + payment_id);
-            called = false
-        };
+
+
+        var successCallback = function(success) {
+          console.log(success);
+            alert('payment_id: ' + success.razorpay_payment_id)
+            var orderId = success.razorpay_order_id
+            var signature = success.razorpay_signature
+            if (success.razorpay_payment_id) {
+                // $state.go("thankyou");
+                $scope.orderData.razorpay_payment_id = success.razorpay_payment_id;
+                $state.go("app.orderconfirm");
+                MyServices.orderConfirmationOrPay($scope.orderData, function(data) {
+                    if (data.value === true) {
+                        console.log("payAndCapture");
+                        if (data.data.product[0].product.category.subscription == 'Yes' && data.data.plan != 'Ontime') {
+                            $state.go("app.orderconfirm");
+                        } else {
+                            console.log("data.data.deliverdate", moment(data.data.deliverdate).format("YYYY-MM-DD"));
+                            $state.go("app.orderconfirm");
+                        }
+
+                        //redirect to thank you page
+
+                    }
+                });
+            }
+        }
 
         var cancelCallback = function(error) {
-            console.log(error.description + ' (Error ' + error.code + ')');
-            called = false
-        };
+            alert(error.description + ' (Error ' + error.code + ')')
+        }
+
 
         $ionicPlatform.ready(function() {
             $scope.pay = function() {
                 if (!called) {
-                    $.getScript('https://checkout.razorpay.com/v1/checkout.js', function() {
-                        var rzp1 = new Razorpay($scope.options, successCallback, cancelCallback);
-                        rzp1.open($scope.options, successCallback, cancelCallback);
-                        called = true;
-                    });
+                    // $.getScript('https://checkout.razorpay.com/v1/checkout.js', function() {
+                    //     var rzp1 = new Razorpay($scope.options, successCallback, cancelCallback);
+                    //     rzp1.open($scope.options, successCallback, cancelCallback);
+                    //     called = true;
+                    // });
+
+                    RazorpayCheckout.on('payment.success', successCallback);
+                    RazorpayCheckout.on('payment.cancel', cancelCallback);
+                    RazorpayCheckout.open($scope.options);
 
                 }
             }
@@ -1213,14 +1236,15 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     };
 })
 
-.controller('CalendarCtrl', function($scope, $stateParams, $state, $filter, MyServices, ionicDatePicker, $ionicSlideBoxDelegate) {
+.controller('CalendarCtrl', function($scope, $stateParams, $state, $filter, MyServices, $filter, ionicDatePicker, $ionicLoading, $ionicPopup, $ionicSlideBoxDelegate) {
     $scope.calDate = new Date();
     $scope.goBackHandler = function() {
         window.history.back();
     };
     $scope.getDate = function() {
-        $scope.calDate = MyServices.getDate();
-    };
+        $scope.calDate = $filter('date')(MyServices.getDate(), 'yyyy-MM-dd');
+        $scope.todayDate = $filter('date')(new Date(), 'yyyy-MM-dd');
+    }
     $scope.order = {};
     $scope.order._id = $stateParams.orderId;
     MyServices.OrderGetOne($scope.order, function(data) {
@@ -1237,21 +1261,46 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     });
     $scope.userDetails = $.jStorage.get('profile');
     $scope.scheduleDelivery = function(calendarData) {
-        calendarData.deliverdate = MyServices.getDate();
-        calendarData.order = $stateParams.orderId;
-        calendarData.methodOfRequest = 'App';
-        calendarData.customer = $.jStorage.get('profile')._id;
-        console.log(calendarData);
-        MyServices.scheduleDelivery(calendarData, function(data) {
-            console.log(data);
-            if (data.value) {
-                $state.go('app.confirmation', {
-                    deliverId: data.data._id
-                });
-            }
-        });
-    };
+        $scope.calDate = $filter('date')(MyServices.getDate(), 'yyyy-MM-dd');
+        $scope.todayDate = $filter('date')(new Date(), 'yyyy-MM-dd');
+        if ($scope.calDate == $scope.todayDate) {
+            var alertPopup = $ionicPopup.alert({
+                title: 'Incorrect Date',
+                template: 'Please select future Date'
+            });
+        } else {
 
+
+            $ionicLoading.show({
+                content: 'Loading',
+                animation: 'fade-in',
+                showBackdrop: true,
+                maxWidth: 200,
+                showDelay: 0
+            });
+            calendarData.deliverdate = MyServices.getDate();
+            calendarData.order = $stateParams.orderId;
+            calendarData.methodOfRequest = 'App';
+            calendarData.customer = $.jStorage.get('profile')._id;
+            console.log(calendarData);
+            MyServices.scheduleDelivery(calendarData, function(data) {
+                console.log(data);
+                $ionicLoading.hide();
+                if (data.value) {
+
+                    $state.go('app.confirmation', {
+                        deliverId: data.data._id
+                    });
+                } else {
+                    $ionicPopup.alert({
+                        cssClass: 'productspopup',
+                        title: '<img src="img/linkexpire.png">',
+                        template: "Error Occured while scheduleing delivery"
+                    });
+                }
+            });
+        };
+    }
 })
 
 .controller('CalendarViewCtrl', function($scope, $stateParams, $filter, $ionicPopup, MyServices, $ionicSlideBoxDelegate) {
@@ -1546,6 +1595,8 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
             $scope.profile = $.jStorage.get('profile');
             $scope.getProfield = {};
             $scope.getProfield._id = $scope.profile._id;
+            $scope.lastJar = {};
+            $scope.lastJar.customer = $scope.profile._id;
         }
 
         MyServices.getProfile($scope.getProfield, function(data) {
@@ -1556,8 +1607,13 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
             }
         });
-        MyServices.getLastJarScheduledByUser($scope.getProfield, function(data) {
+        MyServices.getLastJarScheduledByUser($scope.lastJar, function(data) {
             console.log("jarBalnce", data);
+            $scope.showSchdeule = data.value;
+            if (data.value) {
+                $scope.lastJarBal = data.data;
+                console.log("dsjif", data.data);
+            }
 
         });
         MyServices.getDeliveryRequestByUser($scope.getProfield, function(data) {
@@ -1569,12 +1625,22 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
             }
         });
         $scope.cancelJarDelivery = function() {
-          $scope.deliverydata={};
-          $scope.deliverydata.customer=$.jStorage.get('profile')._id;
+            $scope.deliverydata = {};
+            $scope.deliverydata.customer = $.jStorage.get('profile')._id;
+            $scope.deliverydata.order = $scope.dashboardData.subscribedProd[0].recentOrder;
 
             MyServices.cancelJarDelivery($scope.deliverydata, function(data) {
                 console.log(data);
                 if (data.value) {
+                    MyServices.getLastJarScheduledByUser($scope.lastJar, function(data) {
+                        console.log("jarBalnce", data);
+                        $scope.showSchdeule = data.value;
+                        if (data.value) {
+                            $scope.lastJarBal = data.data;
+                            console.log("dsjif", data.data);
+                        }
+
+                    });
                 } else {
 
                 }

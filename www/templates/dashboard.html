@@ -69,19 +69,20 @@
               Buy More
             </button>
         </div>
-        <div class="card card-height">
-            <div class="row">
-                <div class="col-66">
+        <div class="card card-height" >
+            <div class="row" >
+                <div class="col-66" >
                     <div class="card-labelspan" >
-                        <label class="card-label" for="" ng-if="!delivery[0].status">We'll be in your area on</label>
-                        <label class="card-label" for="" ng-if="delivery[0].status">Delivery schedule for</label>
-                        <span class="cardDayspan">{{delivery[0].deliverdate | date :'EEEE'}}</span>
-                        <span class="cardDate">{{delivery[0].deliverdate | date :'MMMM dd,'}}</span>
+
+                        <label class="card-label" for="" ng-show="!showSchdeule">We'll be in your area on</label>
+                        <label class="card-label" for="" ng-show="showSchdeule">Delivery schedule for</label>
+                        <span class="cardDayspan" ng-show="showSchdeule">{{lastJarBal.deliverdate | date :'EEEE'}} </span>
+                        <span class="cardDate" ng-show="showSchdeule">{{lastJarBal.deliverdate | date :'MMMM dd,'}}</span>
                     </div>
-                    <button class="button card-schedule" ui-sref="app.calendar({orderId:dashboardData.subscribedProd[0].recentOrder})" ng-if="!delivery[0].status">
+                    <button class="button card-schedule" ui-sref="app.calendar({orderId:dashboardData.subscribedProd[0].recentOrder})" ng-show="!showSchdeule">
                     <span> Schedule delivery </span>
                     </button>
-                    <button class="button card-schedule" ng-if="delivery[0].status" ng-click="cancelJarDelivery()">
+                    <button class="button card-schedule" ng-show="showSchdeule" ng-click="cancelJarDelivery()">
                     <span> Cancel delivery</span>
                     </button>
                 </div>

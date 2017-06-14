@@ -1,179 +1,190 @@
-<ion-view title="Order History">
+<ion-view title="Orders">
     <ion-nav-bar class="bar-stable nav-height">
         <ion-nav-buttons side="left">
             <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
-          </button>
+        </button>
         </ion-nav-buttons>
         <ion-nav-buttons side="right">
-          <button class="button button-clear ion-android-more-vertical sigupRight disblock" ng-click="popover.show($event)">
-          </button>
-        </ion-nav-buttons>
-        </ion-nav-bar>
-        <ion-content class="has-header ion-contentcolor">
-          <div class="backdropImg ">
-            <div class="jar-div"><label for="">Jar Balance</label></div>
-            <label class="bal-div" for="">40</label>
-            <button class="button button-light buy-more" ui-sref="app.subpage1">
-        Buy More
+            <button class="button button-clear ion-android-more-vertical sigupRight disblock" ng-click="popover.show($event)">
       </button>
-          </div>
-            <div class="row order-row ion-contentcolor" ng-init="show=1">
-                <div class="col-33 order-thismonth" ng-click="show=1" ng-class="{'highlight' : show == 1}">
-                    This Month
-                </div>
-                <div class="col-33 order-thismonth" ng-click="show=2" ng-class="{'highlight' : show == 2}">
-                    Last Month
-                </div>
-                <div class="col-33 order-thismonth" ng-click="show=3" ng-class="{'highlight' : show == 3}">
-                    Last 3 Months
-                </div>
-            </div>
-            <div ng-if="show==1">
-                <label class="order-date " for="">February 17, 2017</label>
-                <div class="row order-jarRow">
-                    <div class="col-66">
-                        <label class="order-jarslbl" for="">+ 2 Jars</label>
-                    </div>
-                    <div class="col-33">
-                        <div class="order-tickDiv">
-                            <div class="order-prgress" round-progress max="100" current="35" color="#0dbabe" bgcolor="#eaeaea" radius="15" stroke="5"
-                                semi="false" rounded="false" clockwise="true" responsive="false" iterations="50" animation="easeInOutQuart"></div>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content class="has-header bgearn">
+        <div class="text-center">
+            <h4 class="earnings-past">Past Transaction</h4>
+        </div>
+        <div class="" ng-repeat="order in orders">
+            <label class="earning-Date" for="">{{order.orderDate | date:'LLLL dd,yyyy'}}</label>
+            <div class="whtback">
+                <div class="row order-jarRowhistory">
+                    <div class="col-40">
+                        <div class="ordersname">
+                            <h4>{{order.customer.name}}</h4>
+                            <label for="">{{order.customer.mobile}}</label>
                         </div>
                     </div>
-                </div>
-                <label class="order-dateProgress" for="">February 17, 2017</label>
-                <div class="row order-jarRow">
-                    <div class="col-66">
-                        <label class="order-jarslbl" for="">- 2 Jars</label>
+                    <div class="col-30 rel">
+
+                        <div class="" ng-repeat="product in order.product">
+                            <label for="" class="history-refils" ng-if="product.productQuantity==1">{{product.productQuantity}} {{product.product.unit}}</label>
+                            <label for="" class="history-refils" ng-if="product.productQuantity>1">{{product.productQuantity}} {{product.product.unit}}s</label>
+                            <label for="" class="bottlename">{{product.product.name}}</label>
+                        </div>
+
+                        <!--
+                        <label for="" class="history-refils">5 Jars</label>
+                        <label for="" class="bottlename">Kinley 20L</label> -->
+                        <div class="history-pending">
+                            <label for="" ng-if="order.status == 'Paid'">
+                              <span ng-if="order.methodOfPayment == 'Customer'">Paid: Online</span>
+                              <span ng-if="order.methodOfPayment != 'Customer'">Paid: {{order.methodOfPayment}}</span>
+                            </label>
+                            <label for="" ng-if="order.status != 'Paid'">{{order.status}}</label>
+                        </div>
+
                     </div>
-                    <div class="col-33">
-                        <div class="order-tickDiv">
-                            <img class="order-jarImg" src="img/small_tick.png" alt="">
+
+                    <div class="col-30 rel">
+                        <div class="order-histrscol">
+
+                            <span>₹</span>
+                            <label for="">{{order.totalAmount}}</label>
+                            <div class="order-resend" ng-if="order.status == 'Processing'" ng-click="resendLinkFun(order)">
+                                <button>Resend Link</button>
+                            </div>
+                            <div class="order-Pay" ng-if="order.status == 'Confirmed'" ng-click="payRp(order)">
+                                <button class="">Pay</button>
+                            </div>
+                            <div class="order-resend" ng-if="order.status == 'Paid'">
+                                <button>Repeat Order</button>
+                            </div>
+
                         </div>
                     </div>
+
                 </div>
-                <label class="order-dateProgress" for="">February 17, 2017</label>
-                <div class="row order-jarRow">
-                    <div class="col-66">
-                        <label class="order-jarslbl" for="">+ 30 Jars</label>
-                    </div>
-                    <div class="col-33">
-                        <div class="order-tickDiv">
-                            <img class="order-jarImg" src="img/small_tick.png" alt="">
+
+
+
+
+            </div>
+        </div>
+
+        <div class="">
+            <label class="earning-Date" for="">February 17, 2017</label>
+            <div class="whtback">
+                <div class="row order-jarRowhistory">
+                    <div class="col-40">
+                        <div class="ordersname">
+                            <h4>Name</h4>
+                            <label for="">Contact Number</label>
                         </div>
                     </div>
+                    <div class="col-30 rel">
+                        <label for="" class="history-refils">7 Cartons</label>
+                        <label for="" class="bottlename">Kinley 500ml</label>
+
+                        <label for="" class="history-refils">4 Jars</label>
+                        <label for="" class="bottlename">Kinley 20L</label>
+                        <div class="history-pending">
+                            <label for="">Confirmed</label>
+                        </div>
+
+                    </div>
+                    <div class="col-30 rel">
+                        <div class="order-histrscol">
+                            <span>₹</span>
+                            <label for="">850</label>
+                            <div class="order-Pay">
+                                <button class="">Pay</button>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
-                  <label class="order-othr" for="">Other Products</label>
-                  <label class="order-dateProgress" for="">February 17, 2017</label>
-                  <div class="row order-jarRow">
-                      <div class="col-66">
-                          <label class="order-jarslbl" for="">+ 2 Cartons</label>
-                      </div>
-                      <div class="col-33">
-                          <div class="order-tickDiv">
-                              <div class="order-prgress" round-progress max="100" current="35" color="#0dbabe" bgcolor="#eaeaea" radius="15" stroke="5"
-                                  semi="false" rounded="false" clockwise="true" responsive="false" iterations="50" animation="easeInOutQuart"></div>
-                          </div>
-                      </div>
-                  </div>
+
+
+
             </div>
-            <div ng-if="show==2">
-              <label class="order-date " for="">February 17, 2017</label>
-              <div class="row order-jarRow">
-                  <div class="col-66">
-                      <label class="order-jarslbl" for="">+ 2 Jars</label>
-                  </div>
-                  <div class="col-33">
-                      <div class="order-tickDiv">
-                          <div class="order-prgress" round-progress max="100" current="35" color="#0dbabe" bgcolor="#eaeaea" radius="15" stroke="5"
-                              semi="false" rounded="false" clockwise="true" responsive="false" iterations="50" animation="easeInOutQuart"></div>
-                      </div>
-                  </div>
-              </div>
-              <label class="order-dateProgress" for="">February 17, 2017</label>
-              <div class="row order-jarRow">
-                  <div class="col-66">
-                      <label class="order-jarslbl" for="">- 2 Jars</label>
-                  </div>
-                  <div class="col-33">
-                      <div class="order-tickDiv">
-                          <img class="order-jarImg" src="img/small_tick.png" alt="">
-                      </div>
-                  </div>
-              </div>
-              <label class="order-dateProgress" for="">February 17, 2017</label>
-              <div class="row order-jarRow">
-                  <div class="col-66">
-                      <label class="order-jarslbl" for="">+ 30 Jars</label>
-                  </div>
-                  <div class="col-33">
-                      <div class="order-tickDiv">
-                          <img class="order-jarImg" src="img/small_tick.png" alt="">
-                      </div>
-                  </div>
-              </div>
-              <label class="order-othr" for="">Other Products</label>
-              <label class="order-dateProgress" for="">February 17, 2017</label>
-              <div class="row order-jarRow">
-                  <div class="col-66">
-                      <label class="order-jarslbl" for="">+ 2 Cartons</label>
-                  </div>
-                  <div class="col-33">
-                      <div class="order-tickDiv">
-                          <div class="order-prgress" round-progress max="100" current="35" color="#0dbabe" bgcolor="#eaeaea" radius="15" stroke="5"
-                              semi="false" rounded="false" clockwise="true" responsive="false" iterations="50" animation="easeInOutQuart"></div>
-                      </div>
-                  </div>
-              </div>
+        </div>
+
+        <div class="">
+            <label class="earning-Date" for="">February 16, 2017</label>
+            <div class="whtback">
+                <div class="row order-jarRowhistory">
+                    <div class="col-40">
+                        <div class="ordersname">
+                            <h4>Name</h4>
+                            <label for="">Contact Number</label>
+                        </div>
+                    </div>
+                    <div class="col-30 rel">
+                        <label for="" class="history-refils">17 Cartons</label>
+                        <label for="" class="bottlename">Kinley 1L</label>
+
+
+                        <div class="history-pending">
+                            <label for="">Paid in Cash</label>
+                        </div>
+
+                    </div>
+                    <div class="col-30 rel">
+                        <div class="order-histrscol">
+                            <span>₹</span>
+                            <label for="">850</label>
+                            <div class="order-resend">
+                                <button>Repeat Order</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
             </div>
-            <div ng-if="show==3">
-              <label class="order-date " for="">February 17, 2017</label>
-              <div class="row order-jarRow">
-                  <div class="col-66">
-                      <label class="order-jarslbl" for="">+ 2 Jars</label>
-                  </div>
-                  <div class="col-33">
-                      <div class="order-tickDiv">
-                          <div class="order-prgress" round-progress max="100" current="35" color="#0dbabe" bgcolor="#eaeaea" radius="15" stroke="5"
-                              semi="false" rounded="false" clockwise="true" responsive="false" iterations="50" animation="easeInOutQuart"></div>
-                      </div>
-                  </div>
-              </div>
-              <label class="order-dateProgress" for="">February 17, 2017</label>
-              <div class="row order-jarRow">
-                  <div class="col-66">
-                      <label class="order-jarslbl" for="">- 2 Jars</label>
-                  </div>
-                  <div class="col-33">
-                      <div class="order-tickDiv">
-                          <img class="order-jarImg" src="img/small_tick.png" alt="">
-                      </div>
-                  </div>
-              </div>
-              <label class="order-dateProgress" for="">February 17, 2017</label>
-              <div class="row order-jarRow">
-                  <div class="col-66">
-                      <label class="order-jarslbl" for="">+ 30 Jars</label>
-                  </div>
-                  <div class="col-33">
-                      <div class="order-tickDiv">
-                          <img class="order-jarImg" src="img/small_tick.png" alt="">
-                      </div>
-                  </div>
-              </div>
-              <label class="order-othr" for="">Other Products</label>
-              <label class="order-dateProgress" for="">February 17, 2017</label>
-              <div class="row order-jarRow">
-                  <div class="col-66">
-                      <label class="order-jarslbl" for="">+ 2 Cartons</label>
-                  </div>
-                  <div class="col-33">
-                      <div class="order-tickDiv">
-                          <div class="order-prgress" round-progress max="100" current="35" color="#0dbabe" bgcolor="#eaeaea" radius="15" stroke="5"
-                              semi="false" rounded="false" clockwise="true" responsive="false" iterations="50" animation="easeInOutQuart"></div>
-                      </div>
-                  </div>
-              </div>
+        </div>
+        <div class="">
+            <label class="earning-Date" for="">February 16, 2017</label>
+            <div class="whtback">
+                <div class="row order-jarRowhistory">
+                    <div class="col-40">
+                        <div class="ordersname">
+                            <h4>Name</h4>
+                            <label for="">Contact Number</label>
+                        </div>
+                    </div>
+                    <div class="col-30 rel">
+                        <label for="" class="history-refils">17 Cartons</label>
+                        <label for="" class="bottlename">Kinley 1L</label>
+
+
+                        <div class="history-pending">
+                            <label for="">Paid by Wallet</label>
+                        </div>
+
+                    </div>
+                    <div class="col-30 rel">
+                        <div class="order-histrscol">
+                            <span>₹</span>
+                            <label for="">850</label>
+                            <div class="order-resend">
+                                <button>Repeat Order</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
             </div>
-        </ion-content>
-      </ion-view>
+        </div>
+    </ion-content>
+    <div class="cust-search">
+        <label class="item item-input">
+        <input type="text" placeholder="Search by Name/Number" ng-model="searchtext">
+        <i class="icon ion-android-search placeholder-icon item-note"></i>
+      </label>
+    </div>
+</ion-view>
