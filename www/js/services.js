@@ -345,25 +345,30 @@ angular.module('starter.services', [])
                     callback(data);
                 });
             },
-            saveOrderCheckoutCart: function(name, methodofjoin, methodOfOrder, contactNumber, method, callback) {
-                var obj = {
-                    user: $.jStorage.get("profile")._id,
-                    customerName: name,
-                    customerMobile: contactNumber,
-                    methodOfPayment: method,
-                    orderFor: "RMForCustomer",
-                    methodOfOrder: "Relationship Partner",
-                    methodofjoin: methodofjoin
-                };
 
+            saveOrderCheckoutCart: function(data, callback) {
                 $http({
                     url: adminurl + 'Order/saveOrderCheckoutCart',
                     method: 'POST',
                     withCredentials: true,
-                    data: obj
-                }).then(function(data) {
-                    callback(data);
-                });
+                    data: data
+                }).success(callback);
+            },
+            getOrderWithDelivery: function(data, callback) {
+                $http({
+                    url: adminurl + 'Order/getOrderWithDelivery',
+                    method: 'POST',
+                    withCredentials: true,
+                    data: data
+                }).success(callback);
+            },
+            getOrderByUser: function(data, callback) {
+                $http({
+                    url: adminurl + 'Order/getOrderByUser',
+                    method: 'POST',
+                    withCredentials: true,
+                    data: data
+                }).success(callback);
             },
             //to get OTP
             getOTP: function(data, callback) {

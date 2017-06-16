@@ -554,8 +554,8 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
                         description: 'Pay for Order ' + $scope.orderData.orderID,
                         image: 'https://i.imgur.com/3g7nmJC.png',
                         currency: 'INR',
-                        key: 'rzp_test_BrwXxB7w8pKsfS',
-                        // key: 'rzp_live_gFWckrbme2wT4J',
+                        // key: 'rzp_test_BrwXxB7w8pKsfS',
+                        key: 'rzp_live_gFWckrbme2wT4J',
                         external: {
                             wallets: ['paytm']
                         },
@@ -640,8 +640,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
 
         var successCallback = function(success) {
-          console.log(success);
-            alert('payment_id: ' + success.razorpay_payment_id)
+            console.log(success);
             var orderId = success.razorpay_order_id
             var signature = success.razorpay_signature
             if (success.razorpay_payment_id) {
@@ -1183,6 +1182,7 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
         $scope.OrderData.methodOfOrder = 'Application';
         $scope.OrderData.methodofjoin = 'App';
         MyServices.saveOrderCheckoutCart($scope.OrderData, function(data) {
+            console.log(data);
             if (data.value) {
                 $ionicLoading.hide();
                 $state.go('app.shipping', {
@@ -1230,10 +1230,45 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
     });
 })
 
-.controller('OrderhistoryCtrl', function($scope, $stateParams) {
+.controller('OrderhistoryCtrl', function($scope, $rootScope, $stateParams, MyServices) {
     $scope.goBackHandler = function() {
         window.history.back(); //This works
     };
+
+    $scope.customer = {};
+    $scope.customer._id = $.jStorage.get('profile')._id;
+    MyServices.getOrderByUser($scope.customer, function(data) {
+        if (data.value) {
+            $scope.OrderByUser = data.data;
+        }
+    });
+    MyServices.getOrderWithDelivery($scope.customer, function(data) {
+        if (data.value) {
+            $scope.OrderWithDelivery = data.data;
+            $rootScope.balance = 0;
+            _.forEachRight($scope.OrderWithDelivery, function(value) {
+                if (value.Order == undefined) {
+                  $rootScope.balance = $rootScope.balance + value.product[0].productQuantity;
+                  value.balance=$rootScope.balance ;
+                } else {
+                    $rootScope.balance = $rootScope.balance - value.QuantityDelivered;
+                    value.balance=$rootScope.balance ;
+
+                }
+            });
+        }
+    });
+
+
+    MyServices.getProfile($scope.customer, function(data) {
+        console.log(data);
+        if (data.value) {
+            $scope.dashboardData = data.data;
+        } else {
+
+        }
+    });
+
 })
 
 .controller('CalendarCtrl', function($scope, $stateParams, $state, $filter, MyServices, $filter, ionicDatePicker, $ionicLoading, $ionicPopup, $ionicSlideBoxDelegate) {

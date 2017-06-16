@@ -9,182 +9,77 @@
       </button>
         </ion-nav-buttons>
     </ion-nav-bar>
-    <ion-content class="has-header bgearn">
-        <div class="text-center">
-            <h4 class="earnings-past">Past Transaction</h4>
-        </div>
-        <div class="" ng-repeat="order in orders">
-            <label class="earning-Date" for="">{{order.orderDate | date:'LLLL dd,yyyy'}}</label>
-            <div class="whtback">
-                <div class="row order-jarRowhistory">
-                    <div class="col-40">
-                        <div class="ordersname">
-                            <h4>{{order.customer.name}}</h4>
-                            <label for="">{{order.customer.mobile}}</label>
+    <ion-tabs class="tab-button tab-header has-header tabs-top ordertab">
+        <ion-tab title="JAR HISTORY">
+            <ion-content class="has-header bgearn has-tabs-top">
+
+          <div class="" ng-repeat="order in OrderWithDelivery" >
+            <label class="earning-Date" for="" ng-if="order.Order">{{order.deliverdate | date:'LLLL dd,yyyy'}}</label>
+            <label class="earning-Date" for="" ng-if="!order.Order">{{order.orderDate | date:'LLLL dd,yyyy'}}</label>
+              <div class="whtback">
+                  <div class="row jarpahistory">
+                      <div class="col-50 rel">
+                          <div class="ordersname">
+                            <label for="" class="bottlename" ng-if="!order.Order">{{order.product[0].product.name}}</label>
+                            <label for="" class="bottlename" ng-if="order.Order">{{order.product.name}}</label>
+
+                            <h4 class="balhistory" ng-if="!order.Order && order.product[0].productQuantity == 1">+ {{order.product[0].productQuantity}} {{order.product[0].product.unit}}</h4>
+                            <h4 class="balhistory" ng-if="!order.Order && order.product[0].productQuantity > 1">+ {{order.product[0].productQuantity}} {{order.product[0].product.unit}}s</h4>
+                            <h4 class="balhistory" ng-if="order.Order && order.QuantityDelivered == 1">- {{order.QuantityDelivered}} {{order.product.unit}}</h4>
+                            <h4 class="balhistory" ng-if="order.Order && order.QuantityDelivered > 1">- {{order.QuantityDelivered}} {{order.product.unit}}s</h4>
+                          </div>
+                      </div>
+                      <div class="col-50 rel">
+                        <div class="item-note">
+                          <label for="" class="bottlename">Balance</label>
+                          <h4 class="balhistory" ng-if="!order.Order" >{{order.balance}} Jars</h4>
+                          <h4 class="balhistory" ng-if="order.Order" >{{order.balance}} Jars</h4>
                         </div>
-                    </div>
-                    <div class="col-30 rel">
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </ion-content>
+        </ion-tab>
+        <ion-tab title="ORDER HISTORY" >
+          <ion-content class="has-header bgearn">
+              <div class=""  ng-repeat="order in OrderByUser">
+                  <div class="whtback">
+                      <div class="row order-jarRowhistory">
+                          <div class="col-40 rel">
+                              <div class="ordersname">
+                                  <h4>Order {{order.orderID}}</h4>
+                              </div>
+                          </div>
+                          <div class="col-30 rel" ng-repeat=" pro in order.product">
+                              <label for="" class="history-refils">{{pro.productQuantity}} {{pro.product.unit}}</label>
+                              <label for="" class="bottlename">{{pro.product.name}}</label>
 
-                        <div class="" ng-repeat="product in order.product">
-                            <label for="" class="history-refils" ng-if="product.productQuantity==1">{{product.productQuantity}} {{product.product.unit}}</label>
-                            <label for="" class="history-refils" ng-if="product.productQuantity>1">{{product.productQuantity}} {{product.product.unit}}s</label>
-                            <label for="" class="bottlename">{{product.product.name}}</label>
-                        </div>
-
-                        <!--
-                        <label for="" class="history-refils">5 Jars</label>
-                        <label for="" class="bottlename">Kinley 20L</label> -->
-                        <div class="history-pending">
-                            <label for="" ng-if="order.status == 'Paid'">
-                              <span ng-if="order.methodOfPayment == 'Customer'">Paid: Online</span>
-                              <span ng-if="order.methodOfPayment != 'Customer'">Paid: {{order.methodOfPayment}}</span>
-                            </label>
-                            <label for="" ng-if="order.status != 'Paid'">{{order.status}}</label>
-                        </div>
-
-                    </div>
-
-                    <div class="col-30 rel">
-                        <div class="order-histrscol">
-
-                            <span>₹</span>
-                            <label for="">{{order.totalAmount}}</label>
-                            <div class="order-resend" ng-if="order.status == 'Processing'" ng-click="resendLinkFun(order)">
-                                <button>Resend Link</button>
-                            </div>
-                            <div class="order-Pay" ng-if="order.status == 'Confirmed'" ng-click="payRp(order)">
-                                <button class="">Pay</button>
-                            </div>
-                            <div class="order-resend" ng-if="order.status == 'Paid'">
-                                <button>Repeat Order</button>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-
-
-
-
-            </div>
-        </div>
-
+                          </div>
+                          <div class="col-30 rel">
+                              <div class="order-histrscol">
+                                  <span>₹</span>
+                                  <label for="">{{order.totalAmount}}</label>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="orderDate clearfix">
+                        <label for="" class="order">Order Date:{{order.orderDate |date :'dd/MM/yy'}}</label>
+                        <label for="" class="deliver" ng-if="order.plan">see Jar History</label>
+                        <label for="" class="deliver" ng-if="!order.plan">Delivered On {{order.deliverdate |date :'dd/MM/yy'}}</label>
+                      </div>
+                  </div>
+              </div>
+          </ion-content>
+        </ion-tab>
+    </ion-tabs>
+    <div class="cust-search  ">
         <div class="">
-            <label class="earning-Date" for="">February 17, 2017</label>
-            <div class="whtback">
-                <div class="row order-jarRowhistory">
-                    <div class="col-40">
-                        <div class="ordersname">
-                            <h4>Name</h4>
-                            <label for="">Contact Number</label>
-                        </div>
-                    </div>
-                    <div class="col-30 rel">
-                        <label for="" class="history-refils">7 Cartons</label>
-                        <label for="" class="bottlename">Kinley 500ml</label>
-
-                        <label for="" class="history-refils">4 Jars</label>
-                        <label for="" class="bottlename">Kinley 20L</label>
-                        <div class="history-pending">
-                            <label for="">Confirmed</label>
-                        </div>
-
-                    </div>
-                    <div class="col-30 rel">
-                        <div class="order-histrscol">
-                            <span>₹</span>
-                            <label for="">850</label>
-                            <div class="order-Pay">
-                                <button class="">Pay</button>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-
-
-
-            </div>
+            <div class="jar-div"><label for="">Your Jar Balance</label></div>
+            <label class="bal-div" for="">{{dashboardData.subscribedProd[0].jarBalance || 0}}</label>
+            <button class="button button-light buy-more" ui-sref="app.subpage1">
+            Buy More
+          </button>
         </div>
-
-        <div class="">
-            <label class="earning-Date" for="">February 16, 2017</label>
-            <div class="whtback">
-                <div class="row order-jarRowhistory">
-                    <div class="col-40">
-                        <div class="ordersname">
-                            <h4>Name</h4>
-                            <label for="">Contact Number</label>
-                        </div>
-                    </div>
-                    <div class="col-30 rel">
-                        <label for="" class="history-refils">17 Cartons</label>
-                        <label for="" class="bottlename">Kinley 1L</label>
-
-
-                        <div class="history-pending">
-                            <label for="">Paid in Cash</label>
-                        </div>
-
-                    </div>
-                    <div class="col-30 rel">
-                        <div class="order-histrscol">
-                            <span>₹</span>
-                            <label for="">850</label>
-                            <div class="order-resend">
-                                <button>Repeat Order</button>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-
-
-
-            </div>
-        </div>
-        <div class="">
-            <label class="earning-Date" for="">February 16, 2017</label>
-            <div class="whtback">
-                <div class="row order-jarRowhistory">
-                    <div class="col-40">
-                        <div class="ordersname">
-                            <h4>Name</h4>
-                            <label for="">Contact Number</label>
-                        </div>
-                    </div>
-                    <div class="col-30 rel">
-                        <label for="" class="history-refils">17 Cartons</label>
-                        <label for="" class="bottlename">Kinley 1L</label>
-
-
-                        <div class="history-pending">
-                            <label for="">Paid by Wallet</label>
-                        </div>
-
-                    </div>
-                    <div class="col-30 rel">
-                        <div class="order-histrscol">
-                            <span>₹</span>
-                            <label for="">850</label>
-                            <div class="order-resend">
-                                <button>Repeat Order</button>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </ion-content>
-    <div class="cust-search">
-        <label class="item item-input">
-        <input type="text" placeholder="Search by Name/Number" ng-model="searchtext">
-        <i class="icon ion-android-search placeholder-icon item-note"></i>
-      </label>
     </div>
 </ion-view>

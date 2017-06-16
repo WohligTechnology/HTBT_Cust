@@ -3067,9 +3067,10 @@ p.onceLblr {
 }
 //orderhistory
 //orderhistory
+
 .bottlename {
     color: #454545;
-    font-size: 12px;
+    font-size: 10px;
     display: block;
 }
 
@@ -3077,8 +3078,24 @@ p.onceLblr {
     color: #454545;
     font-weight: 600;
     font-size: 15px;
-    margin-top: 12px;
     display: block;
+}
+
+.earning-Date {
+    font-size: 12px;
+    display: block;
+    padding: 3px 20px;
+}
+
+.jarpahistory {
+    padding: 7px 25px;
+}
+
+.balhistory {
+    font-size: 15px;
+    margin: 5px 0;
+    color: #454545;
+    font-weight: 600;
 }
 
 .order-histrscol {
@@ -3148,48 +3165,55 @@ p.onceLblr {
 }
 
 .cust-search {
-    top: 93px;
+    top: 52px;
     z-index: 9;
     position: absolute;
     width: 100%;
-    padding: 30px 20px;
-    background: #f2f4f5;
-    height: 97px;
-    margin-top: 10px;
-
-    .item {
-        padding: 5px 30px 5px 20px;
-        border-radius: 30px;
-        border: none;
-    }
-
-    .item-note {
-        font-size: 20px;
-        color: #c5cbdf;
-    }
+    height: 200px;
+    background: url('../img/backdrop.jpg');
+    background-size: cover;
 }
 
-.cust-search {
-    top: 93px;
-    z-index: 9;
-    position: absolute;
-    width: 100%;
-    padding: 30px 20px;
-    background: #f2f4f5;
-    height: 97px;
-    margin-top: 10px;
-
-    .item {
-        padding: 5px 30px 5px 20px;
-        border-radius: 30px;
-        border: none;
+.ordertab {
+    .tabs {
+        background: white;
+        box-shadow: 1px 2px 0 0 lightgrey;
+        height: 59px;
+        top: 250px!important;
     }
 
-    .item-note {
-        font-size: 20px;
-        color: #c5cbdf;
+    .tab-item.activated,
+    .tab-item.active,
+    .tab-item.tab-item-active {
+        border-bottom: 2px solid #ff414d!important;
+    }
+
+    .tab-item {
+        max-width: 100%;
+        line-height: 60px;
     }
 }
+// .cust-search {
+//     top: 93px;
+//     z-index: 9;
+//     position: absolute;
+//     width: 100%;
+//     padding: 30px 20px;
+//     background: #f2f4f5;
+//     height: 97px;
+//     margin-top: 10px;
+//
+//     .item {
+//         padding: 5px 30px 5px 20px;
+//         border-radius: 30px;
+//         border: none;
+//     }
+//
+//     .item-note {
+//         font-size: 20px;
+//         color: #c5cbdf;
+//     }
+// }
 
 .col-30 {
     -webkit-box-flex: 0;
@@ -3207,21 +3231,23 @@ p.onceLblr {
 
 .bgearn {
     background: #f2f4f5;
+    top: 310px!important;
+}
+.has-footer {
+    bottom: 44px;
 }
 
-.ordersname {
-    border-right: 1px solid #d2d2d2;
-    margin: 0 10px 0 0;
-
-    h4 {
-        font-size: 15px;
-        margin: 5px 0;
-        color: #454545;
-        font-weight: 600;
-    }
-
-    label {
+.orderDate {
+    .order {
         font-size: 12px;
-        color: #454545;
+        color: black;
+        float: left;
+        margin: 5px;
+    }
+    .deliver {
+        float: right;
+        font-size: 12px;
+        color: black;
+        margin: 5px;
     }
 }
