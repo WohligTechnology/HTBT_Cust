@@ -330,7 +330,7 @@ angular.module('starter.services', [])
 
                 delete data2.productDetail;
                 delete data2.otherProducts;
-                data2.orderFor = "RMForCustomer";
+                data2.orderFor = "CustomerForSelf";
                 data2.methodOfOrder = data.methodOfOrder;;
                 data2.methodofjoin = data.methodofjoin;
                 data2.user = $.jStorage.get("profile")._id;
