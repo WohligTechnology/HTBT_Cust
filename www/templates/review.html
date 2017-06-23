@@ -6,7 +6,7 @@
         </ion-nav-buttons>
 
     </ion-nav-bar>
-    <ion-content class="has-header chkout-bgcolor has-footer">
+    <ion-content class="has-header chkout-bgcolor has-review-footer">
         <div class="rel" ng-repeat="product in products">
             <div class="row review-height">
                 <i class="button button-icon icon ion-ios-close-outline review-closebutton" ng-click="removeCart(product.product._id)"></i>
@@ -70,14 +70,15 @@
                 </div>
             </div>
         </div>-->
+  <div class="bt45">
 
-        <!--<div class="row checkbtmcard" ng-hide="products.length==0">
+        <div class="row checkbtmcard" ng-hide="products.length==0">
             <div class="col-25">
                 <div class="datemonth text-center">
                     <div class="datediv">
-                        10
+                        {{deliverdate | date :'dd'}}
                     </div>
-                    <div class="monthdiv">FEB</div>
+                    <div class="monthdiv ">{{deliverdate | date :'MMM'}}</div>
                 </div>
             </div>
             <div class="col-5">
@@ -87,19 +88,26 @@
                 <div class="rel">
                     <div class="mid-day">
                         <h4>
-                            Delivering on friday
+                            Delivering on {{deliverdate | date :'EEEE'}}
                         </h4>
-                        <div class="text-center rel" ng-click="openDatePicker()">
+                        <div class="text-center rel" ng-click="calenderViewModalOpen()">
                             Click here to change!
+                            <!-- <input type="Date" name="" value="" ng-model=""> -->
                         </div>
                     </div>
                     <div class="custarr">
                         <i class="ion ion-chevron-right item-note "></i>
                     </div>
                 </div>
-            </div>
-        </div>-->
 
+            </div>
+        </div>
+        <div class="text-center ">
+          <span class="termscolor " ng-if="error && products.length!=0">Please select future Date</span>
+
+        </div>
+
+      </div>
 
 
 
@@ -116,7 +124,7 @@ chkalign mar10" ng-if="calculateTotalPrice() != 0">
 
 
     <div class="bar bar-footer signUpFooter footer-height" ng-if="calculateTotalPrice() != 0">
-        <button ng-disabled="!terms.value" class="button button-block button-positive footer-font" ng-click="placeOrder()">
+        <button ng-disabled="!terms.value || error" class="button button-block button-positive footer-font" ng-click="placeOrder()">
   Pay ₹ {{calculateTotalPrice()}}/-
 </button>
     </div>

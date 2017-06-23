@@ -9824,6 +9824,9 @@ a.button {
   margin: 10px 5px;
   padding-right: 15px; }
 
+.has-tabs-top-over {
+  top: 300; }
+
 .imgDiv {
   height: auto;
   width: 40%;
@@ -11024,7 +11027,7 @@ display: none
   vertical-align: middle;
   position: absolute;
   right: -5px;
-  top: -5px; }
+  top: -10px; }
 
 .auth-col2 {
   text-align: right; }
@@ -11331,7 +11334,7 @@ display: none
   .mid-day h4 {
     color: #009688;
     text-align: center;
-    font-size: 17px;
+    font-size: 14px;
     margin: 0; }
 
 .datemonth {
@@ -11341,7 +11344,8 @@ display: none
     font-weight: 600; }
   .datemonth .monthdiv {
     font-size: 16px;
-    font-weight: 600; }
+    font-weight: 600;
+    text-transform: uppercase; }
 
 .hidedate {
   opacity: 0;
@@ -11956,7 +11960,7 @@ p.onceLblr {
 .arrowcal {
   color: #ff414d;
   font-size: 30px;
-  padding: 16px; }
+  padding: 16px 0; }
 
 .monthtext {
   font-size: 28px;
@@ -11968,7 +11972,7 @@ p.onceLblr {
 
 .timeslot .row {
   padding: 0; }
-  .timeslot .row .col-50 {
+  .timeslot .row .col {
     padding: 20px;
     text-align: center; }
 
@@ -12194,7 +12198,7 @@ p.onceLblr {
     padding: 0 5px; }
   .order-histrscol label {
     color: #505d66;
-    font-size: 24px; }
+    font-size: 18px; }
 
 .order-resend {
   margin-top: 50px; }
@@ -12290,3 +12294,32 @@ p.onceLblr {
   font-size: 12px;
   color: black;
   margin: 5px; }
+
+.notavailDate {
+  opacity: 0.3; }
+
+.addons {
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+  width: 100%; }
+
+.utilize-edit {
+  background: rgba(0, 0, 0, 0.15);
+  padding: 10px; }
+  .utilize-edit .list-edit {
+    position: absolute;
+    top: 150px;
+    height: 100%;
+    width: 90%;
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%); }
+    .utilize-edit .list-edit a.item.item-icon-left {
+      padding: 20px 0 20px 54px; }
+
+.has-review-footer {
+  bottom: 100px !important; }
+
+.bt45 {
+  margin-bottom: 60px; }

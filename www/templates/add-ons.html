@@ -7,11 +7,13 @@
     </ion-nav-bar>
     <ion-content class="has-header browse-backgrndcolor has-footer">
         <div class="">
+          <div class="header">Would you like any add-ons?</div>
+
             <div class="addons-radio">
                 <div class="card" ng-if="saveSpace.length>0">
                     <div class="custom">
                         <span> Save Space</span>
-                        <p>Store 4 Jars for the space of 1! <br> Buy a stand for Rs. 100. </p>
+                        <p>Store multiple jars in the space of 1 Jar. <br> Buy a stand! </p>
                         <div class="borderdiv"></div>
                         <div class="row pad-right10 mabt" ng-repeat="product in saveSpace">
                             <div class="col-60 stand">
@@ -35,7 +37,7 @@
                 <div class="card" ng-if="saveTime.length>0">
                     <div class="custom">
                         <span> Save Time</span>
-                        <p>No need to search!<br>Rent out dispensers for Rs. 500/month </p>
+                        <p>No need to search. Find everything you need to <br>get started right here!</p>
                         <div class="borderdiv"></div>
                         <div class="row adjst" ng-repeat="product in saveTime">
                             <div class="col-75 stand ">
@@ -60,6 +62,7 @@
         </div>
     </ion-content>
     <div class="bar bar-footer bar-assertive">
-        <div class="title" ui-sref="app.checkout">Checkout</div>
+        <div class="title" ui-sref="app.checkout" ng-if="subscription.otherProducts[0]">Proceed to Checkout</div>
+        <div class="title" ui-sref="app.checkout" ng-if="!subscription.otherProducts[0]">I’m Not Interested</div>
     </div>
 </ion-view>

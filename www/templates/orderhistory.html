@@ -11,73 +11,82 @@
     </ion-nav-bar>
     <ion-tabs class="tab-button tab-header has-header tabs-top ordertab">
         <ion-tab title="JAR HISTORY">
-            <ion-content class="has-header bgearn has-tabs-top">
 
-          <div class="" ng-repeat="order in OrderWithDelivery" >
-            <label class="earning-Date" for="" ng-if="order.Order">{{order.deliverdate | date:'LLLL dd,yyyy'}}</label>
-            <label class="earning-Date" for="" ng-if="!order.Order">{{order.orderDate | date:'LLLL dd,yyyy'}}</label>
-              <div class="whtback">
-                  <div class="row jarpahistory">
-                      <div class="col-50 rel">
-                          <div class="ordersname">
-                            <label for="" class="bottlename" ng-if="!order.Order">{{order.product[0].product.name}}</label>
-                            <label for="" class="bottlename" ng-if="order.Order">{{order.product.name}}</label>
+            <ion-content class="has-header bgearn has-tabs-top-over">
+              <ion-refresher on-refresh="doRefresh()">
 
-                            <h4 class="balhistory" ng-if="!order.Order && order.product[0].productQuantity == 1">+ {{order.product[0].productQuantity}} {{order.product[0].product.unit}}</h4>
-                            <h4 class="balhistory" ng-if="!order.Order && order.product[0].productQuantity > 1">+ {{order.product[0].productQuantity}} {{order.product[0].product.unit}}s</h4>
-                            <h4 class="balhistory" ng-if="order.Order && order.QuantityDelivered == 1">- {{order.QuantityDelivered}} {{order.product.unit}}</h4>
-                            <h4 class="balhistory" ng-if="order.Order && order.QuantityDelivered > 1">- {{order.QuantityDelivered}} {{order.product.unit}}s</h4>
-                          </div>
-                      </div>
-                      <div class="col-50 rel">
-                        <div class="item-note">
-                          <label for="" class="bottlename">Balance</label>
-                          <h4 class="balhistory" ng-if="!order.Order" >{{order.balance}} Jars</h4>
-                          <h4 class="balhistory" ng-if="order.Order" >{{order.balance}} Jars</h4>
+              </ion-refresher>
+                <div class="" ng-repeat="order in OrderWithDelivery" ng-if="order.balance">
+                    <label class="earning-Date" for="" ng-if="order.Order">{{order.deliverdate | date:'LLLL dd,yyyy'}}</label>
+                    <label class="earning-Date" for="" ng-if="!order.Order">{{order.orderDate | date:'LLLL dd,yyyy'}}</label>
+                    <div class="whtback">
+                        <div class="row jarpahistory">
+                            <div class="col-50 rel">
+                                <div class="ordersname">
+                                    <label for="" class="bottlename" ng-if="!order.Order">{{order.product[0].product.name}}</label>
+                                    <label for="" class="bottlename" ng-if="order.Order">{{order.product.name}}</label>
+
+                                    <h4 class="balhistory" ng-if="!order.Order && order.product[0].productQuantity == 1">+ {{order.product[0].productQuantity}} {{order.product[0].product.unit}}</h4>
+                                    <h4 class="balhistory" ng-if="!order.Order && order.product[0].productQuantity > 1">+ {{order.product[0].productQuantity}} {{order.product[0].product.unit}}s</h4>
+                                    <h4 class="balhistory" ng-if="order.Order && order.QuantityDelivered == 1">- {{order.QuantityDelivered}} {{order.product.unit}}</h4>
+                                    <h4 class="balhistory" ng-if="order.Order && order.QuantityDelivered > 1">- {{order.QuantityDelivered}} {{order.product.unit}}s</h4>
+                                </div>
+                            </div>
+                            <div class="col-50 rel">
+                                <div class="item-note">
+                                    <label for="" class="bottlename">Balance</label>
+                                    <h4 class="balhistory" ng-if="!order.Order">{{order.balance}} Jars</h4>
+                                    <h4 class="balhistory" ng-if="order.Order">{{order.balance}} Jars</h4>
+                                </div>
+                            </div>
                         </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-        </ion-content>
+                    </div>
+                </div>
+            </ion-content>
         </ion-tab>
-        <ion-tab title="ORDER HISTORY" >
-          <ion-content class="has-header bgearn">
-              <div class=""  ng-repeat="order in OrderByUser">
-                  <div class="whtback">
-                      <div class="row order-jarRowhistory">
-                          <div class="col-40 rel">
-                              <div class="ordersname">
-                                  <h4>Order {{order.orderID}}</h4>
-                              </div>
-                          </div>
-                          <div class="col-30 rel" ng-repeat=" pro in order.product">
-                              <label for="" class="history-refils">{{pro.productQuantity}} {{pro.product.unit}}</label>
-                              <label for="" class="bottlename">{{pro.product.name}}</label>
+        <ion-tab title="ORDER HISTORY">
 
-                          </div>
-                          <div class="col-30 rel">
-                              <div class="order-histrscol">
-                                  <span>₹</span>
-                                  <label for="">{{order.totalAmount}}</label>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="orderDate clearfix">
-                        <label for="" class="order">Order Date:{{order.orderDate |date :'dd/MM/yy'}}</label>
-                        <label for="" class="deliver" ng-if="order.plan">see Jar History</label>
-                        <label for="" class="deliver" ng-if="!order.plan">Delivered On {{order.deliverdate |date :'dd/MM/yy'}}</label>
-                      </div>
-                  </div>
-              </div>
-          </ion-content>
+            <ion-content class="has-header bgearn has-tabs-top-over">
+              <ion-refresher on-refresh="doRefresh()">
+
+              </ion-refresher>
+                <div class="" ng-repeat="order in OrderByUser">
+                    <div class="whtback">
+                        <div class="row order-jarRowhistory">
+                            <div class="col-40 rel">
+                                <div class="ordersname">
+                                    <h4>Order {{order.orderID}}</h4>
+                                </div>
+                            </div>
+                            <div class="col-30 rel">
+                                <div ng-repeat=" pro in order.product">
+                                    <label for="" class="history-refils">{{pro.productQuantity}} {{pro.product.unit}}</label>
+                                    <label for="" class="bottlename">{{pro.product.name}}</label>
+                                </div>
+                            </div>
+                            <div class="col-30 rel">
+                                <div class="order-histrscol">
+                                    <span>₹</span>
+                                    <label for="">{{order.totalAmount}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="orderDate clearfix">
+                            <label for="" class="order">Order Date:{{order.orderDate |date :'dd/MM/yy'}}</label>
+                            <label for="" class="deliver" ng-if="order.plan">see Jar History</label>
+                            <label for="" class="deliver" ng-if="!order.plan "></label>
+                            <!-- <label for="" class="deliver" ng-if="!order.plan "> Expected Delivery on {{order.deliverdate |date :'dd/MM/yy'}}</label> -->
+                        </div>
+                    </div>
+                </div>
+            </ion-content>
         </ion-tab>
     </ion-tabs>
     <div class="cust-search  ">
         <div class="">
             <div class="jar-div"><label for="">Your Jar Balance</label></div>
             <label class="bal-div" for="">{{dashboardData.subscribedProd[0].jarBalance || 0}}</label>
-            <button class="button button-light buy-more" ui-sref="app.subpage1">
+            <button class="button button-light buy-more" ui-sref="app.subpage1({id:dashboardData.subscribedProd[0].product})" ng-if="dashboardData.subscribedProd[0].jarBalance != 0 && dashboardData.subscribedProd[0].jarBalance">
             Buy More
           </button>
         </div>

@@ -38,7 +38,7 @@
             </div>
         </div>
         </div>
-        <div class="onceweekDiv" ui-sref="app.addons" ng-click="addPlan('Onetime',1);">
+        <div class="onceweekDiv" ui-sref="app.addons" ng-click="addPlan('Onetime',1);" ng-if="getProfile.subscribedProd.length==0 || getProfile.subscribedProd[0].recentOrder.plan=='Onetime'">
           <div class="row">
             <div class="col-67 col-50pad border col-margin">
                 <label class="jarslbl" for="">One Time</label>

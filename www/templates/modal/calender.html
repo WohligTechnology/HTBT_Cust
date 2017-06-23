@@ -1,0 +1,38 @@
+<ion-modal-view class="utilize-edit">
+  <ion-content ng-click="">
+
+  <div class="ionic_Calendar card" ng-controller="CalendarViewCtrl">
+      <div class="calendar_Date">
+          <div class="row" style=" background-color: transparent;  color: black;">
+              <div class="col txtCenter arrowcal"><i class="icon ion-chevron-left" ng-click="selectedMonthPrevClick()"></i></div>
+              <div class="col col-75 txtCenter monthtext" ng-click="UIdisplayDatetoMonth()">{{dislayMonth}} </div>
+              <div class="col txtCenter arrowcal"><i class="icon ion-chevron-right" ng-click="selectedMonthNextClick()"></i></div>
+          </div>
+          <div class="row Daysheading Daysheading_Label" style="background-color: transparent;  color: black">
+              <div class="col redsun">Sun</div>
+              <div class="col">Mon</div>
+              <div class="col">Tue</div>
+              <div class="col">Wed</div>
+              <div class="col">Thu</div>
+              <div class="col">Fri</div>
+              <div class="col">Sat</div>
+          </div>
+          <div class="row Daysheading DaysDisplay" ng-repeat="rowVal in datesDisp  track by $index" ng-class="{'marginTop0':$first}">
+              <div class="col" ng-repeat="colVal in rowVal  track by $index" ng-init="dateIndex = $index" ng-class="{'fadeDateDisp':(colVal.type == 'oldMonth' || colVal.type == 'newMonth'), 'redsun':(dateIndex == 0), 'deliverday':(days[dateIndex].value == true  ),'notavailDate':(days[dateIndex].value == false),'selDate':(colVal.date == displayDate && colVal.type == 'currentMonth')}"
+                  ng-click="selectedDateClick(colVal);calenderViewModalClose()" ng-disabled="!days[dateIndex].value " >
+                  <div class="" ng-if="days[dateIndex].value" ng-click="selectedDateClick(colVal);calenderViewModalClose()" >
+                    {{colVal.date}}
+                  </div>
+                  <div class="" ng-if="!days[dateIndex].value" >
+                    {{colVal.date}}
+                  </div>
+                </div>
+          </div>
+
+      </div>
+      <!-- <p class="item-note datenote">*we're available on highlighted days only </p> -->
+
+  </div>
+
+</ion-content>
+</ion-modal-view>

@@ -23,9 +23,9 @@ angular.module('starter.subscription', [])
                 return subScriptionObj;
             },
             validate: function($state) {
-                if (!subScriptionObj.product[0].product) {
-                    $state.go("app.browse");
-                }
+                // if (!subScriptionObj.product[0].product) {
+                //     $state.go("app.browse");
+                // }
             },
         };
     });

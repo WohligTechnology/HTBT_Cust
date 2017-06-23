@@ -1,4 +1,5 @@
-var adminurl = "http://htbt.wohlig.co.in/api/"; //server
+var adminurl = "http://htbttesting.wohlig.co.in/api/"; //server
+// var adminurl = "http://htbt.wohlig.co.in/api/"; //server
 // var adminurl = "http://192.168.2.21:1337/api/"; //server
 // var imgpath = adminurl + "uploadfile/getupload?file=";
 var imgurl = adminurl + "upload/";
@@ -8,6 +9,7 @@ angular.module('starter.services', [])
     .factory('MyServices', function($http) {
         var appDetails = {};
         var calDate = new Date();
+        var incorrect = false;
 
         function getProductPrice(product, quantity) {
             var foundPrice = {};
@@ -43,23 +45,20 @@ angular.module('starter.services', [])
                 return appDetails;
             },
             getProfile: function(id, callback) {
-                var data = {
-                    _id: id
-                };
+
                 $http({
                     url: adminurl + 'user/getProfile',
                     method: 'POST',
                     withCredentials: true,
-                    data: data
+                    data: id
                 }).success(callback);
             },
             setDate: function(sDate) {
                 calDate = sDate;
-                console.log(calDate, sDate);
             },
 
             getDate: function() {
-                console.log(calDate);
+
                 return calDate;
             },
             getOrderByRM: function(data, callback) {
@@ -78,6 +77,22 @@ angular.module('starter.services', [])
                     withCredentials: true,
                     data: data
                 }).success(callback);
+            },
+            getNextDate: function(stringArr) {
+                var objs = [];
+                _.each(stringArr, function(day) {
+                    var dateDay = moment(day, "dddd").toDate();
+                    objs.push(dateDay);
+                });
+                _.each(stringArr, function(day) {
+                    var dateDay = moment(day, "dddd").add(1, "week").toDate();
+                    objs.push(dateDay);
+                });
+                var remaining = _.filter(objs, function(dat) {
+                    return !moment(dat).isSameOrBefore(moment(), 'day');
+                });
+                console.log(remaining[0]);
+                return remaining[0];
             },
             scheduleDelivery: function(data, callback) {
                 $http({
@@ -152,6 +167,17 @@ angular.module('starter.services', [])
                     method: 'POST',
                     withCredentials: true,
                     data: data
+                }).success(callback);
+            },
+            getProduct: function(data, callback) {
+                var id = {
+                    _id: data
+                }
+                $http({
+                    url: adminurl + 'Product/getone',
+                    method: 'POST',
+                    withCredentials: true,
+                    data: id
                 }).success(callback);
             },
             getByPin: function(data, callback) {

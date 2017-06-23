@@ -1,13 +1,13 @@
 <ion-view title="Confirmation">
     <ion-nav-bar class="bar-stable schedule-bar  nav-height">
-        <ion-nav-buttons side="left">
+        <!-- <ion-nav-buttons side="left">
             <button class="button button-clear ion-android-arrow-back sigupIconLeft" ng-click="goBackHandler()">
         </button>
-        </ion-nav-buttons>
-        <ion-nav-buttons side="right">
+        </ion-nav-buttons> -->
+        <!-- <ion-nav-buttons side="right">
             <button class="button button-clear ion-android-more-vertical sigupRight">
         </button>
-        </ion-nav-buttons>
+        </ion-nav-buttons> -->
     </ion-nav-bar>
     <ion-content class="has-header ion-contentcolor">
         <label class="confirm-thankyou" for="">Thank You!</label>
@@ -23,8 +23,11 @@
         </div>
     </ion-content>
     <div class="bar bar-footer signUpFooter footer-height">
-      <button class="button button-block button-positive footer-font" ui-sref="app.dashboard">
+      <button class="button button-block button-positive footer-font" ui-sref="app.dashboard" ng-if="onetime != 'onetime'">
     Go to Dashboard
+  </button>
+      <button class="button button-block button-positive footer-font" ui-sref="app.browse" ng-if="onetime == 'onetime'">
+    Go to Browse
   </button>
     </div>
   </ion-view>

@@ -34,7 +34,10 @@
       <ion-item menu-close ui-sref="app.help">
         Help
       </ion-item>-->
-      <div class="menu-div" menu-close ui-sref="app.dashboard">
+      <div class="menu-div" menu-close ui-sref="app.browse">
+        <label class="menu-label" for="">Browse</label>
+      </div>
+      <div class="menu-div" menu-close ui-sref="app.dashboard" ng-if="signupForm.subscribedProd.length != 0 ">
         <label class="menu-label" for="">Dashboard</label>
       </div>
       <div class="menu-div" menu-close ui-sref="app.orderhistory">

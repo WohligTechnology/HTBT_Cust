@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', 'ngCordova'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $state) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -20,6 +20,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
             StatusBar.styleDefault();
         }
     });
+    $ionicPlatform.registerBackButtonAction(function(event) {
+        if ($state.current.name == "app.dashboard") {
+            navigator.app.exitApp(); //<-- remove this line to disable the exit
+        } else if ($state.current.name == "app.browse") {
+            $state.go('app.dashboard');
+        } else {
+            window.history.back();
+        }
+    }, 100);
 })
 
 
@@ -52,6 +61,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
         .state('app', {
         url: '/app',
         abstract: true,
+        cache: false,
         templateUrl: 'templates/menu.html',
         controller: 'AppCtrl'
     })
@@ -98,7 +108,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
     })
 
     .state('app.orderconfirm', {
-        url: '/orderconfirm',
+        url: '/orderconfirm/:onetime',
         views: {
             'menuContent': {
                 templateUrl: 'templates/orderconfirm.html',
@@ -196,7 +206,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
     })
 
     .state('app.shipping', {
-        url: '/shipping/:orderId',
+        url: '/shipping/:orderId/:deliverDate',
         views: {
             'menuContent': {
                 templateUrl: 'templates/shipping.html',
@@ -217,6 +227,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
     })
 
     .state('app.subpage1', {
+      cache:false,
         url: '/subpage1/:id',
         views: {
             'menuContent': {
@@ -248,6 +259,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
     })
 
     .state('app.subpage3', {
+      cache:false,
         url: '/subpage3',
         views: {
             'menuContent': {
@@ -269,6 +281,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
     })
 
     .state('app.addons', {
+        cache: false,
         url: '/add-ons',
         views: {
             'menuContent': {

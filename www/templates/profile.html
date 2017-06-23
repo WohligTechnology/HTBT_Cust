@@ -15,7 +15,7 @@
     <div class="iptext ">
       <div>
         <label class=" item-input iptext ">
-    <input class="iptext" type="text" placeholder="Your Name"  ng-model="signupForm.name"  value="{{signupForm.name}}" name="name" required>
+    <input class="iptext" type="text" placeholder="Your Name"  ng-model="signupForm.name"  value="{{signupForm.name}}" name="name" required disabled>
 
 
   </label>
@@ -24,7 +24,7 @@
 
       <div>
         <label class=" item-input ">
-    <input type="email" placeholder="Email Id (Optional)" ng-model="signupForm.email" name="email"  value="{{signupForm.email}}" required>
+    <input type="email" placeholder="Email Id (Optional)" ng-model="signupForm.email" name="email"  value="{{signupForm.email}}" required disabled>
 
   </label>
 <p class="error-msg" ng-show="userForm.email.$error.required && userForm.email.$touched">Please Enter your Email Id.</p>
@@ -63,7 +63,7 @@
 
  <div>
 <label class=" item-input " >
-    <input type="text" placeholder="Pincode" ng-click="sorryPopup()" ng-model="signupForm.pincode" name="pincode"  value="{{signupForm.pincode}}" required only-Digits maxlength="6" minlength="6">
+    <input type="text" placeholder="Pincode" ng-click="sorryPopup()" ng-model="signupForm.pincode" name="pincode"  value="{{signupForm.pincode}}" required only-Digits maxlength="6" minlength="6" disabled>
   </label>
   <p class="error-msg" ng-show="userForm.pincode.$error.required && userForm.pincode.$touched">Please Enter your Pincode.</p>
     </div>

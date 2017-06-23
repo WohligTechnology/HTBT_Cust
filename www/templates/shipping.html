@@ -1,15 +1,18 @@
 <ion-view title="Enter Shipping Details">
+  <form class="" name="userForm">
+
     <ion-nav-bar class="bar-stable nav-height">
         <ion-nav-buttons side="left">
-            <button class="button button-clear ion-android-arrow-back sigupIconLeft" >
+            <button class="button button-clear ion-android-arrow-back sigupIconLeft" ng-click="goBackHandler()">
         </button>
         </ion-nav-buttons>
-        <ion-nav-buttons side="right">
+        <!-- <ion-nav-buttons side="right">
             <button class="button button-clear ion-android-more-vertical sigupRight">
         </button>
-        </ion-nav-buttons>
+        </ion-nav-buttons> -->
     </ion-nav-bar>
     <ion-content class="has-header   has-footer">
+
         <div class="padtop-10">
             <div class="signUpForm">
                 <label class=" item-input  ">
@@ -62,10 +65,10 @@
             </label>
             <p for="shipping" ng-click="billingAddress.shippingCheck =!billingAddress.shippingCheck">My billing address is same as my shipping address</p>
         </li>
-        <div class="padtop-10" ng-show="!billingAddress.shippingCheck">
+        <div class="padtop-10" ng-if="!billingAddress.shippingCheck">
             <div class="signUpForm">
                 <label class=" item-input ">
-            <input type="text" placeholder="Your Name"  ng-model="billingAddress.name" value="{{billingAddress.name}}" name="name" required>
+            <input type="text" placeholder="Your Name"  ng-model="billingAddress.name" value="{{billingAddress.name}}" name="name" >
             </label>
             </div>
 
@@ -76,20 +79,20 @@
             </div>
             <div class="signUpForm">
                 <label class=" item-input ">
-                  <input type="email" placeholder="Email Id (Optional)" ng-model="billingAddress.email" value="{{billingAddress.email}}" name="email" required>
+                  <input type="email" placeholder="Email Id (Optional)" ng-model="billingAddress.email" value="{{billingAddress.email}}" name="email" >
                 </label>
                 <p class="error-msg" ng-show="userForm.email.$error.required && userForm.email.$touched">Please Enter your Email Id.</p>
             </div>
             <div class="signUpForm">
                 <label class=" item-input bb1">
-      <input type="text" placeholder="Company Name" ng-model="billingAddress.companyName" value="{{billingAddress.companyName}}" name="company" required>
+      <input type="text" placeholder="Company Name" ng-model="billingAddress.companyName" value="{{billingAddress.companyName}}" name="company" >
       </label>
                 <p class="error-msg" ng-show="userForm.company.$error.required && userForm.company.$touched">Please Enter your company name.</p>
             </div>
 
             <div class="signUpForm">
                 <label class=" item-input ">
-                <input type="text" placeholder="Billing Address" ng-model="billingAddress.address" value="{{billingAddress.address}}" name="billingAddress" required>
+                <input type="text" placeholder="Billing Address" ng-model="billingAddress.address" value="{{billingAddress.address}}" name="billingAddress" >
               </label>
                 <p class="error-msg" ng-show="userForm.estadd.$error.required && userForm.estadd.$touched">Please Enter your Address.</p>
             </div>
@@ -108,11 +111,14 @@
             </div>
 
         </div>
+
     </ion-content>
 
     <div class="bar bar-footer signUpFooter footer-height">
-        <button class="button button-block button-positive footer-font" ng-click="saveDetails(billingAddress,shippingAddress)">
+        <button class="button button-block button-positive footer-font" ng-click="saveDetails(billingAddress,shippingAddress)" ng-disabled="userForm.$invalid " >
   Proceed
 </button>
     </div>
+
+  </form>
 </ion-view>

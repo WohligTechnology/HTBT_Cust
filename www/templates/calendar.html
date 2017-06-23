@@ -4,10 +4,10 @@
             <button class="button button-clear ion-android-arrow-back sigupIconLeft" ng-click="goBackHandler()">
         </button>
         </ion-nav-buttons>
-        <ion-nav-buttons side="right">
+        <!-- <ion-nav-buttons side="right">
             <button class="button button-clear ion-android-more-vertical sigupRight">
         </button>
-        </ion-nav-buttons>
+        </ion-nav-buttons> -->
     </ion-nav-bar>
     <ion-content class="has-header ion-contentcolor">
         <label for="" class="schedule-head">Select a Date </label>
@@ -28,34 +28,47 @@
                     <div class="col">Sat</div>
                 </div>
                 <div class="row Daysheading DaysDisplay" ng-repeat="rowVal in datesDisp  track by $index" ng-class="{'marginTop0':$first}">
-                    <div class="col" ng-repeat="colVal in rowVal  track by $index" ng-init="dateIndex = $index" ng-class="{'fadeDateDisp':(colVal.type == 'oldMonth' || colVal.type == 'newMonth'), 'redsun':(dateIndex == 0), 'deliverday':(days[dateIndex].value == true  ),'selDate':(colVal.date == displayDate && colVal.type == 'currentMonth')}"
-                        ng-click="selectedDateClick(colVal)" ng-disabled="!days[dateIndex].value || ( dislayMonth != getcurrentMonth && getNextMonth != dislayMonth)" >{{colVal.date}}</div>
+                    <div class="col"  ng-repeat="colVal in rowVal  track by $index" ng-init="dateIndex = $index" ng-class="{'fadeDateDisp':(colVal.type == 'oldMonth' || colVal.type == 'newMonth'), 'redsun':(dateIndex == 0), 'deliverday':(days[dateIndex].value == true  ),'notavailDate':(days[dateIndex].value == false),'selDate':(colVal.date == displayDate && colVal.type == 'currentMonth')}">
+                        <div class="" ng-if="days[dateIndex].value" ng-click="selectedDateClick(colVal)" >
+                          {{colVal.date}}
+                        </div>
+                        <div class="" ng-if="!days[dateIndex].value" >
+                          {{colVal.date}}
+                        </div>
+                      </div>
                 </div>
+
             </div>
-            <p class="item-note datenote">*we're available on highlighted days only</p>
+            <p class="item-note datenote">*we're available on highlighted days only </p>
 
         </div>
 
         <div class="card m10 time-row rel timeslot">
 
-            <div class="row no-pad " ng-init="calendarData.delivertime='8 AM to 1 PM'">
-                <div class="col-50 " ng-click="calendarData.delivertime = '8 AM to 1 PM' " ng-class="{'time-highlight' : calendarData.delivertime == '8 AM to 1 PM'}">
+            <div class="row no-pad " ng-init="calendarData.delivertime='8 AM to 1 PM'" ng-if="!getDate()" >
+                <div class="col " ng-click="calendarData.delivertime = '8 AM to 1 PM' " ng-class="{'time-highlight' : calendarData.delivertime == '8 AM to 1 PM'}" >
                     8 AM to 1 PM
                     <!-- <label class="time-label" for=""></label> -->
                 </div>
 
-                <div class=" col-50" ng-click="calendarData.delivertime = '1 PM to 6 PM'" ng-class="{'time-highlight' : calendarData.delivertime == '1 PM to 6 PM'}">
+                <div class=" col" ng-click="calendarData.delivertime = '1 PM to 6 PM'" ng-class="{'time-highlight' : calendarData.delivertime == '1 PM to 6 PM'}">
                     1 PM to 6 PM
-                    <!-- <label class="time-label" for="">
-  </label> -->
+                    <!-- <label class="time-label" for=""></label> -->
                 </div>
             </div>
+            <div class="row no-pad " ng-init="calendarData.delivertime='1 PM to 6 PM'" ng-if="getDate()">
 
+
+                <div class=" col" ng-click="calendarData.delivertime = '1 PM to 6 PM'" ng-class="{'time-highlight' : calendarData.delivertime == '1 PM to 6 PM'}">
+                    1 PM to 6 PM
+                    <!-- <label class="time-label" for=""></label> -->
+                </div>
+            </div>
         </div>
         <div class="card jars-card ">
             <div class="item ">
                 <div>
-                    <label class="jar-label" for="">How many jars do you need?</label>
+                    <label class="jar-label" for="">How many jars do you need? </label>
                 </div>
                 <div ng-init="calendarData.Quantity=0">
                     <button class="ion ion-minus-circled jars-button" ng-click="calendarData.Quantity=calendarData.Quantity-1" ng-disabled="calendarData.Quantity<=0"></button>
