@@ -1544,6 +1544,10 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
             $scope.goBackHandler = function() {
                 window.history.back(); //This works
             };
+              $scope.show=0;
+            $scope.showhistory = function(show) {
+                $scope.show=show;
+            };
             $scope.customer = {};
             $scope.customer._id = $.jStorage.get('profile')._id;
             $scope.doRefresh = function() {

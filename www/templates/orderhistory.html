@@ -81,11 +81,24 @@
             </ion-content>
         </ion-tab>
     </ion-tabs> -->
-    <ion-content class="has-header bgearn has-tabs-top-over " ng-init="show=0">
+    <div class="" ng-init="show=0">
+
+
+    <div class="tabHistory" >
+      <div class="row">
+        <div class="col-50"  ng-click="showhistory(0) " ng-class="{'undercol':show ==0}">
+          JAR HISTORY
+        </div>
+        <div class="col-50" ng-click="showhistory(1)" ng-class="{'undercol':show ==1}">
+          ORDER HISTORY
+        </div>
+      </div>
+    </div>
+    <ion-content class="has-header bgearn has-tabs-top-over " >
       <ion-refresher on-refresh="doRefresh()">
 
       </ion-refresher>
-      <div class="hasorder-foot" ng-show="show=0">
+      <div class="hasorder-foot" ng-if="show==0">
         <div class="" ng-repeat="order in OrderWithDelivery" ng-if="order.balance ">
             <label class="earning-Date" for="" ng-if="order.Order">{{order.deliverdate | date:'LLLL dd,yyyy'}}</label>
             <label class="earning-Date" for="" ng-if="!order.Order">{{order.orderDate | date:'LLLL dd,yyyy'}}</label>
@@ -113,7 +126,7 @@
             </div>
         </div>
       </div>
-      <div class="hasorder-foot" ng-show="show=1">
+      <div class="hasorder-foot" ng-if="show==1">
 
         <div class="" ng-repeat="order in OrderByUser">
             <div class="whtback">
@@ -147,7 +160,7 @@
 
 
     </ion-content>
-
+    </div>
     <div class="cust-search  ">
         <div class="">
             <div class="jar-div"><label for="">Your Jar Balance</label></div>
@@ -157,14 +170,5 @@
           </button>
         </div>
     </div>
-    <div class="tabHistory" ng-init="show=0">
-      <div class="row">
-        <div class="col-50"  ng-click="show =0 " ng-class="{'undercol':show ==0}">
-          JAR HISTORY
-        </div>
-        <div class="col-50" ng-click="show =1 " ng-class="{'undercol':show ==1}">
-          ORDER HISTORY
-        </div>
-      </div>
-    </div>
+
 </ion-view>
