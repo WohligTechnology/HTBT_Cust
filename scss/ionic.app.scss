@@ -3236,7 +3236,7 @@ p.onceLblr {
 
 .bgearn {
     background: #f2f4f5;
-    top: 310px!important;
+    top: 305px!important;
 }
 
 .has-footer {
@@ -3292,4 +3292,25 @@ p.onceLblr {
 }
 .bt45{
   margin-bottom: 60px;
+}
+//tab history
+.tabHistory{
+  top: 252px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  .row{
+    padding: 0!important;
+    .col-50{
+      font-size: 14px;
+      padding: 15px;
+
+    }
+  }
+}
+.undercol{
+  border-bottom: 2px solid #ff414d!important;
+}
+.hasorder-foot{
+  margin-bottom: 30px!important;
 }
