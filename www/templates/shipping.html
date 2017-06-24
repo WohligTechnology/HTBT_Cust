@@ -27,7 +27,7 @@
             </div>
             <div class="signUpForm">
                 <label class=" item-input ">
-                  <input type="email" placeholder="Email Id (Optional)" ng-model="shippingAddress.email" value="{{shippingAddress.email}}" name="email" required>
+                  <input type="email" placeholder="Email ID" ng-model="shippingAddress.email" value="{{shippingAddress.email}}" name="email" required>
                 </label>
                 <p class="error-msg" ng-show="userForm.email.$error.required && userForm.email.$touched">Please Enter your Email Id.</p>
             </div>
@@ -35,7 +35,7 @@
 
             <div class="signUpForm">
                 <label class=" item-input bb1">
-      <input type="text" placeholder="Company Name (Optional)" ng-model="shippingAddress.companyName" value="{{shippingAddress.companyName}}" name="company" required>
+      <input type="text" placeholder="Company Name (Optional)" ng-model="shippingAddress.companyName" value="{{shippingAddress.companyName}}" name="company" >
       </label>
                 <p class="error-msg" ng-show="userForm.company.$error.required && userForm.company.$touched">Please Enter your company name.</p>
             </div>
@@ -79,13 +79,13 @@
             </div>
             <div class="signUpForm">
                 <label class=" item-input ">
-                  <input type="email" placeholder="Email Id (Optional)" ng-model="billingAddress.email" value="{{billingAddress.email}}" name="email" >
+                  <input type="email" placeholder="Email ID" ng-model="billingAddress.email" value="{{billingAddress.email}}" name="email" >
                 </label>
                 <p class="error-msg" ng-show="userForm.email.$error.required && userForm.email.$touched">Please Enter your Email Id.</p>
             </div>
             <div class="signUpForm">
                 <label class=" item-input bb1">
-      <input type="text" placeholder="Company Name" ng-model="billingAddress.companyName" value="{{billingAddress.companyName}}" name="company" >
+      <input type="text" placeholder="Company Name(Optional)" ng-model="billingAddress.companyName" value="{{billingAddress.companyName}}" name="company" >
       </label>
                 <p class="error-msg" ng-show="userForm.company.$error.required && userForm.company.$touched">Please Enter your company name.</p>
             </div>
