@@ -660,9 +660,9 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
                             currency: 'INR',
                             key: 'rzp_test_BrwXxB7w8pKsfS',
                             // key: 'rzp_live_gFWckrbme2wT4J',
-                            external: {
-                                wallets: ['paytm']
-                            },
+                            // external: {
+                            //     wallets: ['paytm']
+                            // },
                             amount: parseInt($scope.orderData.totalAmount) * 100,
                             name: $scope.orderData.customer.name,
                             prefill: {
