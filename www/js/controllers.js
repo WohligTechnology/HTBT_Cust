@@ -658,9 +658,9 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
                         description: 'Pay for Order ' + $scope.orderData.orderID,
                         image: 'https://i.imgur.com/3g7nmJC.png',
                         currency: 'INR',
-                        key: 'rzp_test_BrwXxB7w8pKsfS', //this payment id i have used twice Please change both
+                        // key: 'rzp_test_BrwXxB7w8pKsfS', //this payment id i have used twice Please change both
                         //please see line no(802)
-                        // key: 'rzp_live_gFWckrbme2wT4J',//this live payment id
+                        key: 'rzp_live_gFWckrbme2wT4J',//this live payment id
                         // external: {
                         //     wallets: ['paytm']
                         // },
@@ -799,9 +799,9 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
                             description: 'Pay for Order ' + $scope.OrderSaveData.orderID,
                             image: 'https://i.imgur.com/3g7nmJC.png',
                             currency: 'INR',
-                            key: 'rzp_test_BrwXxB7w8pKsfS', //this payment id i have used twice Please change both
+                            // key: 'rzp_test_BrwXxB7w8pKsfS', //this payment id i have used twice Please change both
                             //please see line no(802)
-                            // key: 'rzp_live_gFWckrbme2wT4J',//this is live id
+                            key: 'rzp_live_gFWckrbme2wT4J',//this is live id
                             // external: {
                             //     wallets: ['paytm']
                             // },

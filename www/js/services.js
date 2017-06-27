@@ -1,5 +1,5 @@
-var adminurl = "http://htbttesting.wohlig.co.in/api/"; //server
-// var adminurl = "http://htbt.wohlig.co.in/api/"; //server
+// var adminurl = "http://htbttesting.wohlig.co.in/api/"; //test server
+var adminurl = "http://htbt.wohlig.co.in/api/"; //server
 // var adminurl = "http://192.168.2.21:1337/api/"; //server
 // var imgpath = adminurl + "uploadfile/getupload?file=";
 var imgurl = adminurl + "upload/";
@@ -34,6 +34,8 @@ angular.module('starter.services', [])
                 });
                 if (quantity > parseInt(orderedPrice[orderedPrice.length - 1].endRange)) {
                     product.priceUsed = orderedPrice[orderedPrice.length - 1].finalPrice;
+                    product.totalPriceUsed = orderedPrice[orderedPrice.length - 1].finalPrice * parseInt(quantity);
+
                 }
             }
 

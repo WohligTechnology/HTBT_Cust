@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', 'ngCordova'])
 
-.run(function($ionicPlatform, $state) {
+.run(function($ionicPlatform, $state, MyServices) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -21,13 +21,40 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
         }
     });
     $ionicPlatform.registerBackButtonAction(function(event) {
-        if ($state.current.name == "app.dashboard") {
-            navigator.app.exitApp(); //<-- remove this line to disable the exit
-        } else if ($state.current.name == "app.browse") {
-            $state.go('app.dashboard');
+        if ($.jStorage.get('profile')) {
+            var profile = $.jStorage.get('profile');
+            var getProfield = {};
+            getProfield._id = profile._id;
+            MyServices.getProfile(getProfield, function(data) {
+                console.log(data);
+                if (data.value) {
+                    var signupForm = data.data;
+                    if ($state.current.name == "app.dashboard") {
+                        navigator.app.exitApp(); //<-- remove this line to disable the exit
+                    } else if ($state.current.name == "app.browse") {
+                        if (signupForm.subscribedProd.length != 0) {
+                            $state.go('app.dashboard');
+                        } else {
+                            navigator.app.exitApp();
+                        }
+                    } else {
+                        window.history.back();
+                    }
+                }
+            });
         } else {
-            window.history.back();
+
+          
+            if ($state.current.name == "login") {
+                navigator.app.exitApp();
+            }else{
+              window.history.back();
+            }
+
         }
+
+
+
     }, 100);
 })
 
@@ -227,7 +254,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
     })
 
     .state('app.subpage1', {
-      cache:false,
+        cache: false,
         url: '/subpage1/:id',
         views: {
             'menuContent': {
@@ -259,7 +286,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
     })
 
     .state('app.subpage3', {
-      cache:false,
+        cache: false,
         url: '/subpage3',
         views: {
             'menuContent': {

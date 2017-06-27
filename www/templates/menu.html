@@ -16,11 +16,11 @@
   </ion-side-menu-content>
   <ion-side-menu side="left" class="menu-header">
     <ion-header-bar class="bar-stable">
-      <div class="menu-displaypic" ui-sref="app.profile">
+      <div class="menu-displaypic" menu-close ui-sref="app.profile">
         <img class="menu-displayimg" src="img/userprofile.png" alt="">
       </div>
       <div>
-        <label class="menu-displayName" ui-sref="app.profile" for="">{{signupForm.name}}</label>
+        <label class="menu-displayName" menu-close ui-sref="app.profile" for="">{{signupForm.name}}</label>
         <label class="menu-settings"  menu-close ui-sref="app.profile" for="">Profile</label>
       </div>
     </ion-header-bar>
