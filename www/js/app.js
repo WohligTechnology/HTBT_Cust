@@ -184,6 +184,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
         }
     })
 
+   .state('app.contactus', {
+        url: '/contactus',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/contactus.html',
+                controller: 'ContactUsCtrl'
+            }
+        }
+    })
+
     .state('sorry', {
         url: '/sorry',
 

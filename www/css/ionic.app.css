@@ -12346,7 +12346,32 @@ p.onceLblr {
   margin: 0 auto;
   border-bottom: 1px solid red;
   width: 25%;
-  margin-bottom: 16px; }
+  margin-bottom: 16px;
+  background: transparent; }
 
 .bold-text {
   font-weight: 700; }
+
+.contact-card {
+  padding: 50px;
+  margin-top: 50%; }
+
+.contact-hata-btn button {
+  width: 100%;
+  height: 30px;
+  border-radius: 0px;
+  line-height: 29px;
+  min-height: 30px; }
+
+.contact-hata-btn .icon-left:before {
+  float: none;
+  padding-right: 0.5em;
+  line-height: 30px; }
+
+.contact-bg {
+  background: #f2f4f5; }
+
+.or-contact {
+  color: grey;
+  font-size: 12px;
+  margin: 10px 0 40px 0; }

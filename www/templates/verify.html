@@ -2,7 +2,7 @@
   <ion-pane>
     <div class="logorel">
       <div class="otpDiv">
-        <label for="" class="otpLabel">Enter the <span class="bold-text">4-digit OTP</span code you <br> received through <span class="bold">SMS</span></label>
+        <label for="" class="otpLabel">Enter the <span class="bold-text">4-digit OTP</span> code you <br> received through <span class="bold">SMS</span></label>
         <!--<div class="otpin">
           <input type="number" autofocus focusMe class="inputs" maxlength="1" ng-model="otp.first" ng-change="disableotp(otp)">
           <input type="number" class="inputs" maxlength="1" ng-model="otp.second" ng-change="disableotp(otp)">
@@ -10,7 +10,7 @@
           <input type="number" class="inputs" maxlength="1" ng-model="otp.forth" ng-change="disableotp(otp)">
         </div>-->
         <div class="otp-verify">
-         <input type="number" class="" maxlength="1" ng-model="otp.forth" ng-change="disableotp(otp)">
+         <input type="number" class="" limit-to = "4" ng-model="otp" ng-change="disableotp(otp)">
         </div>
         <button class="button button-assertive verifyDiv" ng-click="verifyOTP(otp)" ng-disabled="!otpenable">
   VERIFY
