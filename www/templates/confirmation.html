@@ -17,13 +17,15 @@
         <div class="conirfm-orderDiv">
             <label class="conirfm-orderlbl" for="">Delivery Scheduled!</label>
             <!--<label class="confirm-successlbl" for="">Successfully</label>-->
-            <label class="confirm-refillphn" for="">We'll see you between {{deliverData.delivertime}} on</label>
-            <label class="confirm-date" for="">{{deliverData.deliverdate | date :'EEEE, MMMM dd'}}</label>
+            <label class="confirm-refillphn" for="" ng-if="deliverData.delivertime == '1PM to 6PM'">We'll see you between 1 PM and 6 PM on {{deliverData.deliverdate | date :'EEEE, MMMM dd'}}</label>
+            <label class="confirm-refillphn" for="" ng-if="deliverData.delivertime != '1PM to 6PM'">We'll see you between 8 PM and 1 PM on {{deliverData.deliverdate | date :'EEEE, MMMM dd'}}</label>
+
+            <!--<label class="confirm-date" for=""></label>-->
         </div>
     </ion-content>
     <div class="bar bar-footer signUpFooter footer-height">
-      <button class="button button-block button-positive footer-font" ui-sref="app.dashboard">
+        <button class="button button-block button-positive footer-font" ui-sref="app.dashboard">
     Go to Dashboard
   </button>
     </div>
-  </ion-view>
+</ion-view>

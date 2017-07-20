@@ -8,7 +8,7 @@
     </ion-nav-bar>
     <ion-content class="has-header chkout-bgcolor has-review-footer">
         <div class="rel" ng-repeat="product in products">
-            <div class="row review-height">
+            <!--<div class="row review-height">
                 <i class="button button-icon icon ion-ios-close-outline review-closebutton" ng-click="removeCart(product.product._id)"></i>
                 <div class="col-33">
                     <div class="prdcticon">
@@ -25,6 +25,43 @@
                             <strike ng-hide="product.product.price==getProductPrice(product.product,product.productQuantity)">{{product.product.price}}</strike>
                         </div>
                         <div for="" class="desc">Total: <b>₹ {{getProductPrice(product.product,product.productQuantity) * product.productQuantity}}</b></div>
+                    </div>
+                </div>
+            </div>-->
+            <div class="row  review-height">
+                <i class="button button-icon icon ion-ios-close-outline review-closebutton" ng-click="removeCart(product.product._id)"></i>
+                <div class="col-33">
+                    <div class="prdcticon">
+                        <img ng-src="{{product.product.smallImage | uploadpath}}" alt="">
+
+                    </div>
+
+                </div>
+                <!--<div class="col-10 divide">
+                            <div class="divline">
+                                </div>
+                             </div>-->
+                <div class="col-66">
+                    <div class="details-div">
+                        <h2 class="chkout-fontsize">{{product.product.name}}</h2>
+                        <!-- <span>({{product.category.name}})</span> -->
+                        <div for="" class="name">{{product.product.tag}} <i class="ion ion-information-circled"></i></div>
+                        <div for="" class="desc">{{product.product.description}}</div>
+                        <div for="" class="desc">₹ {{product.product.price}}</div>
+                        <div for="" class="desc" ng-hide="true">Quantity: <b>{{product.productQuantity}}</b> </div>
+                        <div for="" class="desc" ng-hide="true">Price:
+                            <b>₹ {{getProductPrice(product.product,product.productQuantity)}}</b>
+                            <strike ng-hide="product.product.price==getProductPrice(product.product,product.productQuantity)">{{product.product.price}}</strike>
+                        </div>
+                        <div for="" class="desc" ng-hide="true">Total: <b>₹ {{getProductPrice(product.product,product.productQuantity) * product.productQuantity}}</b></div>
+                    </div>
+                    <div class="addrm">
+                        <button ng-click="changeProductQuantity(product,false);" ng-disabled="checkMinProduct(product);">
+                                <i class="ion ion-minus-round"></i>
+                                </button>
+                        <span>{{product.productQuantity||0}}</span>
+                        <button ng-click="changeProductQuantity(product,true);" ng-disabled="checkMaxProduct(product);"><i class="ion ion-plus-round" ></i></button>
+
                     </div>
                 </div>
             </div>
@@ -70,44 +107,44 @@
                 </div>
             </div>
         </div>-->
-  <div class="bt45">
+        <div class="bt45">
 
-        <div class="row checkbtmcard" ng-hide="products.length==0">
-            <div class="col-25">
-                <div class="datemonth text-center">
-                    <div class="datediv">
-                        {{deliverdate | date :'dd'}}
+            <div class="row checkbtmcard" ng-hide="products.length==0">
+                <div class="col-25">
+                    <div class="datemonth text-center">
+                        <div class="datediv">
+                            {{deliverdate | date :'dd'}}
+                        </div>
+                        <div class="monthdiv ">{{deliverdate | date :'MMM'}}</div>
                     </div>
-                    <div class="monthdiv ">{{deliverdate | date :'MMM'}}</div>
                 </div>
-            </div>
-            <div class="col-5">
-                <div class="verdiv text-center"></div>
-            </div>
-            <div class="col">
-                <div class="rel">
-                    <div class="mid-day">
-                        <h4>
-                            Delivering on {{deliverdate | date :'EEEE'}}
-                        </h4>
-                        <div class="text-center rel" ng-click="calenderViewModalOpen()">
-                            Click here to change!
-                            <!-- <input type="Date" name="" value="" ng-model=""> -->
+                <div class="col-5">
+                    <div class="verdiv text-center"></div>
+                </div>
+                <div class="col">
+                    <div class="rel">
+                        <div class="mid-day">
+                            <h4>
+                                Delivering on {{deliverdate | date :'EEEE'}}
+                            </h4>
+                            <div class="text-center rel" ng-click="calenderViewModalOpen()">
+                                Click here to change!
+                                <!-- <input type="Date" name="" value="" ng-model=""> -->
+                            </div>
+                        </div>
+                        <div class="custarr">
+                            <i class="ion ion-chevron-right item-note "></i>
                         </div>
                     </div>
-                    <div class="custarr">
-                        <i class="ion ion-chevron-right item-note "></i>
-                    </div>
+
                 </div>
+            </div>
+            <div class="text-center ">
+                <span class="termscolor " ng-if="error && products.length!=0">Please select future Date</span>
 
             </div>
-        </div>
-        <div class="text-center ">
-          <span class="termscolor " ng-if="error && products.length!=0">Please select future Date</span>
 
         </div>
-
-      </div>
 
 
 

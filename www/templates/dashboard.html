@@ -1,19 +1,19 @@
 <ion-view title="Dashboard">
-    <ion-nav-bar class="bar-stable nav-height">
-        <ion-nav-buttons side="left">
-            <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
+  <ion-nav-bar class="bar-stable nav-height">
+    <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
         </button>
-        </ion-nav-buttons>
-        <ion-nav-buttons side="right">
-            <button class="button button-clear ion-ios-bell header-bellFont disblock" menu-toggle="right">
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button class="button button-clear ion-ios-bell header-bellFont disblock" menu-toggle="right">
         </button>
-        </ion-nav-buttons>
-    </ion-nav-bar>
-    <ion-content class="has-header ion-contentcolor">
-        <!-- <div class="">
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="has-header ion-contentcolor">
+    <!-- <div class="">
       <label for=" ">Coming Soon</label>
     </div> -->
-        <!-- <div class="dashboardLabel">
+    <!-- <div class="dashboardLabel">
       <label for="">Earning For this Month</label>
     </div>
     <div class="rel">
@@ -60,51 +60,53 @@
     <div class="oldCust">
       <button class="button button-icon ion-custom-user button-positive"><label class="oldCustLabel"  ng-click='price'>Old Customer</label></button>
     </div> -->
-        <div class="backdropImg ">
-            <div class="jar-div"><label for="">Your Jar Balance</label></div>
-            <label class="bal-div" for="">{{dashboardData.subscribedProd[0].jarBalance || 0}}</label>
+    <div class="backdropImg ">
+      <div class="jar-div"><label for="">Your Jar Balance</label></div>
+      <label class="bal-div" for="">{{dashboardData.subscribedProd[0].jarBalance || 0}}</label>
 
 
-            <button class="button button-light buy-more" ui-sref="app.subpage1({id:dashboardData.subscribedProd[0].product})" ng-if="dashboardData.subscribedProd[0].jarBalance != 0 && dashboardData.subscribedProd[0].jarBalance">
+      <button class="button button-light buy-more" ui-sref="app.subpage1({id:dashboardData.subscribedProd[0].product})" ng-if="dashboardData.subscribedProd[0].jarBalance != 0 && dashboardData.subscribedProd[0].jarBalance">
               Buy More
             </button>
-        </div>
-        <div class="card card-height" ng-if="dashboardData.subscribedProd[0].jarBalance != 0 && dashboardData.subscribedProd[0].jarBalance">
-            <div class="row" >
-                <div class="col-66" >
-                    <div class="card-labelspan" >
+      <label for="" class=" deposittext" ng-if="dashboardData.subscribedProd[0].jarDeposit">Bottle Deposit:₹ {{dashboardData.subscribedProd[0].jarDeposit}}</label>
+    </div>
+    <div class="card card-height" ng-if="dashboardData.subscribedProd[0].jarBalance != 0 && dashboardData.subscribedProd[0].jarBalance">
+      <div class="row">
+        <div class="col-66">
+          <div class="card-labelspan">
 
-                        <label class="card-label" for="" ng-show="!showSchdeule && OrderByUser.length==1">Schedule your first Delivery</label>
-                        <label class="card-label" for="" ng-show="!showSchdeule && OrderByUser.length>1">We'll be in your area on</label>
-                        <label class="card-label" for="" ng-show="showSchdeule">Delivery Scheduled for</label>
-                        <span class="cardDayspan" ng-show="!showSchdeule && OrderByUser.length>1">{{lastJarBal.deliverdate2 | date :'EEEE'}} </span>
-                        <span class="cardDate" ng-show="!showSchdeule && OrderByUser.length>1">{{lastJarBal.deliverdate2 | date :'MMMM dd,'}}</span>
-                        <span class="cardDayspan" ng-show="showSchdeule">{{lastJarBal.deliverdate | date :'EEEE'}} </span>
-                        <span class="cardDate" ng-show="showSchdeule">{{lastJarBal.deliverdate | date :'MMMM dd,'}}</span>
-                    </div>
+            <label class="card-label" for="" ng-show="!showSchdeule && OrderByUser.length==1">Schedule your first Delivery</label>
+            <label class="card-label" for="" ng-show="!showSchdeule && OrderByUser.length>1">We'll be in your area on</label>
+            <label class="card-label" for="" ng-show="showSchdeule">Delivery Scheduled for</label>
+            <span class="cardDayspan" ng-show="!showSchdeule && OrderByUser.length>1">{{lastJarBal.deliverdate2 | date :'EEEE'}} </span>
+            <span class="cardDate" ng-show="!showSchdeule && OrderByUser.length>1">{{lastJarBal.deliverdate2 | date :'MMMM dd,'}}</span>
+            <span class="cardDayspan" ng-show="showSchdeule">{{lastJarBal.deliverdate | date :'EEEE'}} </span>
+            <span class="cardDate" ng-show="showSchdeule">{{lastJarBal.deliverdate | date :'MMMM dd,'}}</span>
+          </div>
 
-                    <button class="button card-schedule" ui-sref="app.calendar({orderId:dashboardData.subscribedProd[0].recentOrder._id})" ng-show="!showSchdeule">
+          <button class="button card-schedule" ui-sref="app.calendar({orderId:dashboardData.subscribedProd[0].recentOrder._id})" ng-show="!showSchdeule">
                     <span> Schedule delivery </span>
                     </button>
-                    <button class="button card-schedule" ng-show="showSchdeule && dashboardData.subscribedProd[0].recentOrder.plan != 'Onetime'" ng-click="cancelJarDelivery()">
+          <button class="button card-schedule" ng-show="showSchdeule && dashboardData.subscribedProd[0].recentOrder.plan != 'Onetime'"
+            ng-click="cancelJarDelivery()">
                     <span> Cancel delivery</span>
                     </button>
-                </div>
-                <div class="col-33">
-                    <div class="card-imgDiv">
-                        <img class="card-img img-responsive" src="img/bisleri.png" alt="">
-                    </div>
-                </div>
-            </div>
         </div>
-        <div class="card bmore">
-            <div class="item item-text-wrap" ui-sref='app.browse'>
-                Browse More Products
-            </div>
+        <div class="col-33">
+          <div class="card-imgDiv">
+            <img class="card-img img-responsive" src="img/bisleri.png" alt="">
+          </div>
         </div>
-    </ion-content>
-    <div class="">
-
+      </div>
     </div>
-    <label for="" class="addons">Add-ons will be delivered with your first delivery</label>
-  </ion-view>
+    <div class="card bmore">
+      <div class="item item-text-wrap" ui-sref='app.browse'>
+        Browse More Products
+      </div>
+    </div>
+  </ion-content>
+  <div class="">
+
+  </div>
+  <!--<label for="" class="addons">Add-ons will be delivered with your first delivery</label>-->
+</ion-view>

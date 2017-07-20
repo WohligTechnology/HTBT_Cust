@@ -1,4 +1,4 @@
-<ion-view title="Schedule">
+<ion-view title="Schedule Delivery">
     <ion-nav-bar class="bar-stable schedule-bar  nav-height">
         <ion-nav-buttons side="left">
             <button class="button button-clear ion-android-arrow-back sigupIconLeft" ng-click="goBackHandler()">
@@ -10,13 +10,13 @@
         </ion-nav-buttons> -->
     </ion-nav-bar>
     <ion-content class="has-header ion-contentcolor">
-        <label for="" class="schedule-head">Select a Date </label>
+        <label for="" class="schedule-head">Select a Date &amp; Time</label>
         <div class="ionic_Calendar card" ng-controller="CalendarViewCtrl">
             <div class="calendar_Date">
                 <div class="row" style=" background-color: transparent;  color: black;">
-                    <div class="col txtCenter arrowcal"><i class="icon ion-chevron-left" ng-click="selectedMonthPrevClick()"></i></div>
-                    <div class="col col-75 txtCenter monthtext" ng-click="UIdisplayDatetoMonth()">{{dislayMonth}} </div>
-                    <div class="col txtCenter arrowcal"><i class="icon ion-chevron-right" ng-click="selectedMonthNextClick()"></i></div>
+                    <div class="col txtright arrowcal"><i class="icon ion-chevron-left" ng-click="selectedMonthPrevClick()"></i></div>
+                    <div class="col col-50 txtCenter monthtext" ng-click="UIdisplayDatetoMonth()">{{dislayMonth}} </div>
+                    <div class="col txtleft arrowcal"><i class="icon ion-chevron-right" ng-click="selectedMonthNextClick()"></i></div>
                 </div>
                 <div class="row Daysheading Daysheading_Label" style="background-color: transparent;  color: black">
                     <div class="col redsun">Sun</div>
@@ -28,14 +28,14 @@
                     <div class="col">Sat</div>
                 </div>
                 <div class="row Daysheading DaysDisplay" ng-repeat="rowVal in datesDisp  track by $index" ng-class="{'marginTop0':$first}">
-                    <div class="col"  ng-repeat="colVal in rowVal  track by $index" ng-init="dateIndex = $index" ng-class="{'fadeDateDisp':(colVal.type == 'oldMonth' || colVal.type == 'newMonth'), 'redsun':(dateIndex == 0), 'deliverday':(days[dateIndex].value == true  ),'notavailDate':(days[dateIndex].value == false),'selDate':(colVal.date == displayDate && colVal.type == 'currentMonth')}">
-                        <div class="" ng-if="days[dateIndex].value" ng-click="selectedDateClick(colVal)" >
-                          {{colVal.date}}
+                    <div class="col" ng-repeat="colVal in rowVal  track by $index" ng-init="dateIndex = $index" ng-class="{'fadeDateDisp':(colVal.type == 'oldMonth' || colVal.type == 'newMonth'), 'redsun':(dateIndex == 0), 'deliverday':(days[dateIndex].value == true && getDateStatus(colVal.fullDate) ),'notavailDate':(days[dateIndex].value == false || !getDateStatus(colVal.fullDate)),'selDate':(colVal.date == displayDate && colVal.type == 'currentMonth'  && getDateStatus(colVal.fullDate)) }">
+                        <div class="" ng-if="days[dateIndex].value " ng-click="selectedDateClick(colVal)">
+                            {{colVal.date}}
                         </div>
-                        <div class="" ng-if="!days[dateIndex].value" >
-                          {{colVal.date}}
+                        <div class="" ng-if="!days[dateIndex].value">
+                            {{colVal.date}}
                         </div>
-                      </div>
+                    </div>
                 </div>
 
             </div>
@@ -45,8 +45,8 @@
 
         <div class="card m10 time-row rel timeslot">
 
-            <div class="row no-pad " ng-init="calendarData.delivertime='8 AM to 1 PM'" ng-if="!getDate()" >
-                <div class="col " ng-click="calendarData.delivertime = '8 AM to 1 PM' " ng-class="{'time-highlight' : calendarData.delivertime == '8 AM to 1 PM'}" >
+            <div class="row no-pad " ng-init="calendarData.delivertime='8 AM to 1 PM'" ng-if="!getDate()">
+                <div class="col " ng-click="calendarData.delivertime = '8 AM to 1 PM' " ng-class="{'time-highlight' : calendarData.delivertime == '8 AM to 1 PM'}">
                     8 AM to 1 PM
                     <!-- <label class="time-label" for=""></label> -->
                 </div>
