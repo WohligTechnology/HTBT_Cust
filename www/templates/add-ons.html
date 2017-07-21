@@ -9,7 +9,7 @@
         <div class="">
           <div class="header">Would you like any add-ons?</div>
 
-            <div class="addons-radio">
+            <!-- <div class="addons-radio">
                 <div class="card" ng-if="saveSpace.length>0">
                     <div class="custom">
                         <span> Save Space</span>
@@ -58,7 +58,45 @@
                         </div>
                     </div>
                 </div>
+            </div> -->
+            <div class="prod-det">
+            <div class="card" ng-repeat="product in otherProduct">
+
+                <div class="item item-text-wrap pad0">
+                    <div class="row">
+                        <div class="col-33">
+                            <div class="prdcticon">
+                                <img ng-src="{{product.smallImage | uploadpath}}" alt="">
+
+                            </div>
+
+                        </div>
+                        <!--<div class="col-10 divide">
+                            <div class="divline">
+                                </div>
+                             </div>-->
+                        <div class="col-66">
+                            <div class="details-div">
+                                <h2>{{product.name}} </h2>
+                                <!-- <span>({{product.category.name}})</span> -->
+                                <div for="" class="name">{{product.tag}} <i class="ion ion-information-circled"></i></div>
+                                <div for="" class="desc">{{product.description}}</div>
+                                <div for="" class="desc">₹ {{product.price}}</div>
+                            </div>
+                            <div class="addrm">
+                                <button ng-click="changeProductQuantity(product,false);" ng-disabled="checkMinProduct(product);">
+                                <i class="ion ion-minus-round"></i>
+                                </button>
+                                <span>{{product.productQuantity||0}}</span>
+                                <button ng-click="changeProductQuantity(product,true);" ng-disabled="checkMaxProduct(product);"><i class="ion ion-plus-round" ></i></button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            </div>
+          
         </div>
     </ion-content>
     <div class="bar bar-footer bar-assertive">

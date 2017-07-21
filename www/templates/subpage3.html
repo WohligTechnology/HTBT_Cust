@@ -5,10 +5,11 @@
         </button>
         </ion-nav-buttons>
     </ion-nav-bar>
-    <ion-content class="has-header chkout-bgcolor has-footer">
+    <ion-content class="has-header chkout-bgcolor ">
         <div class="header">Which plan would you like?</div>
+        <label for="" class="buyJar">Buy a jar plan, and get jar with lifetime validity</label>
 
-        <div class="row onceweekDiv" ui-sref="app.addons" ng-click="addPlan('Quarterly',12);">
+        <!-- <div class="row onceweekDiv" ui-sref="app.addons" ng-click="addPlan('Quarterly',12);">
             <div class="col-67 col-50pad border col-margin">
                 <label class="jarslbl" for="">Quarterly Plan</label>
                 <p class="onceLblr" for="">{{subscription.product[0].quantity * 12}} Jars</p>
@@ -58,12 +59,78 @@
           <p class="amtdepo" ng-if="subscription.productDetail.AmtDeposit">Deposit of ₹ {{subscription.productDetail.AmtDeposit}} per jar</p>
 
 
+        </div> -->
+  <div class="row onceweekDiv" ui-sref="app.addons" ng-click="addPlan('Quarterly',50);">
+            <div class="col-67 col-50pad border col-margin">
+                <label class="jarslbl" for="">50 Jar Plan</label>
+                 <!-- <p class="onceLblr" for="">{{subscription.product[0].quantity * 50}} Jars</p>  -->
+            </div>
+            <div class="col-33 col-37pad col-margin">
+                <div class="rel" ng-hide="getProductPrice(subscription.productDetail, subscription.product[0].quantity * 50) == subscription.productDetail.price">
+                    <!-- <label class="lbl90"> {{subscription.productDetail.price}} </label> -->
+                </div>
+                <label class="rupsym" for="">₹</label>
+                <label class="lbl88" for=""> {{getProductPrice(subscription.productDetail, subscription.product[0].quantity * 50)}} </label>
+                <label class="perjar" for="">/Jar</label>
+            </div>
         </div>
+        <div class="row onceweekDiv" ui-sref="app.addons" ng-click="addPlan('Monthly',30);">
+            <!-- <img src="img/most-popular.png" alt="" class="most-popular"> -->
+            <div class="col-67 col-50pad border col-margin">
+                <label class="jarslbl" for="">30 Jar Plan </label>
+                 <!-- <p class="onceLblr" for="">{{subscription.product[0].quantity*30}} Jars</p>  -->
+            </div>
+            <div class="col-33 col-37pad col-margin">
+                <div class="rel" ng-hide="getProductPrice(subscription.productDetail, subscription.product[0].quantity * 30) == subscription.productDetail.price">
+                    <label class="lbl90"> {{subscription.productDetail.price}} </label>
+                </div>
+                <label class="rupsym" for="">₹</label>
+                <label class="lbl88" for=""> {{getProductPrice(subscription.productDetail, subscription.product[0].quantity * 30)}} </label>
+                <label class="perjar" for="">/Jar</label>
+            </div>
+        </div>
+        </div>
+        <div class="onceweekDiv" ui-sref="app.addons" ng-click="addPlan('Onetime',10);" >
+          <div class="row">
+            <div class="col-67 col-50pad border col-margin">
+                 <label class="jarslbl" for="">10 Jar Plan</label> 
+                 <!-- <p class="onceLblr" for="">{{subscription.product[0].quantity*10}} Jars</p>  -->
 
+            </div>
+            <div class="col-33 col-37pad col-margin">
+                <div class="rel" ng-hide="getProductPrice(subscription.productDetail, subscription.product[0].quantity * 10) == subscription.productDetail.price">
+                    <label class="lbl90"> {{subscription.productDetail.price}} </label>
+                </div>
+                <label class="rupsym" for="">₹</label>
+                <label class="lbl88" for=""> {{getProductPrice(subscription.productDetail, subscription.product[0].quantity * 10)}} </label>
+                <label class="perjar" for="">/Jar</label>
+
+            </div>
+          </div>
+        </div>
+           <div class="onceweekDiv" ui-sref="app.subpage1" >
+          <div class="row">
+            <div class="col-67 col-50pad  col-margin">
+                 <label class="jarslbl" for="">Create your own plan</label> 
+                 <!-- <p class="onceLblr" for="">{{subscription.product[0].quantity*10}} Jars</p>  -->
+
+            </div>
+            <div class="col-33 ">
+                <div class="addplan">
+                    <i class="ion ion-plus "></i>
+                </div>
+       
+
+            </div>
+          </div>
+          <!-- <p class="amtdepo" ng-if="subscription.productDetail.AmtDeposit">Deposit of ₹ {{subscription.productDetail.AmtDeposit}} per jar</p> -->
+
+
+        </div>
     </ion-content>
-    <div class="bar bar-footer depositDiv footer-height">
+    <!-- <div class="bar bar-footer depositDiv footer-height">
         <div class="depositDiv">
             <label class="depositclrLbl" for="">Plan has lifetime validity.</label>
         </div>
-    </div>
+    </div> -->
 </ion-view>

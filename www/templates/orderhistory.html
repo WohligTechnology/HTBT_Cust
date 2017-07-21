@@ -87,14 +87,14 @@
     <div class="tabHistory" >
       <div class="row">
         <div class="col-50"  ng-click="showhistory(0) " ng-class="{'undercol':show ==0}">
-          JAR HISTORY
+          PLAN HISTORY
         </div>
         <div class="col-50" ng-click="showhistory(1)" ng-class="{'undercol':show ==1}">
           ORDER HISTORY
         </div>
       </div>
     </div>
-    <ion-content class="has-header bgearn has-tabs-top-over " >
+    <ion-content class="has-header bgearn  " >
       <ion-refresher on-refresh="doRefresh()">
 
       </ion-refresher>
@@ -126,8 +126,7 @@
             </div>
         </div>
       </div>
-      <div class="hasorder-foot" ng-if="show==1">
-
+      <div class="hasorder-foot orhistory" ng-if="show==1">
         <div class="" ng-repeat="order in OrderByUser">
             <div class="whtback">
                 <div class="row order-jarRowhistory">
@@ -161,7 +160,7 @@
 
     </ion-content>
     </div>
-    <div class="cust-search  ">
+    <!-- <div class="cust-search  ">
         <div class="">
             <div class="jar-div"><label for="">Your Jar Balance</label></div>
             <label class="bal-div" for="">{{dashboardData.subscribedProd[0].jarBalance || 0}}</label>
@@ -169,6 +168,6 @@
             Buy More
           </button>
         </div>
-    </div>
+    </div> -->
 
 </ion-view>

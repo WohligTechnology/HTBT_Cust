@@ -1,69 +1,81 @@
 <ion-view title="Browse">
     <ion-nav-bar class="bar-stable schedule-bar  nav-height">
-      <ion-nav-buttons side="left">
-          <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
+        <ion-nav-buttons side="left">
+            <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
       </button>
-      </ion-nav-buttons>
+        </ion-nav-buttons>
         <ion-nav-buttons side="right">
             <div class="cartbtn" ui-sref="app.review">
-                <img src="img/9.png" alt="" >
+                <img src="img/9.png" alt="">
             </div>
             <span class="cartbadge">{{userDetails.cartQuantity}}</span>
         </ion-nav-buttons>
     </ion-nav-bar>
     <ion-content class="has-header browse-backgrndcolor">
-      <div class=""  >
-        <ion-slide-box options="homeSlider.sliderOptions" slider="homeSlider.sliderDelegate" does-continue="true" animation='fade'
-            auto-play="true" effect='fade' slide-interval="{{interval}}" show-pager="true" pager-click="changeSlide(index)" on-slide-changed="slideHasChanged(index)">
-            <ion-slide ng-if="feaprods.length>0" ng-repeat="data in feaprods" [options]="{pager:true}">
-                <div class="box box1">
-                    <div class="row browse-sliderRow">
-                        <div class="col-50">
-                            <div class="browse-slideImgDiv">
-                                <img class="browse-sliderImg " ng-src="{{data.bigImage | uploadpath}}" alt="">
+        <div class="">
+            <ion-slide-box options="homeSlider.sliderOptions" slider="homeSlider.sliderDelegate" does-continue="true" animation='fade'
+                auto-play="true" effect='fade' slide-interval="{{interval}}" show-pager="true" pager-click="changeSlide(index)"
+                on-slide-changed="slideHasChanged(index)">
+                <ion-slide ng-if="feaprods.length>0" ng-repeat="data in feaprods" [options]="{pager:true}">
+                    <div class="box box1">
+                        <div class="row browse-sliderRow">
+                            <div class="col-50">
+                                <div class="browse-slideImgDiv">
+                                    <img class="browse-sliderImg " ng-src="{{data.bigImage | uploadpath}}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-50 browse-col502">
+                                <span class="browse-col502lbl" for="">{{data.category.name}}</span>
+                                <span class="browse-col502aqua" for="">{{data.name}}</span>
+                                <span class="browse-col502ltrcolor">Per Jars</span>
+                                <span class="browse-col502slash">|</span>
+                                <span class="browse-col502rupeesymb">₹</span>
+                                <span class="browse-col502rupees">{{data.price}}</span>
                             </div>
                         </div>
-                        <div class="col-50 browse-col502">
-                            <span class="browse-col502lbl" for="">{{data.category.name}}</span>
-                            <span class="browse-col502aqua" for="">{{data.name}}</span>
-                            <span class="browse-col502ltrcolor">Per Jars</span>
-                            <span class="browse-col502slash">|</span>
-                            <span class="browse-col502rupeesymb">₹</span>
-                            <span class="browse-col502rupees">{{data.price}}</span>
+                    </div>
+                </ion-slide>
+            </ion-slide-box>
+            <div class="browse-grid">
+                <div class="card" ng-repeat="sub in subscription" ng-click="nextPage(sub.subscription,sub._id);">
+                    <div class="item item-text-wrap pad10">
+                        <div class="row">
+                            <div class="col-75">
+                                <div class="deposittext">
+                                    <label for="" class="pull-left">Buy a {{sub.name}} jar Plan</label>
+                                    <label for="">No deposits</label>
+                                </div>
+                            </div>
+                            <div class="col-25">
+                                <div class="img-bottle">
+                                     <img ng-src="{{sub.catImage | uploadpath}}" class="img-responsive" ng-if="sub.catImage"> 
+                                    <img src="img/bottol.png" alt="" ng-if="!sub.catImage">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </ion-slide>
-        </ion-slide-box>
-        <div class="browse-grid">
-            <div class="card">
-            <div class="item item-text-wrap">
-                <div class="no-deposite">
-               <label for="">Buy a 20L jar Plan <br> No deposits</label>
-                </div>
-               <div class="img-bottle"><img src="http://htbttesting.wohlig.co.in/api/upload/readFile?file=592c04df107b2f492bb4bfb1.png" class="img-responsive"></div>
-            </div>
-            </div>
-            <label for="" class="browse-text">Our Products</label>
-            <div class="row" ng-if="category.length>0" ng-repeat="data1 in category" ng-init="outerIndex=$index">
-                <div class="col-50" ng-repeat="data in data1" ng-init="innerIndex=$index">
-                    <div class="browse-card1" ng-if="(outerIndex + innerIndex )% 2 == 0" ng-click="nextPage(data.subscription,data._id);">
-                        <div class="icondiv">
-                            <img ng-src="{{data.catImage | uploadpath}}" alt="">
+                <label for="" class="browse-text">Our Products</label>
+
+                <div class="row" ng-if="notSubscription.length>0" ng-repeat="data1 in notSubscription" ng-init="outerIndex=$index">
+                    <div class="col-50" ng-repeat="data in data1" ng-init="innerIndex=$index">
+                        <div class="browse-card1 card" ng-if="(outerIndex + innerIndex )% 2 == 0" ng-click="nextPage(data.subscription,data._id);">
+                            <div class="icondiv">
+                                <img ng-src="{{data.catImage | uploadpath}}" alt="">
+                            </div>
+                            <!--<label for="">{{data.name}}</label>-->
                         </div>
-                        <!--<label for="">{{data.name}}</label>-->
-                    </div>
-                    <div class="browse-card2" ng-if="(outerIndex + innerIndex )% 2 != 0" ng-click="nextPage(data.subscription,data._id);">
-                        <div class="icondiv">
-                            <img ng-src="{{data.catImage | uploadpath}}" alt="">
+                        <div class="browse-card2 card" ng-if="(outerIndex + innerIndex )% 2 != 0" ng-click="nextPage(data.subscription,data._id);">
+                            <div class="icondiv">
+                                <img ng-src="{{data.catImage | uploadpath}}" alt="">
+                            </div>
+                            <!--<label for="">{{data.name}}</label>-->
                         </div>
-                        <!--<label for="">{{data.name}}</label>-->
                     </div>
                 </div>
             </div>
         </div>
-      </div>
-      <!-- <div class="loader" ng-if="loader">
+        <!-- <div class="loader" ng-if="loader">
         <img src="img/loading.gif" alt="">
       </div> -->
 

@@ -1157,8 +1157,7 @@ display: none
 
 .browse-grid {
     padding: 20px 0 0;
-    text-align: center;
-    background: white;
+    text-align: center; // background: white;
 }
 
 .browse-text {
@@ -1174,11 +1173,9 @@ display: none
     margin: 1.5px;
     .icondiv {
         height: auto;
-        width: 100%;
-        padding: 15px 0;
+        width: 100%; // padding: 15px 0;
         display: block;
-        text-align: center;
-        background: #e7e9ea;
+        text-align: center; // background: #e7e9ea;
         img {
             height: auto;
             width: 100%;
@@ -1210,11 +1207,9 @@ display: none
     margin: 1.5px;
     .icondiv {
         height: auto;
-        width: 100%;
-        padding: 15px 0;
+        width: 100%; // padding: 15px 0;
         display: block;
-        text-align: center;
-        background: #fafafa;
+        text-align: center; // background: #fafafa;
         img {
             height: auto;
             width: 100%;
@@ -1929,9 +1924,14 @@ display: none
 
 .onceweekDiv {
     background: white;
-    margin: 15px;
+    margin: 5px;
+    margin-top: 0!important;
     width: auto;
     padding-bottom: 0;
+    .row+.row {
+        margin-top: 0px;
+        padding-top: 0;
+    }
 }
 
 .col-margin {
@@ -1947,7 +1947,7 @@ display: none
 }
 
 .col-37pad {
-    padding: 20px 5px;
+    padding: 5px 7px;
 }
 
 .jarslbl {
@@ -1964,9 +1964,9 @@ display: none
 
 .lbl90 {
     position: absolute;
-    top: -21px;
-    right: 5px;
-    font-size: 20px;
+    top: -5px;
+    right: 15px;
+    font-size: 14px;
     text-decoration: line-through;
     color: #6d797e;
 }
@@ -3101,7 +3101,7 @@ p.onceLblr {
 
 .bgearn {
     background: #f2f4f5;
-    top: 305px!important;
+    top: 105px!important;
 }
 
 .has-footer {
@@ -3161,7 +3161,7 @@ p.onceLblr {
 
 //tab history
 .tabHistory {
-    top: 252px;
+    top: 52px;
     position: absolute;
     text-align: center;
     width: 100%;
@@ -3180,6 +3180,7 @@ p.onceLblr {
 
 .hasorder-foot {
     margin-bottom: 30px!important;
+    margin-top: 15px;
 }
 
 //scss by snehal
@@ -3230,7 +3231,50 @@ p.onceLblr {
 }
 
 .deposittext {
-    color: white;
+    text-align: left;
+    label:nth-child(1) {
+        color: #223c4d;
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+    }
+    label:nth-child(2) {
+        color: #223c4d;
+        display: block;
+        font-size: 12px;
+    }
+}
+
+.img-bottle {
+    height: 50px;
+    width: 100%;
+    text-align: right;
+    img {
+        height: 100%;
+    }
+}
+
+.pad10 {
+    padding: 10px!important;
+}
+
+.buyJar {
+    color: #6d797e;
     text-align: center;
     display: block;
+}
+
+.addplan {
+    display: block;
+    text-align: center;
+    i {
+        padding: 5px;
+        border: 3px solid #ff414d;
+        border-radius: 50%;
+        margin-top: 20px;
+        &::before {
+            font-size: 20px;
+            color: #ff414d;
+        }
+    }
 }

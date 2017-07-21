@@ -1156,7 +1156,9 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
             $.jStorage.set('subProduct', $scope.subscription);
 
             if ($scope.totalQuantity === 0) {
-                $state.go("app.subpage1");
+                // $state.go("app.subpage1");
+                $state.go("app.subpage3");
+
             } else {
                 var myPopup = $ionicPopup.show({
                     cssClass: 'productspopup',
@@ -1293,8 +1295,11 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
             $scope.loader = false;
 
             console.log(data);
-            $scope.category = _.chunk(data.data, 2);
-            console.log($scope.category);
+            $scope.category = _.groupBy(data.data, "subscription");
+            $scope.subscription = $scope.category["Yes"];
+            $scope.notSubscription = $scope.category["No"];
+            $scope.notSubscription = _.chunk($scope.notSubscription, 2);
+            console.log($scope.notSubscription);
 
         });
         $scope.profile = $.jStorage.get('profile');
@@ -1336,9 +1341,10 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
         MyServices.getOtherProducts(function (data) {
             if (data.status == 200) {
                 if (data.data && data.data.data && data.data.data.results) {
-                    $scope.otherProducts = _.groupBy(data.data.data.results, "addones");
-                    $scope.saveSpace = $scope.otherProducts["Save Space"];
-                    $scope.saveTime = $scope.otherProducts["Save Time"];
+                    $scope.otherProduct = data.data.data.results;
+                    // $scope.otherProducts = _.groupBy(data.data.data.results, "addones");
+                    // $scope.saveSpace = $scope.otherProducts["Save Space"];
+                    // $scope.saveTime = $scope.otherProducts["Save Time"];
                 }
             } else {
                 $ionicPopup.alert({
