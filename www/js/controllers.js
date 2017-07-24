@@ -423,7 +423,30 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
         }
 
-
+        $scope.checkMinProduct = function (product) {
+            if (!product.productQuantity || product.productQuantity <= 0) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        $scope.checkMaxProduct = function (product) {
+            if (product.productQuantity >= parseInt(product.quantity)) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        $scope.changeProductQuantity = function (product, change) {
+            if (_.isNaN(parseInt(product.productQuantity))) {
+                product.productQuantity = 0;
+            }
+            if (change) {
+                product.productQuantity++;
+            } else {
+                product.productQuantity--;
+            }
+        };
         $ionicModal.fromTemplateUrl('templates/modal/calender.html', {
             scope: $scope,
             animation: 'slide-in-up'
@@ -2135,7 +2158,24 @@ angular.module('starter.controllers', ['angular-svg-round-progressbar', 'starter
 
         };
     })
-    .controller('PincodeCtrl', function ($scope, $ionicPopup, $stateParams, $ionicActionSheet, $cordovaFileTransfer, $cordovaCamera, $ionicPopover, $state, MyServices, $cordovaImagePicker) {})
+    .controller('PincodeCtrl', function ($scope, $ionicPopup, $stateParams, $state, MyServices) {})
+    .controller('OrderDetailCtrl', function ($scope, $ionicPopup, $stateParams, $state, MyServices) {
+        $scope.order = {};
+        $scope.order._id = $stateParams.orderId;
+        MyServices.getDeliveryRequestByOrder($scope.order, function (data) {
+            if (data.value && data.data.length != 0) {
+                $scope.orderDetails = data.data;
+            } else {
+                MyServices.OrderGetOne($scope.order, function (data) {
+                    if (data.value) {
+                        $scope.orderDetails = data.data;
+                    }
+                });
+            }
+        });
+
+
+    })
 
     .controller('SignUpCtrl', function ($scope, $stateParams, $ionicPopup, $ionicPopover, MyServices, $state) {
         $scope.sorryPopup = function () {

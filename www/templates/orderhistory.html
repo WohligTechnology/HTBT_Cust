@@ -150,8 +150,9 @@
                 </div>
                 <div class="orderDate clearfix">
                     <label for="" class="order">Order Date:{{order.orderDate |date :'dd/MM/yy'}}</label>
-                    <label for="" class="deliver" ng-if="order.plan">see Jar History</label>
-                    <label for="" class="deliver" ng-if="!order.plan "></label>
+                    <i class="ion ion-chevron-right deliver" ui-sref="app.order-detail({orderId:order._id})"> </i>
+                    <!-- <label for="" class="deliver" ng-if="order.plan">see Jar History</label>
+                    <label for="" class="deliver" ng-if="!order.plan "></label> -->
                 </div>
             </div>
         </div>

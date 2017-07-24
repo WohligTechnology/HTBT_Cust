@@ -26,7 +26,7 @@ ion-ios-close-outline chkout-closebutton" ng-click="cancelSubscription();"></i>
                     <div class="chkout-align">
                         <h2 class="chkout-fontsize">{{subscription.productDetail.name}}</h2>
                         <div for="" class="colorpure">{{subscription.productDetail.tag}} <i class="ion ion-information-circled"></i></div>
-                        <!-- <div for="" class="desc">{{subscription.productDetail.description}}</div> -->
+                        <div for="" class="desc">Jar plan</div>
                         <div for="" class="desc">₹ {{subscription.productDetail.priceUsed}}/ {{subscription.productDetail.unit}}
                         </div>
 
@@ -34,7 +34,42 @@ ion-ios-close-outline chkout-closebutton" ng-click="cancelSubscription();"></i>
                 </div>
             </div>
         </div>
+        <div class="rel" ng-repeat="product in subscription.otherProducts">
 
+            <div class="row  review-height">
+                <i class="button button-icon icon ion-ios-close-outline review-closebutton" ng-click="removeCart(product.product._id)"></i>
+                <div class="col-33">
+                    <div class="prdcticon">
+                        <img ng-src="{{product.smallImage | uploadpath}}" alt="">
+
+                    </div>
+
+                </div>
+
+                <div class="col-66">
+                    <div class="details-div">
+                        <h2 class="chkout-fontsize">{{product.name}}</h2>
+                        <!-- <span>({{product.category.name}})</span> -->
+                        <div for="" class="name">{{product.tag}} <i class="ion ion-information-circled"></i></div>
+                        <div for="" class="desc">{{product.description}}</div>
+                        <div for="" class="desc">₹ {{product.price}}</div>
+                        <div for="" class="desc" ng-hide="true">Quantity: <b>{{product.productQuantity}}</b> </div>
+                        <div for="" class="desc" ng-hide="true">Price:
+                            <b>₹ {{getProductPrice(product,product.productQuantity)}}</b>
+                        </div>
+                        <div for="" class="desc" ng-hide="true">Total: <b>₹ {{getProductPrice(product,product.productQuantity) * product.productQuantity}}</b></div>
+                    </div>
+                    <div class="addrm">
+                        <button ng-click="changeProductQuantity(product,false);" ng-disabled="checkMinProduct(product);">
+                                <i class="ion ion-minus-round"></i>
+                                </button>
+                        <span>{{product.productQuantity||0}}</span>
+                        <button ng-click="changeProductQuantity(product,true);" ng-disabled="checkMaxProduct(product);"><i class="ion ion-plus-round" ></i></button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- <div class="row bgrowQuant " ng-if="subscription.productDetail.applicableBefore>subscription.product[0].quantity"> -->
         <div class="row bgrowQuant " ng-if="deposit">
             <div class="col-67 bgchkoutcol50Quant">
@@ -56,7 +91,7 @@ ion-ios-close-outline chkout-closebutton" ng-click="cancelSubscription();"></i>
                 </div>
             </div>
         </div>
-        <div class="row bgrowQuant ">
+        <!-- <div class="row bgrowQuant ">
             <div class="col-67 bgchkoutcol50Quant">
                 <div>
                     <label for="">Jar Plan
@@ -106,9 +141,9 @@ ion-ios-close-outline chkout-closebutton" ng-click="cancelSubscription();"></i>
                     <label for="">₹  {{totalPriceForJar}}</label>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="row bgrowQuant " ng-repeat="op in
+        <!-- <div class="row bgrowQuant " ng-repeat="op in
 subscription.otherProducts">
             <div class="col-67 bgchkoutcol50Quant">
                 <div>
@@ -127,8 +162,17 @@ subscription.otherProducts">
                     <label for="">₹  {{(op.productQuantity*op.price)}}</label>
                 </div>
             </div>
+        </div> -->
+           <div class="row chkoutcoupon" ng-hide="products.length==0">
+            <div class="col-50">
+                <label for="">Enter coupon code</label>
+            </div>
+            <div class="col-50 chkpadip">
+                <input type="text" placeholder="Type coupon code here">
+
+            </div>
         </div>
-        <div class="row checkbtmcard" ng-if="subscription.plan == 'Onetime'">
+        <!-- <div class="row checkbtmcard" ng-if="subscription.plan == 'Onetime'">
             <div class="col-25">
                 <div class="datemonth text-center">
                     <div class="datediv">
@@ -148,7 +192,6 @@ subscription.otherProducts">
                         </h4>
                         <div class="text-center rel" ng-click="calenderViewModalOpen()">
                             Click here to change!
-                            <!-- <input type="Date" name="" value="" ng-model=""> -->
                         </div>
                     </div>
                     <div class="custarr">
@@ -156,9 +199,9 @@ subscription.otherProducts">
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="text-center">
-          <span class="termscolor" ng-if="error">Please select future Date</span>
+            <span class="termscolor" ng-if="error">Please select future Date</span>
 
         </div>
     </ion-content>

@@ -231,7 +231,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker', '
             }
         }
     })
-
+   .state('app.order-detail', {
+        url: '/order-detail/:orderId',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/order-detail.html',
+                controller: 'OrderDetailCtrl'
+            }
+        }
+    })
     .state('app.auth-payment', {
         url: '/auth-payment',
         views: {

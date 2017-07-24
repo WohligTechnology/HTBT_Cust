@@ -12277,7 +12277,9 @@ p.onceLblr {
   max-width: 30%; }
 
 .whtback {
-  background: white; }
+  background: white;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(156, 156, 156, 0.16); }
 
 .bgearn {
   background: #f2f4f5;
@@ -12294,9 +12296,12 @@ p.onceLblr {
 
 .orderDate .deliver {
   float: right;
-  font-size: 12px;
-  color: black;
-  margin: 5px; }
+  font-size: 18px;
+  color: #ff414d;
+  margin: 5px;
+  right: 16px;
+  position: absolute;
+  padding: 0px 10px; }
 
 .notavailDate {
   opacity: 0.3; }
@@ -12419,3 +12424,9 @@ p.onceLblr {
     .addplan i::before {
       font-size: 20px;
       color: #ff414d; }
+
+.btmorder {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 11px; }

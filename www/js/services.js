@@ -6,14 +6,14 @@ var imgurl = adminurl + "upload/";
 var imgpath = imgurl + "readFile?file=";
 // var uploadurl = imgurl;
 angular.module('starter.services', [])
-    .factory('MyServices', function($http) {
+    .factory('MyServices', function ($http) {
         var appDetails = {};
         var calDate = new Date();
         var incorrect = false;
 
         function getProductPrice(product, quantity) {
             var foundPrice = {};
-            var orderedPrice = _.orderBy(product.priceList, function(n) {
+            var orderedPrice = _.orderBy(product.priceList, function (n) {
                 return parseInt(n.endRange);
             });
 
@@ -24,7 +24,7 @@ angular.module('starter.services', [])
                 product.totalPriceUsed = product.price * parseInt(quantity);
                 return parseInt(product.price);
             } else {
-                _.each(orderedPrice, function(obj) {
+                _.each(orderedPrice, function (obj) {
                     if (parseInt(quantity) <= parseInt(obj.endRange)) {
                         foundPrice = obj;
                         product.priceUsed = obj.finalPrice;
@@ -43,10 +43,10 @@ angular.module('starter.services', [])
         }
         appDetails.cartQuantity = $.jStorage.get("cartQuantity");
         return {
-            getAppDetails: function() {
+            getAppDetails: function () {
                 return appDetails;
             },
-            getProfile: function(id, callback) {
+            getProfile: function (id, callback) {
 
                 $http({
                     url: adminurl + 'user/getProfile',
@@ -55,15 +55,15 @@ angular.module('starter.services', [])
                     data: id
                 }).success(callback);
             },
-            setDate: function(sDate) {
+            setDate: function (sDate) {
                 calDate = sDate;
             },
 
-            getDate: function() {
+            getDate: function () {
 
                 return calDate;
             },
-            getOrderByRM: function(data, callback) {
+            getOrderByRM: function (data, callback) {
 
                 $http({
                     url: adminurl + 'order/getOrderByRM',
@@ -72,7 +72,7 @@ angular.module('starter.services', [])
                     data: data
                 }).success(callback);
             },
-            getAllDeliveryReqByRP: function(data, callback) {
+            getAllDeliveryReqByRP: function (data, callback) {
                 $http({
                     url: adminurl + 'deliveryRequest/getAllDeliveryReqByRP',
                     method: 'POST',
@@ -80,23 +80,23 @@ angular.module('starter.services', [])
                     data: data
                 }).success(callback);
             },
-            getNextDate: function(stringArr) {
+            getNextDate: function (stringArr) {
                 var objs = [];
-                _.each(stringArr, function(day) {
+                _.each(stringArr, function (day) {
                     var dateDay = moment(day, "dddd").toDate();
                     objs.push(dateDay);
                 });
-                _.each(stringArr, function(day) {
+                _.each(stringArr, function (day) {
                     var dateDay = moment(day, "dddd").add(1, "week").toDate();
                     objs.push(dateDay);
                 });
-                var remaining = _.filter(objs, function(dat) {
+                var remaining = _.filter(objs, function (dat) {
                     return !moment(dat).isSameOrBefore(moment(), 'day');
                 });
                 console.log(remaining[0]);
                 return remaining[0];
             },
-            scheduleDelivery: function(data, callback) {
+            scheduleDelivery: function (data, callback) {
                 $http({
                     url: adminurl + 'deliveryRequest/scheduleDelivery',
                     method: 'POST',
@@ -104,7 +104,7 @@ angular.module('starter.services', [])
                     data: data
                 }).success(callback);
             },
-            getLastJarScheduledByUser: function(data, callback) {
+            getLastJarScheduledByUser: function (data, callback) {
                 $http({
                     url: adminurl + 'deliveryRequest/getLastJarScheduledByUser',
                     method: 'POST',
@@ -112,7 +112,7 @@ angular.module('starter.services', [])
                     data: data
                 }).success(callback);
             },
-            getByMobileNo: function(data, callback) {
+            getByMobileNo: function (data, callback) {
                 $http({
                     url: adminurl + 'user/getByMobileNo',
                     method: 'POST',
@@ -120,7 +120,7 @@ angular.module('starter.services', [])
                     data: data
                 }).success(callback);
             },
-            OrderGetOne: function(data, callback) {
+            OrderGetOne: function (data, callback) {
                 $http({
                     url: adminurl + 'Order/getOne',
                     method: 'POST',
@@ -128,7 +128,7 @@ angular.module('starter.services', [])
                     data: data
                 }).success(callback);
             },
-            OrderSave: function(data, callback) {
+            OrderSave: function (data, callback) {
                 $http({
                     url: adminurl + 'Order/save',
                     method: 'POST',
@@ -136,7 +136,7 @@ angular.module('starter.services', [])
                     data: data
                 }).success(callback);
             },
-            getCust: function(data, callback) {
+            getCust: function (data, callback) {
 
                 $http({
                     url: adminurl + 'user/getone',
@@ -145,7 +145,7 @@ angular.module('starter.services', [])
                     data: data
                 }).success(callback);
             },
-            signup: function(data, callback) {
+            signup: function (data, callback) {
                 console.log(data);
                 $http({
                     url: adminurl + 'User/saveUserData',
@@ -154,7 +154,7 @@ angular.module('starter.services', [])
                     data: data
                 }).success(callback);
             },
-            saveData: function(data, callback) {
+            saveData: function (data, callback) {
                 console.log(data);
                 $http({
                     url: adminurl + 'User/save',
@@ -163,7 +163,7 @@ angular.module('starter.services', [])
                     data: data
                 }).success(callback);
             },
-            getonePro: function(data, callback) {
+            getonePro: function (data, callback) {
                 $http({
                     url: adminurl + 'User/getone',
                     method: 'POST',
@@ -171,7 +171,7 @@ angular.module('starter.services', [])
                     data: data
                 }).success(callback);
             },
-            getProduct: function(data, callback) {
+            getProduct: function (data, callback) {
                 var id = {
                     _id: data
                 }
@@ -182,7 +182,7 @@ angular.module('starter.services', [])
                     data: id
                 }).success(callback);
             },
-            getByPin: function(data, callback) {
+            getByPin: function (data, callback) {
                 $http({
                     url: adminurl + 'Pincode/getByPin',
                     method: 'POST',
@@ -190,7 +190,7 @@ angular.module('starter.services', [])
                     data: data
                 }).success(callback);
             },
-            updateAndGetResponse: function(data, callback) {
+            updateAndGetResponse: function (data, callback) {
                 $http({
                     url: adminurl + 'User/updateAndGetResponse',
                     method: 'POST',
@@ -198,14 +198,14 @@ angular.module('starter.services', [])
                     data: data
                 }).success(callback);
             },
-            categories: function(callback) {
+            categories: function (callback) {
                 $http({
                     url: adminurl + 'Categories/getCategories',
                     method: 'POST',
                     withCredentials: true,
                 }).success(callback);
             },
-            getDeliveryRequestByUser: function(data, callback) {
+            getDeliveryRequestByUser: function (data, callback) {
                 $http({
                     url: adminurl + 'deliveryRequest/getDeliveryRequestByUser',
                     method: 'POST',
@@ -213,7 +213,7 @@ angular.module('starter.services', [])
                     data: data
                 }).success(callback);
             },
-            DeliverGetone: function(data, callback) {
+            DeliverGetone: function (data, callback) {
                 $http({
                     url: adminurl + 'deliveryRequest/getOne',
                     method: 'POST',
@@ -221,7 +221,7 @@ angular.module('starter.services', [])
                     data: data
                 }).success(callback);
             },
-            cancelJarDelivery: function(data, callback) {
+            cancelJarDelivery: function (data, callback) {
                 $http({
                     url: adminurl + 'deliveryRequest/cancelJarDelivery',
                     method: 'POST',
@@ -229,14 +229,22 @@ angular.module('starter.services', [])
                     data: data
                 }).success(callback);
             },
-            featureprods: function(callback) {
+            getDeliveryRequestByOrder: function (data, callback) {
+                $http({
+                    url: adminurl + 'deliveryRequest/getDeliveryRequestByOrder',
+                    method: 'POST',
+                    withCredentials: true,
+                    data: data
+                }).success(callback);
+            },
+            featureprods: function (callback) {
                 $http({
                     url: adminurl + 'product/getAllFeaturedProduct',
                     method: 'POST',
                     withCredentials: true,
                 }).success(callback);
             },
-            products: function(data, callback) {
+            products: function (data, callback) {
                 $http({
                     url: adminurl + 'product/getAllCategoryProduct',
                     method: 'POST',
@@ -244,7 +252,7 @@ angular.module('starter.services', [])
                     data: data
                 }).success(callback);
             },
-            orderConfirmationOrPay: function(data, callback) {
+            orderConfirmationOrPay: function (data, callback) {
                 $http({
                     url: adminurl + 'order/orderConfirmationOrPay',
                     method: 'POST',
@@ -253,7 +261,7 @@ angular.module('starter.services', [])
                 }).success(callback);
             },
 
-            showCardQuantity: function(callback) {
+            showCardQuantity: function (callback) {
                 var obj = {
                     user: $.jStorage.get("profile")._id
                 };
@@ -262,13 +270,13 @@ angular.module('starter.services', [])
                     method: 'POST',
                     withCredentials: true,
                     data: obj
-                }).then(function(data) {
+                }).then(function (data) {
                     appDetails.cartQuantity = data.data.data;
                     $.jStorage.set("cartQuantity", data.data.data);
                     callback(appDetails.cartQuantity);
                 });
             },
-            addToCart: function(products, callback) {
+            addToCart: function (products, callback) {
                 var obj = {
                     user: $.jStorage.get("profile")._id,
                     products: products,
@@ -278,13 +286,13 @@ angular.module('starter.services', [])
                     method: 'POST',
                     withCredentials: true,
                     data: obj
-                }).then(function(data) {
+                }).then(function (data) {
                     appDetails.cartQuantity = data.data.data;
                     $.jStorage.set("cartQuantity", data.data.data);
                     callback(data);
                 });
             },
-            removeFromCart: function(productId, callback) {
+            removeFromCart: function (productId, callback) {
                 var obj = {
                     user: $.jStorage.get("profile")._id,
                     product: productId,
@@ -294,13 +302,13 @@ angular.module('starter.services', [])
                     method: 'POST',
                     withCredentials: true,
                     data: obj
-                }).then(function(data) {
+                }).then(function (data) {
                     appDetails.cartQuantity = data.data.data;
                     $.jStorage.set("cartQuantity", data.data.data);
                     callback(data);
                 });
             },
-            showCart: function(callback) {
+            showCart: function (callback) {
                 var obj = {
                     user: $.jStorage.get("profile")._id
                 };
@@ -309,23 +317,24 @@ angular.module('starter.services', [])
                     method: 'POST',
                     withCredentials: true,
                     data: obj
-                }).then(function(data) {
+                }).then(function (data) {
                     callback(data);
                 });
             },
-            getProductPrice: function(product, quantity) {
+            getProductPrice: function (product, quantity) {
                 return getProductPrice(product, quantity);
             },
-            getOtherProducts: function(callback) {
+            getOtherProducts: function (callback) {
                 $http({
                     url: adminurl + 'Product/getAllOtherProduct',
                     method: 'POST',
                     withCredentials: true,
-                }).then(function(data) {
+                }).then(function (data) {
                     callback(data);
                 });
             },
-            saveOrderCheckout: function(data, callback) {
+
+            saveOrderCheckout: function (data, callback) {
                 var data2 = data;
                 data2.productDetail.productQuantity = data.product[0].quantity;
                 var num = 1;
@@ -348,7 +357,7 @@ angular.module('starter.services', [])
                 });
 
 
-                _.each(data2.otherProducts, function(n) {
+                _.each(data2.otherProducts, function (n) {
                     data2.product.push({
                         product: n,
                         productQuantity: n.productQuantity,
@@ -369,12 +378,12 @@ angular.module('starter.services', [])
                     method: 'POST',
                     withCredentials: true,
                     data: data2
-                }).then(function(data) {
+                }).then(function (data) {
                     callback(data);
                 });
             },
 
-            saveOrderCheckoutCart: function(data, callback) {
+            saveOrderCheckoutCart: function (data, callback) {
                 $http({
                     url: adminurl + 'Order/saveOrderCheckoutCart',
                     method: 'POST',
@@ -382,7 +391,7 @@ angular.module('starter.services', [])
                     data: data
                 }).success(callback);
             },
-            getOrderWithDelivery: function(data, callback) {
+            getOrderWithDelivery: function (data, callback) {
                 $http({
                     url: adminurl + 'Order/getOrderWithDelivery',
                     method: 'POST',
@@ -390,7 +399,7 @@ angular.module('starter.services', [])
                     data: data
                 }).success(callback);
             },
-            getOrderByUser: function(data, callback) {
+            getOrderByUser: function (data, callback) {
                 $http({
                     url: adminurl + 'Order/getOrderByUser',
                     method: 'POST',
@@ -399,7 +408,7 @@ angular.module('starter.services', [])
                 }).success(callback);
             },
             //to get OTP
-            getOTP: function(data, callback) {
+            getOTP: function (data, callback) {
                 $http({
                     url: adminurl + 'user/generateOtp',
                     method: 'POST',
@@ -409,7 +418,7 @@ angular.module('starter.services', [])
             },
 
             //To verfiy OTP
-            verifyOTP: function(data, callback) {
+            verifyOTP: function (data, callback) {
                 $http({
                     url: adminurl + 'user/verifyOTP',
                     method: 'POST',
@@ -417,7 +426,7 @@ angular.module('starter.services', [])
                     data: data
                 }).success(callback);
             },
-            getDashboard: function(callback) {
+            getDashboard: function (callback) {
                 var obj = {
                     user: $.jStorage.get("profile")._id
                 };
