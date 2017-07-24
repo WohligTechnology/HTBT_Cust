@@ -16,7 +16,7 @@
             <input type="number" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
                 autofocus focusMe ng-model="subscription.product[0].quantity">
         </div>
-        <div class="avgTxt">On average , 4 people need 3 jars per week.</div>
+        <div class="avgTxt">On average , 1 people need 10 jars per month.</div>
     </ion-content>
     <div class="bar bar-footer nextFooter footer-height">
         <button class="button button-block button-positive footer-font" ng-disabled="!subscription.product[0].quantity" ng-click="takeToNext();">
